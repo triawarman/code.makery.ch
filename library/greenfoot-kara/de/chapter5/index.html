@@ -1,0 +1,348 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Kapitel 5: Methoden - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Kapitel 5: Methoden" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/de/chapter5/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-de-chapter5.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Kapitel 5: Methoden</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p><em>Es war einmal ein kleines Mädchen, das immer ein rotes Käppchen trug. Darum hiess es bei allen Leuten nur „Rotkäppchen". Eines Tages sagte die Mutter zu dem Kind: "Rotkäppchen, heute hat Deine Grossmutter Geburtstag. Back ihr doch ihren Lieblingskuchen, nimm eine Flasche vom guten alten Wein aus dem Keller, leg alles in einen Korb und geh sie besuchen."</em></p>
+<p><img src="/assets/library/greenfoot-kara/chapter5/red-riding-hood.jpg" alt="Rotkäppchen"><br><small><em>Image by <a href="http://www.cafepress.com/redridinghood">Russ Fagle</a></em></small></p>
+<p><strong>Helfen Sie Rotkäppchen beim Kuchenbacken! Lesen Sie dafür aber zuerst die Theorie aufmerksam durch.</strong></p>
+<hr>
+<h2 id="methoden-mit-parametern">Methoden mit Parametern</h2>
+<p>Über Parameter können einer Methode Werte übergeben werden. So kann man bei folgender Methode angeben, wie viele Schritte Kara gehen soll:</p>
+<pre class="prettyprint lang-java">
+public void multiMove(int steps) {
+    int i = 0;
+
+    while (i &lt; steps)     {
+        move();
+
+        i = i + 1;
+    }
+}
+</pre>
+
+<p>Um z.B. 5 Schritte zu gehen, wird der Wert 5 in der Klammer angegeben:</p>
+<pre class="prettyprint lang-java">
+multiMove(5);
+</pre>
+
+<p>Um eine Methode mit mehreren Parametern aufzurufen, werden die Werte durch Kommas getrennt.</p>
+<pre class="prettyprint lang-java">
+drawRectangle(21, 4);
+</pre>
+
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<ol>
+<li>Bei den bisherigen Programmen war es eher lästig, die Methoden immer mit einem Klammerpaar <code>()</code> zu versehen. Nun wird klar, dass die bisher eingesetzten Methoden nur Spezialfälle darstellten, bei denen kein Parameter übergeben wird.</li>
+<li>In der Klammer wird der Parameter (hier <code>steps</code>) mit einem Typ angegeben (hier <code>int</code>). Mehrere Parameter werden durch Kommas getrennt. Beispiel:    <pre class="prettyprint lang-java">
+public void drawRectangle(int width, int height)
+</pre></li>
+<li>Beim Aufruf einer Methode wird der Wert in die Variable (hier <code>width</code> und <code>height</code>) kopiert.</li>
+</ol>
+<h3 id="kuchen-backen">Kuchen backen</h3>
+<p>Wir wollen nun mit Kara für die Grossmutter einen Geburtstagskuchen "backen". Der Kuchen wird aus Kleeblättern bestehen.</p>
+<p>Öffnen Sie das Szenario <strong>Kara 501...</strong> aus dem Ordner <strong>scenarios-chapter-5</strong>.</p>
+<p>Als Vorbereitung für das Backen sollen folgende Methoden zur Verfügung gestellt werden:</p>
+<ol>
+<li><p><code>public void turnAround()</code><br>Dreht Kara um 180 Grad.</p>
+</li>
+<li><p><code>public void multiMove(int steps)</code><br>Kara geht die Anzahl (steps) Schritte in die aktuelle Blickrichtung (siehe Beispiel im Theorieteil).</p>
+</li>
+<li><p><code>public void putLeafs(int count)</code><br>Kara legt die Anzahl (count) Kleeblätter. Das erste Blatt legt er an der aktuellen Position, die weiteren fortgesetzt in seine Blickrichtung.</p>
+</li>
+</ol>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-5-01-kuchen-backen"><i class="fa fa-rocket"></i> AUFGABE 5.01: Kuchen backen</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter5/task01.png" alt="Aufgabe 5.01"> </p>
+<p>Kara soll mit Kleeblättern ein Rechteck zeichnen, welches den Kuchen symbolisiert. </p>
+<p>Kara startet in der Ecke unten links und schaut nach rechts. Kara soll nicht nur eine fixe Grösse eines Rechteckes zeichnen können, sondern ein Rechteck mit variabler Breite und Höhe! Der Methodenaufruf <code>drawRectangle(21, 4)</code> soll demnach ein Rechteck mit der Breite 21 und der Höhe 4 erzeugen.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-5-02-kerzen-auf-kuchen"><i class="fa fa-rocket"></i> AUFGABE 5.02: Kerzen auf Kuchen</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter5/task02.png" alt="Aufgabe 5.02"> </p>
+<p>Damit unser Kuchen auch wie ein Geburtstagskuchen aussieht, braucht er natürlich noch ein paar Kerzen. Erweitern Sie Ihr Programm um eine zusätzliche Methode <code>drawCandles(int count)</code>, welche die angegebene Anzahl Kerzen auf den Kuchen setzt. </p>
+<hr>
+<h2 id="methoden-mit-r-ckgabewerten">Methoden mit Rückgabewerten</h2>
+<p>Über den Rückgabewert kann eine Methode einen Wert als Ergebnis zurückliefern. So errechnet die folgende Methode eine zufällige Zahl (zwischen 0 und 9) und gibt diese als Resultat zurück:</p>
+<pre class="prettyprint lang-java">
+public int randomNumber() {
+    int random = Greenfoot.getRandomNumber(10);
+    return random;
+}
+</pre>
+
+
+<p>Das Resultat kann entweder in eine Variable gespeichert oder direkt wie folgt verwendet werden:</p>
+<pre class="prettyprint lang-java">
+multiMove(randomNumber());
+</pre>
+
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<ol>
+<li>Der Typ des Rückgabewerts (hier <code>int</code>) wird vor dem Namen der Methode angegeben. Wenn die Methode keinen Rückgabewert enthält, wird das mit <code>void</code> ausgedrückt.</li>
+<li>Die Rückgabe eines Wertes innerhalb einer Methode geschieht mit <code>return</code>, gefolgt vom Wert. </li>
+</ol>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-5-03-kerzen-nach-alter"><i class="fa fa-rocket"></i> AUFGABE 5.03: Kerzen nach Alter</h4>
+<p>Wir möchten der Grossmutter <strong>für jedes Jahrzehnt eine Kerze</strong> auf den Kuchen stecken. Da Rotkäppchen nicht genau weiss, wie alt die Grossmutter wird, muss es zuerst ihre Mutter fragen.</p>
+<p>Programmieren Sie Kara so, dass er zuerst nach dem Alter der Grossmutter fragt und anschliessend entsprechend der eingegebenen Zahl Kerzen auf dem Kuchen platziert.</p>
+<p><strong>Hinweis:</strong> Zum Erfragen des Alters kann folgende Methode von Kara verwendet werden (ist übrigens eine Methode mit Rückgabewert <code>int</code>):</p>
+<pre class="prettyprint lang-java">
+intInput("Message...")
+</pre>
+
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-5-04-forgeschritten-torte"><i class="fa fa-rocket"></i> AUFGABE 5.04 (forgeschritten): Torte</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter5/task04.png" alt="Aufgabe 5.04"> </p>
+<p>"Backen" Sie mit Kara eine Torte mit einer Schicht für jedes Jahrzehnt, das die Grossmutter über 50 ist. Jede Schicht soll zwei Zeilen haben und soll auf beiden Seiten um zwei Blätter nach Innen gerückt sein. </p>
+<hr>
+<h2 id="ende-und-wie-weiter-">Ende ... und wie weiter?</h2>
+<p>Herzliche Gratulation, Sie haben das Ende diesr Serie erreicht!</p>
+<p>Hier sind ein paar Möglichkeiten, wie Sie Ihr Programmierarbenteuer fortsetzen könnten:</p>
+<ul>
+<li><em>Option 1:</em> Ein eigenes Projekt mit Greenfoot entwickeln</li>
+<li><em>Option 2:</em> Einführung in eine professionelle Entwicklungsumgebung wie Eclipse, Netbeans etc. (siehe <a href="/library/gamegrid-kara/de/">GameGridKara</a>)</li>
+<li><em>Option 3:</em> Einführung in <a href="/java/javafx-2-tutorial-intro/">GUI-Programmierung mit JavaFX</a></li>
+</ul>
+<h3 id="feedback">Feedback</h3>
+<p>Ich freue mich von Ihnen zu hören. Schreiben Sie einen Kommentar, wenn Sie die Serie glücklich beendet haben oder auch, wenn Sie Verbesserungsvorschläge haben. <a href="#disqus_thread"><i class="fa fa-comment-o"></i></a></p>
+<p><i class="fa fa-beer"></i> Marco</p>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter1/" data-toggle="tooltip" title="Kapitel 1: Erste Schritte">1</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter2/" data-toggle="tooltip" title="Kapitel 2: Programmfluss">2</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter3/" data-toggle="tooltip" title="Kapitel 3: Variablen">3</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter4/" data-toggle="tooltip" title="Kapitel 4: Sokoban Spiel">4</a>
+      </li>
+  <li class="active">
+      <a href="/library/greenfoot-kara/de/chapter5/" data-toggle="tooltip" title="Kapitel 5: Methoden">5</a>
+      </li>
+              
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/de/" class="list-group-item">
+        
+        Einleitung
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item">
+        
+        Kapitel 1: Erste Schritte
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item">
+        
+        Kapitel 2: Programmfluss
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item">
+        
+        Kapitel 3: Variablen
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item">
+        
+        Kapitel 4: Sokoban Spiel
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item active">
+        
+        Kapitel 5: Methoden
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Lösungen Kapitel 5
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-5.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-5.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Seite als Word-Datei
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/de/chapter5/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/de/chapter5/';
+    var disqus_title = 'GreenfootKara - Kapitel 5: Methoden';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

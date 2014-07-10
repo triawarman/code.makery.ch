@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Persisting Data in Java - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Persisting Data in Java" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/blog/persisting-data-in-java/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">Persisting Data in Java</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Dec 13, 2012
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <p>Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We'll start with a simple way to save a small amount of data and continue to more advanced techniques. </p>
+<p><img src="/assets/blog/12-12-13-persisting-data-in-java/floppy.png" alt="Floppy"></p>
+<p>Some of the techniques (Preferences, XML and reading/writing Files) described here were already used in the <a href="/java/javafx-2-tutorial-part5/">JavaFX 2 Tutorial Part 5</a>. </p>
+<hr>
+<h2 id="preferences">Preferences</h2>
+<p>With the class <a href="http://docs.oracle.com/javase/7/docs/api/index.html?java/util/prefs/Preferences.html"><code>Preferences</code></a> of the standard Java library we can save some small values. Typically, you'd save some simple user preferences in it like path to the <em>last opened file</em>. </p>
+<p>Depending on the operating system, the <code>Preferences</code> are saved in different places (e.g. the registry file in Windows).</p>
+<ul>
+<li><code>Preferences</code> example in <a href="/java/javafx-2-tutorial-part5/">JavaFX 2 Tutorial Part 5</a>.</li>
+<li>Instructions in <em>German</em> in the book <a href="http://openbook.galileocomputing.de/javainsel/javainsel_11_009.html#dodtp29221705-11a7-4fe0-8f23-bfb46d58ff59">Java ist auch eine Insel</a></li>
+</ul>
+<hr>
+<h2 id="saving-files">Saving Files</h2>
+<p>There are various possibilities to load and save a file in Java.</p>
+<ul>
+<li>An example is the <code>FileUtil</code> helper class in <a href="/java/javafx-2-tutorial-part5">JavaFX 2 Tutorial Part 5</a>.</li>
+<li>The official Java <a href="http://docs.oracle.com/javase/tutorial/essential/io/fileio.html">File I/O Tutorial</a>.</li>
+</ul>
+<p>Simple text files can directly be saved to the disk. You construct a String (from objects) and save it using the means described above. But if you later want to read from the text files and use the information in your application, you might have some difficulties. You would have to manually parse the elements from one big unstructured String. Then, to get objects again, you would have to create new objects and fill them with the information from the String.</p>
+<p>That's why it helps to save data in some structured form like XML.</p>
+<hr>
+<h2 id="xml-with-xstream">XML with XStream</h2>
+<p>XStream is a simple library to serialize objects to XML and back again. Serializing means that, given an object (which may contain a reference to other objects), XStream will create a single XML-String representing this object(s). The XML-String can then be saved to a file. XStream will later accept this XML-String to reproduce the object(s) again.</p>
+<ul>
+<li>XML example in <a href="/java/javafx-2-tutorial-part5/">JavaFX 2 Tutorial Part 5</a>.</li>
+<li>Official <a href="http://xstream.codehaus.org/">XStream Website</a> with a good <a href="http://xstream.codehaus.org/tutorial.html">Two Minute Tutorial</a>.</li>
+</ul>
+<p>When data gets more complex then a database instead of XML is appropriate.</p>
+<hr>
+<h2 id="java-database-also-called-derby-">Java Database (also called Derby)</h2>
+<p>Derby is an Open Source Database completely written in Java. The advantage of a pure Java database is that it can be embedded with the Java program (as opposed to being run as a separate, standalone server). Derby is based on the SQL Standard.</p>
+<ul>
+<li>Official <a href="http://db.apache.org/derby/">Apache Derby Website</a> containing downloads, manuals, etc.</li>
+<li><a href="http://db.apache.org/derby/papers/DerbyTut/embedded_intro.html">Derby Tutorial</a> with an embedded example. <strong>Note:</strong> You will find the example <code>SimpleApp</code> inside the Derby zip under <code>demo/programs/simple/</code>.</li>
+</ul>
+<h3 id="eclipse-data-tools-platform">Eclipse Data Tools Platform</h3>
+<p>With the Eclipse <em>Data Tools Platform</em> plugin you can manage your database. This is very practical, especially to view the data that has been saved to the database.</p>
+<ul>
+<li><a href="http://www.vogella.de/articles/EclipseDataToolsPlatform/article.html">Eclipse Data Tools Platform Tutorial</a></li>
+</ul>
+<hr>
+<h2 id="database-with-a-mapper-tool-and-mysql-advanced-">Database with a Mapper Tool and MySQL (Advanced)</h2>
+<p>Tools like <a href="http://www.hibernate.org/">Hibernate</a> and <a href="http://www.eclipse.org/eclipselink/">EclipseLink</a> help to fill the gap between the relational data in the database and objects (see <a href="http://de.wikipedia.org/wiki/Object-relational_impedance_mismatch">Object-relational impedance mismatch</a>).</p>
+<ul>
+<li><a href="http://www.javatips.net/blog/2011/12/hibernate-annotations-tutorial">Hibernate Tutorial</a></li>
+<li>Other <a href="http://www.roseindia.net/hibernate/hibernate4/index.shtml">Hibernate Tutorials</a> with more information.</li>
+<li>An extensive <a href="http://www.youtube.com/watch?v=Yv2xctJxE-w&amp;list=PL4AFF701184976B25&amp;index=1">Hibernate video tutorial series</a></li>
+<li><a href="http://www.vogella.com/articles/JavaPersistenceAPI/article.html">EclipseLink Tutorial</a> - also using Derby Embedded Database (could be replaced by MySQL)</li>
+</ul>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/persisting-data-in-java/';
+    var disqus_url = 'http://code.makery.ch/blog/persisting-data-in-java/';
+    var disqus_title = 'Persisting Data in Java';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

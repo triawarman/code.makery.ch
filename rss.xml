@@ -1,0 +1,171 @@
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+  <channel>
+    <title><![CDATA[code.makery.ch]]></title>
+    <link>http://code.makery.ch</link>
+    <description>Learning how to code.</description>
+    <language>en</language>
+    <webMaster>majakob@gmx.ch</webMaster>
+    <copyright>2014</copyright>
+    <lastBuildDate>Thu, 10 Jul 2014 15:30:03 CET</lastBuildDate>
+    <generator>mixture.io</generator>
+    
+      
+<item>
+	<title><![CDATA[Update to JavaFX 8 - What's New?]]></title>
+	<link>http://code.makery.ch/blog/update-to-javafx-8-whats-new/</link>
+	<guid>/blog/update-to-javafx-8-whats-new/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Sat, 10 May 2014 00:00:00 CET</pubDate>
+	<description>JavaFX 8 is included in JDK 8 and is the officially recommended graphics toolkit for Java 8 applications. I&#39;ve been using JavaFX 2 since 2012 and am very pleased as it was already a major step forward compared to Swing. Now with JavaFX 8 it has become even better, with...</description>
+</item>
+<item>
+	<title><![CDATA[JavaFX 8 Event Handling Examples]]></title>
+	<link>http://code.makery.ch/blog/javafx-8-event-handling-examples/</link>
+	<guid>/blog/javafx-8-event-handling-examples/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Sat, 03 May 2014 00:00:00 CET</pubDate>
+	<description>In most JavaFX applications we have to react to many user events: The user clicks a button, presses a key, moves the mouse, etc. 
+This post describes how to handle some of the most common JavaFX events.
+Our Example Application
+
+Download Example
+ Example Source Code
+FXML and Event Handling
+I like to keep the...</description>
+</item>
+<item>
+	<title><![CDATA[JavaFX 8 TableView Cell Renderer]]></title>
+	<link>http://code.makery.ch/blog/javafx-8-tableview-cell-renderer/</link>
+	<guid>/blog/javafx-8-tableview-cell-renderer/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Fri, 02 May 2014 00:00:00 CET</pubDate>
+	<description>In this post I will show how to customize the rendering of a JavaFX TableView. This is an updated version of the JavaFX 2 TableView Cell Renderer article. Compared to the old version, we can now use some Java 8 language features like lambda expressions and the new Date and...</description>
+</item>
+<item>
+	<title><![CDATA[JavaFX 8 TableView Sorting and Filtering]]></title>
+	<link>http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/</link>
+	<guid>/blog/javafx-8-tableview-sorting-filtering/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Wed, 30 Apr 2014 00:00:00 CET</pubDate>
+	<description>JavaFX 8 comes with two new classes, SortedList and FilteredList. In JavaFX 2 we had to manually do the filtering as I&#39;ve described in an earlier post.
+So, let&#39;s see how we can use the new classes to sort and filter a TableView.
+Example Setup
+As an example we&#39;ll create a simple table...</description>
+</item>
+<item>
+	<title><![CDATA[JavaFX 8 Date Picker]]></title>
+	<link>http://code.makery.ch/blog/javafx-8-date-picker/</link>
+	<guid>/blog/javafx-8-date-picker/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Fri, 18 Apr 2014 01:00:00 CET</pubDate>
+	<description>Finally, with JavaFX 8 a DatePicker control was added (for JavaFX 2 we had to create our own)! 
+The DatePicker works well in combination with the new Java 8 Date and Time API. Those two things together provide a much better experience when working with dates in Java!
+
+Basic Usage
+Using the...</description>
+</item>
+<item>
+	<title><![CDATA[JavaFX 8 Dialogs]]></title>
+	<link>http://code.makery.ch/blog/javafx-8-dialogs/</link>
+	<guid>/blog/javafx-8-dialogs/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Fri, 18 Apr 2014 00:00:00 CET</pubDate>
+	<description>Back in 2012 I back-ported an early example of a JavaFX 8 Dialog to JavaFX 2. You can read about it in the blog post JavaFX 2 Dialogs. I did hope that the Dialogs would be included in JavaFX 8, but they were not. 
+Lately, I&#39;ve been asked a lot...</description>
+</item>
+<item>
+	<title><![CDATA[Moving to code.makery.ch]]></title>
+	<link>http://code.makery.ch/blog/moving-to-code-makery-ch/</link>
+	<guid>/blog/moving-to-code-makery-ch/</guid>
+	
+	<pubDate>Fri, 28 Mar 2014 00:00:00 CET</pubDate>
+	<description>This blog moved from edu.makery.ch to code.makery.ch.
+
+Please update your links and RSS feeds to code.makery.ch
+Or even better: Sign up to receive updates by email
+Why the Move?
+When I started blogging in 2012 I thought this would be a blog about educational things. That&#39;s why I called it edu.makery.ch. The posts and...</description>
+</item>
+<item>
+	<title><![CDATA[Web und Mobile Apps Programmieren mit Dart]]></title>
+	<link>http://code.makery.ch/blog/web-und-mobile-mit-dart/</link>
+	<guid>/blog/web-und-mobile-mit-dart/</guid>
+	
+	<category>Dart</category>
+	
+	<pubDate>Thu, 26 Sep 2013 00:00:00 CET</pubDate>
+	<description>
+  
+    Der folgende Artikel ist erschienen an der INFOS 2013 (GI-Fachtagung Informatik und Schule) in Kiel.
+  
+  
+     Artikel als PDF 
+  
+  
+     Workshop Pr&#228;sentation 
+  
+
+
+
+Abstract
+
+Bisher war es kaum realistisch,...</description>
+</item>
+<item>
+	<title><![CDATA[Programming with Dart]]></title>
+	<link>http://code.makery.ch/blog/programming-with-dart/</link>
+	<guid>/blog/programming-with-dart/</guid>
+	
+	<category>Dart</category>
+	
+	<pubDate>Thu, 13 Jun 2013 00:00:00 CET</pubDate>
+	<description>
+
+
+
+The last few months I have been programming with Google&#39;s new Dart language. I&#39;m very excited about how great it is to work with Dart! Currently, I&#39;m using Dart for the web client of a project called doxblox (site is only in German at the moment).
+After a while I found...</description>
+</item>
+<item>
+	<title><![CDATA[JavaFX 2 Date Picker]]></title>
+	<link>http://code.makery.ch/blog/javafx-2-date-picker/</link>
+	<guid>/blog/javafx-2-date-picker/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Mon, 07 Jan 2013 00:00:00 CET</pubDate>
+	<description>
+  &amp;rarr; For an UPDATED VERSION of this article go to: JavaFX 8 Date Picker
+
+
+As JavaFX 2.2 doesn&#39;t contain a Calendar control we would have to create our own to provide a convenient way to enter a date. Fortunately, Christian Schudt has created a very nice DatePicker that we...</description>
+</item>
+    
+  </channel>
+</rss>

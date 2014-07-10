@@ -1,0 +1,386 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Lösungen Kapitel 1 - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Lösungen Kapitel 1" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/de/chapter1-solutions/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-de-chapter1-solutions.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Lösungen Kapitel 1</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <h4 id="-i-class-fa-fa-check-square-o-i-l-sungen-aufgabe-1-02"><i class="fa fa-check-square-o"></i> LÖSUNGEN AUFGABE 1.02</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Was bewirkt die Methode move()?<br><strong>Kara geht ein Feld nach vorne.</strong></li>
+<li>Platzieren Sie zwei Karas in Ihrer Welt und sorgen Sie dafür, dass sie sich anschauen. Welche Methode brauchen Sie dazu?<br><strong>turnLeft() oder turnRight()</strong></li>
+<li>Testen Sie die weiteren Methoden. In welche zwei Arten können die Methoden unterteilt werden?<br><strong>Methoden mit void: führen nur eine Aktion aus.</strong><br><strong>Methoden mit boolean: Öffnen ein Fenster mit dem Methodenergebnis.</strong></li>
+</ol>
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sungen-aufgabe-1-03"><i class="fa fa-check-square-o"></i> LÖSUNGEN AUFGABE 1.03</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Rufen Sie die Methode <code>onLeaf()</code> für einen Kara auf. Liefert Sie immer <code>false</code> zurück? Oder gibt es auch Situationen, in denen sie <code>true</code> zurückliefert?<br><strong>Wenn Kara auf einem Blatt steht, liefert die Methode true zurück.</strong></li>
+<li>Setzen Sie zusätzlich einen Baum (Tree) in die Welt. Mit welcher Methode können Sie überprüfen, ob Kara vor einem Baum steht?<br><strong>treeFront()</strong></li>
+<li>Was passiert, wenn Sie Kara mittels der Methode <code>move()</code> in einen Baum fahren lassen?<br><strong>Kara reklamiert dass er sich nicht bewegen kann.</strong></li>
+</ol>
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sungen-aufgabe-1-04"><i class="fa fa-check-square-o"></i> LÖSUNGEN AUFGABE 1.04</h4>
+<p>Welchen Zustandswerte hat Kara in den folgenden Situationen?</p>
+<ol>
+<li><p><strong>x: 0, y: 0, rotation: 0</strong></p>
+</li>
+<li><p><strong>x: 1, y: 2, rotation: 180</strong></p>
+</li>
+</ol>
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sungen-aufgabe-1-05"><i class="fa fa-check-square-o"></i> LÖSUNGEN AUFGABE 1.05</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Platzieren Sie ein Objekt von <code>MyKara</code> in Ihre Welt. Welche Methode haben Sie nun neu zur Verfügung?<br><strong>act()</strong></li>
+<li>Was macht diese Methode?<br><strong>Schritt vorwärts, Drehung nach rechts, Schritt vorwärts</strong></li>
+<li>Was passiert, wenn Sie in der Greenfoot-Steuerung (unten links) auf den <strong>Act-Button</strong> drücken?<br><strong>Das Gleiche wie vorher. Die act()-Methode wird aufgerufen.</strong></li>
+<li>Klicken Sie auf den <strong>Run-Button</strong>. Was geschieht? (Versuchen Sie mal die Geschwindigkeit zu verstellen)<br><strong>act() wird immer wieder aufgerufen, bis man auf Pause drückt.</strong></li>
+<li>Welche Methoden finden Sie unter <em>Rechtsklick | inherited from Kara</em>? Können Sie die auch benutzen?<br><strong>Alle Methoden von Kara. Die können auch von MyKara benutzt werden.</strong></li>
+</ol>
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sungen-aufgabe-1-06"><i class="fa fa-check-square-o"></i> LÖSUNGEN AUFGABE 1.06</h4>
+<pre class="prettyprint lang-java">
+public class MyKara extends Kara {
+
+    public void act() {
+        move();
+        putLeaf();
+        move();
+
+        stop();
+    }
+}
+</pre>
+
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sungen-aufgabe-1-07"><i class="fa fa-check-square-o"></i> LÖSUNGEN AUFGABE 1.07</h4>
+<pre class="prettyprint lang-java">
+public class MyKara extends Kara {
+
+    public void act() {
+        move();
+
+        turnLeft();
+        move();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        move();
+        turnLeft();
+
+        turnLeft();
+        move();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        move();
+        turnLeft();
+
+        move();
+
+        turnLeft();
+        move();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        move();
+        turnLeft();
+
+        removeLeaf();
+
+        stop();
+    }
+}
+</pre>
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<ol>
+<li>Die <strong>Kommentare</strong> im Quelltext wurden weggelassen (= der Text, welcher im Greenfoot-Editor entweder grau oder blau dargestellt wird).<br>Kommentare schreibt man in den Quelltext als zusätzliche Informationen. Die Kommentare sind für Menschen und werden vom Computer ignoriert. Es gibt <strong>drei Möglichkeiten</strong>, um Kommentare in den Quelltext zu schreiben:<ol>
+<li>Mit zwei Schrägstrichen <code>//</code> (nach den Strichen gilt der Rest der Zeile als Kommentar)</li>
+<li>Längere Kommentare über mehrere Zeilen schliesst man mit <code>/*</code> und <code>*/</code> ein.</li>
+<li>Kommentare für Methoden und Klassen werden zwischen <code>/**</code> und <code>*/</code> geschrieben.</li>
+</ol>
+</li>
+<li>Die Methode <code>stop()</code> bewirkt, dass nach der <code>act()</code>-Methode gestoppt wird, auch wenn der Run-Knopf gedrückt wurde.</li>
+</ol>
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sungen-aufgabe-1-08"><i class="fa fa-check-square-o"></i> LÖSUNGEN AUFGABE 1.08</h4>
+<pre class="prettyprint lang-java">
+public class MyKara extends Kara {
+    public void act() {
+        move();
+        goAroundTree();
+        goAroundTree();
+        move();
+        goAroundTree();
+        removeLeaf();
+
+        stop();
+    }
+
+    public void goAroundTree() {
+        turnLeft();
+        move();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        move();
+        turnLeft();
+    }
+}
+</pre>
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<ol>
+<li>Zur besseren Übersicht und um zu vermeiden, dass wir dreimal den gleichen Code schreiben müssen, haben wir eine neue Methode <code>goAroundTree()</code> eingeführt. </li>
+<li>Dem Namen der Methode werden hier zwei Schlüsselwörter <code>public void</code> vorangestellt.<br><code>public</code> bedeutet, dass die Methode auch von ausserhalb aufgerufen werden kann.<br><code>void</code> (engl. Leer) bedeutet, dass die Methode keinen Wert zurückliefert.</li>
+<li>Hinter jeder Methode steht das Klammerpaar <code>()</code>, was bedeutet, dass die Methode keine Parameter übergeben bekommt. Später werden wir Methoden mit Parametern kenne lernen.</li>
+</ol>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter1/" data-toggle="tooltip" title="Kapitel 1: Erste Schritte">1</a>
+      </li>
+    <li>
+      <a href="/library/greenfoot-kara/de/chapter2/" data-toggle="tooltip" title="Kapitel 2: Programmfluss">2</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter3/" data-toggle="tooltip" title="Kapitel 3: Variablen">3</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter4/" data-toggle="tooltip" title="Kapitel 4: Sokoban Spiel">4</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter5/" data-toggle="tooltip" title="Kapitel 5: Methoden">5</a>
+      </li>
+            
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/de/" class="list-group-item">
+        
+        Einleitung
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item">
+        
+        Kapitel 1: Erste Schritte
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1-solutions/" class="list-group-item active">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Lösungen Kapitel 1
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item">
+        
+        Kapitel 2: Programmfluss
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item">
+        
+        Kapitel 3: Variablen
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item">
+        
+        Kapitel 4: Sokoban Spiel
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item">
+        
+        Kapitel 5: Methoden
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-1-solutions.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-1-solutions.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Seite als Word-Datei
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter1-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1-solutions/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter1-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/de/chapter1-solutions/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/de/chapter1-solutions/';
+    var disqus_title = 'GreenfootKara - Lösungen Kapitel 1';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

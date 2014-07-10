@@ -1,0 +1,515 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Kapitel 3: Variablen - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Kapitel 3: Variablen" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/de/chapter3/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-de-chapter3.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Kapitel 3: Variablen</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>Im letzten Kapitel haben wir gelernt, bestimmte Ereignisse zu wiederholen solange eine Bedingung erfüllt ist. Nun möchten wir aber folgendes tun:</p>
+<p><em>Kara soll eine Spur von fünf Kleeblättern legen.</em></p>
+<p><img src="/assets/library/greenfoot-kara/chapter3/loop-example.png" alt="Loop Example"> </p>
+<p>Dies wäre natürlich recht einfach, wenn wir einfach <code>putLeaf()</code> und <code>move()</code> fünfmal aufrufen, jedoch wenig elegant. Schöner wäre es, wenn Kara mitzählt, wie viele Blätter er bereits abgelegt hat. Damit Kara zählen kann, braucht er ein "Gedächtnis", d.h. konkret einen Speicher. Die Speicherplätze beim Programmieren sind durch Variablen ansprechbar.</p>
+<h3 id="z-hlen-mit-kara">Zählen mit Kara</h3>
+<pre class="prettyprint lang-java">
+int i;
+i = 0;
+
+while (i &lt; 5) {
+    putLeaf();
+    move();
+
+    i = i + 1;
+}
+</pre>
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<ol>
+<li>Mit <code>int i;</code> wird Speicherplatz für eine Variable mit dem Namen <code>i</code> und dem Typ <code>int</code>, d.h. "integer", reserviert. Man sagt: Die <strong>Variable i wird deklariert</strong>. In Java gibt es unterschiedliche Typen, die verwendet werden können (siehe nachfolgende Tabellen).</li>
+<li>Durch <code>i = 0;</code> wird der Variable <code>i</code> der Wert <code>0</code> zugewiesen. Da es die erste Wertzuweisung für die Variable ist, sagt man auch: Die <strong>Variable i wird initialisiert</strong>.</li>
+<li>Deklaration und Initialisierung werden meistens zusammengefasst wie folgt:
+<code>int i = 0;</code></li>
+<li>Für die Bedingung <code>i &lt; 5</code> wird der Vergleichsoperator <code>&lt;</code> benutzt (weitere Vergleichsoperatoren siehe nachfolgende Tabellen).</li>
+<li>Bei der Zuweisung <code>i = i + 1;</code> muss man zuerst den rechten Teil anschauen. Es bedeutet: "Nimm den aktuellen Wert von i, addiere 1 dazu und speichere den neuen Wert wieder unter dem Namen i ab."</li>
+</ol>
+<h4 id="weitere-hinweise-zu-variablen">Weitere Hinweise zu Variablen</h4>
+<ul>
+<li>Es ist möglich, eine Variable mit einem endgültigen, unveränderlichen Wert zu versehen, d.h. sie zu einer Konstanten zu machen:<br><code>final int ANZAHL = 5;</code><br>Dann könnte man im obigen Programmbeispiel <code>while (i &lt; ANZAHL)</code> schreiben.<br>Konstanten schreibt man komplett mit Grossbuchstaben.</li>
+<li>Variablen schreibt man wie Methoden beginnend mit einem Kleinbuchstaben!</li>
+</ul>
+<hr>
+<h2 id="elementare-datentypen-in-java">Elementare Datentypen in Java</h2>
+<p>Diese Datentypen heissen "elementar", da es die Grunddatentypen in Java sind. (Später werden wir lernen, wie man Variablentypen für ganze Objekte erstellen kann).</p>
+<h3 id="ganze-zahlen-und-zeichen">Ganze Zahlen und Zeichen</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Typ</th>
+      <th>von</th>
+      <th>bis einschliesslich</th>
+      <th>Speicherbedarf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>byte</code></td>
+      <td>-128</td>
+      <td>127</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code>short</code></td>
+      <td>-32'768</td>
+      <td>32'767</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code>int</code></td>
+      <td>-2'147'483'648</td>
+      <td>2'147'483'647</td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code>long</code></td>
+      <td>-9'223'372'036'854'775'808</td>
+      <td>9'223'372'036'854'775'807</td>
+      <td>64 bit</td>
+    </tr>
+    <tr>
+      <td><code>char</code></td>
+      <td>0</td>
+      <td>65'635</td>
+      <td>16 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 id="fliesskomma-zahlen">Fliesskomma-Zahlen</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Typ</th>
+      <th>von</th>
+      <th>bis einschliesslich</th>
+      <th>Speicherbedarf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>float</code></td>
+      <td>-3.4 * 10<sup>38</sup></td>
+      <td>3.4 * 10<sup>38</td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code>double</code></td>
+      <td>-1.7 * 10<sup>308</sup></td>
+      <td>1.7 * 10<sup>308</sup></td>
+      <td>64 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 id="wahrheitswerte">Wahrheitswerte</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Typ</th>
+      <th>Wertebereich</th>
+      <th>Speicherbedarf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>boolean</code></td>
+      <td><code>true</code> oder <code>false</code></td>
+      <td>1 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+<h2 id="vergleichsoperatoren">Vergleichsoperatoren</h2>
+<p>Folgende Operatoren können in Java für Vergleiche verwendet werden. Das Ergebnis ist jeweils ein boolean (entweder <code>true</code> oder <code>false</code>).</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Bedeutung</th>
+      <th>Beispiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>==</code></td>
+      <td>gleich</td>
+      <td><code>k == 2</code></td>
+    </tr>
+    <tr>
+      <td><code>!=</code></td>
+      <td>ungleich</td>
+      <td><code>k &lt; 12</code></td>
+    </tr>
+    <tr>
+      <td><code>&gt;</code></td>
+      <td>grösser als</td>
+      <td><code>k &gt; 67</code></td>
+    </tr>
+    <tr>
+      <td><code>&lt;</code></td>
+      <td>kleiner als</td>
+      <td><code>k &lt; 12</code></td>
+    </tr>
+    <tr>
+      <td><code>&gt;=</code></td>
+      <td>grösser als oder gleich</td>
+      <td><code>k &gt;= 45</code></td>
+    </tr>
+    <tr>
+      <td><code>&lt;=</code></td>
+      <td>kleiner als oder gleich</td>
+      <td><code>k &lt;= 23</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Achtung:</strong> Der Vergleich auf "Gleichheit" hat immer zwei Gleichheitszeichen <code>==</code>. Mit einem einzelnen Gleichheitszeichen <code>=</code> geschieht eine Zuweisung!</p>
+<hr>
+<h2 id="arithmetische-operatoren">Arithmetische Operatoren</h2>
+<p>Zur Berechnung können folgende arithmetische Operatoren verwendet werden:</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Bedeutung</th>
+      <th>Beispiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>+</code></td>
+      <td>Addition</td>
+      <td><code>h = w + 34</code></td>
+    </tr>
+    <tr>
+      <td><code>-</code></td>
+      <td>Subtraktion</td>
+      <td><code>y = 3.4 – t</code></td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Multiplikation</td>
+      <td><code>z = h * 3.56</code></td>
+    </tr>
+    <tr>
+      <td><code>/</code></td>
+      <td>Division</td>
+      <td><code>d = m / v</code></td>
+    </tr>
+    <tr>
+      <td><code>%</code></td>
+      <td>Modulo (liefert den Rest der Division)</td>
+      <td><code>count = w % 2</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-01-kara-z-hlt-kleebl-tter"><i class="fa fa-rocket"></i> TASK 3.01: Kara zählt Kleeblätter</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task01.png" alt="TASK 3.01"> </p>
+<p>Kara soll waagrecht von links nach rechts gehen bis zum Baum und dabei die Kleeblätter zählen.</p>
+<p><em>Hinweise:</em></p>
+<ul>
+<li>Am Schluss können Sie das Resultat mit dem folgenden Befehl auf die "Konsole" schreiben: <code>System.out.println("Das Resultat ist: " + count);</code></li>
+<li>Text muss man in Anführungszeichen schreiben. Das Pluszeichen bewirkt, dass die variable <code>count</code> hinten angefügt wird.</li>
+<li><em>Gültigkeitsbereich von Variablen</em>: Variablen sind immer nur innerhalb des Blockes (zwischen den geschweiften Klammern) gültig, in welchem sie deklariert wurden. Man kann sie auch ausserhalb der Methoden deklarieren, dann gelten sie für die ganze Klasse. </li>
+</ul>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-02-kara-in-a-box-i"><i class="fa fa-rocket"></i> TASK 3.02: Kara in a Box I</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task02.png" alt="TASK 3.02"> </p>
+<p>Eine quadratische Fläche ist von Bäumen umrandet. Innerhalb der Fläche ist ein Muster aus Kleeblättern gelegt, das von Kara invertiert (= umgedreht) werden soll. Kara startet links oben in der Ecke mit Blick nach rechts.</p>
+<p><em>Hinweise:</em></p>
+<ul>
+<li>Bei dieser Aufgabe ist es hilfreich, mit booleschen Variablen zu arbeiten, z.B.:<ul>
+<li>Deklaration und Initilalisierung: <code>boolean goingRight = false;</code></li>
+<li>Aus true wird false und umgekehrt: <code>goingRight = !goingRight;</code></li>
+<li>Boolesche Variable als Bedingung: <code>if (goingRight)</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-03-kara-in-a-box-ii"><i class="fa fa-rocket"></i> TASK 3.03: Kara in a Box II</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task03.png" alt="TASK 3.03"> </p>
+<p>Eine quadratische Fläche ist von Bäumen umrandet. Innerhalb der Fläche soll ein schachbrettartiges Muster aus Kleeblättern von Kara gelegt werden. Kara startet links oben in der Ecke mit Blick nach rechts.</p>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-04-schwierig-die-l-ngste-baumreihe"><i class="fa fa-rocket"></i> TASK 3.04 (schwierig): Die längste Baumreihe</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task04.png" alt="TASK 3.04"> </p>
+<p>Auf der Wiese hat es verschiedene Baumreihen. Kara soll nun die Länge (in Anzahl Bäumen) der längsten Baumreihe ermitteln und auf die Konsole ausgeben. Zwischen d en Baumreihen ist immer mindestens ein Feld Platz. Auf dem letzten Feld liegt ein Kleeblatt.</p>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-05-sehr-schwierig-push-mushroom-through-tunnel"><i class="fa fa-rocket"></i> TASK 3.05 (sehr schwierig): Push Mushroom Through Tunnel</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task05.png" alt="TASK 3.05"> </p>
+<p>Die Welt von Kara hat zwei Boxen, welche durch einen Tunnel verbunden sind. In der Box links befindet sich Kara und ein Kleeblatt. In der Box rechts befindet sich ein Pilz. Kara soll nun auf die andere Seite gelangen, den Pilz finden und ihn auf die andere Seite schieben. Auf der anderen Seite angekommen soll der Pilz schliesslich auf das Kleeblatt geschoben werden.</p>
+<p>Sie können davon ausgehen, dass Kara immer oben links in der Ecke startet und das Kleeblatt sich unten links befindet. Der Pilz kann jedoch an einer beliebigen Stelle rechts vom Tunnel stehen.</p>
+<p><em>Hints:</em></p>
+<ul>
+<li>Diese Aufgabe kann auch in Zusammenarbeit zu zweit gelöst werden. </li>
+<li>Dabei können die Teilprobleme untereinander aufgeteilt werden:<ul>
+<li>Tunneleingang finden</li>
+<li>Pilz finden</li>
+<li>Pilz vor den Tunneleingang stossen</li>
+<li>Pilz auf das Kleeblatt stossen</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="vertiefung-zu-variablen">Vertiefung zu Variablen</h2>
+<p>Wir hatten bereits einen ersten Kontakt zu Variablen. Nun noch ein paar zusätzliche Bemerkungen zu den verschiedenen Typen:</p>
+<h3 id="elementare-datentypen">Elementare Datentypen</h3>
+<p><img src="/assets/library/greenfoot-kara/chapter3/elementary-types.png" alt="Elementare Datentypen"> </p>
+<p>Elementare Datentypen sind wie Becher (im Speicher), wo der Wert direkt in eine Variable gespeichert wird.</p>
+<h3 id="referenztypen">Referenztypen</h3>
+<p><img src="/assets/library/greenfoot-kara/chapter3/reference-types.png" alt="Referenztypen"> </p>
+<p>Der Wert in <code>k</code> ist eine Referenz auf das Kara-Objekt. Mit dem Punktoperator (<code>k.</code>) kann <code>k</code> wie eine Fernbedienung auf das Kara-Objekt benutzt werden! </p>
+<hr>
+<p><strong><em>Credits:</em></strong> <em><a href="http://www.swisseduc.ch/informatik/karatojava/">Ideen und Konzepte von Kara</a> wurden entwickelt von Jürg Nievergelt, Werner Hartmann, Raimond Reichert et al. Einige Kara-Übungen basieren auf <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/material/">Unterlagen von Horst Gierhardt</a>.</em></p>
+<hr>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Fahren Sie weiter mit <a href="/library/greenfoot-kara/de/chapter4/">Kapitel 4: Sokoban Spiel</a></p>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter1/" data-toggle="tooltip" title="Kapitel 1: Erste Schritte">1</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter2/" data-toggle="tooltip" title="Kapitel 2: Programmfluss">2</a>
+      </li>
+  <li class="active">
+      <a href="/library/greenfoot-kara/de/chapter3/" data-toggle="tooltip" title="Kapitel 3: Variablen">3</a>
+      </li>
+    <li>
+      <a href="/library/greenfoot-kara/de/chapter4/" data-toggle="tooltip" title="Kapitel 4: Sokoban Spiel">4</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter5/" data-toggle="tooltip" title="Kapitel 5: Methoden">5</a>
+      </li>
+            
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/de/" class="list-group-item">
+        
+        Einleitung
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item">
+        
+        Kapitel 1: Erste Schritte
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item">
+        
+        Kapitel 2: Programmfluss
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item active">
+        
+        Kapitel 3: Variablen
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Lösungen Kapitel 3
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item">
+        
+        Kapitel 4: Sokoban Spiel
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item">
+        
+        Kapitel 5: Methoden
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-3.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-3.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Seite als Word-Datei
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/de/chapter3/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/de/chapter3/';
+    var disqus_title = 'GreenfootKara - Kapitel 3: Variablen';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

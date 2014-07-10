@@ -1,0 +1,404 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 2 TableView Filter - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="The JavaFX 2 TableView lacks the ability for filtering. In this post I will explain how we can manually do row filtering in JavaFX 2.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 2 TableView Filter" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="The JavaFX 2 TableView lacks the ability for filtering. In this post I will explain how we can manually do row filtering in JavaFX 2." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-2-tableview-filter/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/12-12-18-javafx-2-tableview-filter/tableview-filter.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">JavaFX 2 TableView Filter</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Dec 18, 2012
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <div class="alert alert-danger">
+  &rarr; UPDATED VERSION of this article: <a href="/blog/javafx-8-tableview-sorting-filtering/" class="alert-link">JavaFX 8 TableView Sorting and Filtering</a>
+</div>
+
+<p>The JavaFX 2 TableView lacks the ability for filtering. The intention before JavaFX 2.0 shipped was to include a <code>FilteredList</code> that would wrap an <code>ObservableList</code> (see Oracle forum <a href="https://forums.oracle.com/forums/thread.jspa?threadID=2350647">Filter rows on TableView</a>). Unfortunately, the filtering was removed again. It will appear in JavaFX 8 which won't be released before late 2013.</p>
+<p>In this post I will explain how we can manually do row filtering in JavaFX 2.</p>
+<h2 id="example-set-up">Example Set Up</h2>
+<p>As an example we'll create a simple table that displays <code>Person</code>s. The table should be filtered whenever the user enters something in the text field. </p>
+<p><img src="/assets/blog/12-12-18-javafx-2-tableview-filter/tableview-filter.png" alt="TableView Filter"></p>
+<p>I prefer to define the user interface in <code>fxml</code> (with Scene Builder). After creating the example in Scene Builder the <code>fxml</code> looks like this:</p>
+<h4 id="persontable-fxml">PersonTable.fxml</h4>
+<pre class="prettyprint lang-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;?import java.lang.*?&gt;
+&lt;?import javafx.scene.control.*?&gt;
+&lt;?import javafx.scene.layout.*?&gt;
+&lt;?import javafx.scene.layout.AnchorPane?&gt;
+&lt;?import jfxtras.labs.scene.control.*?&gt;
+
+&lt;AnchorPane minWidth="315.0" prefHeight="300.0" prefWidth="315.0" xmlns:fx="http://javafx.com/fxml" fx:controller="PersonTableController"&gt;
+  &lt;children&gt;
+    &lt;TableView fx:id="personTable" prefHeight="-1.0" prefWidth="-1.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0"&gt;
+      &lt;columns&gt;
+        &lt;TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="First Name" fx:id="firstNameColumn" /&gt;
+        &lt;TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Last Name" fx:id="lastNameColumn" /&gt;
+      &lt;/columns&gt;
+    &lt;/TableView&gt;
+    &lt;HBox id="HBox" alignment="CENTER" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0"&gt;
+      &lt;children&gt;
+        &lt;Label text="Filter Table:" /&gt;
+        &lt;TextField fx:id="filterField" prefWidth="-1.0" HBox.hgrow="ALWAYS" /&gt;
+      &lt;/children&gt;
+    &lt;/HBox&gt;
+  &lt;/children&gt;
+&lt;/AnchorPane&gt;
+</pre>
+
+<p>We'll need a class <code>Person</code> for the model:</p>
+<h4 id="person-java">Person.java</h4>
+<pre class="prettyprint lang-java">
+public class Person {
+
+    private String firstName;
+    private String lastName;
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+}
+</pre>
+
+<p>We'll need a <code>MainApp</code> to load everything:</p>
+<h4 id="mainapp-java">MainApp.java</h4>
+<pre class="prettyprint lang-java">
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+public class MainApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Table Filtering");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("PersonTable.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Scene scene = new Scene(page);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.err.println("Error loading PersonTable.fxml!");
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+</pre>
+
+<p>The most interesting part is the <code>PersonTableController</code> which I'll discuss a bit more now.</p>
+<hr>
+<h2 id="filtering">Filtering</h2>
+<p>For the filtering to work, we need <strong>two</strong> <code>ObservableList</code>s. One list contains the original <strong>master data</strong> while the other contains the <strong>filtered data</strong> that will be displayed in the table.</p>
+<p>The constructor puts the same sample data in both the <code>masterData</code> and <code>filteredData</code> lists. In the beginning nothing is filtered and the two lists contain the same data.</p>
+<p>We'll also add a <code>ListChangeListener</code> to the <code>masterData</code>. Whenever something changes in <code>masterData</code> we'll also have to update the <code>filteredData</code>.</p>
+<p>Now let's take a look at the code: </p>
+<h4 id="persontablecontroller-java">PersonTableController.java</h4>
+<pre class="prettyprint lang-java">
+import java.util.ArrayList;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+public class PersonTableController {
+    @FXML
+    private TextField filterField;
+    @FXML
+    private TableView&lt;Person> personTable;
+    @FXML
+    private TableColumn&lt;Person, String> firstNameColumn;
+    @FXML
+    private TableColumn&lt;Person, String> lastNameColumn;
+
+    private ObservableList&lt;Person> masterData = FXCollections.observableArrayList();
+    private ObservableList&lt;Person> filteredData = FXCollections.observableArrayList();
+
+    /**
+     * The constructor. The constructor is called before the initialize()
+     * method.
+     */
+    public PersonTableController() {
+        // Add some sample data to the master data
+        masterData.add(new Person("Hans", "Muster"));
+        masterData.add(new Person("Ruth", "Mueller"));
+        masterData.add(new Person("Heinz", "Kurz"));
+        masterData.add(new Person("Cornelia", "Meier"));
+        masterData.add(new Person("Werner", "Meyer"));
+        masterData.add(new Person("Lydia", "Kunz"));
+        masterData.add(new Person("Anna", "Best"));
+        masterData.add(new Person("Stefan", "Meier"));
+        masterData.add(new Person("Martin", "Mueller"));
+
+        // Initially add all data to filtered data
+        filteredData.addAll(masterData);
+
+        // Listen for changes in master data.
+        // Whenever the master data changes we must also update the filtered data.
+        masterData.addListener(new ListChangeListener&lt;Person>() {
+            @Override
+            public void onChanged(ListChangeListener.Change&lt;? extends Person> change) {
+                updateFilteredData();
+            }
+        });
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // Initialize the person table
+        firstNameColumn.setCellValueFactory(
+                new PropertyValueFactory&lt;Person, String>("firstName"));
+        lastNameColumn.setCellValueFactory(
+                new PropertyValueFactory&lt;Person, String>("lastName"));
+
+        // Add filtered data to the table
+        personTable.setItems(filteredData);
+
+        // Listen for text changes in the filter text field
+        filterField.textProperty().addListener(new ChangeListener&lt;String>() {
+            @Override
+            public void changed(ObservableValue&lt;? extends String> observable,
+                    String oldValue, String newValue) {
+
+                updateFilteredData();
+            }
+        });
+    }
+
+    /**
+     * Updates the filteredData to contain all data from the masterData that
+     * matches the current filter.
+     */
+    private void updateFilteredData() {
+        filteredData.clear();
+
+        for (Person p : masterData) {
+            if (matchesFilter(p)) {
+                filteredData.add(p);
+            }
+        }
+
+        // Must re-sort table after items changed
+        reapplyTableSortOrder();
+    }
+
+    /**
+     * Returns true if the person matches the current filter. Lower/Upper case
+     * is ignored.
+     * 
+     * @param person
+     * @return
+     */
+    private boolean matchesFilter(Person person) {
+        String filterString = filterField.getText();
+        if (filterString == null || filterString.isEmpty()) {
+            // No filter --> Add all.
+            return true;
+        }
+
+        String lowerCaseFilterString = filterString.toLowerCase();
+
+        if (person.getFirstName().toLowerCase().indexOf(lowerCaseFilterString) != -1) {
+            return true;
+        } else if (person.getLastName().toLowerCase().indexOf(lowerCaseFilterString) != -1) {
+            return true;
+        }
+
+        return false; // Does not match
+    }
+
+    private void reapplyTableSortOrder() {
+        ArrayList&lt;TableColumn&lt;Person, ?>> sortOrder = new ArrayList&lt;>(personTable.getSortOrder());
+        personTable.getSortOrder().clear();
+        personTable.getSortOrder().addAll(sortOrder);
+    }
+}
+</pre>
+
+
+<h3 id="reacting-to-user-entering-a-filter-string">Reacting to User Entering a Filter String</h3>
+<p>At the end of the method <code>initialize()</code> we add a <code>ChangeListener</code> to the text property of the <code>TextField</code>. Whenever the user changes the text, the <code>updateFilteredData()</code> method is called.</p>
+<p>In <code>updateFilteredData()</code> we remove all items in <code>filteredData</code> and only add the data matching the current filter. </p>
+<h3 id="changing-filter-behaviour">Changing Filter Behaviour</h3>
+<p>The method <code>matchesFilter(...)</code> determines which <code>Person</code>s will be displayed. I chose to look both in the <code>firstName</code> and <code>lastName</code> fields for a match of the String while ignoring the case.</p>
+<p>You could a different kind of filter behaviour in this method like Regular Expressions.</p>
+<h3 id="reapply-table-sort-order">Reapply Table Sort Order</h3>
+<p>Whenever we change the filtering, the table must be resorted. The method <code>reapplyTableSortOrder()</code> is responsible to remove and set the sort order again.</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Even though this might not be the fastest and most generic filtering approach, it's still sufficient for many cases. For a more comfortable filtering we'll have to wait for JDK 8.</p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'edumakery'; // Required - the forum shortname
+    var disqus_identifier = 'http://edu.makery.ch/blog/2012/12/18/javafx-tableview-filter/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-2-tableview-filter/';
+    var disqus_title = 'JavaFX 2 TableView Filter';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,365 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 2 Event Handlers and Change Listeners - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="We explore how to handle the most common JavaFX events: Button events, CheckBox events, Hyperlink events, Slider events, TextBox events, ListView events.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 2 Event Handlers and Change Listeners" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="We explore how to handle the most common JavaFX events: Button events, CheckBox events, Hyperlink events, Slider events, TextBox events, ListView events." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-2-event-handlers-and-change-listeners/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/12-12-19-javafx-2-event-handlers-and-change-listeners/screenshot-01.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">JavaFX 2 Event Handlers and Change Listeners</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Dec 19, 2012
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <div class="alert alert-danger">
+  &rarr; UPDATED VERSION of this article available: <a href="/blog/javafx-8-event-handling-examples/" class="alert-link">JavaFX 8 Event Handling Examples</a>
+</div>
+
+<p>Very often in JavaFX we have to react to user events: The user clicks a button, presses a key, moves the mouse, etc. This post describes how to handle such events. </p>
+<p>We'll try to do as much event handling with <em>Scene Builder</em> and <code>fxml</code> as possible. For some events we'll add event handling in the Java code of the controller.</p>
+<p>Our example covers some of the most used events on common JavaFX 2 controls:</p>
+<p><img src="/assets/blog/12-12-19-javafx-2-event-handlers-and-change-listeners/screenshot-01.png" alt="Event Handlers"></p>
+<p>Note: For background information refer to the official <a href="http://docs.oracle.com/javafx/2/events/jfxpub-events.htm">JavaFX Events Tutorial</a> (does not cover <code>fxml</code>).</p>
+<hr>
+<h2 id="set-up">Set Up</h2>
+<p>Set up a simple JavaFX project with an <strong>fxml</strong> file, a corresponding <strong>controller</strong> class and a main class to load the fxml. Alternatively, just download the source at the end of this post.</p>
+<hr>
+<h2 id="button-events">Button Events</h2>
+<p>Handling <code>Button</code> events is very easy. Altough there are other events we'll likely only need <code>ActionEvent</code>s.</p>
+<p>First, open the <strong>controller</strong> class. Add a new method to handle button action events:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private void handleButtonAction() {
+  outputTextArea.appendText("Button Action\n");
+}
+</pre>
+
+<p>Note: The <code>outputTextArea</code> is just a JavaFX <code>TextArea</code> to print some output. You could also do a <code>System.out.println(...)</code>.</p>
+<p>Now, open the <strong>fxml</strong> file in <em>Scene Builder</em>, select a button and choose <code>#handleButtonAction</code> as <em>On Action</em>.</p>
+<p><img src="/assets/blog/12-12-19-javafx-2-event-handlers-and-change-listeners/screenshot-02.png" alt="TableView Filter"></p>
+<p>This should already be enough for the button to work. If we need more information about the event that called our method in the controller, we could add a parameter like this:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private void handleButtonAction(ActionEvent event) {
+  outputTextArea.appendText(event.toString() + "\n");
+}
+</pre>
+
+
+<hr>
+<h2 id="checkbox-events">CheckBox Events</h2>
+<p>Handling <code>CheckBox</code> events works almost the same as handling <code>Button</code> events. The only difference is that we might need to know the current state of the <code>CheckBox</code>, wheter it is selected or not. </p>
+<p>For such information we must have a reference to the <code>CheckBox</code>. So, we'll add an instance variable at the beginning of our <strong>controller</strong>.</p>
+<pre class="prettyprint lang-java">
+@FXML
+private CheckBox checkBox;
+</pre>
+
+<p>Open <em>Scene Builder</em>, choose the <code>checkBox</code> variable as <code>fx:id</code> for the <code>CheckBox</code>.</p>
+<p><img src="/assets/blog/12-12-19-javafx-2-event-handlers-and-change-listeners/screenshot-03.png" alt="TableView Filter"></p>
+<p>Now create a handler method and choose it as <em>On Action</em> in <em>Scene Builder</em>.</p>
+<pre class="prettyprint lang-java">
+@FXML
+private void handleCheckBoxAction() {
+  outputTextArea.appendText("CheckBox Action (selected: " + checkBox.isSelected() + ")\n");
+}
+</pre>
+
+
+<hr>
+<h2 id="combobox-events">ComboBox Events</h2>
+<p>For the <code>ComboBox</code> (and later for the <code>ListView</code>) we'll use a simple model class called <code>Person</code> with a <code>firstName</code> and <code>lastName</code> attribute:</p>
+<h4 id="person-java">Person.java</h4>
+<pre class="prettyprint lang-java">
+public class Person {
+    private String firstName;
+    private String lastName;
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+}
+</pre>
+
+<p>Now, let's start with the <code>ComboBox</code> stuff:</p>
+<p>First, create an instance variable for the <code>ComboBox</code> and an <code>ObservableList</code> in our <strong>controller</strong> class. Select the <code>comboBox</code> variable as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private ComboBox&lt;Person&gt; comboBox;
+
+private ObservableList&lt;Person&gt; comboBoxData = FXCollections.observableArrayList();
+</pre>
+
+<p>Second, add some data (e.g. in the constructor or initialize method):</p>
+<pre class="prettyprint lang-java">
+comboBoxData.add(new Person("Hans", "Muster"));
+comboBoxData.add(new Person("Ruth", "Mueller"));
+comboBoxData.add(new Person("Heinz", "Kurz"));
+comboBoxData.add(new Person("Cornelia", "Meier"));
+</pre>
+
+<p>Third, set the data into the list. This must be in the <code>initialize()</code> method as this is the time when we can be shure that the variable <code>comboBox</code> is initialized with the <code>ComboBox</code> from the <code>fxml</code> file.</p>
+<pre class="prettyprint lang-java">
+comboBox.setItems(comboBoxData);
+</pre>
+
+<p>Fourth, create a handler method and select the method as <em>On Action</em> in <em>Scene Builder</em>.</p>
+<pre class="prettyprint lang-java">
+@FXML
+private void handleComboBoxAction() {
+  Person selectedPerson = comboBox.getSelectionModel().getSelectedItem();
+  outputTextArea.appendText("ComboBox Action (selected: " + selectedPerson + ")\n");
+}
+</pre>
+
+
+<hr>
+<h2 id="hyperlink-events">Hyperlink Events</h2>
+<p><code>Hyperlink</code>s can be used the same way as a <code>Button</code> (see above).</p>
+<pre class="prettyprint lang-java">
+@FXML
+private void handleHyperlinkAction() {
+    outputTextArea.appendText("Hyperlink Action\n");
+}
+</pre>
+
+
+<hr>
+<h2 id="slider-events">Slider Events</h2>
+<p><code>Slider</code>s don't have <code>ActionEvent</code>s. Instead they have a <code>Number</code> called <code>valueProperty</code> that contains the current value of the slider. </p>
+<h3 id="change-listener">Change Listener</h3>
+<p>In JavaFX a <code>Property</code> is more than just a simple value. Each <code>Property</code> provides methods to observe changes made to its value. We can <strong>"listen for changes"</strong>.</p>
+<p>So, create an instance variable and select it <code>fx:id</code> in <em>Scene Builder</em>:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private Slider slider;
+</pre>
+
+<p>In the <code>initialize()</code> method add a <code>ChangeListener</code>:</p>
+<pre class="prettyprint lang-java">
+// Listen for Slider value changes
+slider.valueProperty().addListener(new ChangeListener&lt;Number&gt;() {
+    @Override
+    public void changed(ObservableValue&lt;? extends Number&gt; observable,
+            Number oldValue, Number newValue) {
+
+        outputTextArea.appendText("Slider Value Changed (newValue: " + newValue.intValue() + ")\n");
+    }
+});
+</pre>
+
+<p>This construct looks a bit coplicated. Fortunately, it's always the same pattern for every <code>ChangeListener</code>. Let me explain:</p>
+<ol>
+<li><code>slider.valueProperty()</code> gives us access to the <code>Property</code>.<br><strong>Note:</strong> There are many other <code>Properties</code> like <code>focusedProperty() or</code>disabledProperty()<code>. We could use any of those properties and add a</code>ChangeListener` to it.</li>
+<li><code>addListener(...)</code> expects a <code>ChangeListener</code> of type <code>Number</code>. <code>ChangeListener</code> is an interface so we need to create a concrete class that <code>implements ChangeListener</code>:<ul>
+<li>Normally, we would create a new class implementing the <code>ChangeListener</code> interface like this: <code>public class MyChangeListener implements ChangeListener&lt;Number&gt; {...}</code>. Then, we'd create an instance of this class and pass it to <code>addListener(...)</code>.</li>
+<li>Since we will <em>use this class only once</em>, it's a bit overkill to create a normal class. Instead we can use a short form of creating a class and instantiating it. This is called an <strong>Anonymous Inner Class</strong> as it does not have a name.</li>
+</ul>
+</li>
+<li><code>new ChangeListener&lt;Number&gt;() {...}</code> creates such an <em>Anonymous Inner Class</em> of type <code>&lt;Number&gt;</code>.</li>
+<li>Every <code>ChangeListener</code> must have a method called <code>changed(...)</code> that will be called every time a change occurs. </li>
+</ol>
+<hr>
+<h2 id="textbox-events">TextBox Events</h2>
+<p>In a <code>TextBox</code> the <code>ActionEvent</code> is triggered with the return key. We might use this, but probably the most common case is that we must react to changes made to the text.</p>
+<p>First, we'll create an instance variable and select it as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private TextField textField;
+</pre>
+
+<p>And this is how we can react to changes of the text. We'll use a <code>ChangeListener</code> as described above (see Slider section):</p>
+<pre class="prettyprint lang-java">
+// Listen for TextField text changes
+textField.textProperty().addListener(new ChangeListener&lt;String&gt;() {
+    @Override
+    public void changed(ObservableValue&lt;? extends String&gt; observable,
+            String oldValue, String newValue) {
+
+        outputTextArea.appendText("TextField Text Changed (newValue: " + newValue + ")\n");
+    }
+});
+</pre>
+
+
+<hr>
+<h2 id="listview-events">ListView Events</h2>
+<p>We'll use the same <code>Person</code> class as we used for the <code>ComboBox</code> above.</p>
+<p>First, create an instance variable for the <code>ListView</code> and an <code>ObservableList</code> in our <strong>controller</strong> class. Select the <code>listView</code> variable as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private ListView&lt;Person&gt; listView;
+
+private ObservableList&lt;Person&gt; listViewData = FXCollections.observableArrayList();
+</pre>
+
+<p>Second, add some data (e.g. in the constructor or initialize method):</p>
+<pre class="prettyprint lang-java">
+listViewData.add(new Person("Lydia", "Kunz"));
+listViewData.add(new Person("Anna", "Best"));
+listViewData.add(new Person("Stefan", "Meier"));
+listViewData.add(new Person("Martin", "Mueller"));
+</pre>
+
+<p>Third, set the data into the list. This must be in the <code>initialize()</code> method as this is the time when we can be shure that the variable <code>listView</code> is initialized with the <code>ListView</code> from the <code>fxml</code> file.</p>
+<pre class="prettyprint lang-java">
+listView.setItems(listViewData);
+</pre>
+
+<p>Fourth, also in the <code>initialize()</code> method, we'll add a <code>ChangeListener</code>. It is the same ChangeListener pattern as described above (see Slider section):</p>
+<pre class="prettyprint lang-java">
+listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener&lt;Person&gt;() {
+    @Override
+    public void changed(ObservableValue&lt;? extends Person&gt; observable,
+            Person oldValue, Person newValue) {
+
+        outputTextArea.appendText("ListView Selection Changed (newValue: " + newValue + ")\n");
+    }
+});
+</pre>
+
+
+<hr>
+<h2 id="download-example-source">Download Example Source</h2>
+<p>Download the complete <a href="/assets/blog/12-12-19-javafx-2-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners.zip">event-handlers example source</a>.</p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'edumakery'; // Required - the forum shortname
+    var disqus_identifier = 'http://edu.makery.ch/blog/2012/12/19/javafx-event-handlers-and-change-listeners/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-2-event-handlers-and-change-listeners/';
+    var disqus_title = 'JavaFX 2 Event Handlers and Change Listeners';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

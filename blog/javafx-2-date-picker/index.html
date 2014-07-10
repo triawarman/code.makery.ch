@@ -1,0 +1,297 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 2 Date Picker - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="As JavaFX 2 doesn't contain a Calendar control we create our own to provide a convenient way to enter a date.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 2 Date Picker" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="As JavaFX 2 doesn't contain a Calendar control we create our own to provide a convenient way to enter a date." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-2-date-picker/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/13-01-07-javafx-2-date-picker/javafx-date-picker.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">JavaFX 2 Date Picker</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Jan 07, 2013
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <div class="alert alert-danger">
+  &rarr; For an UPDATED VERSION of this article go to: <a href="/blog/javafx-8-date-picker/" class="alert-link">JavaFX 8 Date Picker</a>
+</div>
+
+<p>As JavaFX 2.2 doesn't contain a Calendar control we would have to create our own to provide a convenient way to enter a date. Fortunately, <a href="http://myjavafx.blogspot.ch/2012/01/javafx-calendar-control.html">Christian Schudt</a> has created a very nice DatePicker that we can use:</p>
+<p><img src="/assets/blog/13-01-07-javafx-2-date-picker/javafx-date-picker.png" alt="Date Picker"></p>
+<p>I modified <a href="http://myjavafx.blogspot.ch/2012/01/javafx-calendar-control.html">Christian Schudt's</a> <code>DatePicker</code> class a little with a few additional lines at the end of the constructor. One change is to let the <code>DatePicker</code> grow horizontally with its parent and the other change passes the style sheet to the popup.</p>
+<p>You can <strong>download</strong> a <code>jar</code> with my modified version and the stylesheet that goes with it. <em>Harshad RJ</em> has created a GitHub repository to host it:</p>
+<ul>
+<li>Download <a href="https://github.com/hrj/javafxDatePicker/releases">JavaFX Date Picker Release</a> on GitHub.</li>
+<li>Download <a href="/assets/blog/13-01-07-javafx-2-date-picker/DatePicker.css">DatePicker.css</a></li>
+</ul>
+<h2 id="integrating-the-date-picker-with-addressapp">Integrating the Date Picker with AddressApp</h2>
+<p>I'll show how you can use the <code>DatePicker</code> by integrating it with our <strong>AddressApp</strong> example. You can download the full AddressApp example from the <a href="/java/javafx-2-tutorial-part7/">AddressApp Tutorial Part 7</a>.</p>
+<h3 id="add-the-library-and-css">Add the Library and CSS</h3>
+<p>Download and add the <code>javafx-datepicker-x-x-x.jar</code> file from above to the <code>lib</code> folder. Add it to the classpath with <em>right-click | Build Path | Add to Build Path</em>.</p>
+<p>Add the <code>DatePicker.css</code> file to the <code>ch.makery.address.view</code> package.</p>
+<h3 id="prepare-the-view-for-the-datepicker">Prepare the View for the DatePicker</h3>
+<p>In our <code>PersonEditDialog</code> we have a simple text field for the Date. This is not very convenient and we'd like to replace this with the new <code>DatePicker</code>. </p>
+<p>First, delete the birthday text field from <code>PersonEditDialog.fxml</code> (using SceneBuilder). </p>
+<p>We won't be able to add the custom <code>DatePicker</code> directly in SceneBuilder (at least not with SceneBuilder 1.1). We'll need to add it manually in the Java code. Delete the <code>birthdayField</code> from the <code>PersonEditDialogController</code> and add the following fields instead:</p>
+<h4 id="personeditdialogcontroller-java">PersonEditDialogController.java</h4>
+<pre class="prettyprint lang-java">
+@FXML
+private GridPane gridPane;
+
+private DatePicker birthdayDatePicker;
+</pre>
+
+<p>Now, open the <code>PersonEditDialog.fxml</code> in SceneBuilder. Select the GridPane and choose <code>gridPane</code> as <code>fx:id</code>.</p>
+<h3 id="initialize-the-datepicker">Initialize the DatePicker</h3>
+<p>Create the <code>DatePicker</code> in the <code>initialize()</code> method as follows:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private void initialize() {
+  // Initialize the DatePicker for birthday
+  birthdayDatePicker = new DatePicker(Locale.ENGLISH);
+  birthdayDatePicker.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+  birthdayDatePicker.getCalendarView().todayButtonTextProperty().set("Today");
+  birthdayDatePicker.getCalendarView().setShowWeeks(false);
+  birthdayDatePicker.getStylesheets().add("ch/makery/address/view/DatePicker.css");
+
+  // Add DatePicker to grid
+  gridPane.add(birthdayDatePicker, 1, 5);
+}
+</pre>
+
+
+<h3 id="some-further-adjustments">Some Further Adjustments</h3>
+<p>Change in <code>setPerson(...)</code>:</p>
+<h4 id="personeditdialogcontroller-java">PersonEditDialogController.java</h4>
+<pre class="prettyprint lang-java">
+public void setPerson(Person person) {
+  this.person = person;
+
+  firstNameField.setText(person.getFirstName());
+  lastNameField.setText(person.getLastName());
+  streetField.setText(person.getStreet());
+  postalCodeField.setText(Integer.toString(person.getPostalCode()));
+  cityField.setText(person.getCity());
+
+  if (person.getBirthday() != null) {
+    birthdayDatePicker.setSelectedDate(person.getBirthday().getTime());
+  } else {
+    birthdayDatePicker.setSelectedDate(null);
+  }
+}
+</pre>
+
+<p>Change in <code>handleOk()</code>:</p>
+<pre class="prettyprint lang-java">
+@FXML
+private void handleOk() {
+  if (isInputValid()) {
+    person.setFirstName(firstNameField.getText());
+    person.setLastName(lastNameField.getText());
+    person.setStreet(streetField.getText());
+    person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+    person.setCity(cityField.getText());
+
+    Calendar c = Calendar.getInstance();
+    c.setTime(birthdayDatePicker.getSelectedDate());
+    person.setBirthday(c);
+
+    okClicked = true;
+    dialogStage.close();
+  }
+}
+</pre>
+
+<p>Change in <code>isInputValid()</code>:</p>
+<pre class="prettyprint lang-java">
+private boolean isInputValid() {
+  String errorMessage = "";
+
+  if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+    errorMessage += "No valid first name!\n"; 
+  }
+  if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+    errorMessage += "No valid last name!\n"; 
+  }
+  if (streetField.getText() == null || streetField.getText().length() == 0) {
+    errorMessage += "No valid street!\n"; 
+  }
+
+  if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+    errorMessage += "No valid postal code!\n"; 
+  } else {
+    // try to parse the postal code into an int
+    try {
+      Integer.parseInt(postalCodeField.getText());
+    } catch (NumberFormatException e) {
+      errorMessage += "No valid postal code (must be an integer)!\n"; 
+    }
+  }
+
+  if (cityField.getText() == null || cityField.getText().length() == 0) {
+    errorMessage += "No valid city!\n"; 
+  }
+
+  ////////////////////////////////////////
+  // CHANGE STARTS HERE
+  ////////////////////////////////////////
+  if (birthdayDatePicker.getSelectedDate() == null) {
+    errorMessage += "No valid birthday!\n";
+  } else {
+    if (birthdayDatePicker.invalidProperty().get()) {
+      errorMessage += "No valid birthday. Use the format yyyy-mm-dd!\n";
+    }
+  }
+  ////////////////////////////////////////
+  // CHANGE ENDS HERE
+  ////////////////////////////////////////
+
+  if (errorMessage.length() == 0) {
+    return true;
+  } else {
+    // Show the error message
+    Dialogs.showErrorDialog(dialogStage, errorMessage,
+        "Please correct invalid fields", "Invalid Fields");
+    return false;
+  }
+}
+</pre>
+
+
+
+<h2 id="tweaking-the-datepicker">Tweaking the DatePicker</h2>
+<p>For further details about how to tweak the <code>DatePicker</code> see <a href="http://myjavafx.blogspot.ch/2012/01/javafx-calendar-control.html">JavaFX Calendar Control</a> on Christian Schudt's Blog.</p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'edumakery'; // Required - the forum shortname
+    var disqus_identifier = 'http://edu.makery.ch/blog/2013/01/07/javafx-date-picker/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-2-date-picker/';
+    var disqus_title = 'JavaFX 2 Date Picker';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

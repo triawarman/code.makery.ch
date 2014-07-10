@@ -1,0 +1,447 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 8 Dialogs - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="Examples of how to create simple popup Dialogs in JavaFX 8.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 Dialogs" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Examples of how to create simple popup Dialogs in JavaFX 8." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-8-dialogs/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/14-04-18-javafx-8-dialogs/custom-dialog.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">JavaFX 8 Dialogs</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Apr 18, 2014
+    
+     • 
+    Updated Jun 02, 2014
+  
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <p>Back in 2012 I back-ported an early example of a JavaFX 8 Dialog to JavaFX 2. You can read about it in the blog post <a href="/blog/javafx-2-dialogs/">JavaFX 2 Dialogs</a>. I did hope that the Dialogs would be included in JavaFX 8, but they were not. </p>
+<p>Lately, I've been asked a lot about how to use the Dialogs with JavaFX 8. Fortunately, the JavaFX team created the <a href="http://fxexperience.com/controlsfx/">ControlsFX project</a>, which is a "convenient way to get access to a number of controls that do not ship with JavaFX". ControlsFX contains a good and simple to use Dialog.</p>
+<p>In this post I will show some examples of how to use the <a href="http://controlsfx.bitbucket.org/org/controlsfx/dialog/Dialogs.html">ControlsFX Dialogs</a>.</p>
+<h2 id="how-to-use-controlsfx-dialogs">How To Use ControlsFX Dialogs</h2>
+<ol>
+<li><p>Download the latest <strong>ControlsFX</strong> zip file from the <a href="http://fxexperience.com/controlsfx/">ControlsFX Website</a>. (It is also available as Maven dependency if you prefer to use Maven.)<br><strong>Important: The ControlsFX version must be <code>greater than 8.0.6</code> as there was a breaking change introduced in that version.</strong></p>
+</li>
+<li><p>Inside the zip file you should find a <code>controlsfx-8.x.x.jar</code> file. Add the jar file to your JavaFX 8 project (usually inside a <code>lib</code> subfolder).<br><strong>Note: ControlsFX will only work on JavaFX 8.0 or later. Make sure you are using JDK 8 or later in your project.</strong></p>
+</li>
+<li><p>Add the jar file to your project's classpath: In Eclipse <em>right-click on the jar file</em> | <em>Build Path</em> | <em>Add to Build Path</em>. Now Eclipse knows about the library.</p>
+</li>
+<li><p>Now ControlsFX is ready to be used. Add one of the following code snippets to create a Dialog.</p>
+</li>
+</ol>
+<h3 id="localizing-the-dialogs">Localizing the Dialogs</h3>
+<p>If you want to <strong>change the text of the buttons</strong>, you must add a localized properties file: </p>
+<ol>
+<li>Open the <code>controlsfx-8.x.x.jar</code> and make a copy of the file <code>controlsfx.properties</code>. This file contains the default English translation.</li>
+<li>Add your desired locale to the filname of the copied properties file. For example, my locale is <code>de</code> for language and <code>CH</code> for country. That results in <code>controlsfx_de_CH.properties</code> as my file name.</li>
+<li>Change the texts inside the properties file. </li>
+<li>Move the new properties file to your project, e.g. into your <code>src</code> folder or somewhere else on the classpath.</li>
+<li>It should already work for your system's locale. If you want to change to a different locale, you can set the locale by calling <code>Localization.setLocale(new Locale("de", "CH"))</code>.</li>
+</ol>
+<h2 id="standard-dialogs">Standard Dialogs</h2>
+<h3 id="information-dialog">Information Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/information-dialog.png" alt="JavaFX Information Dialog"></p>
+<pre class="prettyprint lang-java">
+Dialogs.create()
+        .owner(stage)
+        .title("Information Dialog")
+        .masthead("Look, an Information Dialog")
+        .message("I have a great message for you!")
+        .showInformation();
+</pre>
+
+
+<h4 id="without-masthead">Without Masthead</h4>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/information-dialog-no-masterhead.png" alt="JavaFX Information Dialog without Masterhead"></p>
+<pre class="prettyprint lang-java">
+Dialogs.create()
+        .owner(stage)
+        .title("Information Dialog")
+        .masthead(null)
+        .message("I have a great message for you!")
+        .showInformation();
+</pre>
+
+
+
+<h3 id="warning-dialog">Warning Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/warning-dialog.png" alt="JavaFX Warning Dialog"></p>
+<pre class="prettyprint lang-java">
+Dialogs.create()
+        .owner(stage)
+        .title("Warning Dialog")
+        .masthead("Look, a Warning Dialog")
+        .message("Careful with the next step!")
+        .showWarning();
+</pre>
+
+
+<h3 id="error-dialog">Error Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/error-dialog.png" alt="JavaFX Error Dialog"></p>
+<pre class="prettyprint lang-java">
+Dialogs.create()
+        .owner(stage)
+        .title("Error Dialog")
+        .masthead("Look, an Error Dialog")
+        .message("Ooops, there was an error!")
+        .showError();
+</pre>
+
+
+<h3 id="exception-dialog">Exception Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/exception-dialog.png" alt="JavaFX Exception Dialog"></p>
+<pre class="prettyprint lang-java">
+Dialogs.create()
+        .owner(stage)
+        .title("Exception Dialog")
+        .masthead("Look, an Exception Dialog")
+        .message("Ooops, there was an exception!")
+        .showException(new FileNotFoundException("Could not find file blabla.txt"));
+</pre>
+
+
+<h3 id="confirm-dialog">Confirm Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/confirm-dialog.png" alt="JavaFX Confirm Dialog"></p>
+<pre class="prettyprint lang-java">
+Action response = Dialogs.create()
+        .owner(stage)
+        .title("Confirm Dialog")
+        .masthead("Look, a Confirm Dialog")
+        .message("Do you want to continue?")
+        .showConfirm();
+
+if (response == Dialog.Actions.YES) {
+    // ... user chose YES
+} else {
+    // ... user chose NO, CANCEL, or closed the dialog
+}
+</pre>
+
+<p>The response will either be <code>Dialog.Actions.NO</code>, <code>Dialog.Actions.YES</code>, or <code>Dialog.Actions.CANCEL</code>.</p>
+<h3 id="confirm-dialog-with-custom-actions">Confirm Dialog with Custom Actions</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/confirm-dialog-custom-actions.png" alt="JavaFX Confirm Dialog with Custom Actions"></p>
+<p>If <code>actions</code> are provided, they completely replace the standard actions.</p>
+<pre class="prettyprint lang-java">
+Action response = Dialogs.create()
+        .owner(stage)
+        .title("Confirm Dialog with Custom Actions")
+        .masthead("Look, a Confirm Dialog with Custom Actions")
+        .message("Are you ok with this?")
+        .actions(Dialog.Actions.OK, Dialog.Actions.CANCEL)
+        .showConfirm();
+
+if (response == Dialog.Actions.OK) {
+    // ... user chose OK
+} else {
+    // ... user chose CANCEL, or closed the dialog
+}
+</pre>
+
+
+<h3 id="text-input-dialog">Text Input Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/text-input-dialog.png" alt="JavaFX Choice Input Dialog"></p>
+<pre class="prettyprint lang-java">
+Optional&lt;String> response = Dialogs.create()
+        .owner(stage)
+        .title("Text Input Dialog")
+        .masthead("Look, a Text Input Dialog")
+        .message("Please enter your name:")
+        .showTextInput("walter");
+
+// One way to get the response value.
+if (response.isPresent()) {
+    System.out.println("Your name: " + response.get());
+}
+
+// The Java 8 way to get the response value (with lambda expression).
+response.ifPresent(name -> System.out.println("Your name: " + name));
+</pre>
+
+
+<h3 id="choice-input-dialog">Choice Input Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/choice-input-dialog.png" alt="JavaFX Choice Input Dialog"></p>
+<pre class="prettyprint lang-java">
+List&lt;String> choices = new ArrayList<>();
+choices.add("a");
+choices.add("b");
+choices.add("c");
+
+Optional&lt;String> response = Dialogs.create()
+        .owner(stage)
+        .title("Choice Input Dialog")
+        .masthead("Look, a Choice Input Dialog")
+        .message("Choose your letter:")
+        .showChoices(choices);
+
+// One way to get the response value.
+if (response.isPresent()) {
+    System.out.println("The user chose: " + response.get());
+}
+
+// The Java 8 way to get the response value (with lambda expression).
+response.ifPresent(chosen -> System.out.println("The user chose: " + chosen));
+</pre>
+
+
+<p>Note: The <code>response.isPresent()</code> will return <code>false</code> if the user didn't choose anything or cancelled the dialog.</p>
+<h2 id="special-purpose-dialogs">Special Purpose Dialogs</h2>
+<h3 id="command-link-dialog">Command Link Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/command-link-dialog.png" alt="JavaFX Command Link Dialog"></p>
+<pre class="prettyprint lang-java">
+List&lt;CommandLink&gt; links = new ArrayList&lt;&gt;();
+links.add(new CommandLink("Go to the Zoo",
+        "Here you will see zebras, monkeys, lions, elephants, and maybe also an alligator."));
+links.add(new CommandLink("Go to the Circus",
+        "Watch acrobats fly around and clowns, of course."));
+links.add(new CommandLink("Stay Home",
+        "Watch TV or play some board games with your siblings."));
+
+Action response = Dialogs.create()
+        .owner(stage)
+        .title("Command Link Dialog")
+        .masthead(null)
+        .message("Where do you want to go?")
+        .showCommandLinks(links.get(2), links);
+
+System.out.println(response);
+</pre>
+
+<p>The response will either be one of the <code>CommandLink</code>s or <code>Dialog.Actions.CANCEL</code>.</p>
+<h3 id="font-selector-dialog">Font Selector Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/font-selector-dialog.png" alt="JavaFX Font Selector Dialog"></p>
+<pre class="prettyprint lang-java">
+Optional&lt;Font> response = Dialogs.create()
+        .owner(stage)
+        .masthead("Choose what you like")
+        .showFontSelector(Font.font("Times New Roman"));
+</pre>
+
+
+
+<h3 id="progress-dialog">Progress Dialog</h3>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/progress-dialog.png" alt="JavaFX Progress Dialog"></p>
+<pre class="prettyprint lang-java">
+Service&lt;Void&gt; service = new Service&lt;Void&gt;() {
+    @Override
+    protected Task&lt;Void&gt; createTask() {
+        return new Task&lt;Void&gt;() {
+            @Override
+            protected Void call()
+                    throws InterruptedException {
+                updateMessage("Finding friends . . .");
+                updateProgress(0, 10);
+                for (int i = 0; i &lt; 10; i++) {
+                    Thread.sleep(300);
+                    updateProgress(i + 1, 10);
+                    updateMessage("Found " + (i + 1) + " friends!");
+                }
+                updateMessage("Found all.");
+                return null;
+            }
+        };
+    }
+};
+
+Dialogs.create()
+        .owner(stage)
+        .title("Progress Dialog")
+        .masthead("Searching for friends")
+        .showWorkerProgress(service);
+
+service.start();
+</pre>
+
+
+<h2 id="custom-dialogs">Custom Dialogs</h2>
+<p>Using the <a href="http://controlsfx.bitbucket.org/org/controlsfx/dialog/Dialog.html">lower-level API</a> of ControlsFX you can create custom dialogs.</p>
+<p>Here is an example of how to create a login form:</p>
+<p><img src="/assets/blog/14-04-18-javafx-8-dialogs/custom-dialog.png" alt="JavaFX Custom Login Dialog"></p>
+<pre class="prettyprint lang-java">
+final TextField username = new TextField();
+final PasswordField password = new PasswordField();
+final Action actionLogin = new AbstractAction("Login") {
+    // This method is called when the login button is clicked ...
+    public void handle(ActionEvent ae) {
+        Dialog d = (Dialog) ae.getSource();
+        // Do the login here.
+        d.hide();
+    }
+};
+
+@Override
+public void start(Stage stage) {
+    // Create the custom dialog.
+    Dialog dlg = new Dialog(stage, "Login Dialog");
+
+    GridPane grid = new GridPane();
+    grid.setHgap(10);
+    grid.setVgap(10);
+    grid.setPadding(new Insets(0, 10, 0, 10));
+
+    username.setPromptText("Username");
+    password.setPromptText("Password");
+
+    grid.add(new Label("Username:"), 0, 0);
+    grid.add(username, 1, 0);
+    grid.add(new Label("Password:"), 0, 1);
+    grid.add(password, 1, 1);
+
+    ButtonBar.setType(actionLogin, ButtonType.OK_DONE);
+    actionLogin.disabledProperty().set(true);
+
+    // Do some validation (using the Java 8 lambda syntax).
+    username.textProperty().addListener((observable, oldValue, newValue) -> {
+        actionLogin.disabledProperty().set(newValue.trim().isEmpty());
+    });
+
+    dlg.setMasthead("Look, a Custom Login Dialog");
+    dlg.setContent(grid);
+    dlg.getActions().addAll(actionLogin, Dialog.Actions.CANCEL);
+
+    // Request focus on the username field by default.
+    Platform.runLater(() -> username.requestFocus());
+
+    dlg.show();
+</pre>
+
+
+<h2 id="further-information">Further Information</h2>
+<p><strong>The javadoc documentation of ControlsFX is very good!</strong> Look up the following pages for further info about Dialogs:</p>
+<ul>
+<li><a href="http://controlsfx.bitbucket.org/org/controlsfx/dialog/Dialogs.html">ControlsFX Dialogs</a></li>
+<li><a href="http://controlsfx.bitbucket.org/org/controlsfx/dialog/Dialog.html">ControlsFX Dialog</a> - lower-level API for custom dialogs</li>
+</ul>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/javafx-8-dialogs/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-8-dialogs/';
+    var disqus_title = 'JavaFX 8 Dialogs';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,310 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web und Mobile Apps Programmieren mit Dart - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="Bisher war es kaum realistisch, im Anfängerunterricht mobile oder webbasierte Applikationen zu entwickeln. Die Programmiersprache Dart bietet neue Möchkeiten, wie solche Applikationen viel einfacher programmiert werden können.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Web und Mobile Apps Programmieren mit Dart" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Bisher war es kaum realistisch, im Anfängerunterricht mobile oder webbasierte Applikationen zu entwickeln. Die Programmiersprache Dart bietet neue Möchkeiten, wie solche Applikationen viel einfacher programmiert werden können." />
+    <meta property="og:url" content="http://code.makery.ch/blog/web-und-mobile-mit-dart/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/13-09-26-web-und-mobile-mit-dart/dart-on-modern-platforms.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">Web und Mobile Apps Programmieren mit Dart</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Sep 26, 2013
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/dart/">Dart</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <div class="alert alert-info">
+  <p>
+    Der folgende Artikel ist erschienen an der INFOS 2013 (GI-Fachtagung Informatik und Schule) in Kiel.
+  </p>
+  <p>
+    <i class="fa fa-fw fa-download"></i> <a class="alert-link" href="/assets/blog/13-09-26-web-und-mobile-mit-dart/web-und-mobile-apps-mit-dart-infos2013.pdf">Artikel als PDF</a> 
+  </p>
+  <p>
+    <i class="fa fa-fw fa-download"></i> <a class="alert-link" href="/assets/blog/13-09-26-web-und-mobile-mit-dart/slides-dart-workshop-infos2013.pdf">Workshop Präsentation</a> 
+  </p>
+</div>
+
+
+<h2 id="abstract">Abstract</h2>
+<blockquote>
+<p>Bisher war es kaum realistisch, im Anfängerunterricht mobile oder webbasierte Applikationen zu entwickeln. Die Programmiersprache Dart bietet neue Möchkeiten, wie solche Applikationen viel einfacher programmiert werden können. Zudem zeigt sich, dass Dart in einigen Bereichen sogar besser geeignet ist in die objektorientierte Programmierung einzuführen als herkömmliche Programmiersprachen.</p>
+</blockquote>
+<h2 id="einleitung">Einleitung</h2>
+<p>Heute sind vor allem <em>mobile und webbasierte Anwendungen aktuell</em>. Immer weniger werden Desktop Applikationen, d.h. fest installierte Programme, verwendet. Viele Nutzer bewegen sich fast ausschliesslich im Webbrowser oder auf dem Mobiltelefon.</p>
+<p>Es ist deshalb sehr motivierend, wenn Lernende im Unterricht mobile oder webbasierte Anwendungen selber entwickeln können. Zudem können sie solche Anwendungen auf einfache Weise mit ihren Freunden teilen.</p>
+<p><em>Mit den gängigen Ansätzen</em>, wie in den letzten Jahren Programmieren unterrichtet wurde, ist es aber <em>kaum oder nur sehr beschränkt möglich</em>, mobile oder webbasierte Anwendungen zu entwickeln.</p>
+<p>Im Folgenden wird zuerst dargelegt, weshalb es mit herkömmlichen Möglichkeiten schwierig ist, mobile oder webbasierte Applikationen im Anfängerunterricht zu programmieren. Anschliessend wird die neuere Programmiersprache <em>Dart</em> vorgestellt und untersucht, in wiefern sich diese für den Unterricht eignet.</p>
+<h2 id="problematik-mobiler-anwendungen">Problematik mobiler Anwendungen</h2>
+<p>Android und Apples iOS sind die gängigsten Plattformen für mobile Anwendungen. Der Einsatz dieser Plattformen im Unterricht ist mit Schwierigkeiten verbunden, die hier kurz erwähnt werden.</p>
+<p><strong>iOS-Apps.</strong> Die Entwicklung von iOS-Applikationen erfolgt in einer eigenen Sprache namens Objective-C speziell für die iOS-Plattform. Dies bedeutet, dass die Programme auch nur auf iPhones bzw. iPads laufen. Zum Entwickeln von iOS-Anwendungen benötigt man (bevorzugt) ein Mac-Betriebssystem. So ein System dürfte nicht überall zur Verfügung stehen. Zudem ist es sehr umständlich bis unmöglich für eine Schule, die eigenen Programme über den App Store auf anderen iOS-Geräten zu installieren.</p>
+<p><strong>Android-Apps.</strong> Obwohl Android-Applikationen in Java programmiert werden, stellt sich die gleiche Problematik wie bei iOS-Applikationen: Die Programme laufen nur auf Geräten mit einem Android-Betriebssystem. Der Besitz eines Android-Gerätes kann aber nicht vorausgesetzt werden. So werden Lernende ausgeschlossen, die ihr Programm auf einem iOS-Gerät, einem Windows Phone oder auf dem Desktop ausführen möchten.</p>
+<h2 id="problematik-webbasierter-anwendungen">Problematik webbasierter Anwendungen</h2>
+<p>Webbasierte Anwendungen haben den Vorteil, dass sie <em>sowohl auf Desktopbrowsern</em> (Internet Explorer, Firefox, Chrome, Safari) <em>als auch auf mobilen Browsern</em> laufen können. Zur Entwicklung von Webanwendungen gibt es konvenzionell zahlreiche Möglichkeiten, die aber alle ihre Tücken haben, wenn sie im Unterricht eingesetzt werden sollen.</p>
+<p><strong>PHP, ASP.net etc.</strong> Diese sogenannten Skriptsprachen werden häufig verwendet, um dynamische Webanwendungen zu erstellen. Dabei werden auf einem Webserver HTML-Seiten generiert, welche dann im Browser angezeigt werden können. Die so notwendige Kommunikation zwischen dem Server und dem Browser auf dem Client bringt zusätzliche Komplexität in das Erlernen einer Programmiersprache. Ausserdem eignen sich Skriptsprachen nicht besonders gut, um moderne, objektorientierte Programmierkonzepte zu unterrichten.</p>
+<p><strong>Python, Java, C++, Visual Basic etc.</strong> Mit all diesen Sprachen lassen sich objektorientierte Programmierkonzepte vermitteln. Der Weg zu einer Webapplikation ist jedoch sehr aufwändig und anspruchsvoll. All diese Programmiersprachen laufen nicht direkt im Browser. Somit muss, wie bei den Skriptsprachen, eine Serverapplikation geschrieben werden, welche HTML-Seiten generiert. Und da diese Sprachen nicht für die Webprogrammierung entwickelt wurden, ist die Komplexität noch höher als bei den oben genannten Skriptsprachen.</p>
+<p><strong>JavaScript.</strong> JavaScript ist die einzige Programmiersprache, welche von allen gängigen Browsern unterstützt wird. Es ist somit möglich, damit ganze Webanwendungen zu schreiben, welche direkt in Desktopbrowsern und mobilen Browsern laufen können. Leider ist aber JavaScript für den Unterricht weniger geeignet. JavaScript ist eine Programmiersprache mit schwierigen Konzepten und vielen Ausnahmefällen. Diese Hindernisse sind (nicht nur) für Anfänger sehr frustrierend.</p>
+<h2 id="dart">Dart</h2>
+<p>Google hat eine neue Sprache namens <a href="http://www.dartlang.org">Dart</a> entwickelt.</p>
+<p>Dart ist <em>für das Web gemacht</em> und lässt sich direkt in JavaScript übersetzen. Somit laufen Dart-Anwendungen ohne zusätzliche Installation in allen modernen Desktopbrowsern und mobilen Browsern.</p>
+<p><img src="/assets/blog/13-09-26-web-und-mobile-mit-dart/dart-on-modern-platforms.png" alt="Dart on Modern Platforms"></p>
+<p><small><em>Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: Sean Poon und <a href="http://www.designcontest.com/">Design Contest</a>)</em></small></p>
+<p>Dart ist eine <strong>objektorientierte Sprache</strong>, welche sich sehr gut für den Unterricht eignet. Sie ist stark an die bekanntesten Programmiersprachen wie Java und C++ angelehnt, ist aber konsistenter und eleganter. Das macht die Sprache einfach zu lernen für Umsteiger und viel einfacher für Programmieranfänger (siehe Code-Beispiele weiter unten).</p>
+<p>Fast genauso wichtig wie die Programmiersprache selbst ist das, was rund um die Sprache zur Verfügung steht:</p>
+<p><strong>Dart Editor</strong> ist eine komfortable Entwicklungsumgebung für Dart. Der Editor enthält professionelle Programmierhilfen wie Code-Vervollständigung, Umbenennen von Variablen und Debugging. Trotzdem ist der Dart Editor sehr einfach und übersichtlich gehalten, d.h. er enthält keine unnötigen Elemente, die Anfänger abschrecken könnten.</p>
+<p>Der Dart Editor läuft <em>ohne Installation</em> auf Windows, Linux und Mac. Da keine Installation nötig ist, kann er zum Beispiel auch von einem USB-Stick gestartet werden.</p>
+<p>Viele <strong>nützliche Bibliotheken</strong> sind bei Dart schon eingebaut. Zum Beispiel für mathematische Berechnungen, für Interaktionen mit HTML, zum Speichern in Dateien und Datenbanken, für Kryptografie etc. Zusätzliche Bibliotheken werden nach Bedarf automatisch von einem zentralen Server heruntergeladen.</p>
+<p>Es gibt drei Möglichkeiten, Dart-Programme auszuführen: In der <strong>Kommandozeile</strong>, <strong>als JavaScript</strong> in allen modernen Browsern oder in <strong>Chromium</strong>, einem Google Browser mit Dart Virtual Machine.</p>
+<p>Man kann auch <strong>Server-Applikationen</strong> in Dart programmieren. So ist es möglich, eine gesamte Client-Server-Applikation in der gleichen Sprache zu verfassen. Der Server wird in der Kommandozeile gestartet und von einem Browser Client angesprochen. Mit kaum einer anderen Programmiersprache ist dies möglich.</p>
+<h2 id="dart-code-beispiele">Dart Code-Beispiele</h2>
+<p>Anhand von Code-Beispielen soll gezeigt werden, wie einfach es ist, mit Dart zu programmieren. Wer bereits eine Programmiersprache kennt, dem wird Dart sehr vertraut vorkommen. Dies ermöglicht den Umstieg auf diese Sprache innert weniger Stunden.</p>
+<p>Dort, wo herkömmliche Sprachen unnötige Stolpersteine beinhalten, bietet Dart elegante Lösungen. Um dies aufzuzeigen, werden bei einigen Beispielen Parallelen zu Java gezogen.</p>
+<h3 id="hello-world">Hello World</h3>
+<p>Mit diesem Klassiker zeigt sich, wie aufwändig es ist, ein erstes Programm in einer Sprache zum laufen zu bringen. Ein minimales Programm in Dart sieht wie folgt aus:</p>
+<h5 id="hello-world-in-dart">Hello World in Dart</h5>
+<pre class="prettyprint lang-dart">
+main() {
+  print("Hello, World!");
+}
+</pre>
+
+<p>Angenommen, das Programm oben wurde unter <em>helloworld.dart</em> gespeichert. Nun kann es von der Kommandozeile wie folgt gestartet werden:</p>
+<pre><code class="lang-console">dart helloworld.dart
+</code></pre>
+<p><strong>Kommentar.</strong> Obwohl in Dart Klassen häufig verwendet werden, gibt es die Möglichkeit, Funktionen ohne Klassen zu definieren. In Java ist dies nicht möglich. Dort würde ein entsprechendes Programm wie folgt aussehen: </p>
+<h5 id="hello-world-in-java">Hello World in Java</h5>
+<pre class="prettyprint lang-java">
+// Java
+public class HelloWorld {
+
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}
+</pre>
+
+<p>Der Anfänger ist mit einem solchen Programm schnell überfordert. Neben den Schlüsselbegriffen <em>public, class, static</em> werden fortgeschrittene Sprachelemente wie Arrays und ein statischer Aufruf verwendet. Um dieses Java <em>Hello, World</em> zu verstehen, braucht es bereits etliches an Programmierkenntnissen. </p>
+<p>Ein weiterer Schritt, der bei Dart wegfällt, ist das Kompilieren. Kompilieren ist für die <a href="https://www.dartlang.org/articles/why-not-bytecode/">Dart Virtual Machine (VM)</a> nicht nötig, da die VM direkt den Quellcode ausführt.</p>
+<h3 id="funktionen-und-variablen">Funktionen und Variablen</h3>
+<pre class="prettyprint lang-dart">
+// Funktion definieren.
+printNumber(int number) {
+  // Nummer auf Konsole ausgeben.
+  print("Die Nummer ist $number.");
+}
+
+main() {
+  // Variable deklarieren und initialisieren.
+  var number = 42;
+  // Funktion aufrufen.
+  printNumber(number);
+}
+</pre>
+
+<p><strong>Kommentar.</strong> Typen von Variablen, Parametern und Rückgabewerten können optional angegeben werden. Man könnte also bei <em>var number</em> den Typ genauer angeben und <em>int number</em> schreiben. Damit würde man vom Dart Editor gewarnt, wenn man etwas anderes als einen Integer in diese Variable speichern möchte. Deshalb ist es oft sinnvoll, den Typ anzugeben. Für eine Einführung in die Thematik der Variablen ist es aber praktisch, wenn man zuerst ohne Typen arbeiten kann. Diese Möglichkeit hat man bei den meisten Programmiersprachen nicht.</p>
+<h3 id="integer">Integer</h3>
+<pre class="prettyprint lang-dart">
+// String in einen int umwandeln.
+int i = int.parse("5");  
+
+// int in einen String umwandeln. Da 22 ein Objekt ist, 
+// kann man Funktionen darauf aufrufen.
+String s = 22.toString();
+</pre>
+
+<p><strong>Kommentar.</strong> In Dart gibt es keine Unterscheidung zwischen elementaren Datentypen und Objekten (wie etwa in Java). Alles, was in eine Variable gespeichert werden kann, ist ein Objekt. Das ist für das Verständnis viel einfacher!</p>
+<p>Ausserdem kann ein int eine beliebige Grösse haben. Man braucht sich also nicht darum zu kümmern, ob man noch im Zahlenbereich drin ist oder wie in Java zwischen int und long unterscheiden. </p>
+<h3 id="klassen">Klassen</h3>
+<pre class="prettyprint lang-dart">
+import 'dart:math';
+
+class Point {
+  num x;
+  num y;
+
+  // Konstruktor (kurze Schreibweise)
+  Point(this.x, this.y);
+
+  num distanceTo(Point other) {
+    var dx = x - other.x;
+    var dy = y - other.y;
+    return sqrt(dx * dx + dy * dy);
+  }
+}
+
+main() {
+  var p = new Point(2, 3);
+  var q = new Point(3, 4);
+
+  // String Interpolation
+  print('Distanz von p zu q = ${p.distanceTo(q)}');
+}
+</pre>
+
+<p><strong>Kommentar.</strong> Definition einer Klasse und das Erzeugen von Objekten  funktionieren analog zu Java. Einzig der Konstuktor mit den Zuweisungen zu den Variablen ist eine verkürzte Schreibweise. Optional könnte man den Konstruktor auch gleich schreiben wie in Java:</p>
+<h5 id="alternative-konstruktorschreibweise">Alternative Konstruktorschreibweise</h5>
+<pre class="prettyprint lang-dart">
+// Konstruktor (lange Schreibweise)
+Point(num x, num y) {
+  this.x = x;
+  this.y = y;
+}
+</pre>
+
+
+<h3 id="interaktion-mit-dem-browser">Interaktion mit dem Browser</h3>
+<pre class="prettyprint lang-dart">
+import 'dart:html';
+
+main() {
+  // HTML Knopf erstellen.
+  var button = new ButtonElement()
+  ..text = 'Bestellen'
+  ..classes.add('wichtig')
+  // Beim Klicken die Funktion handleOnClick aufrufen.
+  ..onClick.listen(handleOnClick);
+
+  // Knopf in HTML einfuegen.
+  query('#bestellung').children.add(button);
+}
+
+void handleOnClick(MouseEvent event) {
+  window.alert('Danke!');
+}
+</pre>
+
+<p><strong>Kommentar.</strong> Graphische Benutzeroberflächen werden in Dart für den Browser geschrieben. Nach dem Übersetzen des Dart-Codes in JavaScript können alle modernen Browser das Dart-Programm anzeigen. In Java würde man typischerweise eine Benutzeroberfläche mit Swing oder JavaFX programmieren. Im Gegensatz zu Dart lassen sich diese aber nicht direkt im Browser ausführen.</p>
+<h2 id="fazit">Fazit</h2>
+<p>Mit Dart gibt es erstmals eine realistische Möglichkeit, mobile und webbasierte Applikationen im Anfängerunterricht zu programmieren. Zudem zeigt sich, dass Dart in einigen Bereichen sogar besser geeignet ist in die objektorientierte Programmierung einzuführen als herkömmliche Sprachen. Dies ist möglich, da Dart eine neuere Sprache ist und deshalb auf jahrzentelanger Erfahrung mit Sprachen wie Java, C++, Visual Basic, etc. aufbauen konnte.</p>
+<h2 id="weitere-details">Weitere Details</h2>
+<p>Unterrichtsmaterial und weitere Informationen zum Programmieren mit Dart finden Sie auf der folgenden Webseite: </p>
+<p><a href="/dart/">Learn Dart</a></p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/web-und-mobile-mit-dart/';
+    var disqus_url = 'http://code.makery.ch/blog/web-und-mobile-mit-dart/';
+    var disqus_title = 'Web und Mobile Apps Programmieren mit Dart';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

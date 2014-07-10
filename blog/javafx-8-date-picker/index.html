@@ -1,0 +1,234 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 8 Date Picker - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="Finally, with JavaFX 8 a DatePicker control was added! Learn how to use it, together with the new Java 8 Date and Time API.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 Date Picker" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Finally, with JavaFX 8 a DatePicker control was added! Learn how to use it, together with the new Java 8 Date and Time API." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-8-date-picker/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/14-04-18-javafx-8-date-picker/date-picker.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">JavaFX 8 Date Picker</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Apr 18, 2014
+    
+     • 
+    Updated May 14, 2014
+  
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <p>Finally, with JavaFX 8 a <code>DatePicker</code> control was added (for JavaFX 2 we had to <a href="/blog/javafx-2-date-picker">create our own</a>)! </p>
+<p>The <code>DatePicker</code> works well in combination with the new <strong>Java 8 Date and Time API</strong>. Those two things together provide a much better experience when working with dates in Java!</p>
+<p><img src="/assets/blog/14-04-18-javafx-8-date-picker/date-picker.png" alt="JavaFX Date Picker"></p>
+<h2 id="basic-usage">Basic Usage</h2>
+<p>Using the DatePicker is straight forward:</p>
+<pre class="prettyprint lang-java">
+// Create the DatePicker.
+DatePicker datePicker = new DatePicker();
+
+// Add some action (in Java 8 lambda syntax style).
+datePicker.setOnAction(event -> {
+    LocalDate date = datePicker.getValue();
+    System.out.println("Selected date: " + date);
+});
+
+// Add the DatePicker to the Stage.
+StackPane root = new StackPane();
+root.getChildren().add(datePicker);
+stage.setScene(new Scene(root, 500, 650));
+stage.show();
+</pre>
+
+<h4 id="using-fxml">Using FXML</h4>
+<p>I usually prefer keeping as much of the view in <code>fxml</code> instead of instantiating the controls in Java code as above. With <a href="http://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html">Scene Builder 2.0</a> and above you can even drag-and-drop the DatePicker into your <code>fxml</code>.</p>
+<h2 id="options">Options</h2>
+<h3 id="hide-week-numbers">Hide Week Numbers</h3>
+<p>We can set the <code>showWeekNumbersProperty</code> to true/false to show/hide a column showing week numbers. Note: The default value depends on the country of the current locale. </p>
+<p><img src="/assets/blog/14-04-18-javafx-8-date-picker/date-picker-no-weeks.png" alt="JavaFX Date Picker No Weeks"></p>
+<pre class="prettyprint lang-java">
+datePicker.setShowWeekNumbers(false);
+</pre>
+
+
+<h3 id="date-converter">Date Converter</h3>
+<p>The date in the text field is automatically converted to the local format (in my case, it's <code>dd.MM.yyyy</code>). By setting a <code>StringConverter</code> we can change this, for example, to <code>yyyy-MM-dd</code>.</p>
+<p><img src="/assets/blog/14-04-18-javafx-8-date-picker/date-picker-converter.png" alt="JavaFX Date Picker Converter"></p>
+<pre class="prettyprint lang-java">
+String pattern = "yyyy-MM-dd";
+
+datePicker.setPromptText(pattern.toLowerCase());
+
+datePicker.setConverter(new StringConverter&lt;LocalDate&gt;() {
+     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+     @Override 
+     public String toString(LocalDate date) {
+         if (date != null) {
+             return dateFormatter.format(date);
+         } else {
+             return "";
+         }
+     }
+
+     @Override 
+     public LocalDate fromString(String string) {
+         if (string != null &amp;&amp; !string.isEmpty()) {
+             return LocalDate.parse(string, dateFormatter);
+         } else {
+             return null;
+         }
+     }
+ });
+</pre>
+
+
+<h3 id="other-calendar-systems">Other Calendar Systems</h3>
+<p>If you need a different chronology, e.g. the Japanese Imperial calendar system, you can change it as follows:</p>
+<pre class="prettyprint lang-java">
+// Japanese calendar.
+datePicker.setChronology(JapaneseChronology.INSTANCE);
+
+// Hijrah calendar.
+datePicker.setChronology(HijrahChronology.INSTANCE);
+
+// Minguo calendar.
+datePicker.setChronology(MinguoChronology.INSTANCE);
+
+// Buddhist calendar.
+datePicker.setChronology(ThaiBuddhistChronology.INSTANCE);
+</pre>
+
+<p>Here is a screenshot of the Hijrah calendar:</p>
+<p><img src="/assets/blog/14-04-18-javafx-8-date-picker/hijrah-calendar.png" alt="Hijrah Calendar"></p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/javafx-8-date-picker/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-8-date-picker/';
+    var disqus_title = 'JavaFX 8 Date Picker';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

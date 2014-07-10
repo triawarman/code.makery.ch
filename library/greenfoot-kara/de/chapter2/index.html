@@ -1,0 +1,529 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Kapitel 2: Programmfluss - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Kapitel 2: Programmfluss" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/de/chapter2/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-de-chapter2.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Kapitel 2: Programmfluss</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <h2 id="das-flussdiagramm">Das Flussdiagramm</h2>
+<p>Um schwierige Aufgaben beim Programmieren zu lösen, ist es oft hilfreich, den Programmablauf in einem Flussdiagramm darzustellen. Folgende Symbole werden in einem Flussdiagramm verwendet:</p>
+<table class="table table-bordered text-center">
+  <tbody>
+    <tr>
+      <td><img src="/assets/library/greenfoot-kara/chapter2/flowchart-symbol1.png"></td>
+      <td>Start / Stopp</td>
+    </tr>
+    <tr>
+      <td><img src="/assets/library/greenfoot-kara/chapter2/flowchart-symbol2.png"></td>
+      <td>Aktivität</td>
+    </tr>
+    <tr>
+      <td><img src="/assets/library/greenfoot-kara/chapter2/flowchart-symbol3.png"></td>
+      <td>Entscheidung / Bedingung</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-01"><i class="fa fa-rocket"></i> AUFGABE 2.01</h4>
+<p>Ergänzen Sie das Flussdiagramm so, dass Kara das Kleeblatt in allen Welten mit den folgenden Eigenschaften erreicht:   </p>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task01-world1.png" alt="Aufgabe 1 - Welt 1"></p>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task01-world2.png" alt="Aufgabe 1 - Welt 2"></p>
+<ul>
+<li>Das Kleeblatt liegt immer gerade vor ihm – er muss nur um die Bäume herumlaufen.</li>
+<li>Es stehen nie zwei Bäume nebeneinander.</li>
+</ul>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task01-flowchart.png" alt="Aufgabe 1 - Flussdiagramm"> </p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-02"><i class="fa fa-rocket"></i> AUFGABE 2.02</h4>
+<p>Zeichnen Sie ein erweitertes Diagramm, so dass Kara das Kleeblatt am Schluss auch aufliest, wenn er es findet. Hier finden Sie nochmals die verfügbaren Methoden von Kara als Hilfe:</p>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task02-kara-methods.png" alt="Kara Methods"></p>
+<hr>
+<h2 id="bedingte-anweisungen-in-java">Bedingte Anweisungen in Java</h2>
+<pre class="prettyprint lang-java">
+if (treeFront()) {      // Bedingung.
+    turnLeft();         // Block 1 wird ausgeführt, wenn Bedingung true ist.
+} else {
+    move();             // Block 2 wird ausgeführt, wenn Bedingung false ist.
+}
+</pre>
+
+<p><strong>Hinweis: Der <code>else</code>-Teil (Block 2) kann weggelassen werden, wenn er nicht benötigt wird.</strong></p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-03"><i class="fa fa-rocket"></i> AUFGABE 2.03</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Beschreiben Sie zuerst mit Worten, was die folgenden Codebeispiele bewirken.</li>
+<li>Skizzieren Sie es als Flussdiagramm.</li>
+</ol>
+<pre class="prettyprint lang-java">
+if (onLeaf()) {
+    removeLeaf();
+} else {
+    putLeaf();
+}
+move();
+</pre>
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-04"><i class="fa fa-rocket"></i> AUFGABE 2.04</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Beschreiben Sie zuerst mit Worten, was die folgenden Codebeispiele bewirken.</li>
+<li>Skizzieren Sie es als Flussdiagramm.</li>
+</ol>
+<pre class="prettyprint lang-java">
+if (onLeaf()) {
+    move();
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-05"><i class="fa fa-rocket"></i> AUFGABE 2.05</h4>
+<p>Bedingte Anweisungen können auch ineinander verschachtelt werden.</p>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Beschreiben Sie zuerst mit Worten, was die folgenden Codebeispiele bewirken.</li>
+<li>Skizzieren Sie es als Flussdiagramm.</li>
+</ol>
+<pre class="prettyprint lang-java">
+if (treeLeft()) {
+    if (onLeaf()) {
+        removeLeaf();
+        move();
+    } else {
+        move();
+    }
+} else {
+    move();
+}
+</pre>
+
+
+<h3 id="implementieren">Implementieren</h3>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-06-um-baum-herum-ii"><i class="fa fa-rocket"></i> AUFGABE 2.06: Um Baum Herum II</h4>
+<ul>
+<li>Öffnen Sie das Szenario <strong>Kara 206...</strong> aus dem Ordner <strong>scenarios-chapter-2</strong>. In diesem Szenario ist die Methode <code>goAroundTree()</code> bereits programmiert und ein Teil der <code>act()</code>-Methode ist vorbereitet.</li>
+<li>Programmieren Sie nun den Ablauf, welchen Sie unter <em>Aufgabe 2</em> als Flussdiagram gezeichnet haben in der <code>act()</code>-Methode.</li>
+<li>In diesem Szenario haben Sie <strong>verschiedene Welten</strong> zur Verfügung (a, b und c). </li>
+<li>Ihr Programm sollte in jeder Welt <strong>ohne Fehlermeldungen</strong> funktionieren.</li>
+</ul>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-07-verschachtelte-bedingungen"><i class="fa fa-rocket"></i> AUFGABE 2.07: Verschachtelte Bedingungen</h4>
+<ul>
+<li>Laden Sie das Szenario <strong>Kara 207...</strong> in Greenfoot und programmieren Sie das unter <em>Aufgabe 5</em> skizzierte Programm.</li>
+<li>Formen Sie das Programm so um, dass Kara die Kleeblätter nur dann aufliest, wenn <em>kein</em> Baum neben ihm ist.</li>
+</ul>
+<hr>
+<h2 id="logische-operatoren">Logische Operatoren</h2>
+<p>Unser Kara kann nun schon mehr als einfach nur simple Befehle abzuarbeiten. Er kann durch die Benutzung von Bedingungen auf die jeweiligen Ergebnisse eines Sensors unterschiedlich reagieren. Es sollte Kara aber natürlich auch möglich sein, auf zwei oder mehrere Sensoren gleichzeitig zu reagieren. </p>
+<p>Die folgende Tabelle zeigt die drei wichtigsten logischen Operatoren in Java:</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Beschreibung</th>
+      <th>Beispiel</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&amp;&amp;</code></td>
+      <td>und</td>
+      <td><code>treeFront() &amp;&amp; onLeaf()</code></td>
+      <td>Ist erfüllt (true), wenn beide Aussagen erfüllt sind, d.h. wenn Kara vor einem Baum <strong>und</strong> auf einem Blatt steht.</td>
+    </tr>
+    <tr>
+      <td><code>||</code></td>
+      <td>oder</td>
+      <td><code>treeFront() || onLeaf()</code></td>
+      <td>Ist dann erfüllt (true), wenn entweder die eine <strong>oder</strong> die andere Aussage oder beide erfüllt sind.</td>
+    </tr>
+    <tr>
+      <td><code>!</code></td>
+      <td>nicht</td>
+      <td><code>!treeFront()</code></td>
+      <td>Ändert einen Ausdruck von true in false und umgekehrt. Diese Aussage wäre also dann erfüllt (true), wenn Kara <strong>nicht</strong> vor einem Baum steht.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Ein Beispiel in Java würde wie folgt aussehen:</p>
+<pre class="prettyprint lang-java">
+if (treeLeft() && onLeaf()) {
+    // Mache etwas ...
+}
+</pre>
+
+<p>oder auch kombiniert:</p>
+<pre class="prettyprint lang-java">
+if (treeLeft() && !treeRight()) {
+    // Mache etwas ...
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-08-angst-vor-tunnel"><i class="fa fa-rocket"></i> AUFGABE 2.08: Angst vor Tunnel</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task08.png" alt="Aufgabe 8"></p>
+<p>Kara hat etwas Angst vor Tunneln. Er soll auf jedem Feld überprüfen, ob es ein Tunneleingang ist (d.h. ob es auf beiden Seiten Bäume hat). Ist dies der Fall, so lässt er vor Schreck gleich ein Kleeblatt fallen.</p>
+<p>Laden Sie das Szenario <strong>Kara 208...</strong>, schreiben Sie das Programm und testen Sie es mit allen drei Welten.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-09-blatt-beim-baum"><i class="fa fa-rocket"></i> AUFGABE 2.09: Blatt beim Baum</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task09.png" alt="Aufgabe 9"></p>
+<p>Nun soll Kara geradeaus gehen und überall dort ein Blatt legen, wo entweder links oder rechts oder auf beiden Seiten ein Baum steht.</p>
+<p>Laden Sie das Szenario <strong>Kara 209...</strong> und schreiben Sie das Programm dazu.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-10-bl-tter-legen-bis-zum-baum"><i class="fa fa-rocket"></i> AUFGABE 2.10: Blätter legen bis zum Baum</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task10.png" alt="Aufgabe 10"></p>
+<p>Kara soll vorwärts laufen und dabei überall ein Blatt legen, wo keines ist. Wenn er beim Baum angelangt ist, soll er nichts mehr machen (auch wenn der Act- oder der Run-Knopf nochmals gedrückt wird).</p>
+<p>Laden Sie das Szenario <strong>Kara 210...</strong> und schreiben Sie das Programm dazu.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-11-rundgang"><i class="fa fa-rocket"></i> AUFGABE 2.11: Rundgang</h4>
+<p>Kara geht in einem Rundgang auf die Suche nach einem Kleeblatt (und liest es auf). Jedes Feld im Rundgang hat genau zwei freie benachbarte Felder. Eines liegt immer hinter Kara, von diesem Feld aus ist er auf das aktuelle Feld gekommen.</p>
+<p>Laden Sie das Szenario <strong>Kara 211...</strong> und schreiben Sie das Programm dazu. Testen Sie das Programm in allen drei Welten.</p>
+<p><em>Tipp: Stellen Sie sich vor, was nach jedem Drücken des Act-Knopfes geschehen muss. Zeichnen Sie dafür als Hilfe ein Flussdiagramm.</em></p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-12-schwierig-kara-spielt-pacman"><i class="fa fa-rocket"></i> AUFGABE 2.12 (schwierig): Kara spielt Pacman</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task12.png" alt="Aufgabe 12"></p>
+<p>Kara spielt Pacman: Er steht auf dem ersten Kleeblatt einer langen Spur von Kleeblättern, die vor einem Baum endet. Er soll alle Kleeblätter auffressen und vor den Bäumen stoppen.</p>
+<p>Schreiben Sie zur besseren Übersicht für gewisse Programmteile eigene Methoden.</p>
+<hr>
+<h2 id="schleifen">Schleifen</h2>
+<p>Kara kann jetzt nach von uns festgelegten Regeln auf verschiedene Situationen reagieren. Er ist allerdings noch nicht in der Lage, Anweisungen bis zum Eintreten eines bestimmten Ereignisses zu wiederholen. Zum mehrfachen Ausführen von Anweisungsblöcken werden Schleifen verwendet.</p>
+<p>Als Beispiel möchten wir folgendes tun: </p>
+<p><em>Kara soll sich solange vorwärts bewegen, bis er auf einen Baum trifft.</em></p>
+<p><img src="/assets/library/greenfoot-kara/chapter2/loop-example-world.png" alt="Schleifen Beispiel"></p>
+<p>Im Flussdiagramm sieht man, dass <code>move()</code> immer wieder ausgeführt wird, 
+solange kein Baum vor Kara steht.</p>
+<p><img src="/assets/library/greenfoot-kara/chapter2/loop-example-flowchart.png" alt="Loop Example - Flowchart"></p>
+<p>Dies ist die Schreibweise in Java:</p>
+<pre class="prettyprint lang-java">
+while (!treeFront()) {
+    move();
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-13"><i class="fa fa-rocket"></i> AUFGABE 2.13</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task13.png" alt="Aufgabe 13"></p>
+<p>Kara steht vor einem Tunnel.</p>
+<p>Beschreiben Sie, was die folgenden Schleifen bewirken und wie viele Schritte Kara macht.</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Code</th>
+      <th>Beischreibung</th>
+      <th>Anzahl Schritte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a.</td>
+      <td><pre>while (treeLeft()) {
+  move();
+}</pre></td>
+      <td>Solange links ein Baum steht, mache einen Schritt.</td>
+      <td>4</td>
+    </tr>
+
+    <tr>
+      <td>b.</td>
+      <td><pre>while (treeRight()) {
+  move();
+}</pre></td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+
+    <tr>
+      <td>c.</td>
+      <td><pre>while (treeLeft() || treeRight()) {
+  move();
+}</pre></td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+
+    <tr>
+      <td>d.</td>
+      <td><pre>if (treeLeft()) {
+  move();
+} while (treeLeft() &amp;&amp; treeRight()) {
+  move();
+}</pre></td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+
+    <tr>
+      <td>e.</td>
+      <td><pre>while (!treeFront) {
+  if (treeLeft()) {
+    move();
+  }
+}</pre></td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-14-um-baum-herum-iii"><i class="fa fa-rocket"></i> AUFGABE 2.14: Um Baum herum III</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task14.png" alt="Aufgabe 14"></p>
+<p>Dies ist die ähnliche Übung, wie in Aufgabe 6: Kara soll ein Kleeblatt finden, das geradeaus vor ihm liegt. Nun können aber eine beliebige Anzahl Bäume hintereinander stehen. </p>
+<ul>
+<li>Laden Sie das Szenario <strong>Kara 214..</strong> und verbessern Sie die Methode <code>goAroundTree()</code> so, dass Kara um mehrere Bäume herumgehen kann. Testen Sie Ihr Programm in allen vorgegebenen Welten. </li>
+<li>Ändern Sie die <code>act()</code>-Methode so ab, dass man nur noch einmal auf den Act-Knopf drücken muss. Kara soll dann automatisch um die Bäume laufen, bis er das Kleeblatt erreicht. Am Schluss soll er es dann wie-der auffressen.</li>
+</ul>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-15-treppensteigen"><i class="fa fa-rocket"></i> AUFGABE 2.15: Treppensteigen</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task15.png" alt="Aufgabe 15"></p>
+<p>Kara soll eine beliebig lange Treppe hochlaufen. </p>
+<p>Schreiben Sie eine Methode <code>oneStepUp()</code>, wo Sie Kara eine einzelne Stufe hochsteigen lassen. Überlegen Sie Sich, wie Kara erkennen kann, ob er noch eine Stufe steigen muss. </p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-2-16-difficult-kara-als-w-chter"><i class="fa fa-rocket"></i> AUFGABE 2.16 (difficult): Kara als Wächter</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter2/task15.png" alt="Aufgabe 15"></p>
+<p>Kara will einen Wald bewachen. Er soll endlos aussen am Waldrand entlang laufen. </p>
+<p>Als Hilfe können Sie Sich ein Flussdiagramm zeichnen.</p>
+<p><em>Hinweis: Für eine Endlosschleife können wir auf den Run-Knopf drücken.</em></p>
+<hr>
+<p><strong><em>Credits:</em></strong> <em><a href="http://www.swisseduc.ch/informatik/karatojava/">Ideen und Konzepte von Kara</a> wurden entwickelt von Jürg Nievergelt, Werner Hartmann, Raimond Reichert et al. Einige Kara-Übungen basieren auf <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/material/">Unterlagen von Horst Gierhardt</a>.</em></p>
+<hr>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Fahren Sie weiter mit <a href="/library/greenfoot-kara/de/chapter3/">Kapitel 3: Variablen</a></p>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter1/" data-toggle="tooltip" title="Kapitel 1: Erste Schritte">1</a>
+      </li>
+  <li class="active">
+      <a href="/library/greenfoot-kara/de/chapter2/" data-toggle="tooltip" title="Kapitel 2: Programmfluss">2</a>
+      </li>
+    <li>
+      <a href="/library/greenfoot-kara/de/chapter3/" data-toggle="tooltip" title="Kapitel 3: Variablen">3</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter4/" data-toggle="tooltip" title="Kapitel 4: Sokoban Spiel">4</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter5/" data-toggle="tooltip" title="Kapitel 5: Methoden">5</a>
+      </li>
+            
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/de/" class="list-group-item">
+        
+        Einleitung
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item">
+        
+        Kapitel 1: Erste Schritte
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item active">
+        
+        Kapitel 2: Programmfluss
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Lösungen Kapitel 2
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item">
+        
+        Kapitel 3: Variablen
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item">
+        
+        Kapitel 4: Sokoban Spiel
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item">
+        
+        Kapitel 5: Methoden
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-2.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-2.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Seite als Word-Datei
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/de/chapter2/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/de/chapter2/';
+    var disqus_title = 'GreenfootKara - Kapitel 2: Programmfluss';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

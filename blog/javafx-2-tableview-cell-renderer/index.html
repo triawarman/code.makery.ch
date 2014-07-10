@@ -1,0 +1,211 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 2 TableView Cell Renderer - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="In this post I will show how to customize the rendering of a JavaFX TableView.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 2 TableView Cell Renderer" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="In this post I will show how to customize the rendering of a JavaFX TableView." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-2-tableview-cell-renderer/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/12-12-19-javafx-2-tableview-cell-renderer/screenshot-01.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">JavaFX 2 TableView Cell Renderer</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Dec 19, 2012
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <div class="alert alert-danger">
+  &rarr; UPDATED VERSION of this article available at: <a href="/blog/javafx-8-tableview-cell-renderer/" class="alert-link">JavaFX 8 TableView Cell Renderer</a>
+</div>
+
+<p>In this post I will show how to customize the rendering of a JavaFX 2 TableView. The <em>Birthday</em> column in the screenshot below is a formatted <code>Calendar</code> object. Depending on the year, the text color is changed. </p>
+<p><img src="/assets/blog/12-12-19-javafx-2-tableview-cell-renderer/screenshot-01.png" alt="TableView Cell Renderer"></p>
+<hr>
+<h2 id="how-a-table-cell-is-rendered">How a Table Cell is Rendered</h2>
+<p>Each table cell will receive an object, in our case it is an instance of <code>Person</code>. To do the rendering, the cell will need a <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html#setCellValueFactory(javafx.util.Callback"><code>Cell Value Factory</code></a>) and a <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html#setCellFactory(javafx.util.Callback"><code>Cell Factory</code></a>):</p>
+<h3 id="cell-value-factory">Cell Value Factory</h3>
+<p>The cell must know which part of <code>Person</code> it needs to display. For all cells in the <em>birthday column</em> this will be the <code>Person</code>s <code>birthday</code> value.</p>
+<p>This is our birthday column:</p>
+<pre class="prettyprint lang-java">
+private TableColumn&lt;Person, Calendar&gt; birthdayColumn;
+</pre>
+
+<p>And later during initialization, we'll set the <code>Cell Value Factory</code>:</p>
+<pre class="prettyprint lang-java">
+birthdayColumn.setCellValueFactory(
+    new PropertyValueFactory&lt;Person, Calendar&gt;("birthday"));
+</pre>
+
+<p>So far nothing too fancy.</p>
+<h3 id="cell-factory">Cell Factory</h3>
+<p>Once the cell has the value, it must know how to display that value. In our case, the birthday's <code>Calendar</code> value must be formatted and colored depending on the year.</p>
+<pre class="prettyprint lang-java">
+birthdayColumn.setCellFactory(new Callback&lt;TableColumn&lt;Person, Calendar&gt;, TableCell&lt;Person, Calendar&gt;&gt;() {
+    @Override
+    public TableCell&lt;Person, Calendar&gt; call(TableColumn&lt;Person, Calendar&gt; param) {
+        return new TableCell&lt;Person, Calendar&gt;() {
+
+            @Override
+            protected void updateItem(Calendar item, boolean empty) {
+                super.updateItem(item, empty);
+
+              if (!empty) {
+                // Use a SimpleDateFormat or similar in the format method
+                setText(format(item));
+
+                if (item.get(Calendar.YEAR) == 2011) {
+                  setTextFill(Color.CHOCOLATE);
+                } else {
+                  setTextFill(Color.BLACK);
+                }
+
+              } else {
+                setText(null);
+              }
+            }
+        };
+    }
+});
+</pre>
+
+
+<p>The <code>Cell Factory</code> contains some complicated stuff (<em>Callback</em>, <em>Generics</em> and <em>Anonymous Inner Classes</em>). Don't worry too much about all this. Just focus on the important part which is the <code>updateItem(...)</code> method. </p>
+<p>This <code>updateItem(...)</code> method gets called whenever the cell should be rendered. We receive the <code>Calendar</code> item that must be rendered. If empty is <code>true</code> we don't do anything. Otherwise we format the item and set the text of the cell. Depending on the year, we also set the text color.</p>
+<hr>
+<h2 id="listview-and-treeview">ListView and TreeView</h2>
+<p>Note that the JavaFX 2 <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/ListView.html"><code>ListView</code></a> and <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/TreeView.html"><code>TreeView</code></a> are rendered in a very similar way.</p>
+<hr>
+<h2 id="download">Download</h2>
+<p>Download the complete <a href="/assets/blog/12-12-19-javafx-2-tableview-cell-renderer/javafx-tableview-cell-renderer.zip">tableview-cell-renderer example</a>.</p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'edumakery'; // Required - the forum shortname
+    var disqus_identifier = 'http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-2-tableview-cell-renderer/';
+    var disqus_title = 'JavaFX 2 TableView Cell Renderer';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

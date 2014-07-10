@@ -1,0 +1,72 @@
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+  <channel>
+    <title><![CDATA[code.makery.ch (Dart)]]></title>
+    <link>http://code.makery.ch</link>
+    <description>Learning how to code.</description>
+    <language>en</language>
+    <webMaster>majakob@gmx.ch</webMaster>
+    <copyright>2014</copyright>
+    <lastBuildDate>Thu, 10 Jul 2014 15:30:07 CET</lastBuildDate>
+    <generator>mixture.io</generator>
+    
+      
+<item>
+	<title><![CDATA[Web und Mobile Apps Programmieren mit Dart]]></title>
+	<link>http://code.makery.ch/blog/web-und-mobile-mit-dart/</link>
+	<guid>/blog/web-und-mobile-mit-dart/</guid>
+	
+	<category>Dart</category>
+	
+	<pubDate>Thu, 26 Sep 2013 00:00:00 CET</pubDate>
+	<description>
+  
+    Der folgende Artikel ist erschienen an der INFOS 2013 (GI-Fachtagung Informatik und Schule) in Kiel.
+  
+  
+     Artikel als PDF 
+  
+  
+     Workshop Pr&#228;sentation 
+  
+
+
+
+Abstract
+
+Bisher war es kaum realistisch,...</description>
+</item>
+<item>
+	<title><![CDATA[Programming with Dart]]></title>
+	<link>http://code.makery.ch/blog/programming-with-dart/</link>
+	<guid>/blog/programming-with-dart/</guid>
+	
+	<category>Dart</category>
+	
+	<pubDate>Thu, 13 Jun 2013 00:00:00 CET</pubDate>
+	<description>
+
+
+
+The last few months I have been programming with Google&#39;s new Dart language. I&#39;m very excited about how great it is to work with Dart! Currently, I&#39;m using Dart for the web client of a project called doxblox (site is only in German at the moment).
+After a while I found...</description>
+</item>
+<item>
+	<title><![CDATA[Introduction to Programming with Kara]]></title>
+	<link>http://code.makery.ch/blog/introduction-to-programming-with-kara/</link>
+	<guid>/blog/introduction-to-programming-with-kara/</guid>
+	
+	<category>Java</category>
+	
+	<category>Dart</category>
+	
+	<pubDate>Tue, 02 Oct 2012 00:00:00 CET</pubDate>
+	<description>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.
+   
+The rules of Kara&#39;s world are simple:
+Actions
+
+Kara can move around with move() (Kara can push a mushroom, can step on leafs but can&#39;t...</description>
+</item>
+    
+  </channel>
+</rss>

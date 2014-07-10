@@ -1,0 +1,376 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Kapitel 1: Erste Schritte - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Kapitel 1: Erste Schritte" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/de/chapter1/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-de-chapter1.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Kapitel 1: Erste Schritte</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>In diesem Kapitel wagen wir unsere ersten Schritte im Programmieren.</p>
+<h2 id="greenfoot-starten">Greenfoot starten</h2>
+<p>Starten Sie <a href="http://www.greenfoot.org">Greenfoot</a>.</p>
+<p>(Wenn Sie Greenfoot das erste Mal öffnen, erscheint ein Dialogfenster, das fragt, was Sie tun möchten. Klicken Sie dort auf <em>Choose Scenario</em>.)</p>
+<p>Öffnen Sie das Szenario <code>Kara 101 First Steps</code> aus dem Ordner <code>scenarios-chapter-1</code>. Es erscheint nun das Hauptfenster von Greenfoot mit dem geöffneten Szenario ähnlich folgender Abbildung:</p>
+<p><img src="/assets/library/greenfoot-kara/chapter1/screenshot01.png" alt="Screenshot 01"></p>
+<p>Das Greenfoot-Fenster besteht im Wesentlichen aus drei Bereichen und einigen zusätzlichen Knöpfen. Diese drei Hauptbereiche sind:</p>
+<ul>
+<li>Die <strong>Welt</strong> (world): Der grösste Bereich wird Welt genannt. Dies ist der Bereich, in dem das Programm ausgeführt wird und in dem wir verfolgen können, was passiert. Im Kara-Szenario ist die Welt eine grüne Wiese mit Gitterlinien.</li>
+<li>Das <strong>Klassendiagramm</strong>: Der Bereich zur Rechten enthält die Klassen, die uns zur Verfügung stehen. In unserem Kara-Szenario brauchen wir zuerst vor allem den Käfer Kara.</li>
+<li>Die <strong>Greenfoot-Steuerung</strong>: Die Knöpfe Act, Run, und Reset und der Schieberegler für die Geschwindigkeit ganz unten dienen der Programmsteuerung. Darauf werden wir später zu sprechen kommen.</li>
+</ul>
+<hr>
+<h2 id="klassen-und-objekte">Klassen und Objekte</h2>
+<p>Für unsere Projekte verwenden wir die Programmiersprache <strong>Java</strong>. Java ist eine sogenannte objektorientierte Sprache. Für objektorientierte Programmierung sind die Konzepte von Klassen und Objekten von grundlegender Bedeutung.</p>
+<p>Betrachten wir einmal die <strong>Klasse</strong> <code>Kara</code>. Die Klasse <code>Kara</code> steht für das allgemeine Konzept eines Käfers – sie ist sozusagen wie ein Bauplan, aus dem wir einzelne Käfer erstellen können. Die erzeugten Käfer werden als Objekte (oder auch Instanzen) bezeichnet.</p>
+<p>In Greenfoot erstellen wir neue Objekte wie folgt: Rechte Maustaste auf die Klasse Kara und Menüpunkt <em>new Kara()</em> auswählen. Anschliessend kann das Objekt irgendwo in der Welt (auf der grünen Wiese) mit einem Klick abgesetzt werden.</p>
+<p><img src="/assets/library/greenfoot-kara/chapter1/screenshot02.png" alt="Screenshot 02"></p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-01-first-steps"><i class="fa fa-rocket"></i> AUFGABE 1.01: First Steps</h4>
+<p>Erzeugen Sie ein Objekt vom (<strong>grauen</strong>!) Kara. Erzeugen Sie mehrere Objekte von den Kleeblättern (Leaf).</p>
+<p><em>Tipp: Um mehrere Objekte der gleichen Klasse zu erstellen, kann die Shift-Taste gedrückt werden.</em></p>
+<hr>
+<h2 id="mit-objekten-interagieren">Mit Objekten interagieren</h2>
+<p>Zum Interagieren mit Objekten in der Welt klicken wir sie mit der rechten Maustaste an, um das <strong>Objektmenu</strong> aufzurufen. Das Objektmenu von Kara zeigt uns, was dieser spezielle Kara alles machen kann. Diese Operationen werden in Java <strong>Methoden</strong> genannt.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-02"><i class="fa fa-rocket"></i> AUFGABE 1.02</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Was bewirkt die Methode move()?</li>
+<li>Platzieren Sie zwei Karas in Ihrer Welt und sorgen Sie dafür, dass sie sich anschauen. Welche Methode brauchen Sie dazu?</li>
+<li>Testen Sie die weiteren Methoden. In welche zwei Arten können die Methoden unterteilt werden?</li>
+</ol>
+<hr>
+<h2 id="r-ckgabetypen">Rückgabetypen</h2>
+<p>Das Wort vor einer Methodenbezeichnung wird auch als <strong>Rückgabetyp</strong> bezeichnet. Es teilt uns mit, was die Methode zurückliefert, wenn wir sie aufrufen. Das Wort <code>void</code> bedeutet in diesem Falle <em>nichts</em> – sie liefern also nichts zurück und führt nur eine Aktion aus.</p>
+<p>Wird anstelle von <code>void</code> irgendetwas anderes angegeben, wissen wir, dass die Methode uns ein Resultat zurückliefert und auch von welchem Typ dieses Resultat ist. Der Typ <code>boolean</code> kennt zwei mögliche Werte: <code>true</code> (wahr) oder <code>false</code> (falsch). Dann gibt es noch eine Reihe weiterer Typen, auf die wir später eingehen werden.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-03"><i class="fa fa-rocket"></i> AUFGABE 1.03</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Rufen Sie die Methode <code>onLeaf()</code> für einen Kara auf. Liefert Sie immer <code>false</code> zurück? Oder gibt es auch Situationen, in denen sie <code>true</code> zurückliefert?</li>
+<li>Setzen Sie zusätzlich einen Baum (Tree) in die Welt. Mit welcher Methode können Sie überprüfen, ob Kara vor einem Baum steht?</li>
+<li>Was passiert, wenn Sie Kara mittels der Methode <code>move()</code> in einen Baum fahren lassen?</li>
+</ol>
+<hr>
+<h2 id="objektzustand">Objektzustand</h2>
+<p>Mittels <em>Rechtsklick | Inspect (Inspizieren)</em> auf einem Kara-Objekt können wir den Zustand des Objektes ermitteln. </p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-04"><i class="fa fa-rocket"></i> AUFGABE 1.04</h4>
+<p>Welche Zustandswerte hat Kara in den folgenden Situationen (beachten Sie nur die Koordinaten und die Drehung)?</p>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li><p>x: ?, y: ?, rotation: ?<br><img src="/assets/library/greenfoot-kara/chapter1/screenshot03.png" alt="Screenshot 03"></p>
+</li>
+<li><p>x: ?, y: ?, rotation: ?<br><img src="/assets/library/greenfoot-kara/chapter1/screenshot04.png" alt="Screenshot 04"></p>
+</li>
+</ol>
+<p><strong>Beachte: Das erste Feld oben links hat die Koordinaten (0, 0) und NICHT (1, 1)!</strong></p>
+<hr>
+<h2 id="ausf-hren-von-programmen-in-greenfoot">Ausführen von Programmen in Greenfoot</h2>
+<p>Bis jetzt haben wir immer nur mit Mausklicks mit den Objekten interagiert. Es gibt aber noch eine weitere Möglichkeit, nämlich indem wir Programme schreiben.</p>
+<p>Von nun an arbeiten wir mit dem <strong>roten Kara</strong> (Klasse <code>MyKara</code>)! </p>
+<p><img src="/assets/library/greenfoot-kara/chapter1/screenshot05.png" alt="Red Kara"></p>
+<p>In diese Klasse schreiben wir dann unsere Programme.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-05"><i class="fa fa-rocket"></i> AUFGABE 1.05</h4>
+<div class="alpha-list hidden"></div>
+
+<ol>
+<li>Platzieren Sie ein Objekt von <code>MyKara</code> in Ihre Welt. Welche Methode haben Sie nun neu zur Verfügung?</li>
+<li>Was macht diese Methode?</li>
+<li>Was passiert, wenn Sie in der Greenfoot-Steuerung (unten links) auf den <strong>Act-Button</strong> drücken?</li>
+<li>Klicken Sie auf den <strong>Run-Button</strong>. Was geschieht? (Versuchen Sie mal die Geschwindigkeit zu verstellen)</li>
+<li>Welche Methoden finden Sie unter <em>Rechtsklick | inherited from Kara</em>? Können Sie die auch benutzen?</li>
+</ol>
+<hr>
+<h2 id="quellcode">Quellcode</h2>
+<p>Vorhin haben wir die <code>act()</code>-Methode kennen gelernt. Nun wollen wir uns anschauen, wo das Verhalten dieser Methode denn überhaupt programmiert wurde. Dazu müssen wir den <strong>Quelltext</strong> im Editor öffnen: <em>Rechtsklick</em> auf die Klasse <em>MyKara | Open editor</em> (oder einfach <em>Doppelklick</em>).</p>
+<p>Der Quelltext ist in <strong>Java</strong> geschrieben und enthält alle Details zu einer Klasse und ihren Objekten. Für den Moment interessiert uns nur der unterste Teil, wo die Methode <code>act()</code> definiert ist. Hier sollten die drei Befehle: <code>move()</code>, <code>turnRight()</code> und <code>move()</code> untereinander stehen. Sie können nun diese Befehle verändern und erweitern. </p>
+<p>Wenn Sie die Änderungen abgeschlossen haben, schliessen Sie das Editorfenster. Sie werden feststellen, dass die Klasse grau schraffiert angezeigt wird. </p>
+<p><img src="/assets/library/greenfoot-kara/chapter1/screenshot06.png" alt="Screenshot 6"></p>
+<p>Dies ist ein Hinweis darauf, dass die Klasse bearbeitet wurde und jetzt neu übersetzt (oder fachsprachlich: kompiliert) werden muss. Das <strong>Kompilieren</strong> ist ein Übersetzungsprozess: Der Quelltext der Klasse wird in Maschinencode übersetzt, den der Computer ausführen kann.</p>
+<p>Die Klassen in Greenfoot werden mit dem Knopf <strong>Compile</strong> (unten rechts im Hauptfenster) übersetzt. Sobald die Klassen übersetzt sind, verschwinden die Streifen und wir können wieder Objekte erstellen.</p>
+<h3 id="der-bersetzungsprozess-kompilieren-">Der Übersetzungsprozess (Kompilieren)</h3>
+<p><img src="/assets/library/greenfoot-kara/chapter1/compiling-de.png" alt="Compiling"></p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-06-putting-leaf"><i class="fa fa-rocket"></i> AUFGABE 1.06: Putting Leaf</h4>
+<p>Ändern Sie den Inhalt der <code>act()</code>-Methode so, dass Kara zuerst einen Schritt macht, dann ein Kleeblatt legt und wieder einen Schritt macht. (Am Anfang der Klasse finden Sie als Kommentar alle Aktionen, die Kara durchführen kann.)</p>
+<p><em>Beachten Sie: Nach jedem Befehl muss ein Strichpunkt stehen!</em></p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-07-around-tree"><i class="fa fa-rocket"></i> AUFGABE 1.07: Around Tree</h4>
+<p>Erstellen Sie folgende Welt:</p>
+<p><img src="/assets/library/greenfoot-kara/chapter1/screenshot07.png" alt="Screenshot 7"></p>
+<p><strong>Tipp:</strong> Damit Sie nicht bei jedem Start die Welt wieder neu zusammenstellen müssen, können Sie die Welt speichern: <em>Recktsklick auf die Welt | saveWorldSetupToFile()</em>. Dann wählen Sie am besten einen neuen Dateinamen.
+Damit Ihre Welt auch geladen wird, müssen Sie in der Klasse <code>KaraWorld</code> die Konstante <code>WORLD_SETUP_FILE</code> ändern:</p>
+<pre class="prettyprint lang-java">
+public static final String WORLD_SETUP_FILE = "[MyName].txt";
+</pre>
+
+<p>Schreiben Sie nun ein Programm, welches Kara auf dem angegebenen Weg zum Kleeblatt führt. Er muss dabei um die Bäume herumlaufen. Beim Kleeblatt angekommen, soll er es aufheben.</p>
+<hr>
+<h2 id="kara-erh-lt-neue-methoden">Kara erhält neue Methoden</h2>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-1-08-around-tree-with-method"><i class="fa fa-rocket"></i> AUFGABE 1.08: Around Tree with Method</h4>
+<p>Wenn Sie Aufgabe 1.07 korrekt gelöst haben, so sollte Ihr Programm <strong>drei gleiche Teile</strong> enthalten, nämlich für das Herumgehen um jeden Baum. Dies können wir zur besseren Übersicht noch etwas erweitern, indem wir eine neue Methode einführen. Unterhalb der <code>act()</code>-Methode erstellen wir eine neue Methode:</p>
+<pre class="prettyprint lang-java">
+public void goAroundTree() {
+
+}
+</pre>
+
+<p>Schreiben Sie zwischen die geschweiften Klammern der Methode die Befehle, die es braucht, um um den Baum zu kommen.</p>
+<p>Benutzen Sie nun innerhalb der <code>act()</code>-Methode die Methode <code>goAroundTree()</code> für jeden der drei Bäume.</p>
+<hr>
+<h2 id="lernkontrolle-zu-kapitel-1">Lernkontrolle zu Kapitel 1</h2>
+<ol>
+<li><p>Bezeichnen Sie die folgenden Elemente im Bild:<br><em>Welt, Klassendiagramm, Knopf zum Kompilieren, eine Klasse, ein Objekt</em><br><img src="/assets/library/greenfoot-kara/chapter1/screenshot08.png" alt="Screenshot 8"></p>
+</li>
+<li><p>Was macht eine Methode mit <code>void</code> als Rückgabetyp?<br><em>Führt eine Aktion aus, gibt aber kein Resultat zurück</em></p>
+</li>
+<li><p>Was macht eine Methode mit <code>boolean</code> als Rückgabetyp?<br><em>Gibt als Resultat einen boolean zurück.</em></p>
+</li>
+<li><p>Welche Werte kann ein <code>boolean</code> haben?<br><em>true oder false</em></p>
+</li>
+<li><p>Was ist der Unterschied zwischen <code>move()</code> und <code>act()</code> in unserem Kara-Szenario?<br><em><code>move()</code> bewegt Kara um eins vorwärts. In <code>act()</code> können beliebige Methoden aufgerufen werden.</em></p>
+</li>
+<li><p>Was bedeutet Kompilieren? Weshalb ist es nötig?<br><em>Kompilieren ist die Übersetzung von Quelltext in Maschinencode, damit es der Computer verstehen kann.</em></p>
+</li>
+</ol>
+<hr>
+<p><strong><em>Credits:</em></strong> <em>Dieses Kapitel basiert auf dem Buch <a href="http://www.greenfoot.org/book">Einführung in Java mit Greenfoot</a> von Michael Kölling. <a href="http://www.swisseduc.ch/informatik/karatojava/">Ideen und Konzepte von Kara</a> wurden entwickelt von Jürg Nievergelt, Werner Hartmann, Raimond Reichert et al.</em></p>
+<hr>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Fahren Sie weiter mit <a href="/library/greenfoot-kara/chapter2">Kapitel 2: Programmfluss</a></p>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+  <li class="active">
+      <a href="/library/greenfoot-kara/de/chapter1/" data-toggle="tooltip" title="Kapitel 1: Erste Schritte">1</a>
+      </li>
+    <li>
+      <a href="/library/greenfoot-kara/de/chapter2/" data-toggle="tooltip" title="Kapitel 2: Programmfluss">2</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter3/" data-toggle="tooltip" title="Kapitel 3: Variablen">3</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter4/" data-toggle="tooltip" title="Kapitel 4: Sokoban Spiel">4</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter5/" data-toggle="tooltip" title="Kapitel 5: Methoden">5</a>
+      </li>
+            
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/de/" class="list-group-item">
+        
+        Einleitung
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item active">
+        
+        Kapitel 1: Erste Schritte
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Lösungen Kapitel 1
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item">
+        
+        Kapitel 2: Programmfluss
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item">
+        
+        Kapitel 3: Variablen
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item">
+        
+        Kapitel 4: Sokoban Spiel
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item">
+        
+        Kapitel 5: Methoden
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-1.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-1.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Seite als Word-Datei
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/de/chapter1/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/de/chapter1/';
+    var disqus_title = 'GreenfootKara - Kapitel 1: Erste Schritte';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,375 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Update to JavaFX 8 - What's New? - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="I describe the changes I made when updating to JavaFX 8. This should give you a fairly good overview of the new possibilities of Java 8 and JavaFX 8.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Update to JavaFX 8 - What's New?" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="I describe the changes I made when updating to JavaFX 8. This should give you a fairly good overview of the new possibilities of Java 8 and JavaFX 8." />
+    <meta property="og:url" content="http://code.makery.ch/blog/update-to-javafx-8-whats-new/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/14-05-10-update-to-javafx-8-whats-new/addressapp-javafx8.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">Update to JavaFX 8 - What's New?</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    May 10, 2014
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <p>JavaFX 8 is included in JDK 8 and is the <strong>officially recommended graphics toolkit for Java 8 applications</strong>. I've been using JavaFX 2 since 2012 and am very pleased as it was already a major step forward compared to Swing. Now with JavaFX 8 it has become even better, with new UI controls like <a href="/blog/javafx-8-date-picker/">DatePicker</a>, a modern theme called <em>Modena</em>, rich text support, to just name a few. </p>
+<h2 id="updated-tutorial-and-blog-articles">Updated Tutorial and Blog Articles</h2>
+<div class="media">
+<a class="pull-left" href="/java/javafx-8-tutorial-intro/"><img src="/assets/blog/14-05-10-update-to-javafx-8-whats-new/addressapp-javafx8.png" class="img-rounded media-object"></a>
+  <div class="media-body">
+    <p>
+      I decided to rewrite the entire <a href="/java/javafx-2-tutorial-intro">tutorial series on JavaFX 2</a> for <a href="/java/javafx-8-tutorial-intro/">JavaFX 8</a>. There are quite a few things that are more comfortable now. 
+    </p>
+  </div>
+</div>
+
+
+<h3 id="updated-tutorial">Updated Tutorial</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>JavaFX 2</th>
+      <th></th>
+      <th>JavaFX 8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-intro/">Introduction</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-intro/">Introduction</a></td>
+    </tr>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-part1/">Part 1: Scene Builder</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-part1/">Part 1: Scene Builder</a></td>
+    </tr>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-part2/">Part 2: Model and TableView</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-part2/">Part 2: Model and TableView</a></td>
+    </tr>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-part3/">Part 3: Interacting with the User</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-part3/">Part 3: Interacting with the User</a></td>
+    </tr>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-part4/">Part 4: CSS Styling</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-part4/">Part 4: CSS Styling</a></td>
+    </tr>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-part5/">Part 5: Storing Data as XML</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-part5/">Part 5: Storing Data as XML</a></td>
+    </tr>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-part6/">Part 6: Statistics Chart</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-part6/">Part 6: Statistics Chart</a></td>
+    </tr>
+    <tr>
+      <td><a href="/java/javafx-2-tutorial-part7/">Part 7: Deployment</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/java/javafx-8-tutorial-part7/">Part 7: Deployment</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 id="updated-articles">Updated Articles</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>JavaFX 2</th>
+      <th></th>
+      <th>JavaFX 8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/blog/javafx-2-dialogs/">Dialogs</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/blog/javafx-8-dialogs/">Dialogs</a></td>
+    </tr>
+    <tr>
+      <td><a href="/blog/javafx-2-date-picker/">Date Picker</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/blog/javafx-8-date-picker/">Date Picker</a></td>
+    </tr>
+    <tr>
+      <td><a href="/blog/javafx-2-event-handlers-and-change-listeners/">Event Handlers and Change Listeners</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/blog/javafx-8-event-handling-examples/">Event Handling Examples</a></td>
+    </tr>
+    <tr>
+      <td><a href="/blog/javafx-2-tableview-filter/">TableView Filter</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/blog/javafx-8-tableview-sorting-filtering/">TableView Sorting and Filtering</a></td>
+    </tr>
+    <tr>
+      <td><a href="/blog/javafx-2-tableview-cell-renderer/">TableView Cell Renderer</a></td>
+      <td><i class="fa fa-fw fa-hand-o-right"></i></td>
+      <td><a href="/blog/javafx-8-tableview-cell-renderer/">TableView Cell Renderer</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+<h2 id="what-s-new-">What's New?</h2>
+<p>In the following I will describe the most significant changes I made. This should give you a fairly good overview of the <strong>new possibilities of Java 8 and JavaFX 8</strong>.</p>
+<h2 id="new-javafx-8-ui-components">New JavaFX 8 UI Components</h2>
+<p>&rarr; See <a href="/java/javafx-8-tutorial-part1/">JavaFX 8 Tutorial - Part 1</a></p>
+<p>JavaFX 8 includes some new UI components:</p>
+<ul>
+<li><code>TextFlow</code> - supports Rich Text</li>
+<li><code>TreeTableView</code> - a combination of TreeView and TableView</li>
+<li><code>DatePicker</code> -  yes, finally! Here is a short <a href="/blog/javafx-8-date-picker/">how-to article for the new DatePicker</a></li>
+<li><code>SwingNode</code> - for embedding Swing content into a JavaFX application</li>
+<li>Various controls for 3D support</li>
+</ul>
+<p>They are all supported in Scene Builder 2.</p>
+<h3 id="adding-custom-ui-components">Adding Custom UI Components</h3>
+<p>I tried to add custom components in Scene Builder 1 but it didn't work properly. It is now possible to permanently add a custom UI component in Scene Builder 2. It is bit difficult to find, though:</p>
+<p><img src="/assets/blog/14-05-10-update-to-javafx-8-whats-new/add-custom-ui-components.png" alt="Add Custom UI Components"></p>
+<p>You should also be able to drag-and-drop a custom component into the library.</p>
+<h3 id="various-scene-builder-improvements">Various Scene Builder Improvements</h3>
+<p>There are various smaller improvements that were made. Overall, it's a very pleasant experience to work with Scene Builder 2!</p>
+<hr>
+<h2 id="javafx-properties">JavaFX Properties</h2>
+<p>&rarr; See <a href="/java/javafx-8-tutorial-part2/#create-the-model-class">JavaFX 8 Tutorial - Part 2 (Create the Model Class)</a></p>
+<p><a href="http://docs.oracle.com/javase/8/javafx/properties-binding-tutorial/binding.htm">JavaFX Properties</a> were already available in JavaFX 2 but I chose not to use them to keep the model class simpler. Now, I think the advantages are enough to justify a little more code in the model class.</p>
+<p>Properties provide means to listen for changes. This helps keep the view in sync with data changes in model classes. When working with JavaFX you will find Properties used all over the place. So it is important to understand a little bit about the their philosophy.</p>
+<p>Let's take a look at a small part of the <code>Person</code> class in the tutorial: </p>
+<pre class="prettyprint lang-java">
+public class Person {
+
+    // Define a variable to store the property.
+    private final StringProperty firstName;
+
+    // The getter for the property's value.
+    public String getFirstName() {
+        return firstName.get();
+    }
+
+    // The setter for the property's value.
+    public void setFirstName(String firstName) {
+        this.firstName.set(firstName);
+    }
+
+    // The getter for the property itself.
+    public StringProperty firstNameProperty() {
+        return firstName;
+    }
+}
+</pre>
+
+<p>The new convention here is to use a wrapper class like <code>StringProperty</code> instead of a simple <code>String</code> value. By returning the <code>StringProperty</code> with the <code>firstNameProperty()</code> method other classes can get access to the property. The three methods should always be named exactly according to the convention. </p>
+<p>With the properties in place we can add a listener as follows:</p>
+<pre class="prettyprint lang-java">
+Person p = new Person();
+p.firstNameProperty().addListener((observable, oldValue, newValue) -> {
+    System.out.println(newValue);
+});
+</pre>
+
+<p>Another example: Listening to <a href="/blog/javafx-8-event-handling-examples/#textbox-events">text changes of a TextBox</a>. </p>
+<hr>
+<h2 id="java-8-date-and-time-api">Java 8 Date and Time API</h2>
+<p>&rarr; See <a href="/java/javafx-8-tutorial-part2/#create-the-model-class">JavaFX 8 Tutorial - Part 2 (Create the Model Class)</a></p>
+<p>In the <code>Person</code> class we're using the <a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html"><code>LocalDate</code></a> type for the <code>birthday</code>. <code>LocalDate</code> is part of the new <a href="http://docs.oracle.com/javase/tutorial/datetime/iso/">Date and Time API</a>. Finally(!), Java has a consistent and convenient way to work with dates and time!</p>
+<hr>
+<h2 id="java-8-lambda-expressions">Java 8 Lambda Expressions</h2>
+<p>&rarr; See <a href="/java/javafx-8-tutorial-part2/#the-personoverviewcontroller">JavaFX 8 Tutorial - Part 2 (The PersonOverviewController)</a><br>&rarr; See <a href="/java/javafx-8-tutorial-part3/#listen-for-table-selection-changes">JavaFX 8 Tutorial - Part 3 (Listen for Table Selection Changes)</a></p>
+<p>From the start, JavaFX 8 has been designed to support the new <strong>Java 8 language features</strong>. Especially <em>Lambdas</em> make the UI code much more pleasant. </p>
+<p>As an example, let's take a look at how to set a <code>cellValueFactory</code> to a <code>TableView</code> column. The <code>cellValueFactory</code> is used to determine which field inside our <code>Person</code> object should be used for a particular column.</p>
+<h5 id="cellvaluefactory-with-and-without-lambdas">CellValueFactory with and without Lambdas</h5>
+<pre class="prettyprint lang-java">
+// With Lambdas
+firstNameColumn.setCellValueFactory(
+        cellData -> cellData.getValue().firstNameProperty());
+
+// Without Lambdas
+firstNameColumn.setCellValueFactory(new Callback&lt;TableColumn.CellDataFeatures&lt;Person,String>, ObservableValue&lt;String>>() {
+    @Override
+    public ObservableValue&lt;String> call(CellDataFeatures&lt;Person, String> cellData) {
+        return cellData.getValue().firstNameProperty();
+    }
+});
+</pre>
+
+<p>Another option would be to use the <code>PropertyValueFactory</code> (we used it in the JavaFX 2 version of the tutorial). For the <code>PropertyValueFactory</code> we need to provide the property <code>firstName</code> as a String. I prefer the versions above as this isn't type-safe and thus error prone: When you change the name of the property you might forget to change the String of the <code>PropertyValueFactory</code>. </p>
+<pre class="prettyprint lang-java">
+// With PropertyValueFactory (not type-safe)
+firstNameColumn.setCellValueFactory(
+        new PropertyValueFactory&lt;Person, String>("firstName"));
+</pre>
+
+
+<hr>
+<h2 id="controlsfx-dialogs">ControlsFX Dialogs</h2>
+<p>&rarr; See <a href="/blog/javafx-8-dialogs/">JavaFX 8 Dialogs</a><br>&rarr; See <a href="/java/javafx-8-tutorial-part3/#error-handling">JavaFX 8 Tutorial - Part 3 (Error Handling)</a></p>
+<p>If you need a UI component that is not included in the standard JavaFX you can always take a look at the excellent <a href="http://fxexperience.com/controlsfx/">ControlsFX</a> project. I use it mostly for the great Dialogs.</p>
+<pre class="prettyprint lang-java">
+Dialogs.create()
+        .owner(stage)
+        .title("Information Dialog")
+        .masthead("Look, an Information Dialog")
+        .message("I have a great message for you!")
+        .showInformation();
+</pre>
+
+
+<hr>
+<h2 id="using-jaxb-instead-of-xstream">Using JAXB instead of XStream</h2>
+<p>&rarr; See <a href="/java/javafx-8-tutorial-part5/#persisting-data-as-xml">JavaFX 8 Tutorial - Part 5 (Persisting Data as XML)</a></p>
+<p>In the JavaFX 2 version of the tutorial we were using <a href="http://xstream.codehaus.org/">XStream</a> for converting to and from XML. This was working ok for the simple model classes. Now that we're using JavaFX <code>Properties</code> in our <code>Person</code> model, XStream causes some trouble. XStream tries to convert the entire <code>Properties</code> to XML which generates a very large file.</p>
+<p>With the JavaFX <code>Properties</code> in the model we need to tell the XML converter to use the <code>getters</code> and <code>setters</code> and not the <code>Property</code> fields. This can be done in JAXB with the <code>@XmlAccessorType</code>. In fact, the default accessor type is <code>PUBLIC_MEMBER</code> which means that our private <code>Property</code> fields will be ignored.</p>
+<p>Another reason to use JAXB is that it is already included in the JDK which means we don't need to add another library.</p>
+<h3 id="localdate-adapter">LocalDate Adapter</h3>
+<p>&rarr; See <a href="/java/javafx-8-tutorial-part5/#localdateadapter-java">JavaFX 8 Tutorial - Part 5 (LocalDateAdapter.java)</a></p>
+<p>JAXB doesn't know how to convert the new <code>LocalDate</code> type. We must provide a custom <code>LocalDateAdapter</code> that tells JAXB how to <em>marshal</em> (convert <code>LocalDate</code> to <code>String</code>) and <em>unmarshal</em> (convert <code>String</code> to <code>LocalDate</code>).</p>
+<hr>
+<h2 id="deplyoment">Deplyoment</h2>
+<p>&rarr; See <a href="/java/javafx-8-tutorial-part7/">JavaFX 8 Tutorial - Part 7</a></p>
+<p>The <a href="http://www.eclipse.org/efxclipse/index.html">e(fx)clipse</a> plugin has been improved: We don't need to worry about editing the <code>eclipse.ini</code> file to ensure Eclipse is started with the correct JDK. That's great and I hope this actually works on all platforms...</p>
+<p>Deplyoment is always difficult. I've tried to write it as simple and clear as possible but I'm pretty sure there will still be some obstacles.</p>
+<hr>
+<p>I hope the new tutorial and articles will help you create some fantastic apps. I'd love to hear how it's working for you. <a href="#disqus_thread"><i class="fa fa-comment-o"></i></a></p>
+<p><i class="fa fa-beer"></i> Marco</p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/update-to-javafx-8-whats-new/';
+    var disqus_url = 'http://code.makery.ch/blog/update-to-javafx-8-whats-new/';
+    var disqus_title = 'Update to JavaFX 8 - Whats New?';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

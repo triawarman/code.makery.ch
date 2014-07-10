@@ -1,0 +1,274 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 8 TableView Sorting and Filtering - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="The JavaFX 8 SortedList and FilteredList allow easy sorting and filtering of data in a TableView.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 TableView Sorting and Filtering" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="The JavaFX 8 SortedList and FilteredList allow easy sorting and filtering of data in a TableView." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/14-04-30-javafx-8-tableview-sorting-filtering/tableview-sorting-filtering.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">JavaFX 8 TableView Sorting and Filtering</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Apr 30, 2014
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/javafx/">JavaFX</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <p>JavaFX 8 comes with two new classes, <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/SortedList.html">SortedList</a> and <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/FilteredList.html">FilteredList</a>. In JavaFX 2 we had to manually do the filtering as I've described in <a href="/blog/javafx-2-tableview-filter/">an earlier post</a>.</p>
+<p>So, let's see how we can use the new classes to sort and filter a <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html">TableView</a>.</p>
+<h2 id="example-setup">Example Setup</h2>
+<p>As an example we'll create a simple table that displays <code>Person</code>s. The table should be filtered whenever the user enters something in the text field. </p>
+<p><img src="/assets/blog/14-04-30-javafx-8-tableview-sorting-filtering/tableview-sorting-filtering.png" alt="TableView Sorting and Filtering"></p>
+<h3 id="the-files">The Files</h3>
+<p>The example contains four files. You can look at each file individually or download the <a href="/assets/blog/14-04-30-javafx-8-tableview-sorting-filtering/tableview-sorting-filtering.zip">entire source as an Eclipse project</a>.</p>
+<ul>
+<li><a href="/assets/blog/14-04-30-javafx-8-tableview-sorting-filtering/Main.java">Main.java</a> - class to start the application</li>
+<li><a href="/assets/blog/14-04-30-javafx-8-tableview-sorting-filtering/Person.java">Person.java</a> - model class</li>
+<li><a href="/assets/blog/14-04-30-javafx-8-tableview-sorting-filtering/PersonTable.fxml">PersonTable.fxml</a> - user interface defined in fxml</li>
+<li><a href="/assets/blog/14-04-30-javafx-8-tableview-sorting-filtering/PersonTableController.java">PersonTableController.java</a> - view-controller class</li>
+</ul>
+<p>We will only take a closer look at the <code>PersoTableController</code> as this is where the sorting and filtering takes place.</p>
+<h2 id="sorting-and-filtering-explained">Sorting and Filtering Explained</h2>
+<p>For the sorting and filtering to work, we need to wrap an <code>ObservableList</code> in a <code>FilteredList</code> and then in a <code>SortedList</code>. </p>
+<p>Let's take a look at the code: </p>
+<h4 id="persontablecontroller-java">PersonTableController.java</h4>
+<pre class="prettyprint lang-java">
+package ch.makery.sortfilter;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+
+
+/**
+ * View-Controller for the person table.
+ * 
+ * @author Marco Jakob
+ */
+public class PersonTableController {
+
+    @FXML
+    private TextField filterField;
+    @FXML
+    private TableView&lt;Person> personTable;
+    @FXML
+    private TableColumn&lt;Person, String> firstNameColumn;
+    @FXML
+    private TableColumn&lt;Person, String> lastNameColumn;
+
+    private ObservableList&lt;Person> masterData = FXCollections.observableArrayList();
+
+    /**
+     * Just add some sample data in the constructor.
+     */
+    public PersonTableController() {
+        masterData.add(new Person("Hans", "Muster"));
+        masterData.add(new Person("Ruth", "Mueller"));
+        masterData.add(new Person("Heinz", "Kurz"));
+        masterData.add(new Person("Cornelia", "Meier"));
+        masterData.add(new Person("Werner", "Meyer"));
+        masterData.add(new Person("Lydia", "Kunz"));
+        masterData.add(new Person("Anna", "Best"));
+        masterData.add(new Person("Stefan", "Meier"));
+        masterData.add(new Person("Martin", "Mueller"));
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     * 
+     * Initializes the table columns and sets up sorting and filtering.
+     */
+    @FXML
+    private void initialize() {
+        // 0. Initialize the columns.
+        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList&lt;Person> filteredData = new FilteredList&lt;>(masterData, p -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(person -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (person.getFirstName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches first name.
+                } else if (person.getLastName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name.
+                }
+                return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList&lt;Person> sortedData = new SortedList&lt;>(filteredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(personTable.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        personTable.setItems(sortedData);
+    }
+}
+</pre>
+
+<h4 id="the-steps-explained">The steps explained</h4>
+<h5 id="1-wrap-the-observablelist-in-a-filteredlist">1. Wrap the ObservableList in a FilteredList</h5>
+<p>To allow filtering we must wrap our <code>masterData</code> in a <code>FilteredList</code>. The <code>FilteredList</code> filters the list depending on a specified <code>Predicate</code>. The initial <code>Predicate</code> is always true: <code>p -&gt; true</code> (yes, this is a Java 8 lambda expression).</p>
+<h5 id="2-set-the-filter-predicate-whenever-the-filter-changes">2. Set the filter Predicate whenever the filter changes</h5>
+<p>As a second step we add a <code>ChangeListener</code> to the filter text field. Whenever the user changes the text, the <code>Predicate</code> of our <code>FilteredList</code> is updated. </p>
+<p>In this example I'm using a filter that matches whenever <code>firstName</code> or <code>lastName</code> contains the filter String.</p>
+<h5 id="3-wrap-the-filteredlist-in-a-sortedlist">3. Wrap the FilteredList in a SortedList</h5>
+<p><code>FilteredList</code> is unmodifiable, so it cannot be sorted. We need to also wrap it in <code>SortedList</code> for this purpose. </p>
+<h5 id="4-bind-the-sortedlist-comparator-to-the-tableview-comparator">4. Bind the SortedList comparator to the TableView comparator</h5>
+<p>A click on the column header changes the sorting of the <code>TableView</code>. But now that we have a separate <code>SortedList</code> we must bind the sorting of that list to the <code>TableView</code>. Notice that the <code>TableView</code> will return back to the original, unsorted state after three clicks on the column header (this was not the case in JavaFX 2).</p>
+<h5 id="5-add-sorted-and-filtered-data-to-the-table">5. Add sorted (and filtered) data to the table</h5>
+<p>As a last step we set the sorted and filtered data as items into the <code>personTable</code>.</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Sorting and filtering has become more convenient in JavaFX 8. But not everything is straight forward: double-wrapping a list, binding a Comparator, and creating a lambda expression inside another lambda expression are things that are not all too common.</p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/javafx-8-tableview-sorting-filtering/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/';
+    var disqus_title = 'JavaFX 8 TableView Sorting and Filtering';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

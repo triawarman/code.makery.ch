@@ -1,0 +1,517 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Chapter 3: Variables - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Chapter 3: Variables" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/chapter3/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-en-chapter3.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Chapter 3: Variables</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>In the last chapter we have learned to repeat certain events while a condition is met. Now we want to do the following:</p>
+<p><em>Kara is to lay a trail of five leafs.</em></p>
+<p><img src="/assets/library/greenfoot-kara/chapter3/loop-example.png" alt="Loop Example"> </p>
+<p>This would, of course, be quite easy if we simple called <code>putLeaf()</code> and <code>move()</code> five times. But this is not very elegant. It would be nice if Kara counts how many leaves he has already placed. If so, Kara will need a "brain", i.e. some kind of memory. Memory in programming can be used through the use of variables.</p>
+<h3 id="counting-with-kara">Counting with Kara</h3>
+<pre class="prettyprint lang-java">
+int i;
+i = 0;
+
+while (i &lt; 5) {
+    putLeaf();
+    move();
+
+    i = i + 1;
+}
+</pre>
+
+<h4 id="explanations">Explanations</h4>
+<ol>
+<li>With <code>int i;</code> we reserve space for a variable named <code>i</code> of the type <code>int</code>. We say: The <strong>variable i is declared</strong>. In Java, there are different types of variables that can be used (see tables below).</li>
+<li>With <code>i = 0;</code> the variable <code>i</code> is assigned the value <code>0</code>. Since it is the first assignment for the variable, we also say: The <strong>variable i is initialized</strong>.</li>
+<li>We can declare a variable and initialize it in one step: <code>int i = 0;</code></li>
+<li>For the condition <code>i &lt; 5</code>, the comparison operator <code>&lt;</code> means less than (more comparison operators, see tables below).</li>
+<li>For the assignment <code>i = i + 1</code>, we must first look at the right part. It means: "Take the current value of <code>i</code>, add <code>1</code> to it and save the new value again under the name <code>i</code>."</li>
+</ol>
+<h4 id="more-information-about-variables">More Information about Variables</h4>
+<ul>
+<li>It is possible to provide a variable with a final value, i.e. to make it a constant: <code>final int NUMBER = 5;</code><br>Then we could rewrite the above example as <code>while (i &lt; NUMBER)</code><br>Constants are written entirely in uppercase letters.</li>
+<li>Variables that are not constants always start with lower case.</li>
+</ul>
+<hr>
+<h2 id="elementary-data-types-in-java">Elementary Data Types in Java</h2>
+<p>These data types are called "elementary" because they are the basic data types in Java. (Later we will learn how to create variable types for entire objects).</p>
+<h3 id="integers-and-characters">Integers and Characters</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>From</th>
+      <th>Up to and including</th>
+      <th>Required memory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>byte</code></td>
+      <td>-128</td>
+      <td>127</td>
+      <td>8 bit</td>
+    </tr>
+    <tr>
+      <td><code>short</code></td>
+      <td>-32'768</td>
+      <td>32'767</td>
+      <td>16 bit</td>
+    </tr>
+    <tr>
+      <td><code>int</code></td>
+      <td>-2'147'483'648</td>
+      <td>2'147'483'647</td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code>long</code></td>
+      <td>-9'223'372'036'854'775'808</td>
+      <td>9'223'372'036'854'775'807</td>
+      <td>64 bit</td>
+    </tr>
+    <tr>
+      <td><code>char</code></td>
+      <td>0</td>
+      <td>65'635</td>
+      <td>16 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 id="floating-point-numbers">Floating Point Numbers</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>From</th>
+      <th>Up to and including</th>
+      <th>Required memory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>float</code></td>
+      <td>-3.4 * 10<sup>38</sup></td>
+      <td>3.4 * 10<sup>38</td>
+      <td>32 bit</td>
+    </tr>
+    <tr>
+      <td><code>double</code></td>
+      <td>-1.7 * 10<sup>308</sup></td>
+      <td>1.7 * 10<sup>308</sup></td>
+      <td>64 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 id="logical-values">Logical Values</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Range of values</th>
+      <th>Required memory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>boolean</code></td>
+      <td><code>true</code> or <code>false</code></td>
+      <td>1 bit</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+<h2 id="comparison-operators">Comparison Operators</h2>
+<p>The following operators can be used for comparisons in Java. The result is always a <code>boolean</code> (either <code>true</code> or <code>false</code>).</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Meaning</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>==</code></td>
+      <td>equal</td>
+      <td><code>k == 2</code></td>
+    </tr>
+    <tr>
+      <td><code>!=</code></td>
+      <td>not equal</td>
+      <td><code>k &lt; 12</code></td>
+    </tr>
+    <tr>
+      <td><code>&gt;</code></td>
+      <td>greater than</td>
+      <td><code>k &gt; 67</code></td>
+    </tr>
+    <tr>
+      <td><code>&lt;</code></td>
+      <td>less than</td>
+      <td><code>k &lt; 12</code></td>
+    </tr>
+    <tr>
+      <td><code>&gt;=</code></td>
+      <td>greater than or equal to</td>
+      <td><code>k &gt;= 45</code></td>
+    </tr>
+    <tr>
+      <td><code>&lt;=</code></td>
+      <td>less than or equal to</td>
+      <td><code>k &lt;= 23</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><strong>Note:</strong> The equality operator always has two equal signs <code>==</code>. A single equal sign <code>=</code> is used for assignments!</p>
+<hr>
+<h2 id="arithmetic-operations">Arithmetic Operations</h2>
+<p>To calculate we use the following arithmetic operators:</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Meaning</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>+</code></td>
+      <td>Add</td>
+      <td><code>h = value + 34</code></td>
+    </tr>
+    <tr>
+      <td><code>-</code></td>
+      <td>Subtract</td>
+      <td><code>y = 3.4 – t</code></td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Multiply</td>
+      <td><code>z = h * 3.56</code></td>
+    </tr>
+    <tr>
+      <td><code>/</code></td>
+      <td>Divide</td>
+      <td><code>d = m / v</code></td>
+    </tr>
+    <tr>
+      <td><code>%</code></td>
+      <td>Get the remainder of an integer division (modulo)</td>
+      <td><code>count = w % 2</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-01-counting-leafs"><i class="fa fa-rocket"></i> TASK 3.01: Counting Leafs</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task01.png" alt="TASK 3.01"> </p>
+<p>Kara is going horizontally from left to right until he reaches the tree. On his way he counts the leafs and reports the result at the end.</p>
+<p><em>Hints:</em></p>
+<ul>
+<li>At the end, you can write the result with the following command to the console: <code>System.out.println("The result is: " + count);</code></li>
+<li>Text must always be written in quotes. The plus sign appends the value of the variable <code>count</code> (which may of course be named differently).</li>
+<li><em>Scope of variables</em>: variables are visible only within the block (between the curly brackets), in which they are declared. They can also be declared outside the methods in order to be visible to the entire class.</li>
+</ul>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-02-kara-in-a-box-i"><i class="fa fa-rocket"></i> TASK 3.02: Kara in a Box I</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task02.png" alt="TASK 3.02"> </p>
+<p>A square area is surrounded by trees. Within the area is a set pattern of leafs
+that Kara must invert. Kara starts in the upper left corner with a view to the right.</p>
+<p><em>Hints:</em></p>
+<ul>
+<li>For this task it is helpful to work with boolean variables, e.g.:<ul>
+<li>declaration and initialization: <code>boolean goingRight = false;</code></li>
+<li>switching from false to true and vice versa: <code>goingRight = !goingRight;</code></li>
+<li>boolean as a condition: <code>if (goingRight)</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-03-kara-in-a-box-ii"><i class="fa fa-rocket"></i> TASK 3.03: Kara in a Box II</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task03.png" alt="TASK 3.03"> </p>
+<p>A square area is surrounded by trees. Within the area is a checkerboard-like pattern of leafs to be laid by Kara. Kara starts in the upper left corner with a view to the right.</p>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-04-difficult-the-longest-tree-line"><i class="fa fa-rocket"></i> TASK 3.04 (difficult): The Longest Tree Line</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task04.png" alt="TASK 3.04"> </p>
+<p>In this world there are several rows of trees. Kara is to determine the length (in number of trees) of the longest line of trees and output the result to the console. Between the rows of trees is always at least one empty row. A leaf marks the end of the world.</p>
+<h4 id="-i-class-fa-fa-rocket-i-task-3-05-very-difficult-push-mushroom-through-tunnel"><i class="fa fa-rocket"></i> TASK 3.05 (very difficult): Push Mushroom Through Tunnel</h4>
+<p><img src="/assets/library/greenfoot-kara/chapter3/task05.png" alt="TASK 3.05"> </p>
+<p>This world of Kara has two boxes connected by a tunnel. In the box on the left is Kara and a leaf. In the box on the right is a mushroom. Kara is to get to the other side, find the mushroom, then push it to the left side. Once on the left side, the mushroom must be pushed onto the leaf.</p>
+<p>Kara always starts in the top left corner and the leaf is always in the bottom left corner. The mushroom, on the other hand, can be at an arbitrary position on the right side of the tunnel.</p>
+<p><em>Hints:</em></p>
+<ul>
+<li>This problem may be solved in pairs and in collaboration. </li>
+<li>Some sub-problems may be divided among the collaborators:<ul>
+<li>Find the tunnel entrance</li>
+<li>Find the mushroom </li>
+<li>Place the mushroom in the tunnel entrance</li>
+<li>Push the mushroom onto the leaf</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="more-about-variables">More about Variables</h2>
+<p>So far, we have had a quick introduction to variables. Now, a few additional comments on the different types:</p>
+<h3 id="elementary-data-types">Elementary Data Types</h3>
+<p><img src="/assets/library/greenfoot-kara/chapter3/elementary-types.png" alt="Elementary Types"> </p>
+<p>Elementary data types are like cups (in memory) where the value is saved directly into the variable.</p>
+<h3 id="reference-types">Reference Types</h3>
+<p><img src="/assets/library/greenfoot-kara/chapter3/reference-types.png" alt="Reference Types"> </p>
+<p>The value in <code>k</code> is a reference to the Kara-object. With the dot operator (<code>k.</code>)
+<code>k</code> can be used like a remote control for the Kara object!</p>
+<hr>
+<p><strong><em>Credits:</em></strong> <em><a href="http://www.swisseduc.ch/informatik/karatojava/">Ideas and concepts of Kara</a> were developed by Jürg Nievergelt, Werner Hartmann, Raimond Reichert et al. Some Kara exercises are based on <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/material/">material by Horst Gierhardt</a>.</em></p>
+<hr>
+<h2 id="what-s-next-">What's Next?</h2>
+<p>Continue with <a href="/library/greenfoot-kara/chapter4/">Chapter 4: Sokoban Game</a></p>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/chapter1/" data-toggle="tooltip" title="Chapter 1: First Steps">1</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/chapter2/" data-toggle="tooltip" title="Chapter 2: Program Flow">2</a>
+      </li>
+  <li class="active">
+      <a href="/library/greenfoot-kara/chapter3/" data-toggle="tooltip" title="Chapter 3: Variables">3</a>
+      </li>
+    <li>
+      <a href="/library/greenfoot-kara/chapter4/" data-toggle="tooltip" title="Chapter 4: Sokoban Game">4</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/chapter5/" data-toggle="tooltip" title="Chapter 5: Methods">5</a>
+      </li>
+            
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/" class="list-group-item">
+        
+        Introduction
+      </a>
+      <a href="/library/greenfoot-kara/chapter1/" class="list-group-item">
+        
+        Chapter 1: First Steps
+      </a>
+      <a href="/library/greenfoot-kara/chapter2/" class="list-group-item">
+        
+        Chapter 2: Program Flow
+      </a>
+      <a href="/library/greenfoot-kara/chapter3/" class="list-group-item active">
+        
+        Chapter 3: Variables
+      </a>
+      <a href="/library/greenfoot-kara/chapter3-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Solutions Chapter 3
+      </a>
+      <a href="/library/greenfoot-kara/chapter4/" class="list-group-item">
+        
+        Chapter 4: Sokoban Game
+      </a>
+      <a href="/library/greenfoot-kara/chapter5/" class="list-group-item">
+        
+        Chapter 5: Methods
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-3.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-3.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Page as Word File
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter3/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/chapter3/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/chapter3/';
+    var disqus_title = 'GreenfootKara - Chapter 3: Variables';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,361 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Chapter 4: Sokoban Spiel - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Chapter 4: Sokoban Spiel" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/de/chapter4/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-de-chapter4.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Chapter 4: Sokoban Spiel</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <h2 id="sokoban">Sokoban</h2>
+<p>Sokoban (倉庫番, japanisch "Lagerhausverwalter") ist ein Computerspiel, das von Hiroyuki Imabayashi entwickelt und 1982 unter der Firma "Thinking Rabbit" erstmals für verschiedene Computersysteme veröffentlicht wurde. Einige der Original-Levels tauchten später in den beiden boxxle-Versionen für den NINTENDO GameBoy wieder auf. (Source: <a href="http://de.wikipedia.org/wiki/Sokoban">Sokoban auf Wikipedia</a>)</p>
+<h3 id="spielprinzip">Spielprinzip</h3>
+<p>In einem einfachen Spielprinzip gilt es, mit einer Spielfigur alle Objekte – meistens sind es Kisten – nacheinander auf die dafür vorgesehenen Zielfelder zu bewegen, wobei die Kisten von der Spielfigur nur geschoben und nicht gezogen werden können und auch nicht mehrere Kisten zugleich geschoben werden können. Neben dem blossen Bestehen der Levels ist eine weiterführende Herausforderung, die dafür nötigen Schritte zu minimieren.</p>
+<p>Bei unserem Kara Sokoban müssen die Pilze auf die Zielfelder (Kleeblätter) geschoben werden.</p>
+<h3 id="beschreibung-der-levels">Beschreibung der Levels</h3>
+<p>Viele Sokoban-Spiele verwenden zur Beschreibung der Levels ein einfaches ASCII-Format , welches den Aus-tausch erleichtert. Zur Erstellung von eigenen Levels kann dabei jeder beliebige Texteditor verwendet werden. Das Beispiel mit Kara würde wie folgt aussehen:</p>
+<p><img src="/assets/library/greenfoot-kara/chapter4/example-world.png" alt="Beispiel Welt"> </p>
+<pre class="prettyprint">
+####
+# .#
+#  ###
+# @  #
+#  $ #
+#  ###
+####
+</pre>
+
+<p>Dabei werden die Elemente mit den folgenden Symbolen dargestellt:</p>
+<ul>
+<li><code>#</code>: Baum</li>
+<li><code>@</code>: Kara</li>
+<li><code>.</code>: Blatt</li>
+<li><code>$</code>: Pilz</li>
+<li><code>*</code>: Pilz auf Blatt</li>
+<li><code>+</code>: Kara auf Blatt</li>
+</ul>
+<hr>
+<h2 id="sokoban-programmieren">Sokoban programmieren</h2>
+<p>Damit wir mit Kara Sokoban spielen können, müssen wir das Verhalten von Kara programmieren. Der Spieler sollten in der Lage sein, Kara mit den Pfeiltasten zu steuern:</p>
+<h3 id="control-with-arrow-keys">Control with Arrow Keys</h3>
+<p>Öffnen Sie das Szenario <strong>Kara 401 Sokoban</strong> aus dem Ordner <strong>scenarios-chapter-4</strong>. </p>
+<p>Nun sehen Sie die gewohnte Kara-Welt mit ein paar zusätzlichen Klassen. Die zusätzlichen Klassen sollen uns nicht stören, wir werden uns weiterhin vor allem mit den Klassen <code>Kara</code> und <code>MyKara</code> beschäftigen.</p>
+<p>Öffnen Sie mit einem Doppelklick den Editor für die (graue) Klasse <code>KaraSokoban</code>. Diese Klasse beinhaltet die Methoden, die uns beim Programmieren von <code>MyKara</code> zur Verfügung stehen. Auch die Methoden der Klasse <code>Kara</code> werden vererbt. Am besten stellen Sie oben rechts im Editor von <em>Source Code</em> auf <em>Dokumentation</em>. So sehen Sie nur die Kommentare für die Klasse und die Methoden. </p>
+<p><img src="/assets/library/greenfoot-kara/chapter4/documentation.png" alt="Documentation"> </p>
+<p>Das für uns Wichtigste erscheint dann unter dem Titel <em>Method Summary</em>. </p>
+<p><img src="/assets/library/greenfoot-kara/chapter4/method-summary.png" alt="Method Summary"> </p>
+<p>Kara besitzt zum Teil die gleichen, zum Teil auch neue Methoden. Machen Sie Sich damit vertraut und klicken Sie für ausführlichere Informationen auf die blauen Links.</p>
+<p>Suchen Sie nun die Methode, mit welcher wir <strong>Informationen über gedrückte Tasten</strong> erhalten. </p>
+<p>Die entsprechende Methode hat nicht <code>void</code> oder <code>boolean</code> als Rückgabetyp, sondern <code>String</code>. Ein <code>String</code> ist ein Text (z.B. ein Wort oder ein Satz), der in doppelten Anführungszeichen steht. Die folgenden Beispiele sind alles <code>String</code>-Beispiele:</p>
+<ul>
+<li><code>"Ich bin ein String"</code></li>
+<li><code>"Hallo"</code></li>
+<li><code>"a"</code></li>
+</ul>
+<p>In unserem Fall ist der zurückerhaltene <code>String</code> der Name der Taste, die zuletzt gedrückt wurde. Diesen <code>String</code> können wir mit folgender Zeile in eine Variable speichern:</p>
+<pre class="prettyprint lang-java">
+String key = getKey();
+</pre>
+
+<p>Schreiben Sie diesen Code in die <code>act()</code>-Methode vom (roten) MyKara!</p>
+<p><code>Strings</code> können mit einer speziellen Methode namens <code>equals()</code> verglichen werden. Um darauf zu reagieren, wenn eine bestimmte Taste gedrückt wurde, müssen wir folgende if-Bedingung hinzufügen:</p>
+<pre class="prettyprint lang-java">
+if (key.equals("left")) {
+    // Taste 'links' wurde gedrückt --> Mache etwas...
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-01-kara-mit-den-pfeiltasten-steuern"><i class="fa fa-rocket"></i> AUFGABE 4.01: Kara mit den Pfeiltasten steuern</h4>
+<p>Vervollständigen Sie den Code in der <code>act()</code>-Methode so, dass Kara auf alle vier Pfeiltasten reagiert und sich in die entsprechende Richtung bewegt. Benutzen Sie dabei die Methoden, welche Sie in der Dokumentation vom (grauen) Kara finden! Zum Testen drücken Sie auf den Run-Knopf!</p>
+<h3 id="hindernisse-f-r-kara">Hindernisse für Kara</h3>
+<p>Was passiert, wenn Sie in einen Baum oder Pilz hineinfahren?</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-02-protecting-kara-from-trees"><i class="fa fa-rocket"></i> AUFGABE 4.02: Protecting Kara From Trees</h4>
+<p>Fangen Sie den Fehler so ab, dass sich Kara nicht bewegt, wenn er vor einem Baum steht.</p>
+<p><em>Zur Erinnerung:</em> Damit Sie den gleichen Code nicht immer wiederholen müssen, empfiehlt es sich eine Methode dafür zu schreiben!</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-03-kara-bewegt-pilze"><i class="fa fa-rocket"></i> AUFGABE 4.03: Kara bewegt Pilze</h4>
+<p>Schliesslich soll ja Kara die Pilze stossen. Programmieren Sie Kara so, dass er einen Pilz stossen kann. Achten Sie darauf, dass am Schluss keine Fehlermeldungen mehr entstehen.</p>
+<p><em>Hinweis:</em> Falls Sie irgendwo stecken geblieben sind, können Sie auf den Knopf "Retry Level" drücken!</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-04-arbeit-erledigt"><i class="fa fa-rocket"></i> AUFGABE 4.04: Arbeit erledigt</h4>
+<p>Nachdem Kara seine Arbeit erledigt hat, müsste er eine neue Aufgabe erhalten, d.h. der nächste Level müsste geladen werden. Kara hat eine Methode, mit der er überprüfen kann, ob ein Level erledigt ist. Finden Sie heraus, welche Methode es ist und rufen Sie sie an der richtigen Stelle in Ihrem Programm auf. </p>
+<p>Anschliessend sollten Sie in den nächsten Level gelangen. Im Moment haben Sie vier Levels, die Sie spielen können. Wie weitere Levels hinzugefügt werden können, erfahren Sie später.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-05-kara-z-hlt-die-schritte"><i class="fa fa-rocket"></i> AUFGABE 4.05: Kara zählt die Schritte</h4>
+<p>Am unteren Bildschirmrand finden Sie eine Anzeige für die ‚Moves‘, die jedoch noch nicht funktioniert. Zum Setzen dieser Zahl hat Kara auch eine Methode. Mit dem folgenden Befehl kann die Anzahl beispielsweise auf 3 gesetzt werden: <code>setNumberOfMoves(3);</code></p>
+<p>Erweitern Sie Ihr Programm so, dass es die Anzahl Schritte zählt. (Dafür werden Sie eine Variable ausserhalb der Methode <code>act()</code> brauchen. Dies ist dann eine sogenannte <em>Instanzvariable</em>, da sie im ganzen Objekt verfügbar ist.)</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-06-das-spiel-richtig-spielen"><i class="fa fa-rocket"></i> AUFGABE 4.06: Das Spiel richtig spielen</h4>
+<p>Nun ist unser Sokoban-Spiel richtig spielbar. Das Spiel besitzt noch ein Hauptmenu, welches erst wie folgt freigeschaltet werden muss:</p>
+<p>In der Klasse <code>MyKara</code> finden Sie eine Konstante <code>DEVELOPER_MODE</code>. Wenn Sie diese Konstante auf <code>false</code> setzen, wird bei einem erneuten <em>Compile</em> direkt das Hauptmenu gestartet.</p>
+<p>Im Hauptmenu können Sie Level Passwörter eingeben. So können Sie Ihr Spiel in dem Level fortsetzen, wo Sie das letzte Mal verblieben sind.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-07-eigene-levels-erstellen"><i class="fa fa-rocket"></i> AUFGABE 4.07: Eigene Levels erstellen</h4>
+<p>Die Levels werden aus der Datei <strong>Levels.txt</strong> gelesen. Suchen Sie diese Datei und öffnen Sie sie in einem beliebigen Texteditor. Versuchen Sie einen zusätzlichen Level zu erstellen.</p>
+<p><em>Tipps:</em></p>
+<ol>
+<li>Damit das Erstellen von Levels etwas einfacher geht, können Sie es in Greenfoot machen. Dafür stellen Sie am besten wieder den <code>DEVELOPER_MODE</code> auf  <code>true</code>. Nun können Sie auf der grünen Wiese Kara, die Bäume, die Pilze und die Kleeblätter platzieren.<br>Wenn Sie fertig sind, drücken Sie auf einer leeren Stelle in der Welt mit der rechten Maustaste. Wählen Sie den Befehl <code>generateASCIILevel()</code>. Nun sollte der gezeichnete Level in der Konsole im ASCII-Format ausgegeben werden. Dies können Sie nun direkt in die Level-Datei hineinkopieren.</li>
+<li>Die Datei mit den Levels können natürlich auch untereinander ausgetauscht werden. Damit Sie mehrere Level-Dateien haben können, kann in der Klasse <code>MyKara</code> die Variabel <code>LEVEL_FILE</code> geändert werden.</li>
+<li>Für zusätzliche Levels können Sie Sich auf folgenden Internetseiten inspirieren lassen:<ul>
+<li><a href="http://users.bentonrea.com/~sasquatch/sokoban/">http://users.bentonrea.com/~sasquatch/sokoban/</a> (unter Microban-Levels schauen, die anderen sind sehr gross!)</li>
+<li><a href="http://www.sourcecode.se/sokoban/levels.php">http://www.sourcecode.se/sokoban/levels.php</a> (wenn man auf das ‚T‘ klickt, erhalten Sie die Levels in dem gewünschten ASCII-Text-Format)</li>
+</ul>
+</li>
+</ol>
+<p>The levels are read from the file <strong>Levels.txt</strong>. Locate the file in the scenario and open it in a text editor. Try to create an additional level.</p>
+<p><em>Hints:</em></p>
+<ol>
+<li>You can create levels in Greenfoot a bit easier with a little trick. Make sure the <code>DEVELOPER_MODE</code> is set to <code>true</code>. Now, you can place the actors in the Greenfoot world.<br>When you are finished, press on a blank spot in the world with the right mouse button. Select the command <code>generateASCIILevel()</code>. This will print a level in ASCII format to the console. This code you can copy directly into the level file.</li>
+<li>The file with the levels can also be exchanged with others. In order that you can have several different level-files, the variable <code>LEVEL_FILE</code> can be modified in the <code>MyKara</code> class.</li>
+<li>For additional levels, you can get inspiration from the following websites:<ul>
+<li><a href="http://sneezingtiger.com/sokoban/levels.html">http://sneezingtiger.com/sokoban/levels.html</a> (look at Microban levels - the others are very large! - and open as text)</li>
+<li><a href="http://www.sourcecode.se/sokoban/levels.php">http://www.sourcecode.se/sokoban/levels.php</a> (if you click on the <em>T</em>, you get the desired level in ASCII text format)</li>
+</ul>
+</li>
+</ol>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-08-kreativ-eigene-bilder"><i class="fa fa-rocket"></i> AUFGABE 4.08 (kreativ): Eigene Bilder</h4>
+<p>Die Bilder für Kara, Pilze, Hintergrund und co. können ausgewechselt werden. Um ein anderes Bild auszuwählen können Sie auf die Klassen rechts-klicken und <code>set Image...</code> drücken. Die Bilder für die Felder sind jeweils 28 x 28 Pixel gross.</p>
+<h4 id="-i-class-fa-fa-rocket-i-aufgabe-4-09-fortgeschritten-die-highscore"><i class="fa fa-rocket"></i> AUFGABE 4.09 (fortgeschritten): Die Highscore</h4>
+<p>Wenn Sie in der Klasse <code>MyKara</code> die Konstante <code>HIGHSCORE_ENABLED</code> auf <code>true</code> stellen, dann können die Highscores geführt werden. Dazu wird im Hauptmenu ein zusätzlicher Knopf eingeschaltet.</p>
+<p>Es gibt immer drei Highscores pro Level. Kara besitzt Methoden, um die Highscore zu ändern.</p>
+<p>Versuchen Sie Ihr Programm so zu erweitern, dass geprüft wird, ob man eine Highscore erreicht hat. Falls ja, soll die Highscore hinzugefügt werden.</p>
+<h4 id="-i-class-fa-fa-rocket-i-weitere-ideen-sound"><i class="fa fa-rocket"></i> WEITERE IDEEN: Sound</h4>
+<p>Sie können mit Greenfoot auch Sound zu Ihrem Spiel hinzufügen. Informationen dazu finden Sie in der Greenfoot Dokumentation unter der Klasse <code>GreenfootSound</code>.</p>
+<hr>
+<p>Ich hoffe, Sie hatten Spass mit dem Käfer.
+Falls Sie das Szenario mit anderen teilen möchten, können Sie es unter dem Menu <em>Scenario | Export ...</em> entweder auf die Greenfoot Gallery (online) stellen oder es als ausführbares Java-Programm exportieren. </p>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Fahren Sie weiter mit <a href="/library/greenfoot-kara/de/chapter5">Kapitel 5: Methoden</a></p>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter1/" data-toggle="tooltip" title="Kapitel 1: Erste Schritte">1</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter2/" data-toggle="tooltip" title="Kapitel 2: Programmfluss">2</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter3/" data-toggle="tooltip" title="Kapitel 3: Variablen">3</a>
+      </li>
+  <li class="active">
+      <a href="/library/greenfoot-kara/de/chapter4/" data-toggle="tooltip" title="Kapitel 4: Sokoban Spiel">4</a>
+      </li>
+    <li>
+      <a href="/library/greenfoot-kara/de/chapter5/" data-toggle="tooltip" title="Kapitel 5: Methoden">5</a>
+      </li>
+            
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/de/" class="list-group-item">
+        
+        Einleitung
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item">
+        
+        Kapitel 1: Erste Schritte
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item">
+        
+        Kapitel 2: Programmfluss
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item">
+        
+        Kapitel 3: Variablen
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item active">
+        
+        Kapitel 4: Sokoban Spiel
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Lösungen Kapitel 4
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item">
+        
+        Kapitel 5: Methoden
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-4.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-4.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Seite als Word-Datei
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/de/chapter4/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/de/chapter4/';
+    var disqus_title = 'GreenfootKara - Chapter 4: Sokoban Spiel';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

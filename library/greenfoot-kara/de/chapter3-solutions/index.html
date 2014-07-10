@@ -1,0 +1,440 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenfootKara - Lösungen Kapitel 3 - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="GreenfootKara - Lösungen Kapitel 3" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/greenfoot-kara/de/chapter3-solutions/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/library/greenfoot-kara-de-chapter3-solutions.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">GreenfootKara - Lösungen Kapitel 3</h1>
+            <div class="article-date">
+  Oct 03, 2012
+  • Updated Mar 08, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <h4 id="-i-class-fa-fa-check-square-o-i-l-sung-aufgabe-3-01"><i class="fa fa-check-square-o"></i> LÖSUNG AUFGABE 3.01</h4>
+<pre class="prettyprint lang-java">
+public void act() {
+    int count = 0;
+
+    while (!treeFront()) {
+        move();
+
+        if (onLeaf()) {
+            count = count + 1;
+        }
+    }
+
+    System.out.println("Das Resultat ist: " + count);
+
+    stop();
+}
+</pre>
+
+
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sung-aufgabe-3-02"><i class="fa fa-check-square-o"></i> LÖSUNG AUFGABE 3.02</h4>
+<pre class="prettyprint lang-java">
+public class MyKara extends Kara {
+
+    boolean goingRight = true;
+
+    public void act() {
+        invertField();
+
+        if (treeFront()) {
+            if (goingRight) {
+                // Wir sind am rechten Rand.
+                turnAroundRight();
+            } else {
+                // Wir sind am linken Rand.
+                turnAroundLeft();
+            }
+        } else {
+            move();
+        }
+    }
+
+    public void turnAroundRight() {
+        if (treeRight()) {
+            // Wir sind in der Ecke rechts unten.
+            stop();
+        } else {
+            turnRight();
+            move();
+            turnRight();
+            goingRight = false;
+        }
+    }
+
+    public void turnAroundLeft() {
+        if (treeLeft()) {
+            // Wir sind in der Ecke links unten.
+            stop();
+        } else {
+            turnLeft();
+            move();
+            turnLeft();
+            goingRight = true;
+        }
+    }
+
+    public void invertField() {
+        if (onLeaf()) {
+            removeLeaf();
+        } else {
+            putLeaf();
+        }
+    }
+}
+</pre>
+
+
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sung-aufgabe-3-03"><i class="fa fa-check-square-o"></i> LÖSUNG AUFGABE 3.03</h4>
+<pre class="prettyprint lang-java">
+public class MyKara extends Kara {
+
+    boolean goingRight = true;
+    int step = 0;
+
+    public void act() {
+        putLeafIfEvenStep();
+
+        if (treeFront()) {
+            if (goingRight) {
+                // Wir sind am rechten Rand.
+                turnAroundRight();
+            } else {
+                // Wir sind am linken Rand.
+                turnAroundLeft();
+            }
+        } else {
+            move();
+            step = step + 1;
+        }
+    }
+
+    public void turnAroundRight() {
+        if (treeRight()) {
+            // Wir sind in der Ecke rechts unten.
+            stop();
+        } else {
+            turnRight();
+            move();
+            turnRight();
+            goingRight = false;
+            step = step + 1;
+        }
+    }
+
+    public void turnAroundLeft() {
+        if (treeLeft()) {
+            // Wir sind in der Ecke links unten.
+            stop();
+        } else {
+            turnLeft();
+            move();
+            turnLeft();
+            goingRight = true;
+            step = step + 1;
+        }
+    }
+
+    public void putLeafIfEvenStep() {
+        if (step % 2 == 0) {
+            // Gerade Schrittnummer --> Lege ein Blatt.
+            putLeaf();
+        }
+    }
+}
+</pre>
+
+
+<hr>
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sung-aufgabe-3-04"><i class="fa fa-check-square-o"></i> LÖSUNG AUFGABE 3.04</h4>
+<pre class="prettyprint lang-java">
+public class MyKara extends Kara {
+    int longestRow = 0;
+
+    public void act() {
+        while (!onLeaf()) {
+            if (treeFront()) {
+                countRow();
+            } else {
+                move();
+            }
+        }
+
+        System.out.println("Die Längste Baumreihe ist " + longestRow + 
+                " Bäume lang");
+        stop();
+    }
+
+    public void countRow() {
+        int currentRow = 0;
+        turnLeft();
+
+        while (treeRight()) {
+            currentRow = currentRow + 1;
+            move();
+        }
+
+        // Gehe um die Baumreihe herum.
+        turnRight();
+        move();
+        move();
+        turnRight();
+
+        // Gehe zurück nach unten.
+        int i = 0;
+        while (i &lt; currentRow) {
+            move();
+            i = i + 1;
+        }
+
+        turnLeft();
+
+        // Teste, ob die aktuelle Zeile länger ist.
+        if (currentRow > longestRow) {
+            longestRow = currentRow;
+        }
+    }
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-check-square-o-i-l-sung-aufgabe-3-05"><i class="fa fa-check-square-o"></i> LÖSUNG AUFGABE 3.05</h4>
+<p>Siehe Lösungsszenario unter Downloads.</p>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/library/greenfoot-kara/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter1/" data-toggle="tooltip" title="Kapitel 1: Erste Schritte">1</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter2/" data-toggle="tooltip" title="Kapitel 2: Programmfluss">2</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter3/" data-toggle="tooltip" title="Kapitel 3: Variablen">3</a>
+      </li>
+    <li>
+      <a href="/library/greenfoot-kara/de/chapter4/" data-toggle="tooltip" title="Kapitel 4: Sokoban Spiel">4</a>
+      </li>
+  <li>
+      <a href="/library/greenfoot-kara/de/chapter5/" data-toggle="tooltip" title="Kapitel 5: Methoden">5</a>
+      </li>
+            
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/de/" class="list-group-item">
+        
+        Einleitung
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter1/" class="list-group-item">
+        
+        Kapitel 1: Erste Schritte
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter2/" class="list-group-item">
+        
+        Kapitel 2: Programmfluss
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3/" class="list-group-item">
+        
+        Kapitel 3: Variablen
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3-solutions/" class="list-group-item active">
+        <i class="fa fa-fw fa-check-square-o"></i>
+        Lösungen Kapitel 3
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter4/" class="list-group-item">
+        
+        Kapitel 4: Sokoban Spiel
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter5/" class="list-group-item">
+        
+        Kapitel 5: Methoden
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/greenfoot-kara/releases/download/2.1.0/scenarios-chapter-3-solutions.zip" class="list-group-item">
+        <i class="fa fa-fw fa-file-archive-o"></i>
+        scenarios-chapter-3-solutions.zip
+      </a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+        <i class="fa fa-fw fa-file-word-o"></i>
+        Seite als Word-Datei
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/greenfoot-kara/chapter3-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        English
+      </a>
+      <a href="/library/greenfoot-kara/de/chapter3-solutions/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i>
+        Deutsch
+      </a>
+      <a href="/library/greenfoot-kara/fr/chapter3-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i>
+        Français
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/greenfoot-kara/de/chapter3-solutions/';
+    var disqus_url = 'http://code.makery.ch/library/greenfoot-kara/de/chapter3-solutions/';
+    var disqus_title = 'GreenfootKara - Lösungen Kapitel 3';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

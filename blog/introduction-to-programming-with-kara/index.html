@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Introduction to Programming with Kara - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Introduction to Programming with Kara" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/blog/introduction-to-programming-with-kara/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">Introduction to Programming with Kara</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Oct 02, 2012
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/java/">Java</a>, 
+      </span>
+    
+      <span>
+        <a href="/blog/tag/dart/">Dart</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
+<p><img src="/assets/blog/12-10-02-introduction-to-programming-with-kara/kara.png" alt="Kara"> <img src="/assets/blog/12-10-02-introduction-to-programming-with-kara/mushroom.png" alt="Mushroom"> <img src="/assets/blog/12-10-02-introduction-to-programming-with-kara/leaf.png" alt="Leaf"> <img src="/assets/blog/12-10-02-introduction-to-programming-with-kara/tree.png" alt="Tree"></p>
+<p>The rules of Kara's world are simple:</p>
+<h4 id="actions">Actions</h4>
+<ul>
+<li>Kara can move around with <code>move()</code> (Kara can push a mushroom, can step on leafs but can't walk through trees)</li>
+<li>Kara turns left or right with <code>turnLeft()</code> or <code>turnRight()</code></li>
+<li>Kara puts down a leaf with <code>putLeaf()</code></li>
+<li>Kara picks up a leaf with <code>removeLeaf()</code></li>
+</ul>
+<h4 id="sensors">Sensors</h4>
+<ul>
+<li>Kara checks if he stands on a leaf with <code>onLeaf()</code></li>
+<li>Kara checks if there is a tree with <code>treeFront()</code>, <code>treeLeft()</code>, or <code>treeRight()</code></li>
+<li>Kara checks if there is a mushroom in front with <code>mushroomFront()</code></li>
+</ul>
+<h2 id="a-sample-exercise">A Sample Exercise</h2>
+<p>Kara is placed in the following world setup and must be programmed to collect all leafs until he reaches the tree:</p>
+<p><img src="/assets/blog/12-10-02-introduction-to-programming-with-kara/kara-example-collect-leafs.png" alt="Kara Collects Leafs"> </p>
+<p>One solution would be as follows:</p>
+<h4 id="kara-collects-leafs">Kara Collects Leafs</h4>
+<pre class="prettyprint lang-java">
+while (!treeFront()) {
+
+  if (onLeaf()) {
+    removeLeaf();
+  }
+
+  move();
+}
+</pre>
+
+
+<h2 id="kara-versions-which-kara-should-i-use-">Kara Versions - Which Kara Should I Use?</h2>
+<p>Kara has many different versions. The original Kara is designed as a finite state machine with a purely graphical program editor. See the full list of <a href="http://www.swisseduc.ch/informatik/karatojava/index.html">available Kara versions</a>.</p>
+<p>I usually prefer to start directly with writing code in the Java or Dart language. Now there are quite a few possible editors/libraries:</p>
+<h3 id="dartkara-dart-">DartKara (Dart)</h3>
+<p>DartKara is a scenario written in Dart. It can be used in the Dart Editor which is a very nice and simple development environment. The scenario comes with handouts and exercises. You can find those resources on the <a href="/dart/">Dart</a> page.</p>
+<h3 id="greenfootkara-java-">GreenfootKara (Java)</h3>
+<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="/java/greenfoot-kara-intro/">GreenfootKara</a> page.</p>
+<h3 id="gamegridkara-java-">GameGridKara (Java)</h3>
+<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <em>JGameGrid</em>.</p>
+<p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="/java/gamegrid-kara-intro/">GameGridKara</a> page.</p>
+<h3 id="javakara-java-">JavaKara (Java)</h3>
+<p>JavaKara is the original editor. You can find the <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/index.html">JavaKara download and resources here</a> (in German).</p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/introduction-to-programming-with-kara/';
+    var disqus_url = 'http://code.makery.ch/blog/introduction-to-programming-with-kara/';
+    var disqus_title = 'Introduction to Programming with Kara';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,426 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 8 Tutorial - Part 6: Statistics Chart - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="Learn how to create a JavaFX Bar Chart.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 Tutorial - Part 6: Statistics Chart" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn how to create a JavaFX Bar Chart." />
+    <meta property="og:url" content="http://code.makery.ch/java/javafx-8-tutorial-part6/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/java/javafx-8-tutorial-part6/addressapp-part6.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/java/javafx-8-tutorial-part6.md">Edit on GitHub</a>
+          </div>
+        
+          <header class="article-header">
+            <h1 class="article-title">JavaFX 8 Tutorial - Part 6: Statistics Chart</h1>
+            <div class="article-date">
+  May 09, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p><img src="/assets/java/javafx-8-tutorial-part6/addressapp-part6.png" alt="Screenshot AddressApp Part 6"></p>
+<h2 id="topics-in-part-6">Topics in Part 6</h2>
+<ul>
+<li>Creating a <strong>Statistics Chart</strong> to display birthday distribution.</li>
+</ul>
+<hr>
+<h2 id="birthday-statistics">Birthday Statistics</h2>
+<p>All our people in the AddressApp have a birthday. Wouldn't it be nice to have some statistics about when our people celebrate their birthday.</p>
+<p>We'll use a <strong>Bar Chart</strong> containing a bar for each month. Each bar shows how many people have their birthday in that particular month.</p>
+<h2 id="the-statistics-fxml-view">The Statistics FXML View</h2>
+<ol>
+<li><p>We start by creating a <code>BirthdayStatistics.fxml</code> file inside our <code>ch.makery.address.view</code> package (<em>Right-click on package | New | other... | New FXML Document</em>).<br><img src="/assets/java/javafx-8-tutorial-part6/birthday-statistics-fxml.png" alt="Birthday Statistics FXML"></p>
+</li>
+<li><p>Open the <code>BirthdayStatistics.fxml</code> file in Scene Builder.</p>
+</li>
+<li><p>Select the root <code>AnchorPane</code>. In the <em>Layout</em> group set the <em>Pref Width</em> to 620 and the <em>Pref Height</em> to 450.</p>
+</li>
+<li><p>Add a <code>BarChart</code> to the <code>AnchorPane</code>.</p>
+</li>
+<li><p>Right-click on the <code>BarChart</code> and select <em>Fit to Parent</em>.</p>
+</li>
+<li><p>Save the fxml file, go to Eclipse and refresh the project.</p>
+</li>
+</ol>
+<p>Before we'll come back to Scene Builder we'll first create the controller and wire everything up in our <code>MainApp</code>.</p>
+<h2 id="the-statistics-controller">The Statistics Controller</h2>
+<p>In the view package <code>ch.makery.address.view</code> create a Java class called <code>BirthdayStatisticsController.java</code>.</p>
+<p>Let's first take a look at the entire controller class before I start explaining:</p>
+<h5 id="birthdaystatisticscontroller-java">BirthdayStatisticsController.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.view;
+
+import java.text.DateFormatSymbols;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.XYChart;
+import ch.makery.address.model.Person;
+
+/**
+ * The controller for the birthday statistics view.
+ * 
+ * @author Marco Jakob
+ */
+public class BirthdayStatisticsController {
+
+    @FXML
+    private BarChart&lt;String, Integer> barChart;
+
+    @FXML
+    private CategoryAxis xAxis;
+
+    private ObservableList&lt;String> monthNames = FXCollections.observableArrayList();
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // Get an array with the English month names.
+        String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
+        // Convert it to a list and add it to our ObservableList of months.
+        monthNames.addAll(Arrays.asList(months));
+
+        // Assign the month names as categories for the horizontal axis.
+        xAxis.setCategories(monthNames);
+    }
+
+    /**
+     * Sets the persons to show the statistics for.
+     * 
+     * @param persons
+     */
+    public void setPersonData(List&lt;Person> persons) {
+        // Count the number of people having their birthday in a specific month.
+        int[] monthCounter = new int[12];
+        for (Person p : persons) {
+            int month = p.getBirthday().getMonthValue() - 1;
+            monthCounter[month]++;
+        }
+
+        XYChart.Series&lt;String, Integer> series = new XYChart.Series&lt;>();
+
+        // Create a XYChart.Data object for each month. Add it to the series.
+        for (int i = 0; i &lt; monthCounter.length; i++) {
+            series.getData().add(new XYChart.Data&lt;>(monthNames.get(i), monthCounter[i]));
+        }
+
+        barChart.getData().add(series);
+    }
+}
+</pre>
+
+
+<h4 id="how-the-controller-works">How the Controller Works</h4>
+<ol>
+<li><p>The controller will need access to two elements from our FXML file:</p>
+<ul>
+<li>The <code>barChar</code>: It has the type <code>String</code> and <code>Integer</code>. The <code>String</code> is used for the month on the x-axis and the <code>Integer</code> is used for the number of people in a specific month. </li>
+<li>The <code>xAxis</code>: We'll use this to add the month Strings.   </li>
+</ul>
+</li>
+<li><p>The <code>initialize()</code> method fills the x-axis with a list of all the months.</p>
+</li>
+<li><p>The <code>setPersonData(...)</code> method will be accessed by the <code>MainApp</code> class to set the person data. It loops through all persons and counts the birthdays per month. Then it adds <code>XYChart.Data</code> for every month to the data series. Each <code>XYChart.Data</code> object will represent one bar in the chart.</p>
+</li>
+</ol>
+<hr>
+<h2 id="connecting-view-and-controller">Connecting View and Controller</h2>
+<ol>
+<li><p>Open <code>BirthdayStatistics.fxml</code> in Scene Builder.</p>
+</li>
+<li><p>In the <em>Controller</em> group set <code>BirthdayStatisticsController</code> as controller.</p>
+</li>
+<li><p>Select the <code>BarChart</code> and choose <code>barChart</code> as fx:id Property (in the <em>Code</em> group).</p>
+</li>
+<li><p>Select the <code>CategoryAxis</code> and choose <code>xAxis</code> as fx:id Property.<br><img src="/assets/java/javafx-8-tutorial-part6/category-axis.png" alt="Category Axis"></p>
+</li>
+<li><p>You may add a title to the <code>BarChart</code> (in <em>Properties</em> group) for further styling.</p>
+</li>
+</ol>
+<hr>
+<h2 id="connecting-the-view-controller-with-mainapp">Connecting the View/Controller with MainApp</h2>
+<p>We'll use the same mechanism for our <em>birthday statistics</em> that we used for the <em>edit person dialog</em>, a simple popup dialog.</p>
+<p>Add the following method to your <code>MainApp</code> class:</p>
+<pre class="prettyprint lang-java">
+/**
+ * Opens a dialog to show birthday statistics.
+ */
+public void showBirthdayStatistics() {
+    try {
+        // Load the fxml file and create a new stage for the popup.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/BirthdayStatistics.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Birthday Statistics");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        // Set the persons into the controller.
+        BirthdayStatisticsController controller = loader.getController();
+        controller.setPersonData(personData);
+
+        dialogStage.show();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</pre>
+
+<p>Everything is set up, but we don't have anything that actually calls the new <code>showBirthdayStatistics()</code> method. Luckily we already have a menu in <code>RootLayout.fxml</code> that can be used for this purpose.</p>
+<h3 id="show-birthday-statistics-menu">Show Birthday Statistics Menu</h3>
+<p>In your <code>RootLayoutController</code> add the following method which will handle user clicks on the <em>show birthday statistics</em> menu item: </p>
+<pre class="prettyprint lang-java">
+/**
+ * Opens the birthday statistics.
+ */
+@FXML
+private void handleShowBirthdayStatistics() {
+  mainApp.showBirthdayStatistics();
+}
+</pre>
+
+<p>Now, open the <code>RootLayout.fxml</code> file with Scene Builder. Create the <em>Statistics</em> <code>Menu</code> with a <em>Show Statistics</em> <code>MenuItem</code>:</p>
+<p><img src="/assets/java/javafx-8-tutorial-part6/show-statistics-menu.png" alt="Show Statistics Menu"></p>
+<p>Select the <em>Show Statistics</em> <code>MenuItem</code> and choose <code>handleShowBirthdayStatistics</code> for <code>On Action</code> (in <em>Code</em> group)   </p>
+<p><img src="/assets/java/javafx-8-tutorial-part6/show-statistics-on-action.png" alt="Show Statistics On Action"></p>
+<p>Go to Eclipse, refresh the project and <strong>test it</strong>.</p>
+<hr>
+<h2 id="more-information-on-javafx-charts">More Information on JavaFX Charts</h2>
+<p>A good place for more information is the official Oracle tutorial on <a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/charts.htm">Working with JavaFX Charts</a>.</p>
+<h3 id="what-s-next-">What's Next?</h3>
+<p>In the last tutorial <a href="/java/javafx-8-tutorial-part7/">Part 7</a> we will finally deploy our application (i.e. package and deliver the app to our users).</p>
+<h5 id="some-other-articles-you-might-find-interesting">Some other articles you might find interesting</h5>
+<ul>
+<li><a href="/blog/javafx-8-dialogs/">JavaFX Dialogs</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </section>
+          
+          <hr>
+          
+          <div class="hidden-xs hidden-sm">
+            
+  <div class="article-paging">
+    <ul class="pagination">
+      <li>
+      <a href="/java/javafx-8-tutorial-intro" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+  <li>
+      <a href="/java/javafx-8-tutorial-part1/" data-toggle="tooltip" title="Part 1: Scene Builder">1</a>
+      </li>
+  <li>
+      <a href="/java/javafx-8-tutorial-part2/" data-toggle="tooltip" title="Part 2: Model and TableView">2</a>
+      </li>
+  <li>
+      <a href="/java/javafx-8-tutorial-part3/" data-toggle="tooltip" title="Part 3: Interacting with the User">3</a>
+      </li>
+  <li>
+      <a href="/java/javafx-8-tutorial-part4/" data-toggle="tooltip" title="Part 4: CSS Styling">4</a>
+      </li>
+  <li>
+      <a href="/java/javafx-8-tutorial-part5/" data-toggle="tooltip" title="Part 5: Storing Data as XML">5</a>
+      </li>
+  <li class="active">
+      <a href="/java/javafx-8-tutorial-part6/" data-toggle="tooltip" title="Part 6: Statistics Chart">6</a>
+      </li>
+  <li>
+      <a href="/java/javafx-8-tutorial-part7/" data-toggle="tooltip" title="Part 7: Deployment">7</a>
+      </li>
+    
+    </ul>
+  </div>
+
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/java/javafx-8-tutorial-intro" class="list-group-item">
+        
+        Introduction
+      </a>
+      <a href="/java/javafx-8-tutorial-part1/" class="list-group-item">
+        
+        Part 1: Scene Builder
+      </a>
+      <a href="/java/javafx-8-tutorial-part2/" class="list-group-item">
+        
+        Part 2: Model and TableView
+      </a>
+      <a href="/java/javafx-8-tutorial-part3/" class="list-group-item">
+        
+        Part 3: Interacting with the User
+      </a>
+      <a href="/java/javafx-8-tutorial-part4/" class="list-group-item">
+        
+        Part 4: CSS Styling
+      </a>
+      <a href="/java/javafx-8-tutorial-part5/" class="list-group-item">
+        
+        Part 5: Storing Data as XML
+      </a>
+      <a href="/java/javafx-8-tutorial-part6/" class="list-group-item active">
+        
+        Part 6: Statistics Chart
+      </a>
+      <a href="/java/javafx-8-tutorial-part7/" class="list-group-item">
+        
+        Part 7: Deployment
+      </a>
+  </div>
+</div><div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Download Sources</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/assets/java/javafx-8-tutorial-part6/addressapp-jfx8-part-6.zip" class="list-group-item">
+        <i class="fa fa-fw fa-download"></i>
+        Source of Part 6 (Eclipse Project)
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/java/javafx-8-tutorial-part6/';
+    var disqus_url = 'http://code.makery.ch/java/javafx-8-tutorial-part6/';
+    var disqus_title = 'JavaFX 8 Tutorial - Part 6: Statistics Chart';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
