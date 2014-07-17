@@ -1,0 +1,171 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Drag and Drop without HTML5 - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="I gave up on HTML5 drag and drop and created a new Dart library without HTML5.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Drag and Drop without HTML5" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="I gave up on HTML5 drag and drop and created a new Dart library without HTML5." />
+    <meta property="og:url" content="http://code.makery.ch/blog/drag-and-drop-without-html5/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/14-07-17-drag-and-drop-without-html5/dnd-screenshot.png" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body >
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="main-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <header class="post-header">
+        <h1 class="post-title">Drag and Drop without HTML5</h1>
+        
+        
+        
+        <div class="post-date text-center">
+  <span>
+    Jul 17, 2014
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/dart/">Dart</a>
+      </span>
+    
+  
+</div>
+      </header>
+
+      <section class="post-content">
+        <p>I gave up on HTML5 drag and drop! A step I should have made a long time ago. Even though I read some reports of people struggling with it (like the <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">HTML5 drag and drop disaster</a> article) I thought I could takle it and make it work for the most recent browsers. That was at the beginning of last year. </p>
+<p>I had discovered Dart as my new favourite programming language so I set out to give it a try in Dart. The plan was to create a layer on top of the HTML5 drag and drop API to make it pleasant to work with. The problem was that the layer got bigger and bigger with all the quirks of the different browsers.</p>
+<p>The resulting <a href="https://github.com/marcojakob/dart-html5-dnd">HTML5 drag and drop library</a> wasn't all too bad and it did actually work quite well. I received feedback of people using it, some created issues and some even contributed bug fixes.</p>
+<p>There were some problems that just couldn't be solved (see below). And with all the strange and changing browser quirks it was just a pain to maintain.</p>
+<p>But, there's hope. I've started again and created a <strong>new</strong> <a href="/library/dart-drag-and-drop/">Dart drag and drop library</a> just without the HTML5 and it's much better! </p>
+<p><a href="/library/dart-drag-and-drop/"><img src="/assets/blog/14-07-17-drag-and-drop-without-html5/dnd-screenshot.png" alt="Drag and Drop"></a></p>
+<h2 id="why-you-shouldn-t-use-html5">Why You Shouldn't Use HTML5</h2>
+<p>I won't get into all the details here as others have <a href="https://www.inkling.com/engineering/native-html5-drag-drop/">greatly</a> and <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">amusingly</a> done so already. Here are the reasons in short:</p>
+<ul>
+<li><p><strong>Bad API Design.</strong> There are lot's of events you <em>have</em> to register for even though you don't actually need them. For example, you have to cancel the default actions in the <code>dragEnter</code> and <code>dragOver</code> events to actually get a <code>drop</code> event. This is just one of many problems that lead to a very bloated library of handling all the special cases.</p>
+</li>
+<li><p><strong>Inconsistent <code>dragEnter</code> and <code>dragLeave</code>.</strong> If you have child elements inside a dropzone it is very, very difficult to find out if the dropzone was actually left or if the user just entered a child element. This makes it hard to implement drag hover behavior in a reliable way.</p>
+</li>
+<li><p><strong>Inflexible drag images.</strong> This is a big one. By default, the browser takes a snapshot of the draggable element as visual feedback. The possibilities to change this image are very limited. At the start of the drag you can provide an image or a canvas element (and this isn't even supported by IE10). With some horrible(!) hacks I was able pass some custom HTML as drag image. But what's definitely not possible is to change this image during the drag operation.  </p>
+</li>
+<li><p><strong>No touch support.</strong> I know. I don't plan to go crazy with drag and drop on small mobile screens. But it would still be nice to get the same drag events on touch screens as when using a mouse and with HTML5 drag and drop this just isn't possible. Pointer events might help here in the future (or <a href="http://www.polymer-project.org/platform/pointer-events.html">present</a>).</p>
+</li>
+</ul>
+<p>There are more, but those are my main reasons for dropping HTML5. </p>
+<h2 id="when-you-should-use-html5">When You Should Use HTML5</h2>
+<p>It's broken and probably won't get fixed very soon, but there are some cases where you really need it:</p>
+<ul>
+<li><p><strong>Dragging from the desktop.</strong> Basically, if you're dragging something from the desktop into your browser you'll have to use HTML5 drag and drop.</p>
+</li>
+<li><p><strong>Dragging between web applications.</strong> If your dragging between different windows in the browser you might consider using HTML5 drag and drop. There are ways to do cross-document communication. I haven't tried, but both ways seem hard.</p>
+</li>
+</ul>
+<h2 id="the-new-library-and-more">The New Library and More</h2>
+<p>Have a look at the <a href="/library/dart-drag-and-drop/">demos of the new library</a> and let me know what you think and if it works for you.</p>
+<p><em>There is more to come soon:</em> Based on the drag and drop library I've created a Dart swiper library that works with mouse and touch. I will write when I have it cleaned up and ready to use. </p>
+
+
+      </section>
+      
+      
+      <hr>
+      <section class="post-comments">
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/drag-and-drop-without-html5/';
+    var disqus_url = 'http://code.makery.ch/blog/drag-and-drop-without-html5/';
+    var disqus_title = 'Drag and Drop without HTML5';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

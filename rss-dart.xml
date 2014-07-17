@@ -6,10 +6,20 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Sat, 12 Jul 2014 12:35:44 CET</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jul 2014 22:43:38 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
+<item>
+	<title><![CDATA[Drag and Drop without HTML5]]></title>
+	<link>http://code.makery.ch/blog/drag-and-drop-without-html5/</link>
+	<guid>/blog/drag-and-drop-without-html5/</guid>
+	
+	<category>Dart</category>
+	
+	<pubDate>Thu, 17 Jul 2014 00:00:00 CET</pubDate>
+	<description>I gave up on HTML5 drag and drop! A step I should have made a long time ago. Even though I read some reports of people struggling with it (like the HTML5 drag and drop disaster article) I thought I could takle it and make it work for the most...</description>
+</item>
 <item>
 	<title><![CDATA[Web und Mobile Apps Programmieren mit Dart]]></title>
 	<link>http://code.makery.ch/blog/web-und-mobile-mit-dart/</link>

@@ -1,0 +1,232 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dart Drag and Drop - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Dart Drag and Drop" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/dart-drag-and-drop/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row" class="article-row">
+        <div class="col-md-9 col-md-push-3">
+        
+          <header class="article-header">
+            <h1 class="article-title">Dart Drag and Drop</h1>
+            <div class="article-date">
+  Jul 17, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>There are a few options when you want to support drag and drop in your web application the most popular beeing jQuery UI <a href="http://jqueryui.com/draggable/">Draggable</a> and <a href="http://jqueryui.com/droppable/">Droppable</a>. I didn't like the dependency on jQuery and wanted something that would also support dragging on touch screens.</p>
+<p>My first attempt was to use the browser's native HTML5 Drag and Drop which you can find in my <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop library</a>. But <strong>I've given up on HTML5 Drag and Drop</strong> (and you should too)! You can read the details about <a href="/blog/drag-and-drop-without-html5/">why I decided against HTML5 Drag and Drop</a>.</p>
+<p>Now, let's take a look at the new approach that is much more convenient to work with. For details about how to use the library see <a href="http://pub.dartlang.org/packages/dnd">package on Pub</a> or <a href="https://github.com/marcojakob/dart-dnd">source on GitHub</a>. Following are some examples of what you can do with the Drag and Drop library.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="basic">Basic</h3>
+<p>This is a basic example using some draggable documents and a trash as a dropzone.</p>
+<p><a href="http://marcojakob.github.io/dart-dnd/basic/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/basic/" width="100%" height="330px"></iframe>
+
+<hr>
+<h3 id="custom-drag-avatar">Custom Drag Avatar</h3>
+<p>An example with a custom image as drag avatar. The image is changed depending on the remaining distance to the trash.</p>
+<p><a href="http://marcojakob.github.io/dart-dnd/custom-avatar/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/custom-avatar/" width="100%" height="330px"></iframe>
+
+<hr>
+<h3 id="drag-detection-only">Drag Detection Only</h3>
+<p>An example that uses only drag detection. Use this if you want to implement your own custom dragging behavior.</p>
+<p>Even without a drag avatar and <code>Dropzone</code> this helps quite a lot as it unifies touch and mouse dragging and provides convenient event streams. </p>
+<p><a href="http://marcojakob.github.io/dart-dnd/detection-only/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/detection-only/" width="100%" height="300px"></iframe>
+
+
+
+<h3 id="free-dragging">Free Dragging</h3>
+<p>This example shows how to freely drag and position an element. Instead of using a clone for the drag avatar, the original element itself is dragged.</p>
+<p><a href="http://marcojakob.github.io/dart-dnd/free-dragging/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/free-dragging/" width="100%" height="300px"></iframe>
+
+<hr>
+<h3 id="handle">Handle</h3>
+<p>You can use any subelement of a draggable as a drag handle. If a handle is specified, dragging can only be started on the handle.</p>
+<p><a href="http://marcojakob.github.io/dart-dnd/handle/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/handle/" width="100%" height="300px"></iframe>
+
+<hr>
+<h3 id="cancel">Cancel</h3>
+<p>Dragging can be prevented on specified elements. By default dragging is cancelled when the drag starts on form elements (<code>input</code>, <code>textarea</code>, <code>button</code>, <code>select</code>, and <code>option</code>).</p>
+<p><a href="http://marcojakob.github.io/dart-dnd/cancel/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/cancel/" width="100%" height="400px"></iframe>
+
+<hr>
+<h3 id="constrain-to-horizontal-or-vertical-axis">Constrain to Horizontal or Vertical Axis</h3>
+<p>Dragging can be constrained to horizontal or vertical only. </p>
+<p><em>A nice side effect: When a drag is constrained to either horizontal or vertical only, the other direction can be used for scrolling on touch devices.</em></p>
+<p><a href="http://marcojakob.github.io/dart-dnd/horizontal-only/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/horizontal-only/" width="100%" height="200px"></iframe>
+
+<hr>
+<h3 id="custom-acceptor">Custom Acceptor</h3>
+<p>You can use predefined or custom <code>Acceptor</code>s to determine which <code>Draggable</code>s are accepted by which <code>Dropzone</code>s.</p>
+<p><a href="http://marcojakob.github.io/dart-dnd/custom-acceptor/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/custom-acceptor/" width="100%" height="500px"></iframe>
+
+<hr>
+<h3 id="nested-dropzones">Nested Dropzones</h3>
+<p>An Example of how to drag over nested <code>Dropzone</code>s.</p>
+<p><em>Note: If dropped on an inner [Dropzone] the outer [Dropzone] will also receive the drop event.</em></p>
+<p><a href="http://marcojakob.github.io/dart-dnd/nested-dropzones/" target="_blank" class="pull-right"><i class="fa fa-external-link"></i> Open in separate tab</a></p>
+<h4 id="live-demo">Live demo</h4>
+<iframe src="http://marcojakob.github.io/dart-dnd/nested-dropzones/" width="100%" height="350px"></iframe>
+
+<hr>
+
+
+          </section>
+          
+          
+        </div>
+        
+        <div class="col-md-3 col-md-pull-9">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Source Code</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/dart-dnd" class="list-group-item">
+        <i class="fa fa-fw fa-github-alt"></i>
+        Source on GitHub
+      </a>
+      <a href="http://pub.dartlang.org/packages/dnd" class="list-group-item">
+        <i class="fa fa-fw fa-download"></i>
+        Package on Pub
+      </a>
+  </div>
+</div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <p>
+    Thanks for reading.<br />
+    Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+  <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+      <input type="hidden" value="1" name="embed"/>
+      <input type="submit" class="form-control btn-primary" value="Get updates" />
+    </div>
+  </form>
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/dart-drag-and-drop/';
+    var disqus_url = 'http://code.makery.ch/library/dart-drag-and-drop/';
+    var disqus_title = 'Dart Drag and Drop';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
