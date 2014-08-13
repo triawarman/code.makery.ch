@@ -1,0 +1,391 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML & CSS Tutorial - Teil 6: Bootstrap Framework verwenden - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/de/part6/" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Teil 6: Bootstrap Framework verwenden" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/de/part6/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <article class="row">
+        <div class="col-md-9 col-md-push-3">
+        
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Teil 6: Bootstrap Framework verwenden</h1>
+            <div class="article-date">
+  Aug 13, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>Bis hierhin haben wir alles HTML und CSS von Grund auf selber programmiert. Unser Projekt, das <em>Web Portfolio</em>, hat bereits einige HTML-Seiten mit etwas Inhalt, eine noch unfertige Navigation und etwas Styling.</p>
+<p>Ganz von Hand unser Projekt zu einem kompletten und modernen Webauftritt weiter zu entwickeln wäre <strong>eine riesige Menge Arbeit</strong>! Hier ist eine Liste mit den paar wichtigsten Aufgaben, die wir noch bewältigen müssten (keine Angst, es gibt eine Lösung!):</p>
+<ul>
+<li>Schriftart und Textgrösse für alle Überschriften und Abschnitte anpassen.</li>
+<li>Knöpfe, Textfelder, etc. schön gestalten (sehen standardmässig recht veraltet aus).</li>
+<li>Abstände definieren und Elemente auf der Seite positionieren (ist sehr schwierig).</li>
+<li>Einen einheitlichen Stil definieren, damit alle verschiedenen Browser in etwa das Gleiche anzeigen.</li>
+<li>Die Webseiten optimieren für verschiedene Bildschirmgrössen (Mobile, Tablet und Desktop)</li>
+<li>Und Einiges mehr...</li>
+</ul>
+<p>Zum Glück sind wir nicht alleine mit diesen Aufgaben - dies betrifft mehr oder weniger alle Webdesigner. Da es kaum sinnvoll ist, wenn alle immer wieder die gleichen Aufgaben lösen, sind sogenannte <em>Frameworks</em> entstanden, die diese Arbeit viel einfacher machen.</p>
+<p><img src="/assets/library/html-css/part6/bootstrap-logo.png" alt="Bootstrap Logo"></p>
+<p>Das bekannteste dieser <em>Frameworks</em> heisst <strong><em>Bootstrap</em></strong> und wurde von Twitter entwickelt. Das <em>Bootstrap-Framework</em> ist eine enorme erleichtert für uns als Webentwickler. Wir werden Schritt-für-Schritt entdecken, was wir mit <em>Bootstrap</em> tun können. Hier aber schon mal eine Kostprobe, welche Auswirkungen <em>Bootstrap</em> auf unser Projekt haben kann:</p>
+<p><img src="/assets/library/html-css/part6/bootstrap-effect-de.png" alt="Bootstrap Effekt"></p>
+<p>Mit <em>Bootstrap</em> sehen die Elemente nicht nur besser aus, sondern sie werden auch in allen Browsern praktisch gleich dargestellt.</p>
+<h2 id="bootstrap-einsetzen">Bootstrap einsetzen</h2>
+<h3 id="dokumentation">Dokumentation</h3>
+<p>Die offizielle Dokumentation von <a href="http://getbootstrap.com/">Bootstrap</a> ist auf Englisch. Es gibt aber auch eine <a href="http://holdirbootstrap.de/">Bootstrap Übersetzung auf Deutsch</a>. Sie sollten sich diese Webseiten irgendwo speichern, denn Sie werden dort immer wieder etwas nachschlagen müssen.</p>
+<h3 id="bootstrap-css-einbinden">Bootstrap-CSS einbinden</h3>
+<p>Der wichtigste Teil von Bootstrap besteht aus einem grossen CSS. Für etwas komplexere Elemente gibt es auch noch eine JavaScript-Datei. Wir werden aber für den Moment nur die CSS-Datei verwenden.</p>
+<p>Nun wollen wir das Bootstrap-CSS in unsere HTML-Seiten einbinden:</p>
+<ol>
+<li><p>Öffnen Sie die <a href="http://holdirbootstrap.de/los-gehts/">Bootstrap-Webseite</a>. Sie sehen dort, dass es mehrere Möglichkeiten gibt, Bootstrap herunterzuladen. Wir wählen die Variante über das <em>Bootstrap-CDN</em>. Damit müssen wir eigentlich gar nichts herunterladen, sondern nur im HTML angeben, wo die zusätzliche CSS-Datei liegt. Sie wird dann bei jedem Aufruf unserer Webseite direkt von den <em>CDN</em>-Servern heruntergeladen. <em>CDN</em>-Server sind Server, die über die ganze Welt verteilt sind, damit sie eine Datei sehr schnell ausliefern können. </p>
+</li>
+<li><p>Kopieren Sie also vom Abschnitt <em>Bootstrap-CDN</em> die erste Zeile mit dem <code>link</code>-Element.</p>
+</li>
+<li><p>Fügen Sie das <code>link</code>-Element in ihre HTML-Seiten ein. Wichtig ist, dass Sie es oberhalb von unserem <code>link</code>-Element für die <code>main.css</code>-Datei einfügen. Dadurch hat unser <code>main.css</code> eine höhere Wichtigkeit. Das bedeutet, dass wir CSS-Regeln aus dem Bootstrap-CSS mit unseren eigenen Regeln überschreiben können.</p>
+</li>
+</ol>
+<p>So sollte Ihr <code>head</code>-Bereich nun etwa aussehen (evtl. mit einer neueren Versionsnummer von Bootstrap):</p>
+<h5 id="index-html">index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;head>
+  &lt;meta charset="utf-8">
+  <mark>&lt;link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></mark>
+  &lt;link rel="stylesheet" href="main.css">
+  &lt;title>Web Portfolio von Marco&lt;/title>
+&lt;/head>
+</pre>
+
+<p><strong>Wichtig:</strong> <em>Fügen Sie, wie im Code oben, beim Link zum Bootstrap-CSS ein <code>http:</code> vorne dran. Ansonsten gibt es Probleme, wenn man die Webseite auf dem eigenen Computer aufrufen möchte (<a href="http://www.paulirish.com/2010/the-protocol-relative-url/">hier</a> können Sie lesen weshalb).</em></p>
+<h3 id="wie-funktioniert-bootstrap-">Wie funktioniert Bootstrap?</h3>
+<p>Manche <em>Styles</em> aus dem Bootstrap-CSS werden direkt auf HTML-Elemente angewandt. Schauen wir uns zum Beispiel einen Link in <em>Chrome DevTools</em> an, sehen wir, wie im Bootstrap-CSS die Link-Farbe geändert wird und mit <code>text-decoration</code> der Unterstrich entfernt wird:</p>
+<p><img src="/assets/library/html-css/part6/bootstrap-link-color.png" alt="Bootstrap Link-Farbe"></p>
+<p>Viele Bootstrap-Styles werden aber erst aktiviert, wenn man eine entsprechende <strong>CSS-Klasse</strong> hinzufügt. </p>
+<h3 id="bootstrap-klassen-verwenden">Bootstrap Klassen verwenden</h3>
+<p>Als Beispiel schauen wir uns an, wie mit Bootstrap die Textausrichtung geändert werden kann. In der Bootstrap-Dokumentation unter <a href="http://holdirbootstrap.de/css/#type-alignment">Ausrichtungsklassen</a> finden Sie eine kurze Anleitung zur Textausrichtung. </p>
+<p>Wenn wir also zum Beispiel den <code>h2</code>-Titel zentrieren möchten, müssten wir die Klasse <code>text-center</code> hinzufügen:</p>
+<pre class="prettyprint lang-html">
+&lt;h2 class="text-center">Willkommen!&lt;/h2>
+</pre>
+
+<p>Unser <code>h1</code>-Titel hat bereits ein <code>class</code>-Attribut. Wenn wir auch diesen Titel zentrieren möchten, können wir das <code>text-center</code> als zweite Klasse hinzufügen. <strong>Mehrere CSS-Klassen werden immer durch Leerschläge getrennt</strong>:</p>
+<pre class="prettyprint lang-html">
+&lt;h1 class="title text-center">Web Portfolio von Marco&lt;/h1>
+</pre>
+
+<p>Was aber, wenn wir einen grösseren Teil unserer Webseite zentrieren möchten? Da wäre es recht mühsam, wenn wir bei jedem Element einzeln ein <code>text-center</code> hinzufügen müssten. Es ist deshalb möglich, dass man auf einem übergeordneten Element eine Klasse hinzufügt. Viele CSS-Regeln können so auf alle Unterelemente weitervererbt werden.</p>
+<p>Wir könnten sogar auf dem <code>body</code>-Element eine <code>text-center</code>-Klasse hinzufügen. Damit wird gleich alles zentriert. Wenn man aber nur einen Teil zentrieren möchte, verwendet man oft sogenannte <code>div</code>-Elemente.</p>
+<h2 id="div-elemente">div-Elemente</h2>
+<p>Mit dem <code>&lt;div&gt;</code>-Element werden Elemente zu einem Block gruppiert. Für Bootstrap werden wir <code>div</code>-Elemente recht oft verwenden, um Styles auf einen ganzen Abschnitt der Seite anzuwenden.</p>
+<p>Eine zentrale CSS-Klasse in Bootstrap ist <code>container</code>. Der <code>container</code> passt den Inhalt automatisch an die Seitenbreite an und sorgt für einen sinnvollen Abstand zum Rand. Sie sollten auf Ihrer Bootstrap-Seite immer ein <code>div</code>-Element mit der <code>container</code>-Klasse haben. Lesen Sie die <a href="http://holdirbootstrap.de/css/#overview-container">Beschreibung von Container</a> auf der Bootstrap-Webseite.</p>
+<p>Wir packen nun den Hauptinhalt unserer Startseite zwischen ein <code>&lt;div class="container"&gt;</code> und <code>&lt;/div&gt;</code>. (Um die Navigation werden wir uns weiter unten noch speziell kümmern.)</p>
+<p>Der <code>body</code>-Teil Ihrer Hauptseite sollte nun wie folgt aussehen (achten Sie auf sauberes Einrücken der Elemente, damit der Code übersichtlich bleibt):</p>
+<h5 id="index-html">index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;body>
+  &lt;ul>
+    &lt;li>&lt;a href="./">Home&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="blog/">Blog&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="projekte/">Projekte&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="kontakt/">Kontakt&lt;/a>&lt;/li>
+  &lt;/ul>
+
+  <mark>&lt;div class="container"></mark>
+    &lt;h1 class="title">Web Portfolio von Marco&lt;/h1>
+
+    &lt;h2>Willkommen!&lt;/h2>
+
+    &lt;p>Schön, dass Sie auf meiner Seite vorbeischauen.&lt;/p>
+
+    &lt;p>Sie können sich ruhig etwas umsehen. Im Blog dokumentiere ich meine Erfahrungen beim Programmieren. Daneben können Sie auch meine Webprojekte anschauen. Viel Spass.&lt;/p>
+
+    &lt;img src="marco.jpg" alt="Foto von mir">
+
+    &lt;p>Marco :-)&lt;/p>
+  <mark>&lt;/div></mark>
+&lt;/body>
+</pre>
+
+<p>Im Browser beginnen die <code>div</code>-Elemente <strong>immer auf einer neuen Zeile</strong>. Weil sie die ganze verfügbare Breite in Anspruch nehmen nennt man solche Elemente auch <a href="https://developer.mozilla.org/de/docs/Web/HTML/Block-level_elemente">Block-Elemente</a>.</p>
+<h2 id="span-elemente">span-Elemente</h2>
+<p>Im Gegensatz zu <code>&lt;div&gt;</code>-Elementen beginnt ein <code>&lt;span&gt;</code>-Element nicht auf einer neuen Zeile. Ein <code>span</code>-Element ist nur so breit. Man nennt solche Elemente auch <a href="https://developer.mozilla.org/de/docs/Web/HTML/Inline_elemente">Inline-Elemente</a>, weil sie sich innerhalb einer Zeile einbetten.  </p>
+<p>Hier ein Beispiel, wie man ein <code>span</code>-Element einsetzen könnte: </p>
+<pre class="prettyprint lang-html">
+Ich möchte &lt;span class="text-warning">diese Worte&lt;/span> besonders hervorheben. 
+</pre>
+
+
+<h2 id="navigation-mit-bootstrap">Navigation mit Bootstrap</h2>
+<p>Nun wollen wir endlich die Navigation schöner gestalten mit der Hilfe von Bootstrap. In der Bootstrap-Dokumentation wird eine <a href="http://holdirbootstrap.de/komponenten/#navbar">Navbar</a> beschrieben. Das Beispiel dort ist jedoch sehr komplex und beinhaltet Menus, Textfelder und Knöpfe. Wir wählen eine etwas einfachere Variante.</p>
+<p>Programmieren sie die folgenden Schritte. Am besten probieren Sie nach jedem Schritt aus, was die Auswirkungen sind.</p>
+<ol>
+<li><p>Fügen Sie dem <code>ul</code>-Element Ihrer Navigation die zwei Klassen <code>nav</code> und <code>navbar-nav</code> hinzu:<br><code>&lt;ul class="nav navbar-nav"&gt;</code></p>
+</li>
+<li><p>Packen Sie die gesamte Navigation in ein <code>div</code> mit der Klasse <code>container</code>. Dies bewirkt, dass die Abstände vom Rand gleich sind wie bei unserem Hauptinhalt. Vergessen Sie nicht das schliessende Tag <code>&lt;/div&gt;</code>.<br><code>&lt;div class="container"&gt;</code></p>
+</li>
+<li><p>Umgeben Sie das Ganze mit einem weiteren <code>div</code>. Diesmal brauchen wir die drei Klassen <code>navbar</code>, <code>navbar-default</code> und <code>navbar-static-top</code>. Diese Klassen bewirken, dass ein Balken oben am Rand dargestellt wird. Vergessen Sie auch hier nicht das schliessende Tag <code>&lt;/div&gt;</code>.<br><code>&lt;div class="navbar navbar-default navbar-static-top"&gt;</code></p>
+</li>
+<li><p>Fügen Sie beim <code>li</code>-Elemente von <em>Home</em> eine Klasse <code>active</code> hinzu. Dies bewirkt, dass der <em>Home</em>-Link speziell hervorgehoben wird. Damit merkt der Besucher, auf welcher Seite er sich im Moment befindet.<br><code>&lt;li class="active"&gt;&lt;a href="./"&gt;Home&lt;/a&gt;&lt;/li&gt;</code></p>
+</li>
+</ol>
+<p>So sieht der Code für die Navigation nun aus (achten Sie auf korrektes Einrücken!):</p>
+<h5 id="index-html">index.html</h5>
+<pre class="prettyprint lang-html">
+<mark>&lt;div class="navbar navbar-default navbar-static-top"></mark>
+  <mark>&lt;div class="container"></mark>
+    &lt;ul <mark>class="nav navbar-nav"></mark>
+      &lt;li <mark>class="active"</mark>>&lt;a href="./">Home&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="blog/">Blog&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="projekte/">Projekte&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="kontakt/">Kontakt&lt;/a>&lt;/li>
+    &lt;/ul>
+  <mark>&lt;/div></mark>
+<mark>&lt;/div></mark>
+</pre>
+
+<p>Und so wird es dargestellt:</p>
+<p><img src="/assets/library/html-css/part6/navbar-default-de.png" alt="Navbar"></p>
+<h3 id="dunkle-variante">Dunkle Variante</h3>
+<p>Es gibt eine zweite Variante der Bootstrap-Navigation:</p>
+<p><img src="/assets/library/html-css/part6/navbar-inverse-de.png" alt="Navbar Inverse"></p>
+<p>Um diese zu aktivieren, ändern Sie die Klasse <code>navbar-default</code> in <code>navbar-inverse</code> um.</p>
+<h2 id="optimieren-f-r-mobile">Optimieren für Mobile</h2>
+<p>Mit Bootstrap und der Navigation sieht die Webseite in einem Desktop-Browser schon recht ansprechend aus. Versuchen Sie mal, die Webseite auf einem Mobiltelefon aufzurufen (dazu müssen Sie die Seite <a href="/library/html-css/de/part2/">veröffentlichen</a>).</p>
+<p>Sie werden feststellen, dass die Seite entweder abgeschnitten oder die Navigation viel zu klein dargestellt wird:</p>
+<p><img src="/assets/library/html-css/part6/mobile-without-viewport-de.png" alt="Mobile ohne Viewport"></p>
+<p>Mit einer <code>meta</code>-Information im <code>head</code>-Bereich können wir den mobilen Browsern mitteilen, dass sie die Seite vernünftig anzeigen sollen:</p>
+<pre class="prettyprint lang-html">
+&lt;head>
+  &lt;meta charset="utf-8">
+  <mark>&lt;meta name="viewport" content="width=device-width, initial-scale=1"></mark>
+  &lt;link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  &lt;link rel="stylesheet" href="main.css">
+  &lt;title>Web Portfolio von Marco&lt;/title>
+&lt;/head>
+</pre>
+
+<p>Nun sollte es etwa so aussehen:</p>
+<p><img src="/assets/library/html-css/part6/mobile-with-viewport-de.png" alt="Mobile mit Viewport"></p>
+<p>Bootstrap wurde so entworfen, dass es auf <a href="http://holdirbootstrap.de/css/#overview-mobile">mobilen Bilschirmen gut funktioniert</a>. Im Screenshot oben sehen Sie, wie die Navigation automatisch untereinander angezeigt wird, sobald die Bildschirmbreite zu klein wird. Dies können Sie auch ausprobieren, indem Sie einfach das Browserfenster verkleinern.</p>
+<p>Ein Webdesign, welches auf die Bildschirmgrösse reagiert, nennt man <a href="http://de.wikipedia.org/wiki/Responsive_Webdesign">Responsive Webdesign</a>.</p>
+<h2 id="bootstrap-und-navigation-auf-allen-seiten">Bootstrap und Navigation auf allen Seiten</h2>
+<p>Bis jetzt haben wir Bootstrap und die Navigation nur auf unserer Startseite eingefügt. Das Ziel ist natürlich, dass diese auf allen Seiten eingebunden sind.</p>
+<p>Mit kleinen Anpassung können wir den Code aus der Startseite in alle anderen Seiten (Blog, Blogeinträge, Kontakt, etc.) kopieren:</p>
+<h4 id="1-viewport-und-bootstrap-css-einf-gen">1. Viewport und Bootstrap-CSS einfügen</h4>
+<p>Kopieren Sie aus dem <code>head</code>-Bereich der Startseite die Zeile mit dem <code>viewport</code> und die Zeile mit dem Bootstrap CSS und fügen Sie diese in alle anderen Seiten ein:</p>
+<pre class="prettyprint lang-html">
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+  &lt;link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</pre>
+
+
+<h4 id="2-navigation-einf-gen">2. Navigation einfügen</h4>
+<p>Kopieren Sie den gesamten Navigationsbereich aus der Startseite und fügen Sie diese in alle anderen Seiten ein. Achten Sie darauf, dass Sie jeweils beim aktuellen <code>li</code>-Element die <code>active</code>-Klasse hinzufügen:   </p>
+<pre class="prettyprint lang-html">
+&lt;div class="navbar navbar-default navbar-static-top">
+  &lt;div class="container">
+    &lt;ul class="nav navbar-nav">
+      &lt;li>&lt;a <mark>href="../"</mark>>Home&lt;/a>&lt;/li>
+      &lt;li <mark>class="active"</mark>>&lt;a <mark>href="../blog/"</mark>>Blog&lt;/a>&lt;/li>
+      &lt;li>&lt;a <mark>href="../projekte/"</mark>>Projekte&lt;/a>&lt;/li>
+      &lt;li>&lt;a <mark>href="../kontakt/"</mark>>Kontakt&lt;/a>&lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div>
+</pre>
+
+<div class="alert alert-info">
+<p>
+<strong>Achtung:</strong> Links im Unterverzeichnis müssen mit <code>../</code> ergänzt werden, damit sie auf das übergeordnete Verzeichnis zeigen.
+</p>
+<p>
+Da die Blogeinträge noch ein Unterverzeichnis tiefer liegen, müssen die Links dort <code>../../</code> enthalten, um auf das oberste Verzeichnis zu zeigen.
+</p>
+</div>
+
+
+<h4 id="3-container-div-einf-gen">3. Container-div einfügen</h4>
+<p>Wenn Sie die Unterseiten im Browser öffnen, werden Sie merken, dass die Seitenränder noch nicht korrekt sind. Um das zu korrigieren, müssen wir den gesamten Inhalt (alles unterhalb der Navigation) mit einem <code>div</code> umgeben. Dieses <code>div</code> muss die Klasse <code>container</code> haben. Korrigieren Sie das in allen Unterseiten: </p>
+<pre class="prettyprint lang-html">
+[... Navigation ...]
+
+<mark>&lt;div class="container"></mark>
+  [... Seiteninhalt ...]
+<mark>&lt;/div></mark>
+</pre>
+
+
+<h4 id="4-testen">4. Testen</h4>
+<p>Nun ist es wichtig, dass Sie alle Seiten aufrufen und die <strong>Links sorgfältig testen</strong>!</p>
+<p>Schauen Sie als nächstes Ihren Code an und stellen Sie sicher, dass das <strong>HTML schön aufgeräumt</strong> ist. Immer, wenn ein HTML-Tag geöffnet wird, dann sollte die nächste Zeile eingerückt werden. Das schliessende Tag wird dann wieder nach links gerückt.</p>
+
+
+          </section>
+          
+          <hr>
+          
+  <nav class="hidden-xs hidden-sm">
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part1/" data-toggle="tooltip" title="Teil 1: Unsere erste Webseite">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part2/" data-toggle="tooltip" title="Teil 2: Webseite veröffentlichen">2</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part3/" data-toggle="tooltip" title="Teil 3: Einführung in CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part4/" data-toggle="tooltip" title="Teil 4: Entwicklertools im Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part5/" data-toggle="tooltip" title="Teil 5: Navigieren zwischen Seiten">5</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/de/part6/" data-toggle="tooltip" title="Teil 6: Bootstrap Framework verwenden">6</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+        <aside class="col-md-3 col-md-pull-9">
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Teile dieser Serie</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="/library/html-css/de/" class="list-group-item">
+          Einleitung</a>
+        <a href="/library/html-css/de/part1/" class="list-group-item">
+          Teil 1: Unsere erste Webseite</a>
+        <a href="/library/html-css/de/part2/" class="list-group-item">
+          Teil 2: Webseite veröffentlichen</a>
+        <a href="/library/html-css/de/part3/" class="list-group-item">
+          Teil 3: Einführung in CSS</a>
+        <a href="/library/html-css/de/part4/" class="list-group-item">
+          Teil 4: Entwicklertools im Browser</a>
+        <a href="/library/html-css/de/part5/" class="list-group-item">
+          Teil 5: Navigieren zwischen Seiten</a>
+        <a href="/library/html-css/de/part6/" class="list-group-item active">
+          Teil 6: Bootstrap Framework verwenden</a>
+    </div>
+  </div>
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Downloads</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="https://github.com/marcojakob/html-css-tutorial/releases/download/v0.1/portfolio-de-part6.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>          Portfolio Teil 6</a>
+    </div>
+  </div>
+</aside>
+
+      </article>
+      
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+    
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

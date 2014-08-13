@@ -1,0 +1,437 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML & CSS Tutorial - Teil 3: Einführung in CSS - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/de/part3/" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Teil 3: Einführung in CSS" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/de/part3/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <article class="row">
+        <div class="col-md-9 col-md-push-3">
+        
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Teil 3: Einführung in CSS</h1>
+            <div class="article-date">
+  Aug 13, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>Vorhin haben Sie eine erste Webseite erstellt und veröffentlicht. Zugegeben, die Webseite hat noch wenig Inhalt und sieht nicht besonders ansprechend aus. Das wollen wir jetzt ändern. In diesem Teil lernen Sie, wie Sie mit CSS die Seite gestalten können. Sptäer, im <a href="/library/html-css/de/part5/">Teil 5</a> werden wir mit der Hilfe von einem Framework noch mehr Style in die Webseite bringen. </p>
+<h2 id="struktur-und-style">Struktur und Style</h2>
+<p>Nochmals zur Erinnerung: <abbr data-toggle="tooltip" title="Hypertext Markup Language">HTML</abbr> beschreibt die Struktur einer Webseite während <abbr data-toggle="tooltip" title="Cascading Style Sheet">CSS</abbr> die visuelle Erscheinung definiert. </p>
+<p>Die Aufteilung von Struktur und Style hat viele Vorteile, wie wir noch sehen werden. Es ist nicht zwingend, aber meistens schreibt man HTML und CSS auch in separate Dateien.</p>
+<h2 id="eine-css-datei-einbinden">Eine CSS-Datei einbinden</h2>
+<p>Eine CSS-Datei ist eine ganz normale Textdatei mit der Endung <code>.css</code>, die wir mit der HTML-Datei verknüpfen werden:</p>
+<p>Erstellen Sie also in Ihrem <em>Portfolio</em>-Ordner eine neue Datei. Wir geben der Datei den Namen <code>main.css</code>.</p>
+<p><img src="/assets/library/html-css/part3/new-css-file-de.png" alt="Neue CSS-Datei"></p>
+<p>Nun wechseln wir zur <code>index.html</code>-Datei und fügen innerhalb des <code>&lt;head&gt;</code>-Elements ein <code>&lt;link&gt;</code>-Element hinzu. Mit dem <code>&lt;link&gt;</code>-Element können wir der HTML-Seite mitteilen, dass sie die CSS-Datei laden soll:</p>
+<h5 id="link-von-html-zur-css-datei">Link von HTML zur CSS-Datei</h5>
+<pre class="prettyprint lang-html">
+&lt;link rel="stylesheet" href="main.css">
+</pre>
+
+<p>Fügen Sie dieses Element im <code>&lt;head&gt;</code>-Bereich ein. Dann sollte Ihr Code etwa so aussehen:</p>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    <mark>&lt;link rel="stylesheet" href="main.css"></mark>
+    &lt;title>Web Portfolio von Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Web Portfolio von Marco&lt;/h1>
+
+    &lt;h2>Willkommen!&lt;/h2>
+
+    &lt;p>Schön, dass Sie auf meiner Seite vorbeischauen.&lt;/p>
+
+    &lt;p>Sie können sich ruhig etwas umsehen. Im Blog dokumentiere ich meine Erfahrungen beim Programmieren. Daneben können Sie auch meine Webprojekte anschauen. Viel Spass.&lt;/p>
+
+    &lt;img src="marco.jpg" alt="Foto von mir">
+
+    &lt;p>Marco :-)&lt;/p>
+  &lt;/body>
+&lt;/html>
+</pre>
+
+<div class="alert alert-info">
+<strong>Wichtig:</strong> Damit das CSS gefunden wird, muss das <code>href</code>-Attribut genau auf die Datei verweisen. Das heisst auch, falls die Datei in einem Unterordner liegen würde, müsste dieser auch angegeben werden, also zum Beispiel <code>href="unterordner/main.css"</code>. Mehr dazu siehe unter <a class="alert-link" href="/library/html-css/de/part1/#relative-und-absolute-urls">relative und absolute URLs</a>.
+</div>
+
+
+<h2 id="farben">Farben</h2>
+<p>Bis hierhin war die CSS-Datei natürlich noch leer. Nun wollen wir unsere ersten Zeilen CSS schreiben. Im CSS schreibt man sogenannte <em>CSS-Regeln</em>. Mit einer <em>CSS-Regel</em> können wir angeben, was mit einem bestimmten Teil im HTML geschehen soll.</p>
+<p>Als Beispiel werden wir die Hintergrundfarbe und die Textfarbe der zweiten Überschrift verändern. Schreiben Sie folgende Zeilen in Ihre CSS-Datei.</p>
+<h5 id="main-css">main.css</h5>
+<pre class="prettyprint lang-css">
+h2 {
+  background-color: #607d8b;
+  color: #ffffff;
+}
+</pre>
+
+<p>Das Resultat sollte etwa so aussehen:</p>
+<p><img src="/assets/library/html-css/part3/changed-color-de.png" alt="Geänderte Farben"></p>
+<h2 id="farbcodes">Farbcodes</h2>
+<p>Farben werden auf einem Coumputerbilschirm durch eine Mischung verschiedener Anteile von Rot, Grün und Blau (RGB) erzeugt. Die Kombination aus Rot, Grün und Blau kann in CSS auf zwei Arten ausgedrückt werden: Als <em>RGB-Werte</em> oder als <em>Hex-Codes</em> (Hexadezimalzahlen). Die Notation mit <em>Hex-Codes</em> ist die gängiste.</p>
+<p>Schauen wir uns das Beispiel mit der blau-grauen Hintergrundfarbe von oben an:</p>
+<ul>
+<li>Als Hex-Code: <code>#607d8b</code></li>
+<li>Als RGB-Werte: <code>rgb(96, 125, 139)</code></li>
+</ul>
+<p>Bei den <em>Hex-Codes</em> stehen die ersten beiden Ziffern für den Rotanteil, die mittleren für den Grünanteil und die letzten beiden Ziffern für den Blauanteil.</p>
+<h3 id="mit-farbcodes-arbeiten">Mit Farbcodes arbeiten</h3>
+<p>Das Ausdrücken von Farben mit Hexadezimalzahlen ist sehr beliebt, da man damit sehr viele Farbkombinationen ausdrücken kann (über 16.7 Millionen). Es ist aber etwas schwierig mit ihnen zu arbeiten. Meistens braucht man deshalb einen Farbwähler.</p>
+<p>Falls Sie als Editor den <a href="http://brackets.io/">Brackets</a> verwenden, können Sie den Farbwähler gleich in der CSS-Datei aufrufen. Klicken Sie dazu mit der rechten Maustaste auf den Farbcode und wählen <em>Schnell bearbeiten</em>. Oder drücken Sie die Tastenkombination <code>Ctrl+E</code>.</p>
+<p><img src="/assets/library/html-css/part3/quick-edit-de.png" alt="Schnell bearbeiten"></p>
+<p>Dann erscheint sofort ein Farbwähler, wo man bequem die Farbe auswählen kann. Sie können mit den drei Knöpfen auch zwischen den verschiedenen Notationsformen umschalten.</p>
+<p><img src="/assets/library/html-css/part3/color-chooser-de.png" alt="Farbwähler"></p>
+<h3 id="online-farbw-hler">Online Farbwähler</h3>
+<p>Falls Sie nicht mit dem Brackets-Editor und keinen Farbwähler integriert haben, können sie auf zahlreiche Online-Farbwähler zurückgreifen:</p>
+<ul>
+<li><a href="http://html-color-codes.info/">HTML Color Codes</a></li>
+<li><a href="http://www.colorpicker.com/">ColorPicker</a></li>
+<li>Und zahlreiche mehr...</li>
+</ul>
+<h3 id="online-farbpaletten">Online Farbpaletten</h3>
+<p>Meistens braucht man für eine Webseite mehr als nur eine Farbe, eine sogenannte Farbpalette. Nur mit einem einfachen Farbwähler ist es aber recht schwierig, Farben auszuwählen, die gut zueinander passen.</p>
+<p>Dazu gibt es verschiedene Hilfen, die das finden einer Farbpalette erleichtern. Hier ein paar Beispiele:</p>
+<h5 id="fertige-farbpaletten">Fertige Farbpaletten</h5>
+<ul>
+<li><a href="http://www.colourlovers.com/palettes">Colour Lovers</a></li>
+<li><a href="http://design-seeds.com/">Design Seeds</a></li>
+<li><a href="http://www.google.com/design/spec/style/color.html">Google Color Palette</a></li>
+</ul>
+<h5 id="generatoren-zum-erstellen-von-farbpaletten">Generatoren zum Erstellen von Farbpaletten</h5>
+<ul>
+<li><a href="https://kuler.adobe.com">Kuler</a> - eine Farbregel definieren, am Regler mit dem kleinen Pfeil ziehen und schon hat man fünf Farben, die zusammen passen.</li>
+<li><a href="http://www.paletton.com">Paletton</a> - ein ausgeklügleter Regler zum Finden von Farbpaletten.</li>
+<li><a href="http://colourco.de/">Colourco.de</a> - ein weiterer, praktischer Paletten-Generator</li>
+</ul>
+<h2 id="css-regeln">CSS-Regeln</h2>
+<p>Sie haben nun bereits gesehen, wie CSS-Regeln die Farbe eines HTML-Elementes verändern können. Nun schauen wir uns etwas genauer an, wie CSS-Regeln aufgebaut sind werden.</p>
+<p>Eine CSS-Regel besteht aus drei Elementen, einem <em>Selektor</em>, einer <em>Eigenschaft</em> und einem <em>Wert</em>:</p>
+<p><img src="/assets/library/html-css/part3/css-rule-de.png" alt="CSS-Regel"></p>
+<p>Diese Regel besagt, dass alle <code>&lt;h2&gt;</code>-Elemente eine Hintergrundfarbe von <code>#607d8b</code> erhalten sollen.</p>
+<h3 id="css-selektoren">CSS-Selektoren</h3>
+<p>Selektoren geben an, auf welches HTML-Element eine CSS-Regel angewandt werden soll. </p>
+<div class="alert alert-info">
+<strong>Hinweis:</strong> Wir werden hier nur die wichtigsten Selektoren kennen lernen. Damit kommt man schon sehr weit. Für eine ausführlichere Übersicht suchen Sie im Internet nach "CSS Selektoren".
+</div>
+
+<h4 id="typselektor">Typselektor</h4>
+<p>Der Typselektor wird angewandt auf alle Elemente mit dem entsprechenden Tag. 
+Wenn wir als Beispiel alle <code>p</code>-Elemente ansprechen wollten, würde dies so aussehen:</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+p {
+  ...
+}
+</pre>
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p>...&lt;/p>
+&lt;p>...&lt;/p>
+</pre>
+
+
+<h4 id="klassenselektor">Klassenselektor</h4>
+<p>Klassenselektoren werden sehr häufig verwendet. Dazu fügt man dem HTML-Element ein Attribut <code>class</code> hinzu und gibt ihm einen beliebigen Wert. In CSS kann man nun alle Elemente ansprechen, die das gleiche <code>class</code>-Attribut haben. Man macht dies mit einem <strong>Punkt</strong>, gefolgt vom <code>class</code>-Attribut.</p>
+<p>Im folgenden Beispiel gilt der Klassenselektor für alle Elemente, welche ein <code>class</code>-Attribut mit dem Wert <code>highlight</code> haben:</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+.highlight {
+  ...
+}
+</pre>
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p class="highlight">...&lt;/p>
+&lt;p>...&lt;/p>
+&lt;p class="highlight new">...&lt;/p>
+</pre>
+
+<p>In diesem HTML würde die CSS-Regel auf das erste und das dritte <code>p</code>-Element angewandt werden. Wie sie sehen, ist es auch möglich, dass ein Element mehrere Klassen besitzt (<code>highlight</code> und <code>new</code>).</p>
+<h4 id="id-selektor">ID-Selektor</h4>
+<p>Der ID-Selektor ist sehr ähnlich wie der Klassenselektor. Er wird auf alle HTML-Elemente angewandt, die ein Attribut <code>id</code> mit einem entsprechenden Wert haben. Anstelle des Punktes verwendet man für ID-Selektoren ein <strong>Rautezeichen</strong> (<code>#</code>).</p>
+<p>Der wichtige Unterschied zum Klassenselektor besteht darin, dass ID-Selektoren <strong>nur einmal</strong> pro HTML-Seite vorkommen sollten, während eine Klasse für beliebig viele Elemente verwendet werden kann.</p>
+<p>Im folgenden Beispiel gilt der ID-Selektor für das Element, welches ein <code>id</code>-Attribut mit dem Wert <code>navigation</code> besitzt:</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+#navigation {
+  ...
+}
+</pre>
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p id="navigation">...&lt;/p>
+&lt;p>...&lt;/p>
+</pre>
+
+
+<h4 id="nachkommenselektor">Nachkommenselektor</h4>
+<p>Mit einem Nachkommenselektor kann man Elemente noch etwas genauer auswählen, indem man mehrere Typ-, Klassen- oder ID-Selektoren kombiniert.</p>
+<p>Schauen wir uns gleich ein Beispiel an, bevor ich etwas näher darauf eingehe:</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+p a {
+  ...
+}
+</pre>
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p>
+  &lt;a href="http://code.makery.ch">Meine Webseite&lt;/a>
+&lt;/p>
+&lt;a href="http://www.example.com">Example Webseite&lt;/a>
+</pre>
+
+<p>Der Nachkommenselektor <code>p a</code> wählt alle <code>a</code>-Elemente aus, die irgendwo innerhalb eines <code>p</code>-Elementes vorkommen. In unserem Beispiel würde die CSS-Regel auf <em>Meine Webseite</em> zutreffen, jedoch nicht auf <em>Example Webseite</em>. </p>
+<div class="alert alert-info">
+<strong>Wichtig:</strong> Das <code>a</code>-Element muss nicht unbedingt direkt dem <code>p</code>-Element untergeordnet sein. Der Nachkommenselektor trifft auf irgend ein <em>Nachkomme</em> zu. Für den anderen Fall gibt es den Kindselektor (<code>&gt;</code>), auf den ich jedoch hier nicht eingehen werde.
+</div>
+
+
+<h3 id="css-eigenschaften">CSS-Eigenschaften</h3>
+<p>Durch CSS-Regeln wird festgelegt, wie HTML-Elemente angezeigt werden sollen. Es gibt zahlreiche Eigenschaften, die in CSS definiert werden können. Zwei davon haben wir bereits kennen gelernt, <code>background-color</code> und <code>color</code>.</p>
+<p>Ich verzichte darauf, hier weitere der vielen CSS-Eigenschaften zu erklären. Aber ich möchte Ihnen aufzeigen, wie Sie sich Schritt für Schritt mehr CSS-Wissen aneignen können. Es macht mehr Sinn, wenn Sie in dem Moment etwas lernen, wenn Sie auch wirklich ein konkretes Bedürfnis haben. Es gibt zwei Szenarien, wie sie später vorgehen können:</p>
+<h4 id="wenn-sie-eine-css-eigenschaft-sehen-die-sie-nicht-kennen-">Wenn Sie eine CSS-Eigenschaft sehen, die Sie nicht kennen:</h4>
+<p>Suchen Sie im Internet nach der Eigenschaft und zwar zusammen mit dem Stichwort <code>CSS</code>. Versuchen Sie es gleich einmal, indem Sie versuchen herauszufinden, was die CSS-Regel bewirkt:</p>
+<pre class="prettyprint lang-css">
+padding: 5px;
+</pre>
+
+<p>Verwenden Sie als Suchbegriff <code>CSS padding</code>. Geben Sie sich nicht mit dem ersten Resultat zufrieden, sondern öffnen Sie ungefähr die ersten 5 oder mehr der gefundenen Seiten. Entscheiden Sie dann, welche Seite Sie genauer lesen wollen.</p>
+<p>Versuchen Sie auch mal diese Regel auf das <code>h2</code>-Element in Ihrem Portfolio-Projekt anzuwenden.</p>
+<h4 id="wenn-sie-etwas-ver-ndern-wollen-aber-die-css-eigenschaft-dazu-nicht-kennen-">Wenn Sie etwas verändern wollen, aber die CSS-Eigenschaft dazu nicht kennen:</h4>
+<p>Suchen Sie im Internet nach dem, was Sie tun wollen zusammen mit dem Stichwort <code>CSS</code>. Evtl. werden Sie mehrere Versuche brauchen, bis Sie das gefunden haben, wonach Sie gesucht haben.</p>
+<p>Ein Beispiel: Angenommen, Sie wollen die Textgrösse verändern. Geben Sie in diesem Fall <code>Textgrössse CSS</code> als Suchbegriffe ein. Auch hier wieder darauf achten, dass Sie nicht nur das erste Suchresultat in Betracht ziehen.</p>
+<h3 id="css-werte">CSS-Werte</h3>
+<p>Wir haben bereits ein paar Werte von CSS-Eigenschaften kennen gelernt: Zum Beispiel Hexadezimalwerte wie <code>#ffffff</code> oder Grössenangaben wie <code>5px</code>. Je nach CSS-Eigenschaft muss man manchmal klar definierte Wörter angeben wie zum Beispiel <code>left</code> oder <code>right</code> für die Ausrichtung von Text.</p>
+<p>Eine der wichtigsten CSS-Werte sind Grössenangaben. Deshalb schauen wir die etwas genauer an:</p>
+<p>Die häufigste Form ist die Angabe in <strong>Pixel</strong>. Pixel werden als <code>px</code> abgekürzt:</p>
+<pre class="prettyprint lang-css">
+p {
+  font-size: 16px;
+}
+</pre>
+
+<p>Eine andere Möglichkeit ist die Angabe in <strong>Prozent</strong>. Prozentangaben stehen immer im Verhältnis zu einem übergeordneten Element. Wenn also im folgenden Beispiel das übergeordnete Element von <code>h2</code> die ganze Bildschirmbreite umfasst, dann bedeutet das, dass <code>h2</code> nun 60% davon breit sein wird.</p>
+<pre class="prettyprint lang-css">
+h2 {
+  width: 60%;
+}
+</pre>
+
+<p>Eine weitere beliebte Art für die Grössenangabe sind <code>em</code>. Ein <code>em</code> ist immer relativ zur Schriftgrösse. Das heisst, wenn man die Schriftgrösse verändert, dann verändert sich ein <code>em</code> mit.</p>
+<p>Als Beispiel: Wenn ein Element eine Schriftgrösse von <code>20px</code> hat und eine Breite von <code>5em</code>, dann wäre die Breite des Elementes <code>100px</code>.</p>
+<pre class="prettyprint lang-css">
+h2 {
+  font-size: 20px;
+  width: 5em;
+}
+</pre>
+
+
+<h2 id="beispiel-klassenselektor-im-portfolio">Beispiel Klassenselektor im Portfolio</h2>
+<p>Nehmen wir mal an, wir möchten die Hauptüberschrift "Web Portfolio von Marco" etwas vergrössern. Das wäre natürlich möglich, indem wir eine CSS-Regel für das Element <code>h1</code> definieren würden. Etwa so:</p>
+<pre class="prettyprint lang-css">
+h1 {
+  font-size: 65px;
+}
+</pre>
+
+<p>Das Problem dabei ist, dass nun <strong>alle</strong> <code>h1</code>-Elemente eine grössere Schrift haben werden. Wir möchten jedoch nur diese erste Überschrift vergrössern. Dies können wir erreichen mit einem <strong>Klassenselektor</strong>.</p>
+<p>Dazu fügen wir zuerst dem <code>h1</code>-Element im HTML eine Klasse hinzu. Wir können irgend einen Wert für die Klasse vergeben, ich wähle hier <code>title</code>.</p>
+<pre class="prettyprint lang-html">
+&lt;h1 class="title">Web Portfolio von Marco&lt;/h1>
+</pre>
+
+<p>Dann können wir diesen einen Titel im CSS ansprechen mit <code>.title</code>. Die CSS-Regel ist jetzt:</p>
+<pre class="prettyprint lang-css">
+.title {
+  font-size: 65px;
+}
+</pre>
+
+<p>Wenn alles geklappt hat, dann sieht das Portfolio nun etwa so aus: </p>
+<p><img src="/assets/library/html-css/part3/portfolio-de.png" alt="Portfolio"></p>
+<hr>
+<p>&rarr; Weiter geht's mit <a href="/library/html-css/de/part4/">Teil 4: Entwicklertools im Browser</a>.</p>
+
+
+          </section>
+          
+          <hr>
+          
+  <nav class="hidden-xs hidden-sm">
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part1/" data-toggle="tooltip" title="Teil 1: Unsere erste Webseite">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part2/" data-toggle="tooltip" title="Teil 2: Webseite veröffentlichen">2</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/de/part3/" data-toggle="tooltip" title="Teil 3: Einführung in CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part4/" data-toggle="tooltip" title="Teil 4: Entwicklertools im Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part5/" data-toggle="tooltip" title="Teil 5: Navigieren zwischen Seiten">5</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part6/" data-toggle="tooltip" title="Teil 6: Bootstrap Framework verwenden">6</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+        <aside class="col-md-3 col-md-pull-9">
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Teile dieser Serie</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="/library/html-css/de/" class="list-group-item">
+          Einleitung</a>
+        <a href="/library/html-css/de/part1/" class="list-group-item">
+          Teil 1: Unsere erste Webseite</a>
+        <a href="/library/html-css/de/part2/" class="list-group-item">
+          Teil 2: Webseite veröffentlichen</a>
+        <a href="/library/html-css/de/part3/" class="list-group-item active">
+          Teil 3: Einführung in CSS</a>
+        <a href="/library/html-css/de/part4/" class="list-group-item">
+          Teil 4: Entwicklertools im Browser</a>
+        <a href="/library/html-css/de/part5/" class="list-group-item">
+          Teil 5: Navigieren zwischen Seiten</a>
+        <a href="/library/html-css/de/part6/" class="list-group-item">
+          Teil 6: Bootstrap Framework verwenden</a>
+    </div>
+  </div>
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Downloads</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="https://github.com/marcojakob/html-css-tutorial/releases/download/v0.1/portfolio-de-part3.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>          Portfolio Teil 3</a>
+    </div>
+  </div>
+</aside>
+
+      </article>
+      
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+    
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
