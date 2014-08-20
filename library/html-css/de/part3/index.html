@@ -76,7 +76,7 @@
 <p>Die Aufteilung von Struktur und Style hat viele Vorteile, wie wir noch sehen werden. Es ist nicht zwingend, aber meistens schreibt man HTML und CSS auch in separate Dateien.</p>
 <h2 id="eine-css-datei-einbinden">Eine CSS-Datei einbinden</h2>
 <p>Eine CSS-Datei ist eine ganz normale Textdatei mit der Endung <code>.css</code>, die wir mit der HTML-Datei verknüpfen werden:</p>
-<p>Erstellen Sie also in Ihrem <em>Portfolio</em>-Ordner eine neue Datei. Wir geben der Datei den Namen <code>main.css</code>.</p>
+<p>Erstellen Sie also in Ihrem <em>Portfolio</em>-Ordner eine <strong>neue Datei</strong>. Wir geben der Datei den Namen <code>main.css</code>.</p>
 <p><img src="/assets/library/html-css/part3/new-css-file-de.png" alt="Neue CSS-Datei"></p>
 <p>Nun wechseln wir zur <code>index.html</code>-Datei und fügen innerhalb des <code>&lt;head&gt;</code>-Elements ein <code>&lt;link&gt;</code>-Element hinzu. Mit dem <code>&lt;link&gt;</code>-Element können wir der HTML-Seite mitteilen, dass sie die CSS-Datei laden soll:</p>
 <h5 id="link-von-html-zur-css-datei">Link von HTML zur CSS-Datei</h5>
@@ -169,13 +169,14 @@ h2 {
 <p>Eine CSS-Regel besteht aus drei Elementen, einem <em>Selektor</em>, einer <em>Eigenschaft</em> und einem <em>Wert</em>:</p>
 <p><img src="/assets/library/html-css/part3/css-rule-de.png" alt="CSS-Regel"></p>
 <p>Diese Regel besagt, dass alle <code>&lt;h2&gt;</code>-Elemente eine Hintergrundfarbe von <code>#607d8b</code> erhalten sollen.</p>
-<h3 id="css-selektoren">CSS-Selektoren</h3>
+<h2 id="css-selektoren">CSS-Selektoren</h2>
 <p>Selektoren geben an, auf welches HTML-Element eine CSS-Regel angewandt werden soll. </p>
 <div class="alert alert-info">
 <strong>Hinweis:</strong> Wir werden hier nur die wichtigsten Selektoren kennen lernen. Damit kommt man schon sehr weit. Für eine ausführlichere Übersicht suchen Sie im Internet nach "CSS Selektoren".
 </div>
 
-<h4 id="typselektor">Typselektor</h4>
+
+<h3 id="typselektor">Typselektor</h3>
 <p>Der Typselektor wird angewandt auf alle Elemente mit dem entsprechenden Tag. 
 Wenn wir als Beispiel alle <code>p</code>-Elemente ansprechen wollten, würde dies so aussehen:</p>
 <h5 id="css">CSS</h5>
@@ -185,6 +186,7 @@ p {
 }
 </pre>
 
+
 <h5 id="html">HTML</h5>
 <pre class="prettyprint lang-html">
 &lt;p>...&lt;/p>
@@ -192,7 +194,7 @@ p {
 </pre>
 
 
-<h4 id="klassenselektor">Klassenselektor</h4>
+<h3 id="klassenselektor">Klassenselektor</h3>
 <p>Klassenselektoren werden sehr häufig verwendet. Dazu fügt man dem HTML-Element ein Attribut <code>class</code> hinzu und gibt ihm einen beliebigen Wert. In CSS kann man nun alle Elemente ansprechen, die das gleiche <code>class</code>-Attribut haben. Man macht dies mit einem <strong>Punkt</strong>, gefolgt vom <code>class</code>-Attribut.</p>
 <p>Im folgenden Beispiel gilt der Klassenselektor für alle Elemente, welche ein <code>class</code>-Attribut mit dem Wert <code>highlight</code> haben:</p>
 <h5 id="css">CSS</h5>
@@ -202,6 +204,7 @@ p {
 }
 </pre>
 
+
 <h5 id="html">HTML</h5>
 <pre class="prettyprint lang-html">
 &lt;p class="highlight">...&lt;/p>
@@ -210,7 +213,7 @@ p {
 </pre>
 
 <p>In diesem HTML würde die CSS-Regel auf das erste und das dritte <code>p</code>-Element angewandt werden. Wie sie sehen, ist es auch möglich, dass ein Element mehrere Klassen besitzt (<code>highlight</code> und <code>new</code>).</p>
-<h4 id="id-selektor">ID-Selektor</h4>
+<h3 id="id-selektor">ID-Selektor</h3>
 <p>Der ID-Selektor ist sehr ähnlich wie der Klassenselektor. Er wird auf alle HTML-Elemente angewandt, die ein Attribut <code>id</code> mit einem entsprechenden Wert haben. Anstelle des Punktes verwendet man für ID-Selektoren ein <strong>Rautezeichen</strong> (<code>#</code>).</p>
 <p>Der wichtige Unterschied zum Klassenselektor besteht darin, dass ID-Selektoren <strong>nur einmal</strong> pro HTML-Seite vorkommen sollten, während eine Klasse für beliebig viele Elemente verwendet werden kann.</p>
 <p>Im folgenden Beispiel gilt der ID-Selektor für das Element, welches ein <code>id</code>-Attribut mit dem Wert <code>navigation</code> besitzt:</p>
@@ -221,6 +224,7 @@ p {
 }
 </pre>
 
+
 <h5 id="html">HTML</h5>
 <pre class="prettyprint lang-html">
 &lt;p id="navigation">...&lt;/p>
@@ -228,7 +232,7 @@ p {
 </pre>
 
 
-<h4 id="nachkommenselektor">Nachkommenselektor</h4>
+<h3 id="nachkommenselektor">Nachkommenselektor</h3>
 <p>Mit einem Nachkommenselektor kann man Elemente noch etwas genauer auswählen, indem man mehrere Typ-, Klassen- oder ID-Selektoren kombiniert.</p>
 <p>Schauen wir uns gleich ein Beispiel an, bevor ich etwas näher darauf eingehe:</p>
 <h5 id="css">CSS</h5>
@@ -252,21 +256,21 @@ p a {
 </div>
 
 
-<h3 id="css-eigenschaften">CSS-Eigenschaften</h3>
+<h2 id="css-eigenschaften">CSS-Eigenschaften</h2>
 <p>Durch CSS-Regeln wird festgelegt, wie HTML-Elemente angezeigt werden sollen. Es gibt zahlreiche Eigenschaften, die in CSS definiert werden können. Zwei davon haben wir bereits kennen gelernt, <code>background-color</code> und <code>color</code>.</p>
 <p>Ich verzichte darauf, hier weitere der vielen CSS-Eigenschaften zu erklären. Aber ich möchte Ihnen aufzeigen, wie Sie sich Schritt für Schritt mehr CSS-Wissen aneignen können. Es macht mehr Sinn, wenn Sie in dem Moment etwas lernen, wenn Sie auch wirklich ein konkretes Bedürfnis haben. Es gibt zwei Szenarien, wie sie später vorgehen können:</p>
-<h4 id="wenn-sie-eine-css-eigenschaft-sehen-die-sie-nicht-kennen-">Wenn Sie eine CSS-Eigenschaft sehen, die Sie nicht kennen:</h4>
-<p>Suchen Sie im Internet nach der Eigenschaft und zwar zusammen mit dem Stichwort <code>CSS</code>. Versuchen Sie es gleich einmal, indem Sie versuchen herauszufinden, was die CSS-Regel bewirkt:</p>
+<h4 id="wenn-sie-eine-css-eigenschaft-sehen-die-sie-nicht-kennen-">Wenn Sie eine CSS-Eigenschaft sehen, die Sie nicht kennen...</h4>
+<p>... dann <strong>suchen Sie im Internet nach der Eigenschaft</strong> und zwar zusammen mit dem Stichwort <code>CSS</code>. Versuchen Sie es gleich einmal, indem Sie versuchen herauszufinden, was die folgende CSS-Regel bewirkt:</p>
 <pre class="prettyprint lang-css">
 padding: 5px;
 </pre>
 
 <p>Verwenden Sie als Suchbegriff <code>CSS padding</code>. Geben Sie sich nicht mit dem ersten Resultat zufrieden, sondern öffnen Sie ungefähr die ersten 5 oder mehr der gefundenen Seiten. Entscheiden Sie dann, welche Seite Sie genauer lesen wollen.</p>
 <p>Versuchen Sie auch mal diese Regel auf das <code>h2</code>-Element in Ihrem Portfolio-Projekt anzuwenden.</p>
-<h4 id="wenn-sie-etwas-ver-ndern-wollen-aber-die-css-eigenschaft-dazu-nicht-kennen-">Wenn Sie etwas verändern wollen, aber die CSS-Eigenschaft dazu nicht kennen:</h4>
-<p>Suchen Sie im Internet nach dem, was Sie tun wollen zusammen mit dem Stichwort <code>CSS</code>. Evtl. werden Sie mehrere Versuche brauchen, bis Sie das gefunden haben, wonach Sie gesucht haben.</p>
+<h4 id="wenn-sie-etwas-ver-ndern-wollen-aber-die-css-eigenschaft-dazu-nicht-kennen-">Wenn Sie etwas verändern wollen, aber die CSS-Eigenschaft dazu nicht kennen...</h4>
+<p>... dann <strong>suchen Sie im Internet nach dem, was Sie tun wollen</strong> zusammen mit dem Stichwort <code>CSS</code>. Evtl. werden Sie mehrere Versuche brauchen, bis Sie das gefunden haben, wonach Sie gesucht haben.</p>
 <p>Ein Beispiel: Angenommen, Sie wollen die Textgrösse verändern. Geben Sie in diesem Fall <code>Textgrössse CSS</code> als Suchbegriffe ein. Auch hier wieder darauf achten, dass Sie nicht nur das erste Suchresultat in Betracht ziehen.</p>
-<h3 id="css-werte">CSS-Werte</h3>
+<h2 id="css-werte">CSS-Werte</h2>
 <p>Wir haben bereits ein paar Werte von CSS-Eigenschaften kennen gelernt: Zum Beispiel Hexadezimalwerte wie <code>#ffffff</code> oder Grössenangaben wie <code>5px</code>. Je nach CSS-Eigenschaft muss man manchmal klar definierte Wörter angeben wie zum Beispiel <code>left</code> oder <code>right</code> für die Ausrichtung von Text.</p>
 <p>Eine der wichtigsten CSS-Werte sind Grössenangaben. Deshalb schauen wir die etwas genauer an:</p>
 <p>Die häufigste Form ist die Angabe in <strong>Pixel</strong>. Pixel werden als <code>px</code> abgekürzt:</p>
@@ -348,6 +352,9 @@ h1 {
         <li>
       <a href="/library/html-css/de/part6/" data-toggle="tooltip" title="Teil 6: Bootstrap Framework verwenden">6</a>
       </li>
+        <li>
+      <a href="/library/html-css/de/part7/" data-toggle="tooltip" title="Teil 7: Wie weiter?">7</a>
+      </li>
     
       </ul>
     </div>
@@ -376,6 +383,8 @@ h1 {
           Teil 5: Navigieren zwischen Seiten</a>
         <a href="/library/html-css/de/part6/" class="list-group-item">
           Teil 6: Bootstrap Framework verwenden</a>
+        <a href="/library/html-css/de/part7/" class="list-group-item">
+          Teil 7: Wie weiter?</a>
     </div>
   </div>
   <div class="panel panel-default sidebar">
@@ -384,7 +393,7 @@ h1 {
     </div>
 
     <div class="list-group">
-        <a href="https://github.com/marcojakob/html-css-tutorial/releases/download/v0.1/portfolio-de-part3.zip" class="list-group-item">
+        <a href="https://github.com/marcojakob/library-html-css/releases/download/v0.2/portfolio-de-part3.zip" class="list-group-item">
 <i class="fa fa-fw fa-file-archive-o"></i>          Portfolio Teil 3</a>
     </div>
   </div>

@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>HTML & CSS Tutorial - Teil 4: Entwicklertools im Browser - code.makery.ch</title>
+    <title>HTML & CSS Tutorial - Teil 7: Wie weiter? - code.makery.ch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="canonical" href="http://code.makery.ch/library/html-css/de/part4/" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/de/part7/" />
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
     <meta name="description" content="">
 
@@ -13,10 +13,10 @@
     <meta name="twitter:card" value="summary">
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="HTML & CSS Tutorial - Teil 4: Entwicklertools im Browser" />
+    <meta property="og:title" content="HTML & CSS Tutorial - Teil 7: Wie weiter?" />
     <meta property="og:type" content="article" />
     <meta property="og:description" content="" />
-    <meta property="og:url" content="http://code.makery.ch/library/html-css/de/part4/" />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/de/part7/" />
     
     <link rel="author" href="https://plus.google.com/114174035167840477870"/>
     
@@ -62,50 +62,22 @@
         <div class="col-md-9 col-md-push-3">
         
           <header class="article-header">
-            <h1 class="article-title">HTML & CSS Tutorial - Teil 4: Entwicklertools im Browser</h1>
+            <h1 class="article-title">HTML & CSS Tutorial - Teil 7: Wie weiter?</h1>
             <div class="article-date">
-  Aug 13, 2014
+  Aug 16, 2014
 
 </div>
           </header>
 
           <section class="article-content">
-            <p>Im Chrome-Browser ist ein Tool versteckt, welches uns erlaubt, bei jeder Webseite hinter die Kulissen zu schauen. Dies ist extrem hilfreich, um entweder unsere eigene Webseite zu untersuchen oder um von anderen Webseiten etwas abzuschauen. Dieses Tool heisst <strong>Chrome Developer Tools</strong> (abgekürzt <strong>DevTools</strong>).</p>
-<h2 id="chrome-devtools-ffnen">Chrome DevTools öffnen</h2>
-<p><em>DevTools</em> können Sie auf verschiedene Arten öffnen: </p>
-<ul>
-<li><p>Mit einem <em>Rechts-Klick</em>, <strong><em>Element untersuchen</em></strong> auf ein beliebiges Element auf der Webseite.</p>
-</li>
-<li><p>Mit <code>Ctrl+Shift+i</code> oder <code>F12</code>.</p>
-</li>
-</ul>
-<p>Versuchen Sie das gleich mal auf Ihrer Portfolio-Webseite. Es sollte sich nun folgendes Fenster öffnen:</p>
-<p><img src="/assets/library/html-css/part4/open-devtools-de.png" alt="DevTools öffnen"></p>
-<div class="alert alert-info">
-<strong>Hinweis:</strong> Wenn Sie den Brackets-Editor verwenden, deaktivieren Sie die Live-Vorschau und laden Sie die Seite neu. Ansonsten werden noch zusätzliche "ids" von Brackets angezeigt.
-</div>
-
-
-<h2 id="ein-element-untersuchen">Ein Element untersuchen</h2>
-<p>Mit <em>DevTools</em> können wir nun ganz einfach einzelne Elemente auf unserer Webseite untersuchen.</p>
-<p>Nehmen wir als Beispiel das <code>h2</code>-Element: Klicken Sie mit der rechten Maustaste auf den "Willkommen"-Titel und wählen <em>Element untersuchen</em>. Dies öffnet <em>DevTools</em> und markiert auf der linken Seite gleich das <code>h2</code>-Element.</p>
-<p><img src="/assets/library/html-css/part4/devtools-h2-de.png" alt="DevTools h2-Element"></p>
-<p>Auf der rechten Seite sehen Sie, welche <em>Styles</em> auf das <code>h2</code>-Element angewandt werden. Sie sehen dort zum Beispiel die Farben, welche wir im <code>main.css</code> definiert haben. Unter den Regeln aus dem <code>main.css</code> wird ein Bereich für das <code>user agent stylesheet</code> angezeigt. Dies sind die Regeln, die standardmässig vom Browser auf <code>h2</code>-Elemente angewendet werden.</p>
-<p>Darunter sehen Sie ein buntes Rechteck. Dieses zeigt die Grösse, Abstände und Rahmen des <code>h2</code>-Elementes an. Zum Beispiel sehen Sie dort den Wert <code>5</code> für <code>padding</code>, wie wir ihn im <code>main.css</code> definiert hatten. </p>
-<h3 id="styles-und-html-ver-ndern">Styles und HTML verändern</h3>
-<p>Jetzt kommt aber das Spannende: Wir können live im Browser die Styles verändern oder deaktivieren und auch das HTML editieren! Wenn Sie zum Beispiel auf das Farbquadrat von <code>background-color</code> klicken, können Sie eine andere Hintergrundfarbe auswählen oder Sie können einen anderen Wert für <code>padding</code> eingeben.  </p>
-<p>Auch das HTML lässt sich verändern, indem Sie mit der rechten Maustaste auf ein Element im <em>DevTools</em>-Fenster klicken und <em>Edit...</em> auswählen.</p>
-<p>So können wir sehr einfach experimentieren. Die Änderungen sind jedoch <strong>nur temporär</strong>, das heisst, sobald wir die Seite neu laden, ist der ursprüngliche Zustand wieder hergestellt.</p>
-<h3 id="von-anderen-abschauen">Von anderen abschauen</h3>
-<p>Mit <em>DevTools</em> kann man jede beliebige Webseite untersuchen und auch temporär verändern. Nutzen Sie diese Möglichkeit! Wenn Sie zum Beispiel auf einer Webseite eine Farbe sehen, die Ihnen gefällt, können Sie mit <em>DevTools</em> herausfinden, welchen <em>Hex-Code</em> die Farbe hat. </p>
-<p>Bei grösseren Webseiten können die <em>Styles</em> recht lang werden. Dort kommt es dann oft vor, dass CSS-Regeln mehrfach definiert werden und somit einander überschreiben. Sie sehen dies zum Beispiel bei unserem <code>h1</code>-Element mit dem Titel. Die Schriftgrösse, welche wir definiert haben, überschreibt die standardmässige Schriftgrösse des Browsers. Deshalb ist diese durchgestrichen.</p>
-<p><img src="/assets/library/html-css/part4/css-overwrite-de.png" alt="CSS Überschreiben"></p>
-<h2 id="weitere-m-glichkeiten-von-devtools">Weitere Möglichkeiten von DevTools</h2>
-<p>Wir werden <em>DevTools</em> immer mal wieder verwenden. Es gibt noch viele weitere Funktionien von <em>DevTools</em>. Sie können </p>
-<p>Es gibt noch viele weiter Möglichkeiten, um mit <em>DevTools</em> zu arbeite. Wenn Sie mehr darüber wissen möchten, lesen Sie die <a href="https://developer.chrome.com/devtools/index">DevTools Dokumentation</a>.</p>
-<p>Ausserdem gibt es einen sehr guten <a href="http://discover-devtools.codeschool.com/">DevTools Online-Kurs</a>, welcher gratis zur Verfügung steht. </p>
-<hr>
-<p>&rarr; Im nächsten Teil erstellen wir weitere Seiten und eine Navigation: <a href="/library/html-css/de/part5/">Teil 5: Navigieren zwischen Seiten</a>.</p>
+            <p>Wow, das ist schon eine rechte Leistung, wenn Sie bis hier durchgehalten und Ihr Portfolio-Projekt mit diesem Tutorial erstellt haben!</p>
+<p>In diesem letzten Teil zeige ich Ihnen Möglichkeiten auf, wie Sie Ihre Fähigkeiten als Webprogrammierer weiter entwickeln können.</p>
+<h2 id="mehr-html-css">Mehr HTML &amp; CSS</h2>
+<p>Die Serie <a href="/library/more-html-css/de/">Mehr HTML &amp; CSS</a> ist eine Sammlung von Anleitungen zu verschiedenen Themen rund um HTML &amp; CSS. </p>
+<p>Die Anleitungen bauen direkt auf den Kenntnissen aus diesem Tutorial auf. Es gibt dabei keine bestimmte Reihenfolge zwischen den einzelnen Teilen. Schauen Sie sich einfach die Themen an, welche Sie interessieren.</p>
+<h2 id="webapplikationen-mit-dart">Webapplikationen mit Dart</h2>
+<p>Lernen Sie, dynamische Webapplikationen mit Dart zu entwickeln.</p>
+<p>... coming soon ...</p>
 
 
           </section>
@@ -127,7 +99,7 @@
         <li>
       <a href="/library/html-css/de/part3/" data-toggle="tooltip" title="Teil 3: Einführung in CSS">3</a>
       </li>
-        <li class="active">
+        <li>
       <a href="/library/html-css/de/part4/" data-toggle="tooltip" title="Teil 4: Entwicklertools im Browser">4</a>
       </li>
         <li>
@@ -136,7 +108,7 @@
         <li>
       <a href="/library/html-css/de/part6/" data-toggle="tooltip" title="Teil 6: Bootstrap Framework verwenden">6</a>
       </li>
-        <li>
+        <li class="active">
       <a href="/library/html-css/de/part7/" data-toggle="tooltip" title="Teil 7: Wie weiter?">7</a>
       </li>
   
@@ -161,13 +133,13 @@
           Teil 2: Webseite veröffentlichen</a>
         <a href="/library/html-css/de/part3/" class="list-group-item">
           Teil 3: Einführung in CSS</a>
-        <a href="/library/html-css/de/part4/" class="list-group-item active">
+        <a href="/library/html-css/de/part4/" class="list-group-item">
           Teil 4: Entwicklertools im Browser</a>
         <a href="/library/html-css/de/part5/" class="list-group-item">
           Teil 5: Navigieren zwischen Seiten</a>
         <a href="/library/html-css/de/part6/" class="list-group-item">
           Teil 6: Bootstrap Framework verwenden</a>
-        <a href="/library/html-css/de/part7/" class="list-group-item">
+        <a href="/library/html-css/de/part7/" class="list-group-item active">
           Teil 7: Wie weiter?</a>
     </div>
   </div>

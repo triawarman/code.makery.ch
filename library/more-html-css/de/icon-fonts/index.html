@@ -1,0 +1,199 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Icon Fonts - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/more-html-css/de/icon-fonts/" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Icon Fonts" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/more-html-css/de/icon-fonts/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <article class="row">
+        <div class="col-md-9 col-md-push-3">
+        
+          <header class="article-header">
+            <h1 class="article-title">Icon Fonts</h1>
+            <div class="article-date">
+  Aug 20, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>Bilder oder Icons in eine Webseite einzufügen ist nicht schwer. Aber wenn man Texte und Icons kombiniert (z.B. für einen Button) oder wenn die Icons in der Grösse veränderbar sein sollen, dann wird es schwierig.</p>
+<p>Die Lösung für dieses Problem sind <strong>Icon Fonts</strong>. Icon Fonts sind Schriftarten, welche anstatt Buchstaben nur Icons enthalten. Dadurch können diese Icons genauso verwendet werden, wie gewöhnliche Schriften, d.h. man kann ihre Grösse und auch die Farbe verändern. </p>
+<p><i class="fa fa-umbrella" style="color: #333"></i> 
+<i class="fa fa-umbrella fa-3x" style="color: #333"></i> 
+<i class="fa fa-umbrella fa-5x" style="color: #333"></i>
+<i class="fa fa-umbrella" style="color: #ffc107"></i> 
+<i class="fa fa-umbrella fa-3x" style="color: #ffa000"></i> 
+<i class="fa fa-umbrella fa-5x" style="color: #ff6f00"></i></p>
+<p>Im Folgenden schauen wir ein paar Icon Fonts und deren Verwendung an.</p>
+<h2 id="glyphicons-mit-bootstrap-3-">Glyphicons (mit Bootstrap 3)</h2>
+<p>Wenn Sie Bootstrap verwenden, dann sind bereits 200 Icons von <a href="http://glyphicons.com/">Glyphicons</a> integriert.</p>
+<p>Sie finden eine Liste der Verfügbaren Icons in der <a href="http://holdirbootstrap.de/komponenten/#glyphicons">Bootstrap Dokumentation unter Glyphicons</a>.</p>
+<p>Um ein Icon zu verwenden definieren wir jeweils ein <code>&lt;span&gt;</code>-Element und geben ihm zwei CSS-Klassen:</p>
+<pre class="prettyprint lang-html">
+&lt;span class="glyphicon glyphicon-send">&lt;/span>
+</pre>
+
+<p>Dieses <code>span</code> kann nun irgendwo eigenfügt werden. Zum Beispiel in den Titel einer Kontaktseite: </p>
+<p><img src="/assets/library/more-html-css/icon-fonts/contact-icon-de.png" alt="Kontakt Icon"></p>
+<h2 id="font-awesome">Font Awesome</h2>
+<p>Eine der bekanntesten frei verfügbaren Icon Fonts ist <a href="http://fontawesome.io/">Font Awesome</a>. Font Awesome kommt mit über 400 Icons.</p>
+<p>Um <a href="http://fontawesome.io/get-started/">Font Awesome zu integrieren</a> steht wie für Bootstrap auch ein CDN-Link zur Verfügung. Damit muss gar nichts heruntergeladen werden, sondern wir können einfach einen Link zum CSS in den <code>&lt;head&gt;</code>-Bereich unserer HTML-Datei einfügen:</p>
+<pre class="prettyprint lang-html">
+&lt;link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+</pre>
+
+<p><strong>Hinweis:</strong> <em>Schauen Sie auf <a href="http://fontawesome.io/get-started/">Font Awesome</a> nach, welches der aktuelle Link mit der neusten Versionsnummer ist.</em></p>
+<p>Wie bei den Glyphicons werden die Font Awesome Icons mit zwei CSS-Klassen verwendet. Anstelle des <code>&lt;span&gt;</code>-Elements wird bei Font Awesome meistens das <code>&lt;i&gt;</code>-Element verwendet, wobei dies eigentlich keine Rolle spielt.</p>
+<pre class="prettyprint lang-html">
+&lt;i class="fa fa-flag">&lt;i>
+</pre>
+
+<p>Dieses Beispiel gibt uns eine Flagge: <img src="/assets/library/more-html-css/icon-fonts/fontawesome-flag.png" alt="Font Awesome Flagge"></p>
+<p>Schauen Sie sich die <a href="http://fontawesome.io/examples/">Beispiele auf Font Awesome</a> an, um zu sehen, auf welche Arten die Icons verwendet werden können. Sie finden dort auch Beispiele zur Verwendung mit für Bootstrap 3. </p>
+<h2 id="weitere-m-glichkeiten">Weitere Möglichkeiten</h2>
+<ul>
+<li>Eine Liste von <a href="http://t3n.de/news/10-kostenlose-icon-fonts-450651/">12 kostenlosen Icon Fonts</a>.</li>
+<li>Auf <a href="https://icomoon.io/">IcoMoon</a> gibt es eine App, um eine eigene Icon Font zusammen zu stellen.</li>
+<li><a href="http://fontello.com/">Fontello</a> ist ein weiterer Generator, um eigene Icon Fonts zu erstellen.</li>
+</ul>
+
+
+          </section>
+          
+          <hr>
+          
+  <nav class="hidden-xs hidden-sm">
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/more-html-css/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/de/website-layout/" data-toggle="tooltip" title="Website-Layout mit Bootstrap 3">1</a>
+      </li>
+        <li class="active">
+      <a href="/library/more-html-css/de/icon-fonts/" data-toggle="tooltip" title="Icon Fonts">2</a>
+      </li>
+  
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+        <aside class="col-md-3 col-md-pull-9">
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Teile dieser Serie</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="/library/more-html-css/de/" class="list-group-item">
+          Einleitung</a>
+        <a href="/library/more-html-css/de/website-layout/" class="list-group-item">
+          Website-Layout mit Bootstrap 3</a>
+        <a href="/library/more-html-css/de/icon-fonts/" class="list-group-item active">
+          Icon Fonts</a>
+    </div>
+  </div>
+</aside>
+
+      </article>
+      
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+    
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

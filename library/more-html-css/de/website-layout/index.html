@@ -1,0 +1,296 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Website-Layout mit Bootstrap 3 - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/more-html-css/de/website-layout/" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Website-Layout mit Bootstrap 3" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/more-html-css/de/website-layout/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <article class="row">
+        <div class="col-md-9 col-md-push-3">
+        
+          <header class="article-header">
+            <h1 class="article-title">Website-Layout mit Bootstrap 3</h1>
+            <div class="article-date">
+  Aug 16, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>Standardmässig werden HTML-Elemente auf zwei Arten angeordnet:</p>
+<p><strong>Blockelemente</strong> beginnen immer in einer neuen Zeile. Beispiele für Blockelemente sind <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code> und <code>&lt;li&gt;</code>.</p>
+<p><img src="/assets/library/more-html-css/website-layout/block-elements.png" alt="Blockelemente"></p>
+<p><strong>Inline-Elemente</strong> stehen in der gleichen Zeile. Beispiele für Inline-Elemente sind <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code> und <code>&lt;img&gt;</code>.</p>
+<p><img src="/assets/library/more-html-css/website-layout/inline-elements.png" alt="Inline-Elemente"></p>
+<p>Diese zwei Möglichkeiten reichen jedoch nicht, um ein richtiges Layout für eine Webseite zu erstellen. </p>
+<p>Die meisten Webseiten haben entweder ein Layout mit <strong>zwei Spalten</strong> ...</p>
+<p><img src="/assets/library/more-html-css/website-layout/two-columns.png" alt="Zwei-Spalten Layout"></p>
+<p>... oder ein Layout mit <strong>drei Spalten</strong>.</p>
+<p><img src="/assets/library/more-html-css/website-layout/three-columns.png" alt="Drei-Spalten Layout"></p>
+<p>So etwas hinzubekommen ohne ein CSS-Framework wie <em>Bootstrap</em> wäre eine rechte Herausforderung. Mit Bootstrap wird es einfacher. </p>
+<p>Zusätzlich wird das Layout in Bootstrap automatisch auf die Bilschirmgrösse angepasst (sogenanntes <a href="http://de.wikipedia.org/wiki/Responsive_Webdesign">Responsive Layout</a>). Wir können zum Beispiel angeben, dass auf kleinen Bilschirmen die Spalten untereinander angezeigt werden sollen, weil sie nebeneinander nicht mehr Platz hätten.</p>
+<div class="alert alert-info">
+Falls Sie Bootstrap in Ihrem Projekt noch nicht integriert haben, lesen Sie <a href="/library/html-css/de-part6/" class="alert-link">Teil 6: Bootstrap Framework verwenden</a> aus dem HTML &amp; CSS Tutorial.
+</div>
+
+
+<h2 id="das-bootstrap-raster">Das Bootstrap Raster</h2>
+<p>Bootstrap beinhaltet ein <strong>12-spaltiges Rastersystem</strong> für das Layout (siehe <a href="http://holdirbootstrap.de/css/#grid">Dokumentation des Bootstrap-Rasters</a>). Ein Raster kann man sich vorstellen, wie eine unsichtbare Tabelle mit zwölf Spalten:</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-twelve-columns.png" alt="Zwölf Spalten"></p>
+<p>Wir können nun unsere eigenen Spalten definieren, indem wir angeben, wie breit sie in diesem Raster sein sollen.</p>
+<h3 id="beispiel-f-r-ein-2-spaltiges-layout">Beispiel für ein 2-spaltiges Layout</h3>
+<p>In diesem Beispiel definieren wir eine linke Spalte mit der Breite von 4 und eine rechte Spalte mit der Breite von 8. Links könnte man zum Beispiel eine Navigation einfügen und rechts den Seiteninhalt.</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-two-columns.png" alt="2-Spalten Layout"></p>
+<p>Im HTML-Code würde dieses Layout wie folgt aussehen:</p>
+<pre class="prettyprint lang-html">
+&lt;div class="<mark>container</mark>">
+  &lt;div class="<mark>row</mark>">
+    &lt;div class="<mark>col-sm-4</mark>">
+      Hier kommt der Inhalt der linken Spalte.
+    &lt;/div>
+    &lt;div class="<mark>col-sm-8</mark>">
+      Hier kommt der Inhalt der rechten Spalte.
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+</pre>
+
+<div class="alert alert-info">
+<strong>Zu Beachten beim Bootstrap-Raster:</strong>
+
+<ul>
+  <li>Das Raster sollte immer in einem <code>&lt;div&gt;</code> mit einer <code>container</code>-Klasse sein. (Wenn die Breite immer bis ganz zum Rand ausgefüllt werden soll, kann man alternativ die <code>container-fluid</code>-Klasse verwenden.)</li>
+  <li>Innerhalb des Containers kommt ein <code>&lt;div&gt;</code> mit der Klasse <code>row</code>. Damit definieren wir eine Zeile im Raster.</li>
+  <li>Innerhalb der Zeilen kommen schliesslich die Spalten mit den <code>col</code>-Klassen.  </li>
+</ul>
+</div>
+
+
+<h3 id="bildschirmgr-ssen">Bildschirmgrössen</h3>
+<p>Eine Spaltenangabe beinhaltet immer in der Mitte eine Angabe über die Bildschirmgrösse. Es gibt die folgenden vier Bildschirmgrössen:</p>
+<ul>
+<li><code>col-xs</code> - Spalte für Extra-Small-Geräte (Smartphones)</li>
+<li><code>col-sm</code> - Spalte für Small-Geräte (Tablets)</li>
+<li><code>col-md</code> - Spalte für Medium-Geräte (kleiner Desktop)</li>
+<li><code>col-lg</code> - Spalte für Large-Geräte (grosser Desktop)</li>
+</ul>
+<p>Die Angabe <code>col-sm-4</code> aus unserem Beispiel oben bedeutet also, dass ungefähr ab der Grösse eines Tablets eine Spalte der Breite 4 dargestellt wird. </p>
+<p>Alle Bildschirme, welche kleiner sind als die angegebene Grösse, stellen die Spalten automatisch untereinander dar.</p>
+<p>So sieht unser Beispiel für das 2-spaltige Layout auf einem Smartphone aus:</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-two-columns-smartphone.png" alt="2-Spalten Layout Smartphone"></p>
+<h3 id="beispiel-f-r-ein-3-spaltiges-layout">Beispiel für ein 3-spaltiges Layout</h3>
+<p>In diesem Beispiel definieren wir drei Spalten.</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-three-columns.png" alt="3-Spalten Layout"></p>
+<p>Im HTML-Code würde dieses Layout wie folgt aussehen:</p>
+<pre class="prettyprint lang-html">
+&lt;div class="<mark>container</mark>">
+  &lt;div class="<mark>row</mark>">
+    &lt;div class="<mark>col-sm-3</mark>">
+      Hier kommt der Inhalt der linken Spalte.
+    &lt;/div>
+    &lt;div class="<mark>col-sm-6</mark>">
+      Hier kommt der Inhalt der mittleren Spalte.
+    &lt;/div>
+    &lt;div class="<mark>col-sm-3</mark>">
+      Hier kommt der Inhalt der rechten Spalte.
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+</pre>
+
+
+<h2 id="anwendung-auf-portfolio-blog">Anwendung auf Portfolio-Blog</h2>
+<p>Im <a href="/library/html-css/de/">HTML &amp; CSS Tutorial</a> haben wir ein Portfolio entwickelt mit einer Blog-Seite. Das folgende Beispiel zeigt ein <strong>2-Spalten-Layout</strong> für diese Blog-Seite. In der linken Spalte ist der bisherige Inhalt. In der rechten Spalte haben wir neu Platz zum Beispiel für ein paar Links. </p>
+<p><img src="/assets/library/more-html-css/website-layout/portfolio-two-columns-de.png" alt="Portfolio" class="img-thumbnail"></p>
+<h5 id="blog-index-html">blog/index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;div class="container">
+  &lt;h1 class="title">Blog&lt;/h1>
+
+  &lt;p>Hier schreibe ich über alles, was mir beim Lernen von Webprogrammierung begegnet.&lt;/p>
+
+  &lt;div class="<mark>row</mark>">
+    &lt;div class="<mark>col-sm-8</mark>">
+      &lt;h2>Blogeinträge&lt;/h2>
+      &lt;ul>
+        &lt;li>Weitere Einträge folgen...&lt;/li>
+        &lt;li>&lt;a href="2014-08-02-erster-eintrag/">Erster Eintrag&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+
+    &lt;div class="<mark>col-sm-3 col-sm-offset-1</mark>">
+      &lt;h3>Empfehlungen&lt;/h3>
+      &lt;p>
+        Die folgenden Blogs von Kollegen kann ich sehr empfehlen:
+      &lt;/p>
+      &lt;ul class="list-unstyled">
+        &lt;li>&lt;a href="#">Blog 1&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#">Blog 2&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#">Blog 3&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#">Blog 4&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/div>
+
+&lt;/div>
+</pre>
+
+<h4 id="hinweise">Hinweise</h4>
+<ul>
+<li>Bei der rechten Spalte wurde noch eine zweite CSS-Klasse hinzugefügt: <code>col-sm-offset-1</code>. Dies bedeutet, dass die rechte Spalte um eins nach rechts gerückt werden soll. Damit erhalten wir einen etwas grösseren Abstand zwischen den beiden Spalten.</li>
+<li>Testen Sie das Layout in unterschiedlichen Browsergrössen.</li>
+<li>Die Klasse <code>list-unstyled</code> bewirkt, dass die Listenelemente ohne Punkt angezeigt werden (siehe <a href="http://holdirbootstrap.de/css/#type-lists">Bootstrap Listen</a>).</li>
+</ul>
+<h2 id="weitere-informationen-zu-layout">Weitere Informationen zu Layout</h2>
+<p>Lesen Sie den Abschnitt über das <a href="http://holdirbootstrap.de/css/#grid">Raster-System</a> in der Bootstrap Dokumentation.</p>
+<p>Eine ausführliche Erklärung, wie das Raster-System funktioniert, finden Sie in <a href="http://www.helloerik.com/the-subtle-magic-behind-why-the-bootstrap-3-grid-works">The Subtle Magic Behind Why the Bootstrap 3 Grid Works</a>. </p>
+
+
+          </section>
+          
+          <hr>
+          
+  <nav class="hidden-xs hidden-sm">
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/more-html-css/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+        <li class="active">
+      <a href="/library/more-html-css/de/website-layout/" data-toggle="tooltip" title="Website-Layout mit Bootstrap 3">1</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/de/icon-fonts/" data-toggle="tooltip" title="Icon Fonts">2</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+        <aside class="col-md-3 col-md-pull-9">
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Teile dieser Serie</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="/library/more-html-css/de/" class="list-group-item">
+          Einleitung</a>
+        <a href="/library/more-html-css/de/website-layout/" class="list-group-item active">
+          Website-Layout mit Bootstrap 3</a>
+        <a href="/library/more-html-css/de/icon-fonts/" class="list-group-item">
+          Icon Fonts</a>
+    </div>
+  </div>
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Downloads</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="https://github.com/marcojakob/library-more-html-css/releases/download/v0.1/portfolio-de-website-layout.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>          Portfolio mit Layout</a>
+    </div>
+  </div>
+</aside>
+
+      </article>
+      
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+    
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

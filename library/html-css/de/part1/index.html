@@ -75,12 +75,14 @@
 <p>Für die Webentwicklung brauchen wir zwei Programme: einen <abbr data-toggle="tooltip" title="Normaler Texteditor oder einen Code-Editor">Editor</abbr>, um die Dateien für die Webseite zu erstellen und einen <abbr data-toggle="tooltip" title="z.B. Internet Explorer, Firefox, Safari oder Chrome">Browser</abbr>, um unsere Webseite anzuzeigen und zu testen.</p>
 <h3 id="editor">Editor</h3>
 <p>Zum Erstellen von Webseiten reicht eigentlich ein ganz normaler Texteditor. Es gibt aber Editoren, die uns die Arbeit beim Programmieren stark vereinfachen. Deshalb empfehle ich, dass Sie gleich mit einem modernen Code-Editor beginnen.</p>
-<p><img src="/assets/library/html-css/part1/brackets-editor.png" alt="Brackets Editor"></p>
+<p><img src="/assets/library/html-css/part1/brackets-editor-screenshot.png" alt="Brackets Editor"></p>
 <p>Mein aktueller Favorit unter den zahlreichen Editoren ist <a href="http://brackets.io/">Brackets</a> (kostenlos von Adobe). Ich werde zwischendurch auf die Bedienung von Brackets eingehen, was nicht heisst, dass Sie nicht auch einen anderen Editor verwenden können. Gute Alternativen zu Brackets wären zum Beispiel <a href="http://atom.io">Atom</a> oder das etwas ältere <a href="http://notepad-plus-plus.org/">Notepad++</a>.</p>
-<p>Also, legen Sie los und installieren Sie einen Editor. Wenn Sie nicht wissen welchen, nehmen Sie vorläufig mal <a href="http://brackets.io">Brackets</a>.</p>
+<p><a href="http://brackets.io" target="_blank"><img src="/assets/library/html-css/part1/brackets-editor-logo.jpg" alt="Brackets Editor Logo">
+</a></p>
+<p>Also, legen Sie los und installieren Sie einen Editor. Wenn Sie nicht wissen welchen, nehmen Sie <a href="http://brackets.io">Brackets</a>.</p>
 <h3 id="browser">Browser</h3>
 <p>Unsere Webseite sollte natürlich in allen gängigen Browsern (Internet Explorer, Firefox, Chrome und Safari) laufen. Für die Webentwicklung ist jedoch unbedingt <a href="https://www.google.com/chrome/browser/">Chrome</a> zu empfehlen. Chrome beinhaltet sehr nützliche Tools für Entwickler, die wir oft nutzen werden. Ausserdem wird Chrome optimal vom Brackets Editor unterstützt, so dass Änderungen im Editor sofort in Chrome sichtbar sind (live reload).</p>
-<p><img src="/assets/library/html-css/part1/chrome-logo.png" alt="Chrome Logo"></p>
+<p><a href="https://www.google.com/chrome/browser/" target="_blank"><img src="/assets/library/html-css/part1/chrome-logo.png" alt="Chrome Logo"></a></p>
 <p>Falls Sie Chrome noch nicht haben, können Sie ihn <a href="https://www.google.com/chrome/browser/">hier installieren</a>.</p>
 <h2 id="ein-html-dokument-erstellen">Ein HTML Dokument erstellen</h2>
 <p>Ausgerüstet mit Editor und Browser erstellen wir das erste HTML Dokument für unsere Webseite:</p>
@@ -112,10 +114,31 @@
 <h3 id="anzeigen-und-aktualisieren">Anzeigen und aktualisieren</h3>
 <p>Nun wollen wir das Dokument mit Inhalt füllen. Tippen Sie die folgenden Zeilen ab. Als Text können Sie natürlich irgend etwas wählen.</p>
 <p><img src="/assets/library/html-css/part1/first-website-de.png" alt="HTML Struktur"></p>
-<p>Zum Anzeigen der Seite klicken Sie auf den <em>Blitz</em> am rechten Rand (Live Vorschau). Falls Brackets den Chrome Browser findet, dann wird jetzt die Seite angezeigt und sobald wir Änderungen vornehmen, werden diese gleich aktualisiert. </p>
-<p>Falls die Seite <strong>nicht angezeigt wird</strong>: Suchen Sie die <code>index.html</code>-Datei auf Ihrem Computer und öffnen Sie diese mit Chrome oder einem anderen Browser.</p>
-<p>Falls die Seite <strong>nicht aktualisiert wird</strong> bei Änderungen: Klicken Sie im Browser die Taste <code>F5</code> oder <code>cmd+r</code>.</p>
-<p><em>Gratuliere! Sie haben soeben Ihre erste Webseite erstellt!</em></p>
+<p>Zum Anzeigen der Seite klicken Sie auf den <em>Blitz</em> am rechten Rand (Live-Vorschau). Falls Brackets den Chrome Browser findet, dann wird jetzt die Seite angezeigt und sobald wir Änderungen vornehmen, werden diese gleich aktualisiert. </p>
+<div class="alert alert-info">
+<p>
+Falls die Seite <strong>nicht angezeigt wird</strong>: Suchen Sie die <code>index.html</code>-Datei auf Ihrem Computer und öffnen Sie diese mit Chrome oder einem anderen Browser.
+</p>
+<p>
+Falls die Seite <strong>nicht aktualisiert wird</strong> bei Änderungen: Klicken Sie im Browser die Taste <code>F5</code> oder <code>cmd+r</code>.
+</p>
+</div>
+
+<p><strong><em>Gratuliere! Sie haben soeben Ihre erste Webseite erstellt!</em></strong></p>
+<h3 id="richtiges-einr-cken">Richtiges Einrücken</h3>
+<p>Damit Sie die Übersicht behalten ist es wichtig, dass Sie die Zeilen immer korrekt mit der <strong>Tabulator-Taste</strong> einrücken. Die Standardeinstellung in Brackets ist meist, dass ein Tabulator 4 Leerzeichen lang ist. Dies ist etwas lang. Ich empfehle deshalb, dass Sie die Einstellung am unteren Rand von Brackets auf <code>Leerzeichen: 2</code> ändern:</p>
+<p><img src="/assets/library/html-css/part1/brackets-spaces-de.png" alt="Brackets Leerzeichen"></p>
+<p><strong>Wichtig:</strong> Schauen Sie den <strong>Beispielcode immer ganz genau an</strong> und rücken Sie Ihren Code entsprechend ein. Es ist wirklich wichtig, dass Sie sich gleich von Anfang an sauberes Einrücken angewöhnen!</p>
+<div class="alert alert-info">
+<p>
+<strong>Tipp 1:</strong> Mit <code>Shift+Tab</code> können Sie nach den Code nach links schieben.
+</p>
+<p>
+<strong>Tipp 2:</strong> Wenn Sie mehrere Zeilen markieren können Sie diese mit <code>Tab</code> oder <code>Shift+Tab</code> gleichzeitig einrücken.
+</p>
+</div>
+
+
 <h2 id="html-elemente">HTML-Elemente</h2>
 <h3 id="tags">Tags</h3>
 <p>Im Beispiel oben haben Sie bereits die für HTML typischen Zeichen mit den spitzen Klammern gesehen. Man nennt diese <strong>Tags</strong>. </p>
@@ -162,7 +185,15 @@
 <li>Nach jedem öffnenden Tag wird das nächste Element eingerückt (mit Tabulator oder zwei Leerschlägen) für eine bessere Übersicht. Dies sollten Sie sich unbedingt auch angewöhnen.</li>
 </ul>
 <div class="alert alert-info">
-<strong>Tipp:</strong> Halten Sie das HTML Grundgerüst stets griffbereit. Wir werden es für jede neue HTML-Seite verwenden!
+<p>
+<strong>Tipp 1:</strong> Halten Sie das HTML Grundgerüst stets griffbereit. Wir werden es für jede neue HTML-Seite verwenden!
+</p>
+<p>
+<strong>Tipp 2:</strong> Verwenden Sie die Tastenkombination <code>Ctrl+S</code> zum Speichern. 
+</p>
+<p>
+<strong>Tipp 3:</strong> Verwenden Sie die Tastenkombination <code>Ctrl+Z</code> für Rückgängig.
+</p>
 </div>
 
 <p>Mit diesen Grundlegenden HTML-Elementen sind wir nun bestens vorbereitet, um unsere Webseite auf ein neues Level zu bringen. Als erstes fügen wir noch ein Bild ein, damit die Startseite unseres Portfolios etwas interessanter wird.</p>
@@ -262,6 +293,9 @@
         <li>
       <a href="/library/html-css/de/part6/" data-toggle="tooltip" title="Teil 6: Bootstrap Framework verwenden">6</a>
       </li>
+        <li>
+      <a href="/library/html-css/de/part7/" data-toggle="tooltip" title="Teil 7: Wie weiter?">7</a>
+      </li>
     
       </ul>
     </div>
@@ -290,6 +324,8 @@
           Teil 5: Navigieren zwischen Seiten</a>
         <a href="/library/html-css/de/part6/" class="list-group-item">
           Teil 6: Bootstrap Framework verwenden</a>
+        <a href="/library/html-css/de/part7/" class="list-group-item">
+          Teil 7: Wie weiter?</a>
     </div>
   </div>
   <div class="panel panel-default sidebar">
@@ -298,7 +334,7 @@
     </div>
 
     <div class="list-group">
-        <a href="https://github.com/marcojakob/html-css-tutorial/releases/download/v0.1/portfolio-de-part1.zip" class="list-group-item">
+        <a href="https://github.com/marcojakob/library-html-css/releases/download/v0.2/portfolio-de-part1.zip" class="list-group-item">
 <i class="fa fa-fw fa-file-archive-o"></i>          Portfolio Teil 1</a>
     </div>
   </div>
