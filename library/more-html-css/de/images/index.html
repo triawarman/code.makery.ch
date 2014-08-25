@@ -1,0 +1,299 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mehr HTML & CSS: Bilder - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/more-html-css/de/images/" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Mehr HTML & CSS: Bilder" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/more-html-css/de/images/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <article class="row">
+        <div class="col-md-9 col-md-push-3">
+        
+          <header class="article-header">
+            <h1 class="article-title">Mehr HTML & CSS: Bilder</h1>
+            <div class="article-date">
+  Aug 22, 2014
+
+</div>
+          </header>
+
+          <section class="article-content">
+            <p>In diesem Teil lernen Sie ein paar Tricks mit Bildern:</p>
+<ul>
+<li><a href="#responsive-bilder">Responsive Bilder</a> - passen sich auf Bildschirmgrösse an</li>
+<li><a href="#bilder-ausrichten">Bilder ausrichten</a> - zentrieren, links, rechts</li>
+<li><a href="#bilder-mit-konturen">Bilder mit Konturen</a> - Ecken abrunden, etc.</li>
+<li><a href="#gute-bildquellen">Gute Bildquellen</a> - hier finden Sie gute Bilder</li>
+</ul>
+<p>Für die meisten Beispiele wird <a href="http://holdirbootstrap.de/">Bootstrap 3</a> verwendet.</p>
+<div class="alert alert-warning">
+Falls Sie Bootstrap in Ihrem Projekt noch nicht integriert haben, lesen Sie zuerst den Teil über <a href="/library/html-css/de/part6/" class="alert-link">Bootstrap Framework verwenden</a> aus dem HTML &amp; CSS Tutorial.
+</div>
+
+<p>Bilder in eine Webseite einbinden gelingt am einfachsten wie folgt:</p>
+<h5 id="bild-einf-gen">Bild einfügen</h5>
+<pre class="prettyprint lang-html">
+&lt;img src="mein-bild.png" alt="Mein Bild">
+</pre>
+
+<p>Damit hat das Bild eine fixe Grösse. Man kann das Bild zwar verkleinern oder vergrössern mit einer CSS-Regel wie <code>width: 200px;</code>, aber das ist oft nicht sinnvoll. Man versucht nämlich immer die Downloadgrösse der Webseite zu optimieren. Wenn man also ein Bild mit 400px-Breite herunterlädt und es dann immer auf 200px verkleinert, dann ist das nicht optimal. Deshalb sollte man schauen, dass das <strong>Bild immer die optimale Grösse hat</strong>.</p>
+<div class="alert alert-info">
+<strong>Merke:</strong> Ein Bild sollte nicht grösser sein als es im Browser dargestellt wird. Ansonsten lädt man ein unnötig grosses Bild herunter.
+</div>
+
+
+<h2 id="responsive-bilder">Responsive Bilder</h2>
+<p>Wenn eine Webseite auf unterschiedlichen Bildschirmen angezeigt wird, dann kommt man nicht darum herum, diese auf kleinen Bildschirmen zu verkleinern.</p>
+<p>Bootstrap 3 bietet hierzu eine CSS-Klasse <code>img-responsive</code>, welche Bilder automatisch auf die Bildschirmgrösse anpasst (lesen Sie über <a href="http://holdirbootstrap.de/css/#images-responsive">Responsive Bilder in der Bootstrap Dokumentation</a>).</p>
+<h5 id="responsive-bild-einf-gen">Responsive Bild einfügen</h5>
+<pre class="prettyprint lang-html">
+&lt;img src="mein-bild.png" alt="Mein Bild" class="img-responsive" >
+</pre>
+
+<div class="alert alert-info">
+<strong>Merke:</strong> Die CSS-Klasse <code>img-responsive</code> sollten Sie bei Ihren Bildern hinzufügen, damit diese auf kleinen Bildschirmen automatisch angepasst werden.
+</div>
+
+
+<h2 id="bilder-ausrichten">Bilder ausrichten</h2>
+<h3 id="zentrieren">Zentrieren</h3>
+<p>Mit der CSS-Klasse <code>center-block</code> können Sie mit Bootstrap 3 Bilder zentrieren (siehe auch <a href="http://holdirbootstrap.de/css/#helper-classes-center">center</a> in der Bootstrap Dokumentation):</p>
+<p><img src="/assets/library/more-html-css/images/center-block.png" class="center-block"></p>
+<h5 id="bild-zentrieren">Bild zentrieren</h5>
+<pre class="prettyprint lang-html">
+&lt;img src="..." alt="..." class="center-block">
+</pre>
+
+<div class="alert alert-info">
+<strong>Hinweis:</strong> Die Klasse <code>center-block</code> kann auch zum Zentrieren von anderen HTML-Elementen gebraucht werden. Für Text und andere Inline-Elemente muss aber <code>text-center</code> verwendet werden (siehe <a href="http://holdirbootstrap.de/css/#type-alignment" class="alert-link">Ausrichtungsklassen</a> in der Bootstrap Dokumentation).
+</div>
+
+
+<h3 id="links-und-rechts-ausrichten">Links und rechts ausrichten</h3>
+<p>Bilder können nach links und nach rechts ausgerichtet werden. Der Text fliesst dabei um die Bilder herum. Dazu werden sogenannte <em>Floats</em> verwendet (lesen Sie über <a href="http://holdirbootstrap.de/css/#helper-classes-floats">Floats</a> in der Bootstrap Dokumentation).</p>
+<h5 id="links-ausrichten">Links ausrichten</h5>
+<pre class="prettyprint lang-html">
+&lt;img src="..." alt="..." class="pull-left">
+</pre>
+
+<p><img src="/assets/library/more-html-css/images/pull-left.png" alt="Links ausrichten"></p>
+<h5 id="rechts-ausrichten">Rechts ausrichten</h5>
+<pre class="prettyprint lang-html">
+&lt;img src="..." alt="..." class="pull-right">
+</pre>
+
+<p><img src="/assets/library/more-html-css/images/pull-right.png" alt="Rechts ausrichten"></p>
+<h4 id="neue-zeile">Neue Zeile</h4>
+<p>Beim Ausrichten nach links oder rechts werden alle nachfolgenden Elemente neben dem  Bild dargestellt. Falls man in einer neuen Zeile beginnen möchte, muss man die <code>clearfix</code>-Klasse verwenden. Diese Klasse wird meistens auf ein übergeordnetes <code>&lt;div&gt;</code>-Element angewendet (mehr Infos zu <a href="http://holdirbootstrap.de/css/#helper-classes-clearfix">clearfix</a> in der Bootstrap Dokumentation):</p>
+<pre class="prettyprint lang-html">
+&lt;div class="clearfix">
+  &lt;img src="..." alt="..." class="pull-left">
+  &lt;p>Dieser Text ist neben dem Bild.&lt;/p>
+&lt;/div>
+&lt;p>Dieser Text ist unter dem Bild.&lt;/p>
+</pre>
+
+<p><img src="/assets/library/more-html-css/images/clearfix.png" alt="Clearfix"></p>
+<h4 id="abstand-neben-dem-bild">Abstand neben dem Bild</h4>
+<p>Meist möchte man neben dem Bild einen Abstand zum Text oder zu einem anderen Inhalt. Dies erreicht man am einfachsten durch definieren eines <code>margins</code> im CSS.</p>
+<p>Wenn wir im CSS eine Regel für das <code>img</code>-Element erstellen würden, dann würde diese auf alle Bilder auf der Webseite angewendet werden. Dies ist meist nicht sinnvoll. </p>
+<p>Für den Abstand rechts von einem Bild führen deshalb eine neue CSS-Klasse ein. Wir nennen diese <code>abstand-rechts</code>:</p>
+<h5 id="html-f-r-abstand-rechts">HTML für Abstand rechts</h5>
+<pre class="prettyprint lang-html">
+&lt;img src="..." alt="..." class="pull-left abstand-rechts">
+</pre>
+
+
+<p>Im CSS definieren wir jetzt den Abstand.</p>
+<h5 id="css-f-r-abstand-rechts">CSS für Abstand rechts</h5>
+<pre class="prettyprint lang-css">
+.abstand-rechts {
+  margin-right: 10px; 
+}
+</pre> 
+
+<p><img src="/assets/library/more-html-css/images/margin.png" alt="Abstand"></p>
+<p>Neben <code>margin-right</code> gibt es natürlich <code>margin-top</code>, <code>margin-bottom</code> und <code>margin-left</code>.</p>
+<h2 id="bilder-mit-konturen">Bilder mit Konturen</h2>
+<p>Bootstrap 3 bietet Möglichkeiten, um Bilder ganz einfach auf einer Webseite zu gestalten. Sie können die Ecken abrunden, einen Kreis ausschneiden oder einen dezenten Rahmen hinzufügen:</p>
+<p><img src="/assets/library/more-html-css/images/image-shapes.png" alt="Bilder mit Konturen"></p>
+<p>Mit den folgenden drei CSS-Klassen können Sie Ihren Bildern solche Konturen hinzufügen (weitere Infos unter <a href="http://holdirbootstrap.de/css/#images-shapes">Bilder-Konturen</a> in der Bootstrap Dokumentation):</p>
+<h5 id="konturen-mit-bootstrap">Konturen mit Bootstrap</h5>
+<pre class="prettyprint lang-html">
+&lt;img src="..." alt="..." class="img-rounded">
+&lt;img src="..." alt="..." class="img-circle">
+&lt;img src="..." alt="..." class="img-thumbnail">
+</pre>
+
+
+<h2 id="gute-bildquellen">Gute Bildquellen</h2>
+<p>Es gibt viele Quellen für Bilder im Internet, aber solche, die gute Bilder frei zur Verfügung stellen sind manchmal schwer zu finden. Hier sind ein paar, die ich empfehlen kann:</p>
+<ul>
+<li><a href="https://medium.com/@dustin/stock-photos-that-dont-suck-62ae4bcbe01b">Stock photos that don't suck</a> - eine Liste von Webseiten mit den besten gratis Fotos</li>
+<li><a href="http://www.labnol.org/internet/find-free-images/24990/">The Best Places to Find Free, High-Res Images for your Website</a> - eine weitere Liste mit den besten Webseiten für gratis Bilder mit hoher Auflösung</li>
+<li><a href="https://www.iconfinder.com/">Iconfinder</a> - Viele frei verfügbare Icons (Achtung: je nach Lizenz muss der Author genannt werden)</li>
+</ul>
+<h2 id="tools-f-r-die-bildbearbeitung">Tools für die Bildbearbeitung</h2>
+<h3 id="grafikprogramme-zum-installieren">Grafikprogramme zum Installieren</h3>
+<ul>
+<li><a href="http://www.adobe.com/products/photoshop.html">Photoshop</a> - professionell, teuer</li>
+<li><a href="http://www.adobe.com/products/photoshop-elements.html">Photoshop Elements</a> - kleiner Bruder von Photoshop</li>
+<li><a href="http://www.gimp.org/">GIMP</a> - beste Gratis-Alternative</li>
+<li><a href="http://www.getpaint.net/">Paint.net</a> - auch gratis, aber einfacher als GIMP</li>
+<li><a href="http://www.inkscape.org/">Inkscape</a> - ein Gratis-Programm für <strong>Vektorgrafiken</strong></li>
+</ul>
+<h3 id="grafikprogramme-online">Grafikprogramme Online</h3>
+<ul>
+<li><a href="http://pixlr.com/editor/">PIXLR Editor</a> - beste online Bildbearbeitung</li>
+<li><a href="http://pixlr.com/express/">PIXLR Express</a> - schnelle Effekte und Filter für Fotos</li>
+<li><a href="http://ipiccy.com/">iPiccy</a></li>
+</ul>
+
+
+          </section>
+          
+          <hr>
+          
+  <nav class="hidden-xs hidden-sm">
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/more-html-css/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/de/website-layout/" data-toggle="tooltip" title="Website-Layout">1</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/de/icons/" data-toggle="tooltip" title="Icons">2</a>
+      </li>
+        <li class="active">
+      <a href="/library/more-html-css/de/images/" data-toggle="tooltip" title="Bilder">3</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/de/text/" data-toggle="tooltip" title="Textformatierung">4</a>
+      </li>
+  
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+        <aside class="col-md-3 col-md-pull-9">
+  <div class="panel panel-default sidebar">
+    <div class="panel-heading">
+      <h4 class="panel-title">Teile dieser Serie</h4>  
+    </div>
+
+    <div class="list-group">
+        <a href="/library/more-html-css/de/" class="list-group-item">
+          Einleitung</a>
+        <a href="/library/more-html-css/de/website-layout/" class="list-group-item">
+          Website-Layout</a>
+        <a href="/library/more-html-css/de/icons/" class="list-group-item">
+          Icons</a>
+        <a href="/library/more-html-css/de/images/" class="list-group-item active">
+          Bilder</a>
+        <a href="/library/more-html-css/de/text/" class="list-group-item">
+          Textformatierung</a>
+    </div>
+  </div>
+</aside>
+
+      </article>
+      
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+    
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
