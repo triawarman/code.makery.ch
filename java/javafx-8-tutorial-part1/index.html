@@ -4,6 +4,27 @@
     <meta charset="utf-8">
     <title>JavaFX 8 Tutorial - Part 1: Scene Builder - code.makery.ch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
     <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="canonical" href="http://code.makery.ch/java/javafx-8-tutorial-part1/" />
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
@@ -63,14 +84,14 @@
       <article class="row">
         <div class="col-md-9 col-md-push-3">
           <div class="github-edit">
-            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/java/javafx-8-tutorial-part1.md">Edit on GitHub</a>
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/java/javafx-8-tutorial-part1.md">Edit on GitHub</a>
           </div>
         
           <header class="article-header">
             <h1 class="article-title">JavaFX 8 Tutorial - Part 1: Scene Builder</h1>
             <div class="article-date">
   Apr 19, 2014
-  • Updated May 12, 2014
+  • Updated Aug 27, 2014
 
 </div>
           </header>
@@ -135,7 +156,7 @@
 <hr>
 <h2 id="design-with-scene-builder">Design with Scene Builder</h2>
 <div class="alert alert-warning">
-  Note: As we're using an Early Access version of Scene Builder 2 there might be some issues (see <a href="#comment-1380574334" class="alert-link">comments</a> below). If you can't get it to work, download the source of this tutorial part and try it with the included fxml.
+  <strong>Note:</strong> If you can't get it to work, download the source of this tutorial part and try it with the included fxml.
 </div>
 
 <p>Right-click on <code>PersonOverview.fxml</code> and choose <em>Open with Scene Builder</em>. Now you should see the Scene Builder with just an <em>AncherPane</em> (visible under Hierarchy on the left).</p>
@@ -274,6 +295,11 @@ public class MainApp extends Application {
 <p>If JavaFX can't find the <code>fxml</code> file you speicified, you might get the following error message: </p>
 <p><code>java.lang.IllegalStateException: Location is not set.</code></p>
 <p>To solve this issue double check if you didn't misspell the name of your <code>fxml</code> files!</p>
+<div class="alert alert-warning">
+  If it still doesn't work, download the source of this tutorial part and try it with the included fxml.
+</div>
+
+
 <hr>
 <h3 id="what-s-next-">What's Next?</h3>
 <p>In <a href="/java/javafx-8-tutorial-part2/">Tutorial Part 2</a> we will add some data and functionality to our AddressApp.</p>
@@ -356,8 +382,8 @@ public class MainApp extends Application {
     </div>
 
     <div class="list-group">
-        <a href="/assets/java/javafx-8-tutorial-part1/addressapp-jfx8-part-1.zip" class="list-group-item">
-<i class="fa fa-fw fa-download"></i>          Source of Part 1 (Eclipse Project)</a>
+        <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-1.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>          Part 1 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
     </div>
   </div>
 </aside>

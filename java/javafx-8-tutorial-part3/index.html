@@ -4,6 +4,27 @@
     <meta charset="utf-8">
     <title>JavaFX 8 Tutorial - Part 3: Interacting with the User - code.makery.ch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
     <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="canonical" href="http://code.makery.ch/java/javafx-8-tutorial-part3/" />
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
@@ -63,19 +84,21 @@
       <article class="row">
         <div class="col-md-9 col-md-push-3">
           <div class="github-edit">
-            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/java/javafx-8-tutorial-part3.md">Edit on GitHub</a>
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/java/javafx-8-tutorial-part3.md">Edit on GitHub</a>
           </div>
         
           <header class="article-header">
             <h1 class="article-title">JavaFX 8 Tutorial - Part 3: Interacting with the User</h1>
             <div class="article-date">
   Apr 24, 2014
+  • Updated Aug 27, 2014
 
 </div>
           </header>
 
           <section class="article-content">
-            <p><img src="/assets/java/javafx-8-tutorial-part3/addressapp-part3.png" alt="Screenshot AddressApp Part 3"></p>
+            <p><strong>Update Aug 27, 2014:</strong> <em>Now using JDK 8u20 and ControlsFX 8.0.6_20</em></p>
+<p><img src="/assets/java/javafx-8-tutorial-part3/addressapp-part3.png" alt="Screenshot AddressApp Part 3"></p>
 <h2 id="topics-in-part-3">Topics in Part 3</h2>
 <ul>
 <li><strong>React to selection changes</strong> in the table.</li>
@@ -189,9 +212,12 @@ public class DateUtil {
 }
 </pre>
 
+<div class="alert alert-info">
+<strong>Hint:</strong> You can change the format of the date by changing the
+<code>DATE_PATTERN</code>. For all possible formats see <a class="alert-link" href="http://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html">DateTimeFormatter</a>.
+</div>
 
-<p><em>Note that you can change the format of the date by changing the
-<code>DATE_PATTERN</code>. For all possible formats see <a href="http://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html"><code>DateTimeFormatter</code></a>.</em></p>
+
 <h4 id="use-the-dateutil">Use the DateUtil</h4>
 <p>Now we need to use our new <code>DateUtil</code> in the <code>showPersonDetails</code> method of <code>PersonOverviewController</code>. Replace the <em>TODO</em> we added with the following line:</p>
 <pre class="prettyprint lang-java">
@@ -249,7 +275,7 @@ private void handleDeletePerson() {
 <p>To ignore such an error is not very nice, of course. We should let the user know that he/she must select a person before deleting. (Even better would be if we disabled the button so that the user doesn't even have the chance to do something wrong.)</p>
 <p>We'll add a popup dialog to inform the user. You'll need to <strong>add a library</strong> for the <a href="/blog/javafx-8-dialogs/">Dialogs</a>: </p>
 <ol>
-<li>Download the latest <strong>ControlsFX</strong> zip file from the <a href="http://fxexperience.com/controlsfx/">ControlsFX Website</a>. (It is also available as Maven dependency if you prefer to use Maven.)  </li>
+<li>Download the latest <strong>ControlsFX</strong> zip file from the <a href="http://fxexperience.com/controlsfx/">ControlsFX Website</a>. (It is also available as Maven dependency if you prefer to use Maven.)<br><strong>Important: The ControlsFX must be version <code>8.0.6_20</code> or greater to work with <code>JDK 8u20</code> and above as there was a breaking change introduced in that version.</strong></li>
 <li>Inside the zip file you should find a <code>controlsfx-8.x.x.jar</code> file. Unzip that file to your computer (Eclipse does not accept files copied directly from a zip folder).</li>
 <li>Create a <strong>lib</strong> subfolder in the project and add the jar file to this folder.</li>
 <li>Add the library to your project's <strong>classpath</strong>: In Eclipse <em>right-click on the jar file</em> | <em>Build Path</em> | <em>Add to Build Path</em>. Now Eclipse knows about the library.</li>
@@ -277,7 +303,12 @@ private void handleDeletePerson() {
 }
 </pre>
 
-<p><em>For more examples of Dialogs read the <a href="/blog/javafx-8-dialogs/">JavaFX 8 Dialogs</a> blog post.</em></p>
+<div class="alert alert-info">
+For more examples on how to use Dialogs read <a class="alert-link" href="/blog/javafx-8-dialogs/">JavaFX 8 Dialogs</a>.
+</div>
+
+
+
 <hr>
 <h2 id="the-new-and-edit-dialogs">The New and Edit Dialogs</h2>
 <p>The new and edit actions are a bit more work: We'll need a custom dialog (i.e. a new stage) with a form to ask the user for details about the person.</p>
@@ -637,8 +668,8 @@ private void handleEditPerson() {
     </div>
 
     <div class="list-group">
-        <a href="/assets/java/javafx-8-tutorial-part3/addressapp-jfx8-part-3.zip" class="list-group-item">
-<i class="fa fa-fw fa-download"></i>          Source of Part 3 (Eclipse Project)</a>
+        <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-3.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>          Part 3 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
     </div>
   </div>
 </aside>

@@ -4,6 +4,27 @@
     <meta charset="utf-8">
     <title>JavaFX 8 Tutorial - Part 2: Model and TableView - code.makery.ch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
     <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="canonical" href="http://code.makery.ch/java/javafx-8-tutorial-part2/" />
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
@@ -63,13 +84,14 @@
       <article class="row">
         <div class="col-md-9 col-md-push-3">
           <div class="github-edit">
-            <a href="https://github.com/marcojakob/code.makery.ch/blob/master/collections/java/javafx-8-tutorial-part2.md">Edit on GitHub</a>
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/java/javafx-8-tutorial-part2.md">Edit on GitHub</a>
           </div>
         
           <header class="article-header">
             <h1 class="article-title">JavaFX 8 Tutorial - Part 2: Model and TableView</h1>
             <div class="article-date">
   Apr 23, 2014
+  • Updated Aug 27, 2014
 
 </div>
           </header>
@@ -267,7 +289,11 @@ public class Person {
 <li>Create a normal class inside the <strong>view</strong> package called <code>PersonOverviewController.java</code>. (We must put it in the same package as the <code>PersonOverview.fxml</code>, otherwise the SceneBuilder won't find it - at least not in the current version).</li>
 <li>We'll add some instance variables that give us access to the table and the labels inside the view. The fields and some methods have a special <code>@FXML</code> annotation. This is necessary for the fxml file to have access to private fields and private methods. After we have everything set up in the fxml file, the application will automatically fill the variables when the fxml file is loaded. So let's add the following code:</li>
 </ol>
-<p><strong>Note: Remember to always use the javafx imports, NOT awt or swing!</strong></p>
+<div class="alert alert-info">
+<strong>Note:</strong> Remember to always use the <strong>javafx imports</strong>, NOT awt or swing!
+</div>
+
+
 <h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
 <pre class="prettyprint lang-java">
 package ch.makery.address.view;
@@ -473,8 +499,8 @@ public void showPersonOverview() {
     </div>
 
     <div class="list-group">
-        <a href="/assets/java/javafx-8-tutorial-part2/addressapp-jfx8-part-2.zip" class="list-group-item">
-<i class="fa fa-fw fa-download"></i>          Source of Part 2 (Eclipse Project)</a>
+        <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-2.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>          Part 2 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
     </div>
   </div>
 </aside>
