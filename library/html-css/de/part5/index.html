@@ -79,8 +79,81 @@
   </ul>
 </nav>
       
+      
       <article class="row">
-        <div class="col-md-9 col-md-push-3">
+        <aside class="col-md-3">
+          <div class="visible-md visible-lg">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Teile dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/html-css/de/part1/" class="list-group-item">
+        Teil 1: Unsere erste Webseite</a>
+      <a href="/library/html-css/de/part2/" class="list-group-item">
+        Teil 2: Webseite veröffentlichen</a>
+      <a href="/library/html-css/de/part3/" class="list-group-item">
+        Teil 3: Einführung in CSS</a>
+      <a href="/library/html-css/de/part4/" class="list-group-item">
+        Teil 4: Entwicklertools im Browser</a>
+      <a href="/library/html-css/de/part5/" class="list-group-item active">
+        Teil 5: Navigieren zwischen Seiten</a>
+      <a href="/library/html-css/de/part6/" class="list-group-item">
+        Teil 6: Bootstrap Framework verwenden</a>
+      <a href="/library/html-css/de/part7/" class="list-group-item">
+        Teil 7: Wie weiter?</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v0.3/portfolio-de-part5.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Teil 5</a>
+  </div>
+</div>
+
+          </div>
+          <div class="visible-xs visible-sm">
+          <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Teile dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/html-css/de/part1/">
+        Teil 1: Unsere erste Webseite</a></li>
+      <li class=""><a href="/library/html-css/de/part2/">
+        Teil 2: Webseite veröffentlichen</a></li>
+      <li class=""><a href="/library/html-css/de/part3/">
+        Teil 3: Einführung in CSS</a></li>
+      <li class=""><a href="/library/html-css/de/part4/">
+        Teil 4: Entwicklertools im Browser</a></li>
+      <li class=" active"><a href="/library/html-css/de/part5/">
+        Teil 5: Navigieren zwischen Seiten</a></li>
+      <li class=""><a href="/library/html-css/de/part6/">
+        Teil 6: Bootstrap Framework verwenden</a></li>
+      <li class=""><a href="/library/html-css/de/part7/">
+        Teil 7: Wie weiter?</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v0.3/portfolio-de-part5.zip">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Teil 5</a></li>
+  </ul>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
         
           <header class="article-header">
             <h1 class="article-title">HTML & CSS Tutorial - Teil 5: Navigieren zwischen Seiten</h1>
@@ -119,7 +192,7 @@
 
 <p>Diese Änderung sollte dazu führen, dass das Styling vom CSS auch für die Blogseite übernommen wird.</p>
 <p>Jetzt passen wir noch den Titel und Inhalt an:</p>
-<h5 id="blog-index-html">blog/index.html</h5>
+<h5 id="blog-index-html-blog-haupt-bersicht">blog/index.html - Blog Hauptübersicht</h5>
 <pre class="prettyprint lang-html">
 &lt;!DOCTYPE html>
 
@@ -148,14 +221,14 @@
 <p><img src="/assets/library/html-css/part5/blog-entry-subfolder-de.png" alt="Blogeintrag"></p>
 <p>Die Zahlenkombination <code>2014-08-02</code> ist das Datum in umgekehrter Reihenfolge, also der 2. August 2014. Man könnte natürlich irgend einen Namen vergeben, aber wenn man das Datum so in den Dateinamen integriert, dann hat man automatisch eine chronologische Sortierung der Dateien oder Ordner. Dies gibt uns eine bessere Übersicht, wenn wir später viele Blogeinträge haben.</p>
 <p>Im Blogeintrag ändern wir den Inhalt wie folgt ab:</p>
-<h5 id="blog-2014-08-02-erster-eintrag-index-html">blog/2014-08-02-erster-eintrag/index.html</h5>
+<h5 id="blog-2014-08-02-erster-eintrag-index-html-erster-blogeintrag">blog/2014-08-02-erster-eintrag/index.html - Erster Blogeintrag</h5>
 <pre class="prettyprint lang-html">
 &lt;!DOCTYPE html>
 
 &lt;html>
   &lt;head>
     &lt;meta charset="utf-8">
-    &lt;link rel="stylesheet" href="../main.css">
+    &lt;link rel="stylesheet" href="../../main.css">
     &lt;title>Erster Eintrag - Web Portfolio von Marco&lt;/title>
   &lt;/head>
   &lt;body>
@@ -196,7 +269,8 @@
 <strong>Hinweis:</strong> Erstellen Sie für jeden Blogeintrag einen eigenen Unterordner (mit einer <code>index.html</code>-Seite). So haben Sie eine gute Ordnung und können Bilder oder andere Dateien für den Blogeintrag im Unterordner ablegen.
 </div>
 
-
+<h5 id="zweiter-blogeintrag">Zweiter Blogeintrag</h5>
+<p><img src="/assets/library/html-css/part5/blog-entry-subfolder2-de.png" alt="Blogeintrag 2"></p>
 <h3 id="seite-f-r-projekte">Seite für Projekte</h3>
 <p>Wenn wir später verschiedene Webapplikationen programmieren, wäre es natürlich nützlich, dafür eine separate Seite zu haben. Wir bereiten schon mal eine Seite für unsere Projekte vor, jedoch noch ohne Inhalt.</p>
 <p>Gehen Sie wie oben beim Blog vor und erstellen Sie einen Unterordner <code>projekte</code> mit einer Datei <code>index.html</code>:</p>
@@ -380,7 +454,7 @@ Sobald Sie aber die Seite auf einem Server veröffentlichen, sollten die Links g
           
           <hr>
           
-  <nav class="hidden-xs hidden-sm">
+  <nav>
     <div class="article-paging">
       <ul class="pagination">
               <li>
@@ -414,43 +488,6 @@ Sobald Sie aber die Seite auf einem Server veröffentlichen, sollten die Links g
 
         </div>
         
-        <aside class="col-md-3 col-md-pull-9">
-  <div class="panel panel-default sidebar">
-    <div class="panel-heading">
-      <h4 class="panel-title">Teile dieser Serie</h4>  
-    </div>
-
-    <div class="list-group">
-        <a href="/library/html-css/de/" class="list-group-item">
-          Einleitung</a>
-        <a href="/library/html-css/de/part1/" class="list-group-item">
-          Teil 1: Unsere erste Webseite</a>
-        <a href="/library/html-css/de/part2/" class="list-group-item">
-          Teil 2: Webseite veröffentlichen</a>
-        <a href="/library/html-css/de/part3/" class="list-group-item">
-          Teil 3: Einführung in CSS</a>
-        <a href="/library/html-css/de/part4/" class="list-group-item">
-          Teil 4: Entwicklertools im Browser</a>
-        <a href="/library/html-css/de/part5/" class="list-group-item active">
-          Teil 5: Navigieren zwischen Seiten</a>
-        <a href="/library/html-css/de/part6/" class="list-group-item">
-          Teil 6: Bootstrap Framework verwenden</a>
-        <a href="/library/html-css/de/part7/" class="list-group-item">
-          Teil 7: Wie weiter?</a>
-    </div>
-  </div>
-  <div class="panel panel-default sidebar">
-    <div class="panel-heading">
-      <h4 class="panel-title">Downloads</h4>  
-    </div>
-
-    <div class="list-group">
-        <a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v0.2/portfolio-de-part5.zip" class="list-group-item">
-<i class="fa fa-fw fa-file-archive-o"></i>          Portfolio Teil 5</a>
-    </div>
-  </div>
-</aside>
-
       </article>
       
       
