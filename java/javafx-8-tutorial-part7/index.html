@@ -134,7 +134,7 @@
             <h1 class="article-title">JavaFX 8 Tutorial - Part 7: Deployment</h1>
             <div class="article-date">
   May 10, 2014
-  • Updated Aug 27, 2014
+  • Updated Aug 30, 2014
 
 </div>
           </header>
@@ -224,16 +224,13 @@
 <li><a href="/assets/java/javafx-8-tutorial-part7/AddressApp.icns">AddressApp.icns</a> for the mac installer icon</li>
 </ul>
 <ol>
-<li><p>Create the following subfolders in the <code>build</code> folder:</p>
-<ul>
+<li>Create the following subfolders in the <code>build</code> folder:<ul>
 <li><code>build/package/windows</code> (only used for windows)</li>
 <li><code>build/package/macos</code> (only used for macos)</li>
 </ul>
 </li>
-<li><p>Copy the corresponding icons from above into those subfolders. It should look something like this now:<br><img src="/assets/java/javafx-8-tutorial-part7/installer-icons.png" alt="Installer Icons"></p>
-</li>
-<li><p><strong>Important</strong>: The name of the icons must exactly match the <strong>Application title</strong> you specified in <code>build.fxbuild</code>:</p>
-<ul>
+<li>Copy the corresponding icons from above into those subfolders. It should look something like this now:<br><img src="/assets/java/javafx-8-tutorial-part7/installer-icons.png" alt="Installer Icons"></li>
+<li><strong>Important</strong>: The name of the icons must exactly match the <strong>Application title</strong> you specified in <code>build.fxbuild</code>:<ul>
 <li><code>YourAppTitle.ico</code></li>
 <li><code>YourAppTitle-setup-icon.bmp</code></li>
 <li><code>YourAppTitle.icns</code></li>
@@ -243,40 +240,50 @@
 <h3 id="step-3-add-resources">Step 3 - Add Resources</h3>
 <p>Our <code>resources</code> folder isn't copied automatically. We must manually add it to the build directory:</p>
 <ol>
-<li><p>Create the following subfolder in the <code>build</code> folder:</p>
-<ul>
-<li><code>build/dist</code></li>
+<li>Create the following subfolder in the <code>build</code> folder:<ul>
+<li><code>build/dist</code>   </li>
 </ul>
 </li>
-<li><p>Copy the <code>resources</code> folder (containing our application images) into <code>build/dist</code>.<br><img src="/assets/java/javafx-8-tutorial-part7/build-resources.png" alt="Build Resources"></p>
-</li>
+<li>Copy the <code>resources</code> folder (containing our application images) into <code>build/dist</code>.<br><img src="/assets/java/javafx-8-tutorial-part7/build-resources.png" alt="Build Resources"></li>
 </ol>
 <h3 id="step-4-edit-build-xml-to-include-icons">Step 4 - Edit build.xml to include icons</h3>
 <p>E(fx)clipse has generated a file <code>build/build.xml</code> which is ready to be executed by <strong>Ant</strong>. Our installer icons and resource images just won't work. </p>
 <p>As e(fx)clipse can't be told (yet?) to include additional resources like our <code>resources</code> folder and the few installer icons we've added above, we have to manually edit the <code>build.xml</code>:</p>
 <p>Open <code>build.xml</code> and find the path <code>fxant</code>. Add one line for the <code>${basedir}</code> (will make our installer icons available):</p>
-<h5 id="build-xml">build.xml</h5>
+<h5 id="build-xml-add-basedir-">build.xml - add "basedir"</h5>
 <pre class="prettyprint lang-xml">
 &lt;path id="fxant"&gt;
   &lt;filelist&gt;
     &lt;file name="${java.home}\..\lib\ant-javafx.jar"/&gt;
     &lt;file name="${java.home}\lib\jfxrt.jar"/&gt;
-    &lt;file name="${basedir}"/&gt;
+    <mark>&lt;file name="${basedir}"/&gt;</mark>
   &lt;/filelist&gt;
 &lt;/path&gt;
 </pre>    
 
 
 <p>Find the block <code>fx:resources id="appRes"</code> further down in the file. Add one line for our <code>resources</code>:</p>
+<h5 id="build-xml-add-resources-">build.xml - add "resources"</h5>
 <pre class="prettyprint lang-xml">
 &lt;fx:resources id="appRes"&gt;
     &lt;fx:fileset dir="dist" includes="AddressApp.jar"/&gt;
     &lt;fx:fileset dir="dist" includes="libs/*"/&gt;
-    &lt;fx:fileset dir="dist" includes="resources/**"/&gt;
+    <mark>&lt;fx:fileset dir="dist" includes="resources/**"/&gt;</mark>
 &lt;/fx:resources&gt; 
 </pre>
 
-<p>We could already run the <code>build.xml</code> as an Ant build. This would generate a jar file of the project. But we want to go a step further and create a nice installer.</p>
+
+<p>Somehow, the version number doesn't get added in the <code>fx:application</code> which makes the installer always default to version <code>1.0</code> (as pointed out by a few people in the comments). To fix this, manually add the version number (thanks Marc for <a href="http://code.makery.ch/java/javafx-8-tutorial-part7/#comment-1566725959">finding out</a>):</p>
+<h5 id="build-xml-add-version-">build.xml - add "version"</h5>
+<pre class="prettyprint lang-xml">
+&lt;fx:application id="fxApplication"
+    name="AddressApp"
+    mainClass="ch.makery.address.MainApp"
+    <mark>version="1.0"</mark>
+/>
+</pre>
+
+<p>We could already run the <code>build.xml</code> as an Ant build at this point. This would generate a runnable jar file of the project. But we want to go a step further and create a nice installer.</p>
 <h3 id="step-5-windows-windows-exe-installer">Step 5 (WINDOWS) - Windows exe Installer</h3>
 <p><img src="/assets/java/javafx-8-tutorial-part7/addressapp-windows.png" alt="AddressApp on Windows"></p>
 <p>With <strong>Inno Setup</strong> we can create a Windows Installer of our application as a single <code>.exe</code> file. The resulting <code>.exe</code> will perform a user level installation (no admin permissions required). Also a shortcut will be created (menu or desktop).</p>
