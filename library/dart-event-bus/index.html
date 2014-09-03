@@ -1,0 +1,214 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dart Event Bus - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/dart-event-bus/" />
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Dart Event Bus" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/dart-event-bus/" />
+    
+    <link rel="author" href="https://plus.google.com/114174035167840477870"/>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body >
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Source Code</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/dart-event-bus" class="list-group-item">
+<i class="fa fa-fw fa-github-alt"></i>        Dart Event Bus (GitHub)</a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Dart Event Bus</h1>
+            <div class="article-date">
+  Mar 25, 2014
+  • Updated Sep 03, 2014
+
+</div>
+          </header>
+          
+          <div class="visible-xs-block visible-sm-block">
+            <aside>
+              <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Source Code <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/dart-event-bus">
+<i class="fa fa-fw fa-github-alt"></i>        Dart Event Bus (GitHub)</a></li>
+  </ul>
+</div>
+
+            </aside>
+          </div>
+          
+          <section class="article-content">
+            <p>A simple Event Bus using Dart <a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Streams</a> 
+for decoupling applications.</p>
+<p>For installation instructions and source code see <a href="https://github.com/marcojakob/dart-event-bus"> Dart Event Bus on GitHub</a>.</p>
+<h2 id="event-bus-pattern">Event Bus Pattern</h2>
+<p>An Event Bus follows the publish/subscribe pattern. It allows listeners to 
+subscribe for events and publishers to fire events. This enables objects to
+interact without requiring to explicitly define listeners and keeping track of
+them.</p>
+<h3 id="event-bus-and-mvc">Event Bus and MVC</h3>
+<p>The Event Bus pattern is especially helpful for decoupling <a href="http://wikipedia.org/wiki/Model_View_Controller">MVC</a> 
+(or <a href="http://wikipedia.org/wiki/Model_View_Presenter">MVP</a>) applications.</p>
+<p><strong>One group of MVC</strong> is not a problem.</p>
+<p><img src="/assets/library/dart-event-bus/mvc.png" alt="Model-View-Controller"></p>
+<p>But as soon as there are <strong>multiple groups of MVCs</strong>, those groups will have to talk
+to each other. This creates a tight coupling between the controllers.</p>
+<p><img src="/assets/library/dart-event-bus/mvc-multi.png" alt="Multi Model-View-Controllers"></p>
+<p>By communication through an <strong>Event Bus</strong>, the coupling is reduced.</p>
+<p><img src="/assets/library/dart-event-bus/event-bus.png" alt="Event Bus"></p>
+<hr>
+<h2 id="demo">Demo</h2>
+<iframe src="http://marcojakob.github.io/dart-event-bus/" width="100%" height="530px"></iframe>
+
+          </section>
+          
+          <hr>
+          
+        </div>
+        
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/dart-event-bus/';
+    var disqus_url = 'http://code.makery.ch/library/dart-event-bus/';
+    var disqus_title = 'Dart Event Bus';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
