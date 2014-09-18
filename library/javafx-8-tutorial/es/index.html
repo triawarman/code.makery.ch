@@ -28,7 +28,7 @@
     <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="canonical" href="http://code.makery.ch/java/javafx-8-tutorial-intro/" />
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
-    <meta name="description" content="Este Tutorial em sete partes orienta a criação, programação e a implantação de um aplicativo de endereços usando JavaFX.">
+    <meta name="description" content="Este tutorial en siete partes  describe el diseño, programación y publicación de una aplicación de contactos con JavaFX.">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" value="summary">
@@ -36,8 +36,8 @@
     <!-- Open Graph data -->
     <meta property="og:title" content="JavaFX 8 Tutorial" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Este Tutorial em sete partes orienta a criação, programação e a implantação de um aplicativo de endereços usando JavaFX." />
-    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/pt/" />
+    <meta property="og:description" content="Este tutorial en siete partes  describe el diseño, programación y publicación de una aplicación de contactos con JavaFX." />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/es/" />
     
     <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/addressapp.png" />
     
@@ -84,7 +84,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="github-edit">
-            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-pt.md">Edit on GitHub</a>
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-es.md">Edit on GitHub</a>
           </div>
         </div>
       </div>
@@ -94,39 +94,39 @@
           <div class="visible-md-block visible-lg-block">
           <div class="panel panel-default sidebar">
   <div class="panel-heading">
-    <h4 class="panel-title">Artigos nesta serie</h4>  
+    <h4 class="panel-title">Artículos en esta serie</h4>  
   </div>
 
   <div class="list-group">
-      <a href="/library/javafx-8-tutorial/pt/" class="list-group-item active">
-        Introdução</a>
-      <a href="/library/javafx-8-tutorial/pt/part1/" class="list-group-item">
+      <a href="/library/javafx-8-tutorial/es/" class="list-group-item active">
+        Introducción</a>
+      <a href="/library/javafx-8-tutorial/es/part1/" class="list-group-item">
         Parte 1: Scene Builder</a>
-      <a href="/library/javafx-8-tutorial/pt/part2/" class="list-group-item">
-        Parte 2: Model and TableView</a>
-      <a href="/library/javafx-8-tutorial/pt/part3/" class="list-group-item">
-        Parte 3: Interagindo com o usuário</a>
-      <a href="/library/javafx-8-tutorial/pt/part4/" class="list-group-item">
-        Parte 4: Estilos usando CSS</a>
-      <a href="/library/javafx-8-tutorial/pt/part5/" class="list-group-item">
-        Parte 5: Salvando dados como XML</a>
-      <a href="/library/javafx-8-tutorial/pt/part6/" class="list-group-item">
-        Parte 6: Gráficos de Estatistica</a>
-      <a href="/library/javafx-8-tutorial/pt/part7/" class="list-group-item">
-        Parte 7: Implantação</a>
+      <a href="/library/javafx-8-tutorial/es/part2/" class="list-group-item">
+        Parte 2: Modelo y TableView</a>
+      <a href="/library/javafx-8-tutorial/es/part3/" class="list-group-item">
+        Parte 3: Interacción con el usuario</a>
+      <a href="/library/javafx-8-tutorial/es/part4/" class="list-group-item">
+        Parte 4: Hojas de estilo CSS</a>
+      <a href="/library/javafx-8-tutorial/es/part5/" class="list-group-item">
+        Parte 5: Persistencia de datos con XML</a>
+      <a href="/library/javafx-8-tutorial/es/part6/" class="list-group-item">
+        Parte 6: Gráficos estadísticos</a>
+      <a href="/library/javafx-8-tutorial/es/part7/" class="list-group-item">
+        Parte 7: Publicación con e(fx)clipse</a>
   </div>
 </div>
 <div class="panel panel-default sidebar">
   <div class="panel-heading">
-    <h4 class="panel-title">Linguagens</h4>  
+    <h4 class="panel-title">Lenguajes</h4>  
   </div>
 
   <div class="list-group">
       <a href="/java/javafx-8-tutorial-intro/" class="list-group-item">
 <i class="fa fa-fw fa-globe"></i>        English</a>
-      <a href="/library/javafx-8-tutorial/pt/" class="list-group-item active">
+      <a href="/library/javafx-8-tutorial/pt/" class="list-group-item">
 <i class="fa fa-fw fa-globe"></i>        Português</a>
-      <a href="/library/javafx-8-tutorial/es/" class="list-group-item">
+      <a href="/library/javafx-8-tutorial/es/" class="list-group-item active">
 <i class="fa fa-fw fa-globe"></i>        Español</a>
   </div>
 </div>
@@ -137,8 +137,8 @@
           <header class="article-header">
             <h1 class="article-title">JavaFX 8 Tutorial</h1>
             <div class="article-date">
-  Sep 10, 2014
-  • Updated Sep 10, 2014
+  Sep 17, 2014
+  • Updated Sep 17, 2014
 
 </div>
           </header>
@@ -146,36 +146,36 @@
           <div class="visible-xs-block visible-sm-block">
             <aside>
               <div class="btn-group sidebar-dropdown">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artigos nesta serie <span class="caret"></span>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artículos en esta serie <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
-      <li class=" active"><a href="/library/javafx-8-tutorial/pt/">
-        Introdução</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/pt/part1/">
+      <li class=" active"><a href="/library/javafx-8-tutorial/es/">
+        Introducción</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part1/">
         Parte 1: Scene Builder</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/pt/part2/">
-        Parte 2: Model and TableView</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/pt/part3/">
-        Parte 3: Interagindo com o usuário</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/pt/part4/">
-        Parte 4: Estilos usando CSS</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/pt/part5/">
-        Parte 5: Salvando dados como XML</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/pt/part6/">
-        Parte 6: Gráficos de Estatistica</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/pt/part7/">
-        Parte 7: Implantação</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part2/">
+        Parte 2: Modelo y TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part3/">
+        Parte 3: Interacción con el usuario</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part4/">
+        Parte 4: Hojas de estilo CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part5/">
+        Parte 5: Persistencia de datos con XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part6/">
+        Parte 6: Gráficos estadísticos</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part7/">
+        Parte 7: Publicación con e(fx)clipse</a></li>
   </ul>
 </div>
 <div class="btn-group sidebar-dropdown">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Linguagens <span class="caret"></span>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Lenguajes <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
       <li class=""><a href="/java/javafx-8-tutorial-intro/">
 <i class="fa fa-fw fa-globe"></i>        English</a></li>
-      <li class=" active"><a href="/library/javafx-8-tutorial/pt/">
+      <li class=""><a href="/library/javafx-8-tutorial/pt/">
 <i class="fa fa-fw fa-globe"></i>        Português</a></li>
-      <li class=""><a href="/library/javafx-8-tutorial/es/">
+      <li class=" active"><a href="/library/javafx-8-tutorial/es/">
 <i class="fa fa-fw fa-globe"></i>        Español</a></li>
   </ul>
 </div>
@@ -185,36 +185,36 @@
           
           <section class="article-content">
             <div class="alert alert-warning">
-  <i class="fa fa-language"></i> This page is beeing translated to Portuguese. If you'd like to help out please read <a href="/library/how-to-contribute/" class="alert-link">how to contribute</a>.
+  <i class="fa fa-language"></i> This page is beeing translated to Spanish. If you'd like to help out please read <a href="/library/how-to-contribute/" class="alert-link">how to contribute</a>.
 </div>
 
-
-<p>Em 2012 eu criei um tutorial muito detalhado <a href="/java/javafx-2-tutorial-intro/">JavaFX 2 tutorial series</a> para meus alunos. Muitas pessoas ao redor do mundo leram o tutorial e derem um feedback possitivo. Então eu decidi <strong> rescrever o tutorial de JavaFX 2 para JavaFX 8</strong> (Leia sobre o que mudou em <a href="/blog/update-to-javafx-8-whats-new/">Atualização para JavaFX 8 - Quais as novidades</a>).</p>
-<p>Este Tutorial em sete partes orienta a criação, programação e a implantação de um aplicativo de endereços. No fim nossa aplicação ficará como a da imagem:</p>
-<p><img src="/assets/library/javafx-8-tutorial/addressapp.png" alt="Screenshot AddressApp"></p>
-<h2 id="oque-voc-aprender-">Oque você aprenderá</h2>
+<p>JavaFX proporciona a los desarrolladores de Java una nueva plataforma gráfica.  JavaFX 2.0 se publicó en octubre del 2011 con la intención de reemplazar a Swing en la creación de nuevos interfaces gráficos de usario (IGU). Cuando empecé a enseñar JavaFX en 2011 era una tecnología muy incipiente todavía. No había libros sobre JavaFX que fueran <strong>adecuados para estudiantes de programación noveles</strong>, así es que empecé a escribir una serie de tutoriales muy detallados sobre JavaFX.</p>
+<p><img src="/assets/java/javafx-2-tutorial-intro/javafx-logo.png" alt="JavaFX Logo"></p>
+<p>El tutorial te guía a lo largo del diseño, programación y publicación de una aplicación de contactos (libreta de direcciones) mediante JavaFX. Este es el aspecto que tendrá la aplicación final:</p>
+<p><img src="/assets/java/javafx-2-tutorial-intro/addressapp01.png" alt="Screenshot AddressApp Part 1"></p>
+<h2 id="lo-que-aprender-s">Lo que aprenderás</h2>
 <ul>
-<li>Criar e executar um projeto JavaFX</li>
-<li>Usar o Scene Builder para criar a interface com o usuário</li>
-<li>Estruturar uma aplicação usando o padrão MVC (Modelo Visão Controle)</li>
-<li>Usar <code>ObservableLists</code> para atualizar automaticamente a interface do usuário</li>
-<li>Usar <code>TableView</code>e mostar as informações ao selecionar uma linha</li>
-<li>Criar uma caixa de dialogo popup para editar as informações das pessoas</li>
-<li>Validar a entrada do usuário</li>
-<li>Personalizar um aplicativo JavaFX usando CSS</li>
-<li>Persistir dados usando XML</li>
-<li>Armazenar o ultimo arquivo aberto nas preferencias do usuário</li>
-<li>Criar gráfico JavaFX com estatísticas</li>
-<li>Implementar um aplicativo JavaFX como um pacote nativo</li>
+<li>Creando un nuevo projecto JavaFX</li>
+<li>Usando Scene Builder para diseñar la interfaz de usuario</li>
+<li>Estructurando una aplicación con el patrón Modelo Vista Controlador (MVC)</li>
+<li>Uso de <code>ObservableLists</code> para la actualización automática de la interfaz de usuario</li>
+<li>Uso de <code>TableView</code> y respuesta a cambios de selección en la table</li>
+<li>Creación de un diálogo personalizado para editar personas</li>
+<li>Validando la entrada del usuario</li>
+<li>Aplicando estilos mediante CSS</li>
+<li>Persistencia de datos mediante XML</li>
+<li>Guardando el último archivo abierto en las preferencias del usuario</li>
+<li>Crenado un gráfico JavaFX para mostrar estadísticos</li>
+<li>Publicación de una aplicación JavaFX nativa</li>
 </ul>
-<p><strong>São muitas coisas!</strong> Assim, depois que você completar esta serie de tutoriais voceê estará pronto para criar aplicativos sofisticados com JavaFX.</p>
+<p>Después de completar esta serie de tutoriales deberías estar preparado para construir aplicaciones sofisticadas con JavaFX.</p>
 <h2 id="como-usar-este-tutorial">Como usar este tutorial</h2>
-<p>Há duas maneira de usar este tutorial:</p>
+<p>Hay dos formas de utilizarlo</p>
 <ul>
-<li><strong>Aprendizagem:</strong> Crie seu própio projeto JavaFX do zero.</li>
-<li><strong>Modo rapido:</strong> Importe o código fonte de uma parte do tutorial para sua IDE (é um projeto Eclipse, mas você pode usar outras IDEs como o NetBeans com algumas modificações). E depois ler o tutorial para entender o código.</li>
+<li><strong>máximo-aprendizaje*</strong> Creando tu propio proyecto JavaFX desde cero.</li>
+<li><strong>máxima-rápidez</strong> Importa el código fuente de una parte del tutorial en tu entorno de desarrollo (es un proyecto Eclipse, pero puedes usar otros entornos, como Netbeans, con ligeras modificaciones). Después revisa el tutorial para entender el código. Este enfoque también resulta útil si te quedas atascado en la creación de tu propio código.</li>
 </ul>
-<p>Espero que você se divirta! Começe com <a href="/library/javafx-8-tutorial/pt/part1/">Parte 1: Scene Builder</a>.</p>
+<p>¡ Espero que te diviertas y aprendas mucho ! Empieza en  <a href="/library/javafx-8-tutorial/es/part1/">Part 1: Scene Builder</a>.</p>
 
 
           </section>
@@ -225,28 +225,28 @@
     <div class="article-paging">
       <ul class="pagination">
               <li class="active">
-      <a href="/library/javafx-8-tutorial/pt/" data-toggle="tooltip" title="Introdução">Intro</a>
+      <a href="/library/javafx-8-tutorial/es/" data-toggle="tooltip" title="Introducción">Intro</a>
       </li>
         <li>
-      <a href="/library/javafx-8-tutorial/pt/part1/" data-toggle="tooltip" title="Parte 1: Scene Builder">1</a>
+      <a href="/library/javafx-8-tutorial/es/part1/" data-toggle="tooltip" title="Parte 1: Scene Builder">1</a>
       </li>
         <li>
-      <a href="/library/javafx-8-tutorial/pt/part2/" data-toggle="tooltip" title="Parte 2: Model and TableView">2</a>
+      <a href="/library/javafx-8-tutorial/es/part2/" data-toggle="tooltip" title="Parte 2: Modelo y TableView">2</a>
       </li>
         <li>
-      <a href="/library/javafx-8-tutorial/pt/part3/" data-toggle="tooltip" title="Parte 3: Interagindo com o usuário">3</a>
+      <a href="/library/javafx-8-tutorial/es/part3/" data-toggle="tooltip" title="Parte 3: Interacción con el usuario">3</a>
       </li>
         <li>
-      <a href="/library/javafx-8-tutorial/pt/part4/" data-toggle="tooltip" title="Parte 4: Estilos usando CSS">4</a>
+      <a href="/library/javafx-8-tutorial/es/part4/" data-toggle="tooltip" title="Parte 4: Hojas de estilo CSS">4</a>
       </li>
         <li>
-      <a href="/library/javafx-8-tutorial/pt/part5/" data-toggle="tooltip" title="Parte 5: Salvando dados como XML">5</a>
+      <a href="/library/javafx-8-tutorial/es/part5/" data-toggle="tooltip" title="Parte 5: Persistencia de datos con XML">5</a>
       </li>
         <li>
-      <a href="/library/javafx-8-tutorial/pt/part6/" data-toggle="tooltip" title="Parte 6: Gráficos de Estatistica">6</a>
+      <a href="/library/javafx-8-tutorial/es/part6/" data-toggle="tooltip" title="Parte 6: Gráficos estadísticos">6</a>
       </li>
         <li>
-      <a href="/library/javafx-8-tutorial/pt/part7/" data-toggle="tooltip" title="Parte 7: Implantação">7</a>
+      <a href="/library/javafx-8-tutorial/es/part7/" data-toggle="tooltip" title="Parte 7: Publicación con e(fx)clipse">7</a>
       </li>
         
       </ul>
