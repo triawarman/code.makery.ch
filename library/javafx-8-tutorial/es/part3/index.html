@@ -1,0 +1,816 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tutorial JavaFX 8 - Parte 3: Interacción con el usuario - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/es/part3/" />
+
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/java/javafx-8-tutorial-part3/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part3/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part3/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Respuesta a cambios de selección en un TableView. Añadir, editar y borrar ítems de la tabla y validar la entrada del usuario.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Tutorial JavaFX 8 - Parte 3: Interacción con el usuario" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Respuesta a cambios de selección en un TableView. Añadir, editar y borrar ítems de la tabla y validar la entrada del usuario." />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/es/part3/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part3/addressapp-part3.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-es-part3.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artículos en esta serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/es/" class="list-group-item">
+        Introducción</a>
+      <a href="/library/javafx-8-tutorial/es/part1/" class="list-group-item">
+        Parte 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/es/part2/" class="list-group-item">
+        Parte 2: Modelo y TableView</a>
+      <a href="/library/javafx-8-tutorial/es/part3/" class="list-group-item active">
+        Parte 3: Interacción con el usuario</a>
+      <a href="/library/javafx-8-tutorial/es/part4/" class="list-group-item">
+        Parte 4: Hojas de estilo CSS</a>
+      <a href="/library/javafx-8-tutorial/es/part5/" class="list-group-item">
+        Parte 5: Persistencia de datos con XML</a>
+      <a href="/library/javafx-8-tutorial/es/part6/" class="list-group-item">
+        Parte 6: Gráficos estadísticos</a>
+      <a href="/library/javafx-8-tutorial/es/part7/" class="list-group-item">
+        Parte 7: Despliegue</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Código fuente</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-3.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Parte 3 proyecto Eclipse <em>(requiere al menos JDK 8u20)</em></a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Lenguajes</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/java/javafx-8-tutorial-part3/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        English</a>
+      <a href="/library/javafx-8-tutorial/pt/part3/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        Português</a>
+      <a href="/library/javafx-8-tutorial/es/part3/" class="list-group-item active">
+<i class="fa fa-fw fa-globe"></i>        Español</a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Tutorial JavaFX 8 - Parte 3: Interacción con el usuario</h1>
+            <div class="article-date">
+  Sep 17, 2014
+
+</div>
+          </header>
+          
+          <div class="visible-xs-block visible-sm-block">
+            <aside>
+              <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artículos en esta serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/es/">
+        Introducción</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part1/">
+        Parte 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part2/">
+        Parte 2: Modelo y TableView</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/es/part3/">
+        Parte 3: Interacción con el usuario</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part4/">
+        Parte 4: Hojas de estilo CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part5/">
+        Parte 5: Persistencia de datos con XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part6/">
+        Parte 6: Gráficos estadísticos</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/part7/">
+        Parte 7: Despliegue</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Código fuente <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-3.zip">
+<i class="fa fa-fw fa-download"></i>        Parte 3 proyecto Eclipse <em>(requiere al menos JDK 8u20)</em></a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Lenguajes <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/java/javafx-8-tutorial-part3/">
+<i class="fa fa-fw fa-globe"></i>        English</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/part3/">
+<i class="fa fa-fw fa-globe"></i>        Português</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/es/part3/">
+<i class="fa fa-fw fa-globe"></i>        Español</a></li>
+  </ul>
+</div>
+
+            </aside>
+          </div>
+          
+          <section class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part3/addressapp-part3.png" alt="Screenshot AddressApp Part 3"></p>
+<h2 id="contenidos-en-parte-3">Contenidos en Parte 3</h2>
+<ul>
+<li><strong>Respuesta a cambios en la selección</strong> dentro de la tabla.</li>
+<li>Añade funcionalidad de los botones <strong>añadir</strong>, <strong>editar</strong>, y <strong>borrar</strong>s.</li>
+<li>Crear un <strong>diálogo emergente</strong> (popup dialog) a medida para editar un contacto.</li>
+<li><strong>Validación de la entrada del usuario</strong>.</li>
+</ul>
+<hr>
+<h2 id="respuesta-a-cambios-en-la-selecci-n-de-la-tabla">Respuesta a cambios en la selección de la Tabla</h2>
+<p>Obviamente, todavía no hemos usado la parte derecha de la interfaz de nuestra aplicación. La idea es mostrar los detalles de una persona en ese lado cuando el usuario selecciona una persona en la tabla.</p>
+<p>En primer lugar, añadamos un nuevo método dentro de <code>PersonOverviewController</code> que nos ayude a rellenar las etiquetas con los datos de una sola persona.</p>
+<p>Crea un método llamado <code>showPersonDetails(Person person)</code>. Este método recorrerá todas las etiquetas y establecerá el texto usando <code>setText(...)</code> con detalles de la persona. Si en vez de una instancia de <code>Person</code> se pasa <code>null</code> entonces las etiquetas deben ser borradas.</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Fills all text fields to show details about the person.
+ * If the specified person is null, all text fields are cleared.
+ * 
+ * @param person the person or null
+ */
+private void showPersonDetails(Person person) {
+    if (person != null) {
+        // Fill the labels with info from the person object.
+        firstNameLabel.setText(person.getFirstName());
+        lastNameLabel.setText(person.getLastName());
+        streetLabel.setText(person.getStreet());
+        postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+        cityLabel.setText(person.getCity());
+
+        // TODO: We need a way to convert the birthday into a String! 
+        // birthdayLabel.setText(...);
+    } else {
+        // Person is null, remove all the text.
+        firstNameLabel.setText("");
+        lastNameLabel.setText("");
+        streetLabel.setText("");
+        postalCodeLabel.setText("");
+        cityLabel.setText("");
+        birthdayLabel.setText("");
+    }
+}
+</pre>
+
+
+<h3 id="convierte-la-fecha-de-nacimiento-en-una-cadena">Convierte la fecha de nacimiento en una cadena</h3>
+<p>Te darás cuenta de que no podemos usar el atributo <code>birthday</code> directamente para establecer el valor de una <code>Label</code> porque no es de tipo <code>LocalDate</code>. Antes necesitamos convertirlo en una cadena o <code>String</code>.</p>
+<p>Vamos a convertir entre <code>LocalDate</code> y <code>String</code> y viceversa en varios sitios. Una buena práctica es crear una clase auxiliar con métodos estáticos (<code>static</code>) para esta finalidad. Llamaremos a esta clase <code>DateUtil</code> y la ubicaremos una paquete separado denominado <code>ch.makery.address.util</code>:</p>
+<h5 id="dateutil-java">DateUtil.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.util;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+/**
+ * Helper functions for handling dates.
+ * 
+ * @author Marco Jakob
+ */
+public class DateUtil {
+
+    /** The date pattern that is used for conversion. Change as you wish. */
+    private static final String DATE_PATTERN = "dd.MM.yyyy";
+
+    /** The date formatter. */
+    private static final DateTimeFormatter DATE_FORMATTER = 
+            DateTimeFormatter.ofPattern(DATE_PATTERN);
+
+    /**
+     * Returns the given date as a well formatted String. The above defined 
+     * {@link DateUtil#DATE_PATTERN} is used.
+     * 
+     * @param date the date to be returned as a string
+     * @return formatted string
+     */
+    public static String format(LocalDate date) {
+        if (date == null) {
+            return null;
+        }
+        return DATE_FORMATTER.format(date);
+    }
+
+    /**
+     * Converts a String in the format of the defined {@link DateUtil#DATE_PATTERN} 
+     * to a {@link LocalDate} object.
+     * 
+     * Returns null if the String could not be converted.
+     * 
+     * @param dateString the date as String
+     * @return the date object or null if it could not be converted
+     */
+    public static LocalDate parse(String dateString) {
+        try {
+            return DATE_FORMATTER.parse(dateString, LocalDate::from);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Checks the String whether it is a valid date.
+     * 
+     * @param dateString
+     * @return true if the String is a valid date
+     */
+    public static boolean validDate(String dateString) {
+        // Try to parse the String.
+        return DateUtil.parse(dateString) != null;
+    }
+}
+</pre>
+
+<div class="alert alert-info">
+<strong>Truco:</strong> Puedes cambiar el formato de la fecha cambiando el patrón
+<code>DATE_PATTERN</code>. Para conocer los diferentes tipos de formato consulta  <a class="alert-link" href="http://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html">DateTimeFormatter</a>.
+</div>
+
+
+<h4 id="utilizaci-n-de-la-clase-dateutil">Utilización de la clase DateUtil</h4>
+<p>Ahora necesitamos utilizar la nueva clase <code>DateUtil</code> en el método <code>showPersonDetails</code> de <code>PersonOverviewController</code>. Sustituye el <em>TODO</em> que habíamos añadido con la línea siguiente:</p>
+<pre class="prettyprint lang-java">
+birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+</pre>
+
+
+<h3 id="detecta-cambios-de-selecci-n-en-la-tabla">Detecta cambios de selección en la tabla</h3>
+<p>Para enterarse de que el usuario ha seleccionado a un persona en la tabla de contactos, necesitamos escuchar los cambios. Esto se consigue mediante la implementación de un interface de JavaFX que se llama <a href="http://docs.oracle.com/javase/8/javafx/api/"><code>ChangeListener</code></a> with one method called <code>changed(...)</code>. Este método solo tiene tres parámetros: <code>observable</code>, <code>oldValue</code>, y <code>newValue</code>.</p>
+<p>En Java 8 la forma más elegante de implementar una interfaz con un único método es mediante una <em>lambda expression</em>. Añadiremos algunas líneas al método <code>initialize()</code> de  <code>PersonOverviewController</code>. El código resultante se asemejará al siguiente:</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+@FXML
+private void initialize() {
+    // Initialize the person table with the two columns.
+    firstNameColumn.setCellValueFactory(
+            cellData -> cellData.getValue().firstNameProperty());
+    lastNameColumn.setCellValueFactory(
+            cellData -> cellData.getValue().lastNameProperty());
+
+    // Clear person details.
+    showPersonDetails(null);
+
+    // Listen for selection changes and show the person details when changed.
+    personTable.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> showPersonDetails(newValue));
+}
+</pre>
+
+<p>Con <code>showPersonDetails(null);</code> borramos los detalles de una persona. </p>
+<p>Con <code>personTable.getSelectionModel...</code> obtenemos la <em>selectedItemProperty</em> de la tabla de personas, y le añadimos un <em>listener</em>. Cuando quiera que el usuario seleccione a una persona en la table, nuestra <em>lambda expression</em> será ejecutada: se toma la persona recien seleccionada y se le pasa al método <code>showPersonDetails(...)</code> method.</p>
+<p>Intenta <strong>ejecutar tu aplicación</strong> en este momento. Comprueba que cuando seleccionas a una persona, los detalles sobre esta son mostrados en la parte derecha de la ventana.</p>
+<p>Si algo no funciona, puedes comparar tu clase <code>PersonOverviewController</code> con <a href="/assets/library/javafx-8-tutorial/part3/PersonOverviewController.java">PersonOverviewController.java</a>.</p>
+<hr>
+<h2 id="el-bot-n-de-borrar-delete-">El botón de borrar (Delete)</h2>
+<p>Nuestro interfaz de usuario ya contiene un botón de borrar, pero sin funcionalidad. Podemos seleccionar la acción a ejecutar al pulsar un botón desde el <em>Scene Builder</em>. Cualquier método de nuestro controlador anotado con <code>@FXML</code> (o declarado como <em>public</em>) es accesible desde <em>Scene Builder</em>. Así pues, empecemos añadiendo el método de borrado al final de nuestra clase<code>PersonOverviewController</code>:</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Called when the user clicks on the delete button.
+ */
+@FXML
+private void handleDeletePerson() {
+    int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+    personTable.getItems().remove(selectedIndex);
+}
+</pre>
+
+<p>Ahora, abre el archivo <code>PersonOverview.fxml</code> en el <em>SceneBuilder</em>. Selecciona el botón <em>Delete</em>, abre el apartado <em>Code</em> y pon <code>handleDeletePerson</code> en el menú desplegable denominado <strong>On Action</strong>.</p>
+<p><img src="/assets/library/javafx-8-tutorial/part3/handle-delete.png" alt="On Action"></p>
+<h3 id="gesti-n-de-errores">Gestión de errores</h3>
+<p>Si ejecutas tu aplicación en este punto deberías ser capaz de borrar personas de la tabla. Pero, ¿qué ocurre si <strong>pulsas el botón de borrar sin seleccionar a nadie</strong> en la tabla.</p>
+<p>Se produce un error de tipo <code>ArrayIndexOutOfBoundsException</code> porque no puede borrar una persona en el índice <code>-1</code>, que es el valor devuelto por el método <code>getSelectedIndex()</code> - cuando no hay ningún elemento seleccionado.</p>
+<p>Ignorar semejante error no es nada recomendable. Deberíamos hacerle saber al usuario que tiene que seleccionar una persona previamente para poderla borrar (incluso mejor sería deshabilitar el botón para que el usuario ni siquiera tenga la oportunidad de realizar una acción incorrecta).</p>
+<p>Vamos a añadir un diálogo emergente para informar al usuario. Desafortunadamente no hay componentes para diálogos incluidos en JavaFX 8. Para evitar tener que crearlos manualmente podemos <strong>añadir una librería</strong> que ya los incluya (<a href="/blog/javafx-8-dialogs/">Dialogs</a>): </p>
+<ol>
+<li>Descarga la última versión de la librería <strong>ControlsFX</strong> desde <a href="http://fxexperience.com/controlsfx/">su página web</a> como archivo zip. (También es posible incluirla como una depencia de Maven si lo prefieres)<br><strong>Importante: La versión de ControlsFX debe ser la <code>8.0.6_20</code> o superior para que funcione con <code>JDK 8u20</code> debido a un cambio crítico en esa versión.</strong></li>
+<li>Dentro del archivo zip deberías encontrar el archivo <code>controlsfx-8.x.x.jar</code>, el cual tendrás que descomprimir a tu computadora (Eclipse no acepta librerías comprimidas en un zip).</li>
+<li>Crea una subcarpeta <strong>lib</strong> dentro del proyecto y coloca dentro del archivo jar.</li>
+<li>Añade la librería al <strong>classpath</strong> de tu proyecto: En Eclipse se puede hacer mediante <em>clic-derecho sobre el archivo jar</em> | <em>Build Path</em> | <em>Add to Build Path</em>. Ahora Eclipse ya sabe donde encontrar esa librería.</li>
+</ol>
+<p><img src="/assets/library/javafx-8-tutorial/part3/controlsfx-library.png" alt="ControlsFX Libaray"></p>
+<p>Con algunos cambios en el método <code>handleDeletePerson()</code> podemos mostrar una simple ventana de diálogo emergente en el caso de que el usuario pulse el botón Delete sin haber seleccionado a nadie en la tabla de contactos:</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Called when the user clicks on the delete button.
+ */
+@FXML
+private void handleDeletePerson() {
+    int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+    if (selectedIndex >= 0) {
+        personTable.getItems().remove(selectedIndex);
+    } else {
+        // Nothing selected.
+        Dialogs.create()
+            .title("No Selection")
+            .masthead("No Person Selected")
+            .message("Please select a person in the table.")
+            .showWarning();
+    }
+}
+</pre>
+
+<div class="alert alert-info">
+Para ver más ejemplos de utilización de ventanas de diálogo, consulta <a class="alert-link" href="/blog/javafx-8-dialogs/">JavaFX 8 Dialogs</a>.
+</div>
+
+
+
+<hr>
+<h2 id="di-logos-para-crear-y-editar-contactos">Diálogos para crear y editar contactos</h2>
+<p>Las acciones de editar y crear nuevo contacto necesitan algo más de elaboración: vamos a necesitar una ventana de diálogo a medida (es decir, un nuevo <code>stage</code>) con un formulario para preguntar al usuario los detalles sobre la persona.</p>
+<h3 id="dise-a-la-ventana-de-di-logo">Diseña la ventana de diálogo</h3>
+<ol>
+<li><p>Crea un nuevo archivo fxml llamado <code>PersonEditDialog.fxml</code> dentro del paquete <em>view</em>.<br><img src="/assets/library/javafx-8-tutorial/part3/person-edit-dialog1.png" alt="Create Edit Dialog"></p>
+</li>
+<li><p>Usa un panel de rejilla (<code>GridPane</code>), etiquetas (<code>Label</code>),  campos de texto (<code>TextField</code>) y botones (<code>Button</code>) para crear una ventana de diálogo como la siguiente:<br><img src="/assets/library/javafx-8-tutorial/part3/person-edit-dialog2.png" alt="Edit Dialog">   </p>
+</li>
+</ol>
+<p><em>Si quieres puedes descargar el código desde <a href="/assets/library/javafx-8-tutorial/part3/PersonEditDialog.fxml">PersonEditDialog.fxml</a>.</em> </p>
+<h3 id="create-the-controller">Create the Controller</h3>
+<p>Crea el controlador para la ventana de edición de personas y llámalo <code>PersonEditDialogController.java</code>:</p>
+<h5 id="personeditdialogcontroller-java">PersonEditDialogController.java</h5>
+<pre class="prettyprint lang-java pre-scrollable">
+package ch.makery.address.view;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import org.controlsfx.dialog.Dialogs;
+
+import ch.makery.address.model.Person;
+import ch.makery.address.util.DateUtil;
+
+/**
+ * Dialog to edit details of a person.
+ * 
+ * @author Marco Jakob
+ */
+public class PersonEditDialogController {
+
+    @FXML
+    private TextField firstNameField;
+    @FXML
+    private TextField lastNameField;
+    @FXML
+    private TextField streetField;
+    @FXML
+    private TextField postalCodeField;
+    @FXML
+    private TextField cityField;
+    @FXML
+    private TextField birthdayField;
+
+
+    private Stage dialogStage;
+    private Person person;
+    private boolean okClicked = false;
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+    }
+
+    /**
+     * Sets the stage of this dialog.
+     * 
+     * @param dialogStage
+     */
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+
+    /**
+     * Sets the person to be edited in the dialog.
+     * 
+     * @param person
+     */
+    public void setPerson(Person person) {
+        this.person = person;
+
+        firstNameField.setText(person.getFirstName());
+        lastNameField.setText(person.getLastName());
+        streetField.setText(person.getStreet());
+        postalCodeField.setText(Integer.toString(person.getPostalCode()));
+        cityField.setText(person.getCity());
+        birthdayField.setText(DateUtil.format(person.getBirthday()));
+        birthdayField.setPromptText("dd.mm.yyyy");
+    }
+
+    /**
+     * Returns true if the user clicked OK, false otherwise.
+     * 
+     * @return
+     */
+    public boolean isOkClicked() {
+        return okClicked;
+    }
+
+    /**
+     * Called when the user clicks ok.
+     */
+    @FXML
+    private void handleOk() {
+        if (isInputValid()) {
+            person.setFirstName(firstNameField.getText());
+            person.setLastName(lastNameField.getText());
+            person.setStreet(streetField.getText());
+            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+            person.setCity(cityField.getText());
+            person.setBirthday(DateUtil.parse(birthdayField.getText()));
+
+            okClicked = true;
+            dialogStage.close();
+        }
+    }
+
+    /**
+     * Called when the user clicks cancel.
+     */
+    @FXML
+    private void handleCancel() {
+        dialogStage.close();
+    }
+
+    /**
+     * Validates the user input in the text fields.
+     * 
+     * @return true if the input is valid
+     */
+    private boolean isInputValid() {
+        String errorMessage = "";
+
+        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+            errorMessage += "No valid first name!\n"; 
+        }
+        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+            errorMessage += "No valid last name!\n"; 
+        }
+        if (streetField.getText() == null || streetField.getText().length() == 0) {
+            errorMessage += "No valid street!\n"; 
+        }
+
+        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+            errorMessage += "No valid postal code!\n"; 
+        } else {
+            // try to parse the postal code into an int.
+            try {
+                Integer.parseInt(postalCodeField.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "No valid postal code (must be an integer)!\n"; 
+            }
+        }
+
+        if (cityField.getText() == null || cityField.getText().length() == 0) {
+            errorMessage += "No valid city!\n"; 
+        }
+
+        if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
+            errorMessage += "No valid birthday!\n";
+        } else {
+            if (!DateUtil.validDate(birthdayField.getText())) {
+                errorMessage += "No valid birthday. Use the format dd.mm.yyyy!\n";
+            }
+        }
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Show the error message.
+            Dialogs.create()
+                .title("Invalid Fields")
+                .masthead("Please correct invalid fields")
+                .message(errorMessage)
+                .showError();
+            return false;
+        }
+    }
+}
+</pre>
+
+<p>Algunas cuestiones relativas a este controlador:</p>
+<ul>
+<li>El método <code>setPerson(...)</code> puede ser invocado desde otra clase para establecer la persona que será editada.</li>
+<li>Cuando el usuario pula el botón OK, el método <code>handleOk()</code> es invocado. Primero se valida la entrada del usuario mediante la ejecución del método <code>isInputValid()</code>. Sólo si la validación tiene éxito el objeto persona es modificado con los datos introducidos por el usuario. Esos cambios son aplicados directamente sobre el objeto pasado como argumento del método <code>setPerson(...)</code>!</li>
+<li>El método boolean <code>okClicked</code> se utiliza para determinar si el usuario ha pulsado el botón OK o el botón Cancel.</li>
+</ul>
+<h3 id="enlaza-la-vista-y-el-controlador">Enlaza la vista y el controlador</h3>
+<p>Una vez creadas la vista (FXML) y el controlador, necesitamos vincular el uno con el otro:</p>
+<ol>
+<li>Abre el archivo <code>PersonEditDialog.fxml</code>.</li>
+<li>En la sección <em>Controller</em> a la izquierda selecciona <code>PersonEditDialogController</code> como clase de control.</li>
+<li>Establece el campo <strong>fx:id</strong> de todas los <code>TextField</code> con los identificadores  de los atributos del controlador correspondientes.</li>
+<li>Especifica el campo <strong>onAction</strong> de los dos botones con los métodos del controlador correspondientes a cada acción.</li>
+</ol>
+<h3 id="abriendo-la-ventana-de-di-logo">Abriendo la ventana de diálogo</h3>
+<p>Añade un método para cargar y mostrar el método de edición de una persona dentro de la clase <code>MainApp</code>:   </p>
+<h5 id="mainapp-java">MainApp.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Opens a dialog to edit details for the specified person. If the user
+ * clicks OK, the changes are saved into the provided person object and true
+ * is returned.
+ * 
+ * @param person the person object to be edited
+ * @return true if the user clicked OK, false otherwise.
+ */
+public boolean showPersonEditDialog(Person person) {
+    try {
+        // Load the fxml file and create a new stage for the popup dialog.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        // Create the dialog Stage.
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Edit Person");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        // Set the person into the controller.
+        PersonEditDialogController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setPerson(person);
+
+        // Show the dialog and wait until the user closes it
+        dialogStage.showAndWait();
+
+        return controller.isOkClicked();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+</pre>
+
+<p>Añade los siguientes métodos a la clase <code>PersonOverviewController</code>. Esos métodos llamarán al método <code>showPersonEditDialog(...)</code> desde <code>MainApp</code> cuando el usuario pulse en los botones <em>new</em> o <em>edit</em>.   </p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Called when the user clicks the new button. Opens a dialog to edit
+ * details for a new person.
+ */
+@FXML
+private void handleNewPerson() {
+    Person tempPerson = new Person();
+    boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+    if (okClicked) {
+        mainApp.getPersonData().add(tempPerson);
+    }
+}
+
+/**
+ * Called when the user clicks the edit button. Opens a dialog to edit
+ * details for the selected person.
+ */
+@FXML
+private void handleEditPerson() {
+    Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+    if (selectedPerson != null) {
+        boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+        if (okClicked) {
+            showPersonDetails(selectedPerson);
+        }
+
+    } else {
+        // Nothing selected.
+        Dialogs.create()
+            .title("No Selection")
+            .masthead("No Person Selected")
+            .message("Please select a person in the table.")
+            .showWarning();
+    }
+}
+</pre>
+
+<p>Abre el archivo <code>PersonOverview.fxml</code> mediante Scene Builder. Elige los métodos correspondientes en el campo <em>On Action</em> para los botones <em>new</em> y <em>edit</em>.</p>
+<hr>
+<h2 id="-ya-est-">¡Ya está!</h2>
+<p>Llegados a este punto deberías tener una aplicación de <em>libreta de contactos</em> en funcionamiento. Esta aplicación es capaz de añadir, editar y borrar personas. Tiene incluso algunas capacidades de validación para evitar que el usuario introduzca información incorrecta.</p>
+<p>Espero que los conceptos y estructura de esta aplicación te permitan empezar tu propia aplicación JavaFX. ¡ Disfruta !</p>
+<h3 id="qu-es-lo-siguiente-">Qué es lo siguiente?</h3>
+<p>En <a href="/library/javafx-8-tutorial/es/part4/">Tutorial Parte 4</a> introduciremos algo de diseño mediante hojas de estilo CSS.</p>
+<h5 id="otros-art-culos-que-podr-an-resultarte-de-inter-s">Otros artículos que podrían resultarte de interés</h5>
+<ul>
+<li><a href="/blog/javafx-8-dialogs/">JavaFX Dialogs</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </section>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/es/" data-toggle="tooltip" title="Introducción">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/es/part1/" data-toggle="tooltip" title="Parte 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/es/part2/" data-toggle="tooltip" title="Parte 2: Modelo y TableView">2</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/es/part3/" data-toggle="tooltip" title="Parte 3: Interacción con el usuario">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/es/part4/" data-toggle="tooltip" title="Parte 4: Hojas de estilo CSS">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/es/part5/" data-toggle="tooltip" title="Parte 5: Persistencia de datos con XML">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/es/part6/" data-toggle="tooltip" title="Parte 6: Gráficos estadísticos">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/es/part7/" data-toggle="tooltip" title="Parte 7: Despliegue">7</a>
+      </li>
+          
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/es/part3/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/es/part3/';
+    var disqus_title = 'Tutorial JavaFX 8 - Parte 3: Interacción con el usuario';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
