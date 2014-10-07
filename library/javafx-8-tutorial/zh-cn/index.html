@@ -1,0 +1,315 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaFX 8 教程 - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/java/javafx-8-tutorial-intro/" />
+
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/java/javafx-8-tutorial-intro/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="这 7 部分组成的教程将介绍一个用 JavaFX 编写的联系人程的设计，开发和部署的过程。">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 教程" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="这 7 部分组成的教程将介绍一个用 JavaFX 编写的联系人程的设计，开发和部署的过程。" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/" />
+    
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/addressapp.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-zh-cn.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">系列文章</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/zh-cn/" class="list-group-item active">
+        简介</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" class="list-group-item">
+        第一部分: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" class="list-group-item">
+        第二部分: Model 和 TableView</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" class="list-group-item">
+        第三部分: 与用户的交互</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" class="list-group-item">
+        第四部分: CSS 样式</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" class="list-group-item">
+        第五部分: 将数据用 XML 格式存储</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" class="list-group-item">
+        第六部分: 统计图</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" class="list-group-item">
+        第七部分: 部署</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">语言</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/java/javafx-8-tutorial-intro/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        English</a>
+      <a href="/library/javafx-8-tutorial/pt/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        Português</a>
+      <a href="/library/javafx-8-tutorial/es/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        Español</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/" class="list-group-item active">
+<i class="fa fa-fw fa-globe"></i>        中文（简体）</a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">JavaFX 8 教程</h1>
+            <div class="article-date">
+  Oct 08, 2014
+  • Updated Oct 08, 2014
+
+</div>
+          </header>
+          
+          <div class="visible-xs-block visible-sm-block">
+            <aside>
+              <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">系列文章 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active"><a href="/library/javafx-8-tutorial/zh-cn/">
+        简介</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part1/">
+        第一部分: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part2/">
+        第二部分: Model 和 TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part3/">
+        第三部分: 与用户的交互</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part4/">
+        第四部分: CSS 样式</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part5/">
+        第五部分: 将数据用 XML 格式存储</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part6/">
+        第六部分: 统计图</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part7/">
+        第七部分: 部署</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">语言 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/java/javafx-8-tutorial-intro/">
+<i class="fa fa-fw fa-globe"></i>        English</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/">
+<i class="fa fa-fw fa-globe"></i>        Português</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/">
+<i class="fa fa-fw fa-globe"></i>        Español</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/zh-cn/">
+<i class="fa fa-fw fa-globe"></i>        中文（简体）</a></li>
+  </ul>
+</div>
+
+            </aside>
+          </div>
+          
+          <section class="article-content">
+            <div class="alert alert-warning">
+  <i class="fa fa-language"></i> This page is beeing translated to Chinese (Simplified). If you'd like to help out please read <a href="/library/how-to-contribute/" class="alert-link">how to contribute</a>.
+</div>
+
+
+<p>Back in 2012 I wrote a very detailed <a href="/java/javafx-2-tutorial-intro/">JavaFX 2 tutorial series</a> for my students. Many people all over the world have been reading the tutorial and gave very positive feedback. So I decided to <strong>rewrite the JavaFX 2 tutorial for JavaFX 8</strong> (read about what changed in <a href="/blog/update-to-javafx-8-whats-new/">Update to JavaFX 8 - What's New</a>).</p>
+<p>This tutorial walks you through designing, programming and deploying an address application. This is how the final appllication will look like:</p>
+<p><img src="/assets/library/javafx-8-tutorial/addressapp.png" alt="Screenshot AddressApp"></p>
+<h2 id="what-you-will-learn">What you will learn</h2>
+<ul>
+<li>Creating and starting a JavaFX project</li>
+<li>Using Scene Builder to design the user interface</li>
+<li>Structuring an application with the Model View Controller (MVC) pattern</li>
+<li>Using <code>ObservableLists</code> for automatically updating the user interface</li>
+<li>Using <code>TableView</code> and reacting to selection changes in the table</li>
+<li>Create a custom popup dialog to edit persons</li>
+<li>Validating user input</li>
+<li>Styling a JavaFX application with CSS</li>
+<li>Persisting data as XML</li>
+<li>Saving the last opened file path in user preferences</li>
+<li>Creating a JavaFX chart for statistics</li>
+<li>Deploying a JavaFX application as a native package</li>
+</ul>
+<p><strong>This is quite a lot!</strong> So, after you you've completed this tutorial series you should be ready to build sophisticated applications with JavaFX.</p>
+<h2 id="how-to-use-this-tutorial">How to use this Tutorial</h2>
+<p>There are two ways to use this tutorial:</p>
+<ul>
+<li><strong>learn-a-lot track:</strong> Create your own JavaFX project from the ground up.</li>
+<li><strong>fast track:</strong> Import the source code for a tutorial part into your IDE (it's an Eclipse project, but you could use other IDEs like NetBeans with slight modifications). Then go through the tutorial to understand the code.</li>
+</ul>
+<p>Now, I hope you'll have fun! Start with <a href="/library/javafx-8-tutorial/zh-cn/part1/">Part 1: Scene Builder</a>.</p>
+
+
+          </section>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li class="active">
+      <a href="/library/javafx-8-tutorial/zh-cn/" data-toggle="tooltip" title="简介">简介</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" data-toggle="tooltip" title="第一部分: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" data-toggle="tooltip" title="第二部分: Model 和 TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" data-toggle="tooltip" title="第三部分: 与用户的交互">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" data-toggle="tooltip" title="第四部分: CSS 样式">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" data-toggle="tooltip" title="第五部分: 将数据用 XML 格式存储">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" data-toggle="tooltip" title="第六部分: 统计图">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" data-toggle="tooltip" title="第七部分: 部署">7</a>
+      </li>
+          
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+      </article>
+      
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+    
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
