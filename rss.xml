@@ -6,10 +6,26 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Tue, 07 Oct 2014 23:28:05 CET</lastBuildDate>
+    <lastBuildDate>Wed, 08 Oct 2014 00:24:01 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
+<item>
+	<title><![CDATA[JavaFX Tutorial in Spanish, Chinese and Portuguese]]></title>
+	<link>http://code.makery.ch/blog/javafx-tutorial-spanish-chinese-portuguese/</link>
+	<guid>/blog/javafx-tutorial-spanish-chinese-portuguese/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Tue, 07 Oct 2014 00:00:00 CET</pubDate>
+	<description>
+Wow, I&#39;m really excited about the community contributions that were made to the tutorials! Some amazing people have helped improve the materials by writing valuable comments and some have even provided a translation for their language. Thank you very much, you&#39;re awesome!!
+New Languages
+
+JavaFX 8 Tutorial in Spanish - 100% -...</description>
+</item>
 <item>
 	<title><![CDATA[Drag and Drop without HTML5]]></title>
 	<link>http://code.makery.ch/blog/drag-and-drop-without-html5/</link>
@@ -144,21 +160,6 @@ When I started blogging in 2012 I thought this would be a blog about educational
 Abstract
 
 Bisher war es kaum realistisch,...</description>
-</item>
-<item>
-	<title><![CDATA[Programming with Dart]]></title>
-	<link>http://code.makery.ch/blog/programming-with-dart/</link>
-	<guid>/blog/programming-with-dart/</guid>
-	
-	<category>Dart</category>
-	
-	<pubDate>Thu, 13 Jun 2013 00:00:00 CET</pubDate>
-	<description>
-
-
-
-The last few months I have been programming with Google&#39;s new Dart language. I&#39;m very excited about how great it is to work with Dart! Currently, I&#39;m using Dart for the web client of a project called doxblox (site is only in German at the moment).
-After a while I found...</description>
 </item>
     
   </channel>

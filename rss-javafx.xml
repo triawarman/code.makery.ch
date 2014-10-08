@@ -6,10 +6,26 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Tue, 07 Oct 2014 23:28:13 CET</lastBuildDate>
+    <lastBuildDate>Wed, 08 Oct 2014 00:24:09 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
+<item>
+	<title><![CDATA[JavaFX Tutorial in Spanish, Chinese and Portuguese]]></title>
+	<link>http://code.makery.ch/blog/javafx-tutorial-spanish-chinese-portuguese/</link>
+	<guid>/blog/javafx-tutorial-spanish-chinese-portuguese/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Tue, 07 Oct 2014 00:00:00 CET</pubDate>
+	<description>
+Wow, I&#39;m really excited about the community contributions that were made to the tutorials! Some amazing people have helped improve the materials by writing valuable comments and some have even provided a translation for their language. Thank you very much, you&#39;re awesome!!
+New Languages
+
+JavaFX 8 Tutorial in Spanish - 100% -...</description>
+</item>
 <item>
 	<title><![CDATA[Update to JavaFX 8 - What's New?]]></title>
 	<link>http://code.makery.ch/blog/update-to-javafx-8-whats-new/</link>
@@ -145,23 +161,6 @@ public void saveAsPng() {
 	<description>I&#39;m excited about the quick reaction to bug reports by the JavaFX developers at Oracle! I&#39;ve reported an (annoying) Scene Builder bug at the end of November and it was already fixed in a new Scene Builder version in January.
 Scene Builder Update
 The Scene Builder bug forced us to delete and...</description>
-</item>
-<item>
-	<title><![CDATA[JavaFX 2 Event Handlers and Change Listeners]]></title>
-	<link>http://code.makery.ch/blog/javafx-2-event-handlers-and-change-listeners/</link>
-	<guid>/blog/javafx-2-event-handlers-and-change-listeners/</guid>
-	
-	<category>Java</category>
-	
-	<category>JavaFX</category>
-	
-	<pubDate>Wed, 19 Dec 2012 01:00:00 CET</pubDate>
-	<description>
-  &amp;rarr; UPDATED VERSION of this article available: JavaFX 8 Event Handling Examples
-
-
-Very often in JavaFX we have to react to user events: The user clicks a button, presses a key, moves the mouse, etc. This post describes how to handle such events. 
-We&#39;ll try to do as much...</description>
 </item>
     
   </channel>
