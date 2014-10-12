@@ -37,7 +37,7 @@
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
 
-    <meta name="description" content="This seven-part tutorial walks through designing, programming and deploying an address application with JavaFX.">
+    <meta name="description" content="Este tutorial de sete partes aborda os processos de  desig, programação e immplantação de uma aplicação de cadastro de endereços feita com JavaFX.">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" value="summary">
@@ -45,7 +45,7 @@
     <!-- Open Graph data -->
     <meta property="og:title" content="Tutorial JavaFX 8 - Parte 1: Scene Builder" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="This seven-part tutorial walks through designing, programming and deploying an address application with JavaFX." />
+    <meta property="og:description" content="Este tutorial de sete partes aborda os processos de  desig, programação e immplantação de uma aplicação de cadastro de endereços feita com JavaFX." />
     <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/pt/part1/" />
     
     <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part1/addressapp-part1.png" />
@@ -127,12 +127,12 @@
 </div>
 <div class="panel panel-default sidebar">
   <div class="panel-heading">
-    <h4 class="panel-title">Download Sources</h4>  
+    <h4 class="panel-title">Download de Códigos Fonte</h4>  
   </div>
 
   <div class="list-group">
       <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-1.zip" class="list-group-item">
-<i class="fa fa-fw fa-download"></i>        Part 1 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
+<i class="fa fa-fw fa-download"></i>        Parte 1 como um projeto Eclipse <em>(versão mínima requirida: JDK 8u20)</em></a>
   </div>
 </div>
 <div class="panel panel-default sidebar">
@@ -159,7 +159,7 @@
             <h1 class="article-title">Tutorial JavaFX 8 - Parte 1: Scene Builder</h1>
             <div class="article-date">
   Sep 10, 2014
-  • Updated Sep 10, 2014
+  • Updated Sep 12, 2014
 
 </div>
           </header>
@@ -189,11 +189,11 @@
   </ul>
 </div>
 <div class="btn-group sidebar-dropdown">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Download Sources <span class="caret"></span>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Download de Códigos Fonte <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
       <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-1.zip">
-<i class="fa fa-fw fa-download"></i>        Part 1 as Eclipse Project <em>(requires at least JDK 8u20)</em></a></li>
+<i class="fa fa-fw fa-download"></i>        Parte 1 como um projeto Eclipse <em>(versão mínima requirida: JDK 8u20)</em></a></li>
   </ul>
 </div>
 <div class="btn-group sidebar-dropdown">
@@ -215,41 +215,36 @@
           </div>
           
           <section class="article-content">
-            <div class="alert alert-warning">
-  <i class="fa fa-language"></i> This page is being translated to Portuguese. If you'd like to help out please read <a href="/library/how-to-contribute/" class="alert-link">how to contribute</a>.
-</div>
-
-
-<p><img src="/assets/library/javafx-8-tutorial/part1/addressapp-part1.png" alt="Screenshot AddressApp Part 1"></p>
-<h3 id="topics-in-part-1">Topics in Part 1</h3>
+            <p><img src="/assets/library/javafx-8-tutorial/part1/addressapp-part1.png" alt="Screenshot AddressApp Part 1"></p>
+<h3 id="t-picos-na-parte-1">Tópicos na Parte 1</h3>
 <ul>
-<li>Getting to know JavaFX</li>
-<li>Creating and starting a JavaFX Project</li>
-<li>Using Scene Builder to design the user interface</li>
-<li>Basic application structure using the Model-View-Controller (MVC) pattern</li>
+<li>Conhecendo o JavaFX</li>
+<li>Criando e inicializando um projeto JavaFX</li>
+<li>Utilizando o Scene Builder para modelar a interce com o usuário</li>
+<li>Estrutura básica da aplicação utilizando o padrão Model-View-Controller (MVC)</li>
 </ul>
 <hr>
-<h3 id="prerequisites">Prerequisites</h3>
+<h3 id="pr-requisitos">Pré-requisitos</h3>
 <ul>
-<li>Latest <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK 8</a> (includes <strong>JavaFX 8</strong>).</li>
-<li>Eclipse 4.3 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the <a href="http://efxclipse.bestsolution.at/install.html#all-in-one">e(fx)clipse website</a>. As an alternative you can use an <a href="http://www.eclipse.org/efxclipse/install.html">update site</a> for your Eclipse installation.</li>
-<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html">Scene Builder 2.0</a> or greater</li>
+<li>Ultima versão <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK 8</a> (Que inclua o <strong>JavaFX 8</strong>).</li>
+<li>Eclipse 4.3ou posterior  com o plugin  e(fx)clipse . A modo mais fácil é efetuar o download da distro pré-configurada da fonte: <a href="http://efxclipse.bestsolution.at/install.html#all-in-one">e(fx)clipse website</a>. Como alternativa você pode usar o: <a href="http://www.eclipse.org/efxclipse/install.html">update site</a> para sua insalação do Eclipse.</li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html">Scene Builder 2.0</a> ou posterior.</li>
 </ul>
-<h3 id="eclipse-configurations">Eclipse Configurations</h3>
-<p>We need to tell Eclipse to use JDK 8 and also where it will find the Scene Builder:</p>
+<h3 id="configura-es-do-eclipse">Configurações do Eclipse</h3>
+<p>Nós precisamos configurar o Eclipse para usar o JDK 8, bem como onde ele ira encontrar o Scene Builder:</p>
 <ol>
-<li><p>Open the Eclipse Preferences and navigate to <em>Java | Installed JREs</em>.</p>
+<li><p>Abra a aba Preferences do Eclipse  e navegue até <em>Java | Installed JREs</em>.</p>
 </li>
-<li><p>Click <em>Add...</em>, select <em>Standard VM</em> and choose the installation <em>Directory</em> of your JDK 8.</p>
+<li><p>Clique em <em>Add...</em>, selecione  <em>Standard VM</em> e a informe a <em>Pasta</em> onde se encontra o JDK 8.</p>
 </li>
-<li><p>Remove the other JREs or JDKs so that the <strong>JDK 8 becomes the default</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-jdk.png" alt="Preferences JDK"></p>
+<li><p>Remova os outros JREs ou JDKs então o  <strong>JDK 8 torna-se o padrão</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-jdk.png" alt="Preferences JDK"></p>
 </li>
-<li><p>Navigate to <em>Java | Compiler</em>. Set the <strong>Compiler compliance level to 1.8</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-compliance.png" alt="Preferences Compliance"></p>
+<li><p>Navegue até <em>Java | Compiler</em>. Altere o <strong>Compiler compliance level para 1.8</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-compliance.png" alt="Preferences Compliance"></p>
 </li>
-<li><p>Navigate to the <em>JavaFX</em> preferences. Specify the path to your Scene Builder executable.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-javafx.png" alt="Preferences JavaFX"></p>
+<li><p>Naviegue até preferences na aba <em>JavaFX</em> . Especifique o caminho até o executável do Scene Builder.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-javafx.png" alt="Preferences JavaFX"></p>
 </li>
 </ol>
-<h3 id="helpful-links">Helpful Links</h3>
+<h3 id="links-teis">Links Úteis</h3>
 <p>You might want to bookmark the following links:</p>
 <ul>
 <li><a href="http://docs.oracle.com/javase/8/docs/api/">Java 8 API</a> - JavaDoc for the standard Java classes</li>
