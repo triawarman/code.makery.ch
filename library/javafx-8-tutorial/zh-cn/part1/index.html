@@ -37,7 +37,7 @@
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
 
-    <meta name="description" content="This seven-part tutorial walks through designing, programming and deploying an address application with JavaFX.">
+    <meta name="description" content="这 7 部分组成的教程将介绍一个用 JavaFX 编写的联系人程的设计，开发与部署的过程。">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" value="summary">
@@ -45,7 +45,7 @@
     <!-- Open Graph data -->
     <meta property="og:title" content="JavaFX 8 教程 - 第一部分：Scene Builder" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="This seven-part tutorial walks through designing, programming and deploying an address application with JavaFX." />
+    <meta property="og:description" content="这 7 部分组成的教程将介绍一个用 JavaFX 编写的联系人程的设计，开发与部署的过程。" />
     <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part1/" />
     
     <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part1/addressapp-part1.png" />
@@ -127,12 +127,12 @@
 </div>
 <div class="panel panel-default sidebar">
   <div class="panel-heading">
-    <h4 class="panel-title">Download Sources</h4>  
+    <h4 class="panel-title">下载源代码</h4>  
   </div>
 
   <div class="list-group">
       <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-1.zip" class="list-group-item">
-<i class="fa fa-fw fa-download"></i>        Part 1 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
+<i class="fa fa-fw fa-download"></i>        第一部分为 Eclipse 项目 <em>（要求至少 JDK 8u20）</em></a>
   </div>
 </div>
 <div class="panel panel-default sidebar">
@@ -189,11 +189,11 @@
   </ul>
 </div>
 <div class="btn-group sidebar-dropdown">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Download Sources <span class="caret"></span>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">下载源代码 <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
       <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-1.zip">
-<i class="fa fa-fw fa-download"></i>        Part 1 as Eclipse Project <em>(requires at least JDK 8u20)</em></a></li>
+<i class="fa fa-fw fa-download"></i>        第一部分为 Eclipse 项目 <em>（要求至少 JDK 8u20）</em></a></li>
   </ul>
 </div>
 <div class="btn-group sidebar-dropdown">
@@ -220,43 +220,46 @@
 </div>
 
 <p><img src="/assets/library/javafx-8-tutorial/part1/addressapp-part1.png" alt="Screenshot AddressApp Part 1"></p>
-<h3 id="topics-in-part-1">Topics in Part 1</h3>
+<h3 id="-">第一部分的主题</h3>
 <ul>
-<li>Getting to know JavaFX</li>
-<li>Creating and starting a JavaFX Project</li>
-<li>Using Scene Builder to design the user interface</li>
-<li>Basic application structure using the Model-View-Controller (MVC) pattern</li>
+<li>开始了解 JavaFX 。</li>
+<li>创建并运行一个 JavaFX 项目。</li>
+<li>使用 Scene Builder 来设计用户界面。</li>
+<li>使用 模型 - 视图 - 控制器（MVC）模式 构造基础的应用。</li>
 </ul>
 <hr>
-<h3 id="prerequisites">Prerequisites</h3>
+<h3 id="-">前提条件</h3>
 <ul>
-<li>Latest <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK 8</a> (includes <strong>JavaFX 8</strong>).</li>
-<li>Eclipse 4.3 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the <a href="http://efxclipse.bestsolution.at/install.html#all-in-one">e(fx)clipse website</a>. As an alternative you can use an <a href="http://www.eclipse.org/efxclipse/install.html">update site</a> for your Eclipse installation.</li>
-<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html">Scene Builder 2.0</a> or greater</li>
+<li>最新的 <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK 8</a> （包含 <strong>JavaFX 8</strong>）。</li>
+<li>Eclipse 4.3 或更高版本与 e(fx)clipse 插件。最简单的方法是从 <a href="http://efxclipse.bestsolution.at/install.html#all-in-one">e(fx)clipse 网站</a> 下载预先配置的发行版本。作为一种备选你可以使用一个 <a href="http://www.eclipse.org/efxclipse/install.html">update site</a> 来给您的 Eclipse 安装。</li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html">Scene Builder 2.0</a> 或更高。</li>
 </ul>
-<h3 id="eclipse-configurations">Eclipse Configurations</h3>
-<p>We need to tell Eclipse to use JDK 8 and also where it will find the Scene Builder:</p>
+<h3 id="eclipse-">Eclipse 配置</h3>
+<p>我们需要告诉 Eclipse 使用 JDK 8 和在哪里找 Scene Builder：</p>
 <ol>
-<li><p>Open the Eclipse Preferences and navigate to <em>Java | Installed JREs</em>.</p>
+<li><p>打开 Eclipse 的设置并导航至 <em>Java | Installed JREs</em> 。</p>
 </li>
-<li><p>Click <em>Add...</em>, select <em>Standard VM</em> and choose the installation <em>Directory</em> of your JDK 8.</p>
+<li><p>点击 <em>Add...</em>, 选择 <em>Standard VM</em> 并选择你安装 JDK 8 的 <em>Directory</em> 。</p>
 </li>
-<li><p>Remove the other JREs or JDKs so that the <strong>JDK 8 becomes the default</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-jdk.png" alt="Preferences JDK"></p>
+<li><p>移除其他的 JREs 或 JDKs 从而使 <strong>JDK 8 成为默认</strong>。
+<img src="/assets/library/javafx-8-tutorial/part1/preferences-jdk.png" alt="Preferences JDK"></p>
 </li>
-<li><p>Navigate to <em>Java | Compiler</em>. Set the <strong>Compiler compliance level to 1.8</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-compliance.png" alt="Preferences Compliance"></p>
+<li><p>导航至 <em>Java | Compiler</em> 。设置 <strong>Compiler compliance level 到 1.8</strong>。
+<img src="/assets/library/javafx-8-tutorial/part1/preferences-compliance.png" alt="Preferences Compliance"></p>
 </li>
-<li><p>Navigate to the <em>JavaFX</em> preferences. Specify the path to your Scene Builder executable.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-javafx.png" alt="Preferences JavaFX"></p>
+<li><p>导航至 <em>JavaFX</em> 设置。指定你的 Scene Builder 可执行文件的路径。
+<img src="/assets/library/javafx-8-tutorial/part1/preferences-javafx.png" alt="Preferences JavaFX"></p>
 </li>
 </ol>
-<h3 id="helpful-links">Helpful Links</h3>
-<p>You might want to bookmark the following links:</p>
+<h3 id="-">帮助链接</h3>
+<p>你可能会想收藏下面的链接：</p>
 <ul>
-<li><a href="http://docs.oracle.com/javase/8/docs/api/">Java 8 API</a> - JavaDoc for the standard Java classes</li>
-<li><a href="http://docs.oracle.com/javase/8/javafx/api/">JavaFX 8 API</a> - JavaDoc for JavaFX classes</li>
-<li><a href="http://controlsfx.bitbucket.org/">ControlsFX API</a> - JavaDoc for the <a href="http://fxexperience.com/controlsfx/">ControlsFX project</a> for additional JavaFX controls</li>
-<li><a href="http://docs.oracle.com/javase/8/javafx/get-started-tutorial/get_start_apps.htm">Oracle's JavaFX Tutorials</a> - Official JavaFX Tutorials by Oracle</li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/">Java 8 API</a> - Java 标准类的文档。</li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/">JavaFX 8 API</a> - JavaFX 类的文档。</li>
+<li><a href="http://controlsfx.bitbucket.org/">ControlsFX API</a> - <a href="http://fxexperience.com/controlsfx/">ControlsFX project</a> 额外 JavaFX 控件的文档。</li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/get-started-tutorial/get_start_apps.htm">Oracle's JavaFX Tutorials</a> - Oracle 的 JavaFX 官方教程。</li>
 </ul>
-<p>Now, let's get started!</p>
+<p>现在，让我们开始吧！</p>
 <hr>
 <h2 id="create-a-new-javafx-project">Create a new JavaFX Project</h2>
 <p>In Eclipse (with e(fx)clipse installed) go to <em>File | New | Other...</em> and choose <em>JavaFX Project</em>.<br>Specify the Name of the project (e.g. <em>AddressApp</em>) and click <em>Finish</em>.</p>
