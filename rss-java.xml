@@ -6,10 +6,23 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Sat, 25 Oct 2014 12:48:41 CET</lastBuildDate>
+    <lastBuildDate>Tue, 28 Oct 2014 23:33:12 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
+<item>
+	<title><![CDATA[JavaFX Dialogs (official)]]></title>
+	<link>http://code.makery.ch/blog/javafx-dialogs-official/</link>
+	<guid>/blog/javafx-dialogs-official/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Tue, 28 Oct 2014 00:00:00 CET</pubDate>
+	<description>JavaFX 8 (update 40) finally includes simple Dialogs and Alerts! I&#39;ve been waiting for this since 2012! In the meantime I wrote about how to use Dialogs in JavaFX 2 and later in JavaFX 8 with ControlsFX.
+Now that they will be available in the official JDK, let&#39;s learn how to...</description>
+</item>
 <item>
 	<title><![CDATA[JavaFX Tutorial in Spanish, Chinese and Portuguese]]></title>
 	<link>http://code.makery.ch/blog/javafx-tutorial-spanish-chinese-portuguese/</link>
@@ -110,8 +123,12 @@ Using the...</description>
 	<category>JavaFX</category>
 	
 	<pubDate>Fri, 18 Apr 2014 00:00:00 CET</pubDate>
-	<description>Back in 2012 I back-ported an early example of a JavaFX 8 Dialog to JavaFX 2. You can read about it in the blog post JavaFX 2 Dialogs. I did hope that the Dialogs would be included in JavaFX 8, but they were not. 
-Lately, I&#39;ve been asked a lot...</description>
+	<description>
+  
+    Soon Deprecated! Please read the &amp;rarr; Article about the official JavaFX Dialogs! 
+  
+  
+    It was announced that the Dialogs will finally be included in JavaFX. They will be part of the JDK version 8u40 which will be...</description>
 </item>
 <item>
 	<title><![CDATA[JavaFX 2 Date Picker]]></title>
@@ -147,20 +164,6 @@ public void saveAsPng() {
     WritableImage image = barChart.snapshot(new SnapshotParameters(), null);
 
     // TODO: probably use a file chooser...</description>
-</item>
-<item>
-	<title><![CDATA[JavaFX 2 Scene Builder and e(fx)clipse Updates]]></title>
-	<link>http://code.makery.ch/blog/javafx-2-scene-builder-and-efxclipse-updates/</link>
-	<guid>/blog/javafx-2-scene-builder-and-efxclipse-updates/</guid>
-	
-	<category>Java</category>
-	
-	<category>JavaFX</category>
-	
-	<pubDate>Thu, 03 Jan 2013 21:00:00 CET</pubDate>
-	<description>I&#39;m excited about the quick reaction to bug reports by the JavaFX developers at Oracle! I&#39;ve reported an (annoying) Scene Builder bug at the end of November and it was already fixed in a new Scene Builder version in January.
-Scene Builder Update
-The Scene Builder bug forced us to delete and...</description>
 </item>
     
   </channel>

@@ -6,10 +6,23 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Sat, 25 Oct 2014 12:48:32 CET</lastBuildDate>
+    <lastBuildDate>Tue, 28 Oct 2014 23:33:03 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
+<item>
+	<title><![CDATA[JavaFX Dialogs (official)]]></title>
+	<link>http://code.makery.ch/blog/javafx-dialogs-official/</link>
+	<guid>/blog/javafx-dialogs-official/</guid>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Tue, 28 Oct 2014 00:00:00 CET</pubDate>
+	<description>JavaFX 8 (update 40) finally includes simple Dialogs and Alerts! I&#39;ve been waiting for this since 2012! In the meantime I wrote about how to use Dialogs in JavaFX 2 and later in JavaFX 8 with ControlsFX.
+Now that they will be available in the official JDK, let&#39;s learn how to...</description>
+</item>
 <item>
 	<title><![CDATA[JavaFX Tutorial in Spanish, Chinese and Portuguese]]></title>
 	<link>http://code.makery.ch/blog/javafx-tutorial-spanish-chinese-portuguese/</link>
@@ -120,8 +133,12 @@ Using the...</description>
 	<category>JavaFX</category>
 	
 	<pubDate>Fri, 18 Apr 2014 00:00:00 CET</pubDate>
-	<description>Back in 2012 I back-ported an early example of a JavaFX 8 Dialog to JavaFX 2. You can read about it in the blog post JavaFX 2 Dialogs. I did hope that the Dialogs would be included in JavaFX 8, but they were not. 
-Lately, I&#39;ve been asked a lot...</description>
+	<description>
+  
+    Soon Deprecated! Please read the &amp;rarr; Article about the official JavaFX Dialogs! 
+  
+  
+    It was announced that the Dialogs will finally be included in JavaFX. They will be part of the JDK version 8u40 which will be...</description>
 </item>
 <item>
 	<title><![CDATA[Moving to code.makery.ch]]></title>
@@ -135,31 +152,6 @@ Please update your links and RSS feeds to code.makery.ch
 Or even better: Sign up to receive updates by email
 Why the Move?
 When I started blogging in 2012 I thought this would be a blog about educational things. That&#39;s why I called it edu.makery.ch. The posts and...</description>
-</item>
-<item>
-	<title><![CDATA[Web und Mobile Apps Programmieren mit Dart]]></title>
-	<link>http://code.makery.ch/blog/web-und-mobile-mit-dart/</link>
-	<guid>/blog/web-und-mobile-mit-dart/</guid>
-	
-	<category>Dart</category>
-	
-	<pubDate>Thu, 26 Sep 2013 00:00:00 CET</pubDate>
-	<description>
-  
-    Der folgende Artikel ist erschienen an der INFOS 2013 (GI-Fachtagung Informatik und Schule) in Kiel.
-  
-  
-     Artikel als PDF 
-  
-  
-     Workshop Pr&#228;sentation 
-  
-
-
-
-Abstract
-
-Bisher war es kaum realistisch,...</description>
 </item>
     
   </channel>

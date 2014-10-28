@@ -95,7 +95,7 @@
     Apr 18, 2014
     
      • 
-    Updated Jun 02, 2014
+    Updated Oct 28, 2014
   
   </span>
   
@@ -114,9 +114,17 @@
       </header>
 
       <section class="post-content">
-        <p>Back in 2012 I back-ported an early example of a JavaFX 8 Dialog to JavaFX 2. You can read about it in the blog post <a href="/blog/javafx-2-dialogs/">JavaFX 2 Dialogs</a>. I did hope that the Dialogs would be included in JavaFX 8, but they were not. </p>
-<p>Lately, I've been asked a lot about how to use the Dialogs with JavaFX 8. Fortunately, the JavaFX team created the <a href="http://fxexperience.com/controlsfx/">ControlsFX project</a>, which is a "convenient way to get access to a number of controls that do not ship with JavaFX". ControlsFX contains a good and simple to use Dialog.</p>
-<p>In this post I will show some examples of how to use the <a href="http://controlsfx.bitbucket.org/org/controlsfx/dialog/Dialogs.html">ControlsFX Dialogs</a>.</p>
+        <div class="alert alert-warning">
+  <p>
+    <strong>Soon Deprecated!</strong> Please read the &rarr; <a class="alert-link" href="/blog/javafx-dialogs-official/">Article about the official JavaFX Dialogs</a>! 
+  </p>
+  <p>
+    It was <a class="alert-link" href="http://fxexperience.com/2014/06/bringing-dialogs-to-javafx/">announced</a> that the Dialogs will finally be included in JavaFX. They will be part of the JDK version 8u40 which will be <a class="alert-link" href="http://openjdk.java.net/projects/jdk8u/releases/8u40.html">released in March 2015</a>. This means that the ControlsFX Dialogs described in this post will be deprecated!
+  </p>
+</div>
+
+<p>In 2012 I back-ported an early example of a JavaFX 8 Dialog to JavaFX 2. You can read about it in the blog post <a href="/blog/javafx-2-dialogs/">JavaFX 2 Dialogs</a>. I did hope that the Dialogs would be included in JavaFX 8, but they were not &mdash; at least not until JavaFX 8u40.</p>
+<p>This blog post describes how to use the <a href="http://fxexperience.com/controlsfx/">ControlsFX Dialogs</a>. As said above, the ControlsFX Dialogs will be deprecated and included in the new JDK 8u40. So you should really be reading <a href="/blog/javafx-dialogs-official/">this article about the official Dialogs</a> instead.</p>
 <h2 id="how-to-use-controlsfx-dialogs">How To Use ControlsFX Dialogs</h2>
 <ol>
 <li><p>Download the latest <strong>ControlsFX</strong> zip file from the <a href="http://fxexperience.com/controlsfx/">ControlsFX Website</a>. (It is also available as Maven dependency if you prefer to use Maven.)<br><strong>Important: The ControlsFX must be version <code>8.0.6_20</code> or greater to work with <code>JDK 8u20</code> and above as there was a breaking change introduced in that version.</strong></p>
