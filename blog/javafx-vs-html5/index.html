@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Blog - code.makery.ch</title>
+    <title>JavaFX vs. HTML5 - code.makery.ch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--
     /**
@@ -27,26 +27,28 @@
     */
     -->
     <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="canonical" href="http://code.makery.ch/blog/" />
+    <link rel="canonical" href="http://code.makery.ch/blog/javafx-vs-html5/" />
   
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
 
-    <meta name="description" content="Blog on code.makery.ch">
+    <meta name="description" content="Should you choose JavaFX or HTML5 for your next richt client application? This article can give you some criteria to make your choide.">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" value="summary">
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="Blog - code.makery.ch" />
+    <meta property="og:title" content="JavaFX vs. HTML5 - code.makery.ch" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Blog on code.makery.ch" />
-    <meta property="og:url" content="http://code.makery.ch/blog/" />
-    <meta property="og:image" content="" />
+    <meta property="og:description" content="Should you choose JavaFX or HTML5 for your next richt client application? This article can give you some criteria to make your choide." />
+    <meta property="og:url" content="http://code.makery.ch/blog/javafx-vs-html5/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/14-10-29-javafx-vs-html5/javafx-vs-html5.png" />
     
     <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
     
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
     
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -57,7 +59,7 @@
   ga('send', 'pageview');
 </script>
   </head>
-  <body>
+  <body onload="prettyPrint()">
     <header class="site-header container">
   <h1 class="site-title">
     <a href="/"><span class="main-text">code</span>.makery</a>
@@ -71,9 +73,8 @@
   </div>
 </header>
 
-    
-<div class="container container-restricted">
-  
+    <div class="container post-container">
+      
 <nav class="site-navigation">
   <ul>
     <li><a class="black-link" href="/">Home</a></li>
@@ -83,22 +84,23 @@
     <li><a class="black-link" href="/about/">About</a></li>
   </ul>
 </nav>
-  
-    
       
-      <article>
-  
-  <header class="post-header">
-    <h2 class="post-title"><a class="black-link" href="/blog/javafx-dialogs-official/">JavaFX Dialogs (official)</a></h2>
-    
-    
-    <div class="post-date text-center">
+      <header class="post-header">
+        <h1 class="post-title">JavaFX vs. HTML5</h1>
+        
+        
+        
+        <div class="post-date text-center">
   <span>
-    Oct 28, 2014
+    Oct 29, 2014
     
   </span>
   
      • 
+    
+      <span>
+        <a href="/blog/tag/html5/">HTML5</a>, 
+      </span>
     
       <span>
         <a href="/blog/tag/java/">Java</a>, 
@@ -110,166 +112,228 @@
     
   
 </div>
-  </header>
-  
-  <section class="post-content">
-    
-    <p>JavaFX 8 (update 40) finally includes simple Dialogs and Alerts! I've been waiting for this since 2012! In the meantime I wrote about how to use Dialogs in JavaFX 2 and later in JavaFX 8 with ControlsFX.
-Now that they will be available in the official JDK, let's learn how to... </p>
-    <p><a href="/blog/javafx-dialogs-official/" class="post-more btn btn-default">Read more &rarr;</a></p>
-  </section>
-  <hr class="post-ruler">
-</article><article>
-  
-  <header class="post-header">
-    <h2 class="post-title"><a class="black-link" href="/blog/javafx-tutorial-spanish-chinese-portuguese/">JavaFX Tutorial in Spanish, Chinese and Portuguese</a></h2>
-    
-    
-    <div class="post-date text-center">
-  <span>
-    Oct 07, 2014
-    
-  </span>
-  
-     • 
-    
-      <span>
-        <a href="/blog/tag/java/">Java</a>, 
-      </span>
-    
-      <span>
-        <a href="/blog/tag/javafx/">JavaFX</a>
-      </span>
-    
-  
-</div>
-  </header>
-  
-  <section class="post-content">
-    
-    <p>
-Wow, I'm really excited about the community contributions that were made to the tutorials! Some amazing people have helped improve the materials by writing valuable comments and some have even provided a translation for their language. Thank you very much, you're awesome!!
-New Languages
+      </header>
 
-JavaFX 8 Tutorial in Spanish - 100% -... </p>
-    <p><a href="/blog/javafx-tutorial-spanish-chinese-portuguese/" class="post-more btn btn-default">Read more &rarr;</a></p>
-  </section>
-  <hr class="post-ruler">
-</article><article>
-  
-  <header class="post-header">
-    <h2 class="post-title"><a class="black-link" href="/blog/drag-and-drop-without-html5/">Drag and Drop without HTML5</a></h2>
-    
-    
-    <div class="post-date text-center">
-  <span>
-    Jul 17, 2014
-    
-  </span>
-  
-     • 
-    
-      <span>
-        <a href="/blog/tag/dart/">Dart</a>
-      </span>
-    
-  
-</div>
-  </header>
-  
-  <section class="post-content">
-    
-    <p>I gave up on HTML5 drag and drop! A step I should have made a long time ago. Even though I read some reports of people struggling with it (like the HTML5 drag and drop disaster article) I thought I could takle it and make it work for the most... </p>
-    <p><a href="/blog/drag-and-drop-without-html5/" class="post-more btn btn-default">Read more &rarr;</a></p>
-  </section>
-  <hr class="post-ruler">
-</article><article>
-  
-  <header class="post-header">
-    <h2 class="post-title"><a class="black-link" href="/blog/update-to-javafx-8-whats-new/">Update to JavaFX 8 - What's New?</a></h2>
-    
-    
-    <div class="post-date text-center">
-  <span>
-    May 10, 2014
-    
-  </span>
-  
-     • 
-    
-      <span>
-        <a href="/blog/tag/java/">Java</a>, 
-      </span>
-    
-      <span>
-        <a href="/blog/tag/javafx/">JavaFX</a>
-      </span>
-    
-  
-</div>
-  </header>
-  
-  <section class="post-content">
-    
-    <p>JavaFX 8 is included in JDK 8 and is the officially recommended graphics toolkit for Java 8 applications. I've been using JavaFX 2 since 2012 and am very pleased as it was already a major step forward compared to Swing. Now with JavaFX 8 it has become even better, with... </p>
-    <p><a href="/blog/update-to-javafx-8-whats-new/" class="post-more btn btn-default">Read more &rarr;</a></p>
-  </section>
-  <hr class="post-ruler">
-</article><article>
-  
-  <header class="post-header">
-    <h2 class="post-title"><a class="black-link" href="/blog/javafx-8-event-handling-examples/">JavaFX 8 Event Handling Examples</a></h2>
-    
-    
-    <div class="post-date text-center">
-  <span>
-    May 03, 2014
-    
-  </span>
-  
-     • 
-    
-      <span>
-        <a href="/blog/tag/java/">Java</a>, 
-      </span>
-    
-      <span>
-        <a href="/blog/tag/javafx/">JavaFX</a>
-      </span>
-    
-  
-</div>
-  </header>
-  
-  <section class="post-content">
-    
-    <p>In most JavaFX applications we have to react to many user events: The user clicks a button, presses a key, moves the mouse, etc. 
-This post describes how to handle some of the most common JavaFX events.
-Our Example Application
+      <section class="post-content">
+        <p>Choosing a rich client technology is very difficult! I recently did some consulting for a company that needed to choose between JavaFX and HTML5. In this article I would like to share some of my insights on this topic.</p>
+<p><img src="/assets/blog/14-10-29-javafx-vs-html5/javafx-vs-html5.png" alt="JavaFX vs. HTML5"></p>
+<p>I don't intend this to be a battle between technologies by making one win over another. It really depends on your situation. But this article can give you some criteria to keep in mind when you make your choice.</p>
+<p>I know that by sharing all this information here for free it'll be less likely that people will need my consulting advice. So, if this article is a help to you and saves you a lot of work and time, consider <a href="/about#support-me">supporting me</a>. This will help me provide more free resources like this.</p>
+<h3 id="target-audience">Target Audience</h3>
+<p>A lot of Java developers are asking themselves if they should adopt JavaFX for their next user interface or make the switch to an HTML5 technology. I know and love both worlds. I've been using JavaFX since early 2012. Lately I've mostly been programming web applications and will continue to do so in the coming months.</p>
+<p>I'm not talking about small projects that can be implemented as simple websites with a little interactivity. This article is about rich client applications with a lot of interactive elements.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<p>Here is a list of the criteria that we will look at:</p>
+<ul>
+<li><a href="#richness-and-aesthetics-of-ui">Richness and Aesthetics of UI</a></li>
+<li><a href="#options-for-mobile-and-tablet">Options for Mobile and Tablet</a></li>
+<li><a href="#learning-curve">Learning Curve</a></li>
+<li><a href="#long-term-support">Long-term Support</a></li>
+<li><a href="#rolling-replacement-of-a-java-swing-application">Rolling Replacement of a Java Swing Application</a></li>
+<li><a href="#deployment">Deployment</a></li>
+</ul>
+<p>Then we finish off with:</p>
+<ul>
+<li><a href="#conclusions">Conclusions</a></li>
+<li><a href="#my-recommendations">My Recommendations</a></li>
+</ul>
+<h2 id="richness-and-aesthetics-of-ui">Richness and Aesthetics of UI</h2>
+<h4 id="javafx">JavaFX</h4>
+<ul>
+<li>JavaFX comes with a decent default theme called <a href="http://fxexperience.com/2013/01/modena-new-theme-for-javafx-8/">Modena</a>.</li>
+<li>The theme is easily <a href="http://code.makery.ch/java/javafx-8-tutorial-part4/">customizable with CSS</a>.</li>
+<li>There are <a href="http://fxexperience.com/2013/01/modena-new-theme-for-javafx-8/">many UI widgets</a> (scroll down to "All controls in Modena"). It comes with complex widgets and interactions out of the box: <a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htm">TreeTableView</a>, TextFlow (supports rich text), <a href="http://code.makery.ch/blog/javafx-8-date-picker/">DatePicker</a>, Charts, 3D support, <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebView.html">WebView</a> (with a modified Webkit engine), Drag and Drop, and more.</li>
+<li>If you need more widgets there is the excellent <a href="http://fxexperience.com/controlsfx/">ControlsFX</a> project and also <a href="http://jfxtras.org/">JFXtras</a>.</li>
+<li>JavaFX also comes with a nice visual designer called <a href="http://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html">JavaFX Scene Builder</a> which I like a lot.</li>
+</ul>
+<h4 id="html5">HTML5</h4>
+<ul>
+<li>I guess (almost) everything is possible with HTML5.</li>
+<li>The options of libraries and frameworks are immense.</li>
+<li>HTML5 targets many browsers and all possible screen sizes. This is great but it is also very difficult to implement one clean solution that works everywhere.</li>
+<li>Complex widgets (like tree-tables) are hard to implement.</li>
+<li>Complex interactions with good performance are hard to implement. I've had my share of experiences by writing a <a href="http://code.makery.ch/blog/drag-and-drop-without-html5/">drag and drop library</a>!</li>
+</ul>
+<h4 id="result">Result</h4>
+<p>Since JavaFX mainly targets the desktop and HTML5 all possible screen sizes, it is <strong>not really fair to compare</strong> the two in terms of <em>richness and aesthetics of UI</em>.</p>
+<p>With JavaFX you will not have to think a lot about UI widgets and interactions. You get everything out of the box. So, if you're implementing a larger business application you will certainly get nice results much faster and easier with JavaFX.</p>
+<hr>
+<h2 id="options-for-mobile-and-tablet">Options for Mobile and Tablet</h2>
+<h4 id="javafx">JavaFX</h4>
+<p>JavaFX is mainly for Desktop use. JavaFX for Android/iOS is a community effort. There is currently <strong>no official support by Oracle</strong>.</p>
+<ul>
+<li><a href="http://javafxports.org/">JavaFX Ports</a> - website about the current state of JavaFX ports to different platforms.</li>
+<li><a href="http://stackoverflow.com/questions/20860931/is-it-possible-to-run-javafx-applications-on-iphone-android-win8-mobile">Is it possible to run JavaFX applications on iPhone/Android/Win8 mobile?</a> - good collection of links.</li>
+</ul>
+<h4 id="html5">HTML5</h4>
+<p>Targetting mobile and desktop browsers there is no limit for HTML5. But to create a larger application that works accross many different screen sizes is everything but trivial both from a design and from a technical perspective.</p>
+<h4 id="result">Result</h4>
+<p>Obviously, <strong>HTML5 is the winner here</strong>.</p>
+<p>I haven't tried any of the JavaFX ports for mobile but from what I've seen they don't seem to be production ready, yet. Through community effort this might change in the near future and could actually be usable. So, definitely create some prototype to see if you can use it.</p>
+<hr>
+<h2 id="learning-curve">Learning Curve</h2>
+<h4 id="javafx">JavaFX</h4>
+<p>When you're a Java programmer and you've created some Swing GUIs, learning JavaFX will be straigt forward. As a Java Swing developer you should be excited by the new possibilities of JavaFX.</p>
+<p>If you work through my <a href="http://code.makery.ch/java/javafx-8-tutorial-intro/">JavaFX 8 Tutorial</a> you will get familiar with the most important concepts of JavaFX and even some new Java 8 language features:</p>
+<ul>
+<li>Separating the presentation layer with FXML and SceneBuilder (you can also create JavaFX applications in Java code completely, if you want).</li>
+<li>Using the new Properties classes and ObservableLists for automatic UI updates.</li>
+<li>Working with the TableView.</li>
+<li>Using CSS for styling.</li>
+<li>Creating charts.</li>
+<li>Deployment.</li>
+</ul>
+<h4 id="html5">HTML5</h4>
+<p>For a Java developer it is quite difficult to make the switch to HTML5. I know because I've gone that route and it has taken me more than two years to really feel comfortable with the web platform and the various web technologies.</p>
+<p>Here are some reasons that make it difficult for experienced Java developers to learn HTML5:</p>
+<ul>
+<li>Many browsers with differing behaviors (Chrome, Firefox, Safari, mobile Safari, different versions of Internet Explorer, etc.)</li>
+<li>Must learn HTML: This is the easiest part.</li>
+<li>Must learn CSS: Not too hard to understand the general concepts but very difficult to work with in larger projects. It gets you in a big mess if not done right (no encapsulation!). And making the styles work across many browsers is a great challenge. You'll end up using some CSS pre-processor like SASS or LESS which adds one more thing you need to learn.</li>
+<li>Must learn JavaScript (there are alternatives though):<ul>
+<li>No static types: This is difficult to grasp for a Java developer.</li>
+<li>Tool support: Because there are no static types the IDE can't help you much with content assists.</li>
+<li>No real classes: Prototype-based programming.</li>
+<li>JavaScript oddities: A lot has been <a href="http://www.smashingmagazine.com/2011/05/30/10-oddities-and-secrets-about-javascript/">said</a> <a href="http://johnkpaul.github.io/presentations/empirejs/javascript-bad-parts/">about</a> <a href="http://www.oreillynet.com/pub/a/javascript/excerpts/javascript-good-parts/bad-parts.html">that</a>.</li>
+<li>You will end up using a framework or two which is yet another thing to learn.</li>
+<li><strong>JavaScript itself is ok, but difficult to get right.</strong></li>
+</ul>
+</li>
+</ul>
+<p>I think it takes quite some time but it is possible for Java developers to make the switch to HTML5 if they are excited about learning new web technologies. </p>
+<p>But it will be really <strong>difficult for unexperienced web developers to create a well architected and maintainable project</strong>. It takes a lot of experience and discipline to stick to good practices in JavaScript projects. If the project is fairly large and multiple developers are working on the same web client it's easy to end up in a mess.</p>
+<p>Because many larger organizations have experienced those problems they created their own solutions to tackle them. In my opinion, the best approach so far is <a href="https://www.dartlang.org/">Dart</a>. Dart is an open source language developed by Google that provides a very nice and fresh but still familiar language. It comes with lots of libraries and tools that make developing large web application much easier. And, of course, it compiles to JavaScript so it can be used everywhere.</p>
+<p>The other web technology I can recommend is <a href="http://webcomponents.org/">Web Components</a> which I believe is the primary way how we will develop for the web in the future. Web Components enable real encapsulation of HTML, CSS and JavaScript (or Dart) so they don't interfere with the rest of the page. Nicely encapsulated, the UI widgets are reusable as components anywhere in your application. Web Components is an evolving standard but it isn't implemented in all browsers yet. It's still early days but you can use it today with the polyfill libraries <a href="http://www.polymer-project.org/">polymer</a> or <a href="http://x-tags.org/">x-tags</a>. If you're using Dart instead of JavaScript there is <a href="https://www.dartlang.org/polymer-dart/">Polymer.dart</a>.</p>
+<h4 id="result">Result</h4>
+<p>For Java developers it is quite a large step until they will be able to design reasonable web applications. Migrating a larger Swing application to HTML5 without experienced web developers would entail a significant risk of failure.</p>
+<p><strong>JavaFX is the obvious winner</strong> concering the learning curve if your primary background is in a non-web language like Java, C#,... If you're already comfortable with web technologies or you're excited to learn something new I recommend you give Dart a try.</p>
+<hr>
+<h2 id="long-term-support">Long-term Support</h2>
+<h4 id="javafx">JavaFX</h4>
+<ul>
+<li>JavaFX is now part of JRE/JDK for Java 8.</li>
+<li>Oracle says: JavaFX replaces Swing as the new client UI library.</li>
+<li><a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">Java is huge</a> and when used on the client, JavaFX is now the default.</li>
+<li>JavaFX is <a href="http://openjdk.java.net/projects/openjfx/">open source</a></li>
+</ul>
+<h4 id="html5">HTML5</h4>
+<p>HTML5 is here to stay. But for an business application of significant size you will need to rely on third-party frameworks, tools and maybe even languages. Just a quick, more-or-less random selection of choices you will likely encounter:</p>
+<table class="table">
+  <tr>
+    <td>HTML manipulation, event handling, animations, ajax</td>
+    <td>jQuery</td>
+  </tr>
+  <tr>
+    <td>JavaScript MVC Framework</td>
+    <td><a href="https://angularjs.org/">angular.js</a> (Google), <a href="http://emberjs.com/">ember.js</a>, <a href="http://backbonejs.org/">backbone.js</a>, <a href="http://facebook.github.io/react/">react.js</a> (Facebook), etc. </td>
+  </tr>
+  <tr>
+    <td>Languages to improve or replace JavaScript</td>
+    <td><a href="http://coffeescript.org/">CoffeeScript</a>, <a href="http://www.typescriptlang.org/">TypeScript</a> (Microsoft), <a href="https://www.dartlang.org/">Dart</a> (Google), etc.</td>
+  </tr>
+  <tr>
+    <td>CSS frameworks:</td>
+    <td><a href="http://lesscss.org/">Less</a>, <a href="http://sass-lang.com/">Sass</a>, etc.</td>
+  </tr>
+  <tr>
+    <td>UI Components</td>
+    <td>jQuery UI, Bootstrap (or similar), some charts library, Web Components, etc.</td>
+  </tr>
+</table>
 
-Download Example
- Example Source Code
-FXML and Event Handling
-I like to keep the... </p>
-    <p><a href="/blog/javafx-8-event-handling-examples/" class="post-more btn btn-default">Read more &rarr;</a></p>
-  </section>
-  <hr class="post-ruler">
-</article>
-      <div class="paging">
-  
-  
-  
-  <a href="/archive/">&mdash; Blog Archive &mdash;</a>
-  
-  
-      <a href="/blog/page-2/" class="next">Older Posts &rarr;</a>
-  
-</div>
-    
-  
-</div>
+<p>The lifecycle of web frameworks and tools is quite short. When relying on many third-party libraries and tools you will need to track all the changes and you can only hope that support and updates will continue. </p>
+<p>Also, browsers are changing fast, so you might need to keep up with those changes.</p>
+<h4 id="result">Result</h4>
+<p>It's difficult to predict the future here: Who can say what happens to Oracle, Google, Facebook, etc. and to any of the Web Frameworks in a few years. </p>
+<p>Even though it might decline in favor of some new and fancy languages, I believe Java will still be with us for quite some time to come. With JavaFX you get almost everything you need for your UI from one single source and you know you can rely on it to stay stable for quite a while. Since JavaFX is open source this at least gives you some confidence that an open source community could provide support even if Oracle wouldn't.</p>
+<p>Concerning web technologies: I presume that we will continue to see some major shifts in web technologies. These are my guesses for web technologies in a few years:</p>
+<ul>
+<li>As browsers and languages evolve we will not use jQuery any more.</li>
+<li>JavaScript will still be around but I believe it will mostly be used as a compile target and not as a language to write large web applications with. Languages like Dart, CoffeeScript, TypeScript, and <a href="http://www.andrewconnell.com/blog/atscript-another-language-to-compile-down-to-javascript">AtScript</a> are the alternatives.</li>
+<li>I believe <a href="http://webcomponents.org/">Web Components</a> will pretty much replace most web frameworks.</li>
+</ul>
+<p>Since it's really difficult to tell where the HTML5 trends are heading, I'd currently <strong>favor JavaFX when it comes to long-term support</strong>.</p>
+<hr>
+<h2 id="rolling-replacement-of-a-java-swing-application">Rolling Replacement of a Java Swing Application</h2>
+<p>If you're coming from a larger Java Swing application you might want to <strong>gradually replace</strong> the existing application.</p>
+<h4 id="javafx">JavaFX</h4>
+<p>There is the possibility to <a href="http://docs.oracle.com/javafx/8/embed_swing/jfxpub-embed_swing.htm">embed Swing content in JavaFX applications</a> so a rolling replacement seems possible. I, however, wouldn't underestimate the problems with a hybrid approach. An article by Dirk Lemmermann sums up the reasons why you <a href="http://dlemmermann.wordpress.com/2014/07/17/javafx-tip-9-do-not-mix-swing-javafx/">shouldn't mix Swing and JavaFX</a>. I agree with his conclusion that you're probably better off with migrating everything to JavaFX. </p>
+<h4 id="html5">HTML5</h4>
+<p>I don't see a good rolling replacement option for HTML5.</p>
+<hr>
+<h2 id="deployment">Deployment</h2>
+<h4 id="javafx">JavaFX</h4>
+<p>The promise of Java is "write once, run anywhere". But we've all had problems with deployment of Java programs because the user didn't have the expected Java runtime version. </p>
+<p>JavaFX has come to solve this problem through a new deployment option called <a href="http://docs.oracle.com/javafx/2/deployment/self-contained-packaging.htm">Self-Contained Application Packaging</a>: This bundles the native Java runtime together with your application code so you can always be sure about the Java version. It's even possible to do an installation without admin rights.</p>
+<p>Of course, there are some coveats like the bigger download-size and that you have to build a bundle for every target platform (Windows, Linux, and Mac). The hardest part is probably to figure out a good way to deploy application updates. Currently, there is no built-in support for auto-updates but this may be included in the future. In the meantime have a look at the comments on the <a href="https://javafx-jira.kenai.com/browse/RT-22211">Feature Request for Auto-Update</a> which includes a discussion about some alternate mechanisms.</p>
+<h4 id="html5">HTML5</h4>
+<p>Deploying web applications only requires a web server that users can access with their browsers. This also makes it very easy to distribute updates.</p>
+<h4 id="result">Result</h4>
+<p><strong>HTML5 is the winnner in terms of deployment</strong> even though JavaFX provides a better solution than before with its <em>native packaging</em>.</p>
+<hr>
+<h2 id="conclusions">Conclusions</h2>
+<p>Here is a summary of the comparison between JavaFX and HTML5:</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Criteria</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Richness and Aesthetics of UI</td>
+      <td>Difficult to compare. But for larger business application it is faster and easier to get nice results with <strong>JavaFX</strong>.</td>
+    </tr>
+    <tr>
+      <td>Options for Mobile and Tablet</td>
+      <td>Clear win for <strong>HTML5</strong>.</td>
+    </tr>
+    <tr>
+      <td>Learning Curve</td>
+      <td>Heavily depends on your background. Obviousely a clear win for <strong>JavaFX</strong> if you're coming from a Java or Java-like language.</td>
+    </tr>
+    <tr>
+      <td>Long-term Support</td>
+      <td>Because of fast changing trends in HTML5 I consider this a tight win for <strong>JavaFX</strong>.</td>
+    </tr>
+    <tr>
+      <td>Rolling Replacement of a Java Swing Application</td>
+      <td>A <strong>tie</strong> because I wouldn't rely on combining Swing and JavaFX.</td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td>A win for <strong>HTML5</strong>.</td>
+    </tr>
+  </tbody>
+</table>
 
+
+<h2 id="my-recommendations">My Recommendations</h2>
+<p>All criteria are relevant but I think there are two that might be relevant for most applications: <em>Learning Curve</em> and <em>Options for Mobile and Tablet</em>. </p>
+<p>The <em>Leraning Curve</em> depends on your team: How high is the team's motivation to learn web technologies? Do you have any web developers with experience in architecting complex web applications?</p>
+<p>If the project is large and your team has limited experience in web technologies I'd consider HTML5 as quite risky. JavaFX might be the safer choice.</p>
+<p><strong>But what if you need to support mobile devices?</strong></p>
+<p>You could create a separate web application just for mobile. I know it would be nice to have one application that works everywhere, but this is even hard to do if you were only using HTML5. The approach of taking a fairly complex desktop UI and shrinking it down to a mobile screen usually fails. Eventually, developers come to the conclusion that they must rethink the user experience on mobile from the ground up. (That's why the mobile-first approach has gained popularity.)</p>
+<p><strong>I really love Dart and the Web!</strong></p>
+<p>This article might look like it favors JavaFX in a lot of places, but it doesn't. Most of the time HTML5 gets a lot of attention and I tried to focus a bit more on JavaFX as a reasonable alternative. </p>
+<p>Still I must say that I just love to write programs for the web that run on many different platforms without the need to install anything. And I'm really excited about the beautiful Dart language! </p>
+<p>If you decide to go with HTML5 I recommend you try <a href="https://www.dartlang.org/">Dart</a> and <a href="https://www.dartlang.org/polymer-dart/">Polymer.dart</a> for Web Components. If, after a prototype, you still decide to go with JavaScript, at least use some JavaScript MVC framework (like angular.js) to give you some structure.</p>
+<hr>
+<p>I'm aware that the criteria we looked at are only a part of what might be relevant to your specific case. I'd be glad to hear your opinion on this article and what you think is missing from the discussion.</p>
+
+
+      </section>
       
+      
+      <hr>
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
     <footer class="site-footer container-fluid">
   <div class="row">
     <div class="col-sm-offset-2 col-sm-8">
@@ -295,10 +359,27 @@ I like to keep the... </p>
   </div>
 </footer>
 
-  
     
     
     
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/javafx-vs-html5/';
+    var disqus_url = 'http://code.makery.ch/blog/javafx-vs-html5/';
+    var disqus_title = 'JavaFX vs. HTML5';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
     
 
     

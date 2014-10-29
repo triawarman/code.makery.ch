@@ -6,7 +6,7 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Wed, 29 Oct 2014 14:34:39 CET</lastBuildDate>
+    <lastBuildDate>Wed, 29 Oct 2014 22:00:38 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
@@ -17,6 +17,8 @@
 	
 	<category>Dart</category>
 	
+	<category>HTML5</category>
+	
 	<pubDate>Thu, 17 Jul 2014 00:00:00 CET</pubDate>
 	<description>I gave up on HTML5 drag and drop! A step I should have made a long time ago. Even though I read some reports of people struggling with it (like the HTML5 drag and drop disaster article) I thought I could takle it and make it work for the most...</description>
 </item>
@@ -26,6 +28,8 @@
 	<guid>/blog/web-und-mobile-mit-dart/</guid>
 	
 	<category>Dart</category>
+	
+	<category>HTML5</category>
 	
 	<pubDate>Thu, 26 Sep 2013 00:00:00 CET</pubDate>
 	<description>
@@ -51,6 +55,8 @@ Bisher war es kaum realistisch,...</description>
 	<guid>/blog/programming-with-dart/</guid>
 	
 	<category>Dart</category>
+	
+	<category>HTML5</category>
 	
 	<pubDate>Thu, 13 Jun 2013 00:00:00 CET</pubDate>
 	<description>

@@ -6,10 +6,26 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Wed, 29 Oct 2014 14:34:39 CET</lastBuildDate>
+    <lastBuildDate>Wed, 29 Oct 2014 22:00:38 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
+<item>
+	<title><![CDATA[JavaFX vs. HTML5]]></title>
+	<link>http://code.makery.ch/blog/javafx-vs-html5/</link>
+	<guid>/blog/javafx-vs-html5/</guid>
+	
+	<category>HTML5</category>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Wed, 29 Oct 2014 00:00:00 CET</pubDate>
+	<description>Choosing a rich client technology is very difficult! I recently did some consulting for a company that needed to choose between JavaFX and HTML5. In this article I would like to share some of my insights on this topic.
+
+I don&#39;t intend this to be a battle between technologies by making...</description>
+</item>
 <item>
 	<title><![CDATA[JavaFX Dialogs (official)]]></title>
 	<link>http://code.makery.ch/blog/javafx-dialogs-official/</link>
@@ -145,25 +161,6 @@ Using the...</description>
 
 
 As JavaFX 2.2 doesn&#39;t contain a Calendar control we would have to create our own to provide a convenient way to enter a date. Fortunately, Christian Schudt has created a very nice DatePicker that we...</description>
-</item>
-<item>
-	<title><![CDATA[JavaFX 2 Snapshot as PNG Image]]></title>
-	<link>http://code.makery.ch/blog/javafx-2-snapshot-as-png-image/</link>
-	<guid>/blog/javafx-2-snapshot-as-png-image/</guid>
-	
-	<category>Java</category>
-	
-	<category>JavaFX</category>
-	
-	<pubDate>Fri, 04 Jan 2013 00:00:00 CET</pubDate>
-	<description>JavaFX 2.2 and above provides a convenient screenshot feature. It takes a snapshot of any node or scene.
-The following method saves the barChart node as a png image:
-
-@FXML
-public void saveAsPng() {
-    WritableImage image = barChart.snapshot(new SnapshotParameters(), null);
-
-    // TODO: probably use a file chooser...</description>
 </item>
     
   </channel>

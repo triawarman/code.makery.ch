@@ -6,10 +6,26 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Wed, 29 Oct 2014 14:34:30 CET</lastBuildDate>
+    <lastBuildDate>Wed, 29 Oct 2014 22:00:30 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
+<item>
+	<title><![CDATA[JavaFX vs. HTML5]]></title>
+	<link>http://code.makery.ch/blog/javafx-vs-html5/</link>
+	<guid>/blog/javafx-vs-html5/</guid>
+	
+	<category>HTML5</category>
+	
+	<category>Java</category>
+	
+	<category>JavaFX</category>
+	
+	<pubDate>Wed, 29 Oct 2014 00:00:00 CET</pubDate>
+	<description>Choosing a rich client technology is very difficult! I recently did some consulting for a company that needed to choose between JavaFX and HTML5. In this article I would like to share some of my insights on this topic.
+
+I don&#39;t intend this to be a battle between technologies by making...</description>
+</item>
 <item>
 	<title><![CDATA[JavaFX Dialogs (official)]]></title>
 	<link>http://code.makery.ch/blog/javafx-dialogs-official/</link>
@@ -45,6 +61,8 @@ JavaFX 8 Tutorial in Spanish - 100% -...</description>
 	<guid>/blog/drag-and-drop-without-html5/</guid>
 	
 	<category>Dart</category>
+	
+	<category>HTML5</category>
 	
 	<pubDate>Thu, 17 Jul 2014 00:00:00 CET</pubDate>
 	<description>I gave up on HTML5 drag and drop! A step I should have made a long time ago. Even though I read some reports of people struggling with it (like the HTML5 drag and drop disaster article) I thought I could takle it and make it work for the most...</description>
@@ -139,19 +157,6 @@ Using the...</description>
   
   
     It was announced that the Dialogs will finally be included in JavaFX. They will be part of the JDK version 8u40 which will be...</description>
-</item>
-<item>
-	<title><![CDATA[Moving to code.makery.ch]]></title>
-	<link>http://code.makery.ch/blog/moving-to-code-makery-ch/</link>
-	<guid>/blog/moving-to-code-makery-ch/</guid>
-	
-	<pubDate>Fri, 28 Mar 2014 00:00:00 CET</pubDate>
-	<description>This blog moved from edu.makery.ch to code.makery.ch.
-
-Please update your links and RSS feeds to code.makery.ch
-Or even better: Sign up to receive updates by email
-Why the Move?
-When I started blogging in 2012 I thought this would be a blog about educational things. That&#39;s why I called it edu.makery.ch. The posts and...</description>
 </item>
     
   </channel>
