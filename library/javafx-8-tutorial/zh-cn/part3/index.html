@@ -397,9 +397,8 @@ private void handleDeletePerson() {
 <p>To ignore such an error is not very nice, of course. We should let the user know that he/she must select a person before deleting. (Even better would be if we disabled the button so that the user doesn't even have the chance to do something wrong.)</p>
 <p>We'll add a popup dialog to inform the user. You'll need to <strong>add a library</strong> for the <a href="/blog/javafx-8-dialogs/">Dialogs</a>: </p>
 <ol>
-<li>Download the latest <strong>ControlsFX</strong> zip file from the <a href="http://fxexperience.com/controlsfx/">ControlsFX Website</a>. (It is also available as Maven dependency if you prefer to use Maven.)<br><strong>Important: The ControlsFX must be version <code>8.0.6_20</code> or greater to work with <code>JDK 8u20</code> and above as there was a breaking change introduced in that version.</strong></li>
-<li>Inside the zip file you should find a <code>controlsfx-8.x.x.jar</code> file. Unzip that file to your computer (Eclipse does not accept files copied directly from a zip folder).</li>
-<li>Create a <strong>lib</strong> subfolder in the project and add the jar file to this folder.</li>
+<li>Download this <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/controlsfx-8.0.6_20.jar">controlsfx-8.0.6_20.jar</a> (you could also get it from the <a href="http://fxexperience.com/controlsfx/">ControlsFX Website</a>).<br><strong>Important: The ControlsFX must be version <code>8.0.6_20</code> or greater to work with <code>JDK 8u20</code> and above as there was a breaking change introduced in that version.</strong></li>
+<li>Create a <strong>lib</strong> subfolder in the project and add the controlsfx-jar file to this folder.</li>
 <li>Add the library to your project's <strong>classpath</strong>: In Eclipse <em>right-click on the jar file</em> | <em>Build Path</em> | <em>Add to Build Path</em>. Now Eclipse knows about the library.</li>
 </ol>
 <p><img src="/assets/library/javafx-8-tutorial/part3/controlsfx-library.png" alt="ControlsFX Libaray"></p>
