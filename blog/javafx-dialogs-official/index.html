@@ -169,6 +169,7 @@ alert.showAndWait();
 
 <h3 id="exception-dialog">Exception Dialog</h3>
 <p><img src="/assets/blog/14-10-28-javafx-dialogs-official/exception-dialog.png" alt="JavaFX Exception Dialog"></p>
+<p>There is not a complete Exception Dialog out of the box. But we can easily provide <code>TextArea</code> as expandable content.</p>
 <pre class="prettyprint lang-java">
 Alert alert = new Alert(AlertType.ERROR);
 alert.setTitle("Exception Dialog");
@@ -269,7 +270,7 @@ if (result.isPresent()){
 result.ifPresent(name -> System.out.println("Your name: " + name));
 </pre>
 
-<p>Note: The <code>result.isPresent()</code> will return <code>false</code> if the user cancelled the dialog.</p>
+<p><strong>Note:</strong> The <code>result.isPresent()</code> will return <code>false</code> if the user cancelled the dialog.</p>
 <h3 id="choice-dialog">Choice Dialog</h3>
 <p><img src="/assets/blog/14-10-28-javafx-dialogs-official/choice-dialog.png" alt="JavaFX Choice Dialog"></p>
 <pre class="prettyprint lang-java">
@@ -293,7 +294,7 @@ if (result.isPresent()){
 result.ifPresent(letter -> System.out.println("Your choice: " + letter));
 </pre>
 
-<p>Note: The <code>result.isPresent()</code> will return <code>false</code> if the user didn't choose anything or cancelled the dialog.</p>
+<p><strong>Note:</strong> The <code>result.isPresent()</code> will return <code>false</code> if the user didn't choose anything or cancelled the dialog.</p>
 <h2 id="custom-login-dialog">Custom Login Dialog</h2>
 <p>Here is an example of how to create a custom dialog with a login form:</p>
 <p><img src="/assets/blog/14-10-28-javafx-dialogs-official/login-dialog.png" alt="JavaFX Custom Login Dialog"></p>
