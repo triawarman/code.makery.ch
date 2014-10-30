@@ -367,7 +367,12 @@ Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
 stage.getIcons().add(new Image(this.getClass().getResource("login.png").toString()));
 </pre>
 
-<p>Note: According to <a href="https://javafx-jira.kenai.com/browse/RT-38895">this bug report</a> the final version of the JavaFX 8u40 Dialogs should use the same icon as the application that it is running from.</p>
+<p>According to <a href="https://javafx-jira.kenai.com/browse/RT-38895">this bug report</a> the final version of the JavaFX 8u40 Dialogs should use the same icon as the application that it is running from. In that case you would need to set its owner and the Dialog would get the owner's icon:</p>
+<pre class="prettyprint lang-java">
+dialog.initOwner(otherStage);
+</pre>
+
+
 <h3 id="minimal-decorations">Minimal Decorations</h3>
 <p>Another option is to remove the icon and use only minimal window decorations.</p>
 <p><img src="/assets/blog/14-10-28-javafx-dialogs-official/minimal-decorations.png" alt="Minimal Decorations"></p>
