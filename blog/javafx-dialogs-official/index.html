@@ -252,7 +252,7 @@ if (result.get() == buttonTypeOne){
 </pre>
 
 
-<h3 id="text-input-dialog">Text Input Dialog</h3>
+<h2 id="text-input-dialog">Text Input Dialog</h2>
 <p><img src="/assets/blog/14-10-28-javafx-dialogs-official/text-input-dialog.png" alt="JavaFX Text Input Dialog"></p>
 <pre class="prettyprint lang-java">
 TextInputDialog dialog = new TextInputDialog("walter");
@@ -271,7 +271,7 @@ result.ifPresent(name -> System.out.println("Your name: " + name));
 </pre>
 
 <p><strong>Note:</strong> The <code>result.isPresent()</code> will return <code>false</code> if the user cancelled the dialog.</p>
-<h3 id="choice-dialog">Choice Dialog</h3>
+<h2 id="choice-dialog">Choice Dialog</h2>
 <p><img src="/assets/blog/14-10-28-javafx-dialogs-official/choice-dialog.png" alt="JavaFX Choice Dialog"></p>
 <pre class="prettyprint lang-java">
 List&lt;String> choices = new ArrayList&lt;>();
@@ -352,6 +352,27 @@ Optional&lt;Pair&lt;String, String>> result = dialog.showAndWait();
 result.ifPresent(usernamePassword -> {
     System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
 });
+</pre>
+
+
+<h2 id="styling-the-dialogs">Styling the Dialogs</h2>
+<h3 id="custom-icon">Custom Icon</h3>
+<p><img src="/assets/blog/14-10-28-javafx-dialogs-official/custom-icon.png" alt="Custom Dialog Icon"></p>
+<p>In the current version it's a bit cumbersome to get to the Dialog's <code>Stage</code> to be able to set its icon. Here is how:</p>
+<pre class="prettyprint lang-java">
+// Get the Stage.
+Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+
+// Add a custom icon.
+stage.getIcons().add(new Image(this.getClass().getResource("login.png").toString()));
+</pre>
+
+<p>Note: According to <a href="https://javafx-jira.kenai.com/browse/RT-38895">this bug report</a> the final version of the JavaFX 8u40 Dialogs should use the same icon as the application that it is running from.</p>
+<h3 id="minimal-decorations">Minimal Decorations</h3>
+<p>Another option is to remove the icon and use only minimal window decorations.</p>
+<p><img src="/assets/blog/14-10-28-javafx-dialogs-official/minimal-decorations.png" alt="Minimal Decorations"></p>
+<pre class="prettyprint lang-java">
+dialog.initStyle(StageStyle.UTILITY);
 </pre>
 
 
