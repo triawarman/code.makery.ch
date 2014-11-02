@@ -221,15 +221,15 @@
 </div>
 
 <p><img src="/assets/library/javafx-8-tutorial/part2/addressapp-part2.png" alt="Screenshot AddressApp Part 2"></p>
-<h2 id="topics-in-part-2">Topics in Part 2</h2>
+<h2 id="-">第二部分的主题</h2>
 <ul>
-<li>Creating a <strong>model</strong> class</li>
-<li>Using the model class in an <strong>ObservableList</strong></li>
-<li>Show data in the <strong>TableView</strong> using <strong>Controllers</strong></li>
+<li>创建一个 <strong>模型</strong> 类。</li>
+<li>在 <strong>ObservableList</strong> 使用模型类。</li>
+<li>使用 <strong>Controllers</strong> 在 <strong>TableView</strong> 上显示数据。</li>
 </ul>
 <hr>
-<h2 id="create-the-model-class">Create the Model Class</h2>
-<p>We need a model class to hold information about the people in our address book. Add a new class to the model package (<code>ch.makery.address.model</code>) called <code>Person</code>. The <code>Person</code> class will have a few instance variables for the name, address and birthday. Add the following code to the class. I'll explain some JavaFX specifics after the code.</p>
+<h2 id="-">创建 <strong>模型</strong> 类。</h2>
+<p>我们需要一个模型类来保存联系人信息到我们的通讯录中。在模型包中 (<code>ch.makery.address.model</code>) 添加一个叫 <code>Person</code>的类。<code>Person</code> 类将会有一些变量，名字，地址和生日。将以下代码添加到类。在代码后，我将解释一些 JavaFX 的细节。</p>
 <h5 id="person-java">Person.java</h5>
 <pre class="prettyprint lang-java">
 package ch.makery.address.model;
@@ -356,14 +356,14 @@ public class Person {
 </pre>
 
 
-<h3 id="explanations">Explanations</h3>
+<h3 id="-">解释</h3>
 <ul>
-<li>With JavaFX it's common to use <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/Property.html"><code>Properties</code></a> for all fields of a model class. A <code>Property</code> allow us, for example, to automatically be notified when the <code>lastName</code> or any other variable is changed. This helps us keep the view in sync with the data. To learn more about <code>Properties</code> read <a href="http://docs.oracle.com/javase/8/javafx/properties-binding-tutorial/binding.htm">Using JavaFX Properties and Binding</a>.</li>
-<li><a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html"><code>LocalDate</code></a>, the type we're using for <code>birthday</code>, is part of the new <a href="http://docs.oracle.com/javase/tutorial/datetime/iso/">Date and Time API for JDK 8</a>.</li>
+<li>With JavaFX it's common to use <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/Property.html"><code>Properties</code></a> for all fields of a model class. A <code>Property</code> allow us, for example, to automatically be notified when the <code>lastName</code> or any other variable is changed. 这有助于我们保持视图与数据的同步，阅读 <a href="http://docs.oracle.com/javase/8/javafx/properties-binding-tutorial/binding.htm">Using JavaFX Properties and Binding</a> 学习更多关于 <code>Properties</code> 的内容。</li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html"><code>LocalDate</code></a>, 我们使用了 <code>birthday</code> 类型, 这是一个新的部分在 <a href="http://docs.oracle.com/javase/tutorial/datetime/iso/">Date and Time API for JDK 8</a>.</li>
 </ul>
 <hr>
-<h2 id="a-list-of-persons">A List of Persons</h2>
-<p>The main Data that our application manages, is a bunch of persons. Let's create a list for <code>Person</code> objects inside the <code>MainApp</code> class. All other controller classes will later get access to that central list inside the <code>MainApp</code>. </p>
+<h2 id="-">人员列表</h2>
+<p>The main Data that our application manages, is a bunch of persons.让我们在 <code>MainApp</code> 类里面创建一个 <code>Person</code> 对象的列表。稍后其他所有的控制器类将存取 <code>MainApp</code> 的核心列表。</p>
 <h3 id="observablelist">ObservableList</h3>
 <p>We are working with JavaFX view classes that need to be informed about any changes made to the list of persons. This is important, since otherwise the view would not be in sync with the data. For this purpose, JavaFX introduces some new <a href="http://docs.oracle.com/javase/8/javafx/collections-tutorial/collections.htm">Collection classes</a>. </p>
 <p>From those collections, we need the <code>ObservableList</code>. To create a new <code>ObservableList</code>, add the following code at the beginning of the <code>MainApp</code> class. We'll also add a constructor that creates some sample data and a public getter method:</p>
