@@ -381,6 +381,21 @@ dialog.initStyle(StageStyle.UTILITY);
 </pre>
 
 
+<h2 id="other-options">Other Options</h2>
+<h3 id="setting-the-owner">Setting the Owner</h3>
+<p>You can specify the owner <code>Window</code> for a dialog. If no owner or null is specified for the owner, it is a top-level, unowned dialog. </p>
+<pre class="prettyprint lang-java">
+dialog.initOwner(parentWindow);
+</pre>
+
+
+<h3 id="setting-the-modality">Setting the Modality</h3>
+<p>You can specify the modality for a dialog. The modality must be one of <code>Modality.NONE</code>, <code>Modality.WINDOW_MODAL</code>, or <code>Modality.APPLICATION_MODAL</code>.</p>
+<pre class="prettyprint lang-java">
+dialog.initModality(Modality.NONE);
+</pre>
+
+
       </section>
       
       
