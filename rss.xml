@@ -6,7 +6,7 @@
     <language>en</language>
     <webMaster>majakob@gmx.ch</webMaster>
     <copyright>2014</copyright>
-    <lastBuildDate>Wed, 12 Nov 2014 12:33:47 CET</lastBuildDate>
+    <lastBuildDate>Wed, 12 Nov 2014 12:50:30 CET</lastBuildDate>
     <generator>mixture.io</generator>
     
       
@@ -51,9 +51,10 @@ Now that they will be available in the official JDK, let&#39;s learn how to...</
 	<pubDate>Tue, 07 Oct 2014 00:00:00 CET</pubDate>
 	<description>
 Wow, I&#39;m really excited about the community contributions that were made to the tutorials! Some amazing people have helped improve the materials by writing valuable comments and some have even provided a translation for their language. Thank you very much, you&#39;re awesome!!
-New Languages
 
-JavaFX 8 Tutorial in Spanish - 100% -...</description>
+  
+    
+  ...</description>
 </item>
 <item>
 	<title><![CDATA[Drag and Drop without HTML5]]></title>
