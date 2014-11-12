@@ -159,7 +159,7 @@
             <h1 class="article-title">Tutorial JavaFX 8 - Parte 7: Implantação</h1>
             <div class="article-date">
   Sep 10, 2014
-  • Updated Sep 10, 2014
+  • Updated Nov 12, 2014
 
 </div>
           </header>
@@ -221,22 +221,22 @@
 
 
 <p><img src="/assets/library/javafx-8-tutorial/part7/addressapp-part7.png" alt="Screenshot AddressApp Part 7"></p>
-<p>I thought I'd write one last part of this tutorial series to show how to deploy (i.e. package and publish) the AddressApp.</p>
+<p>Eu pensei que deveria dedicar a última parte desta série de tutoriais para mostrar como realizar o deploy (i.e package e publicação) do AddressApp.</p>
 <hr>
-<h2 id="topics-in-part-7">Topics in Part 7</h2>
+<h2 id="t-picos-da-parte-7">Tópicos da Parte 7</h2>
 <ul>
-<li>Deploying our JavaFX application as <strong>Native Package</strong> with e(fx)clipse</li>
+<li>Utilizando o deploy em nossa aplicação JavaFX como um <strong>Package Nativo</strong> com e(fx)clipse</li>
 </ul>
 <hr>
-<h2 id="what-is-deployment">What is Deployment</h2>
-<p>Deplyoment is the process of packaging and delivering software to the user. This is a crucial part of software development since it's the first contact a user has with our software.</p>
-<p>Java advertises with the slogan <strong>Write Once, Run Anywhere</strong> to illustrate the <em>cross-platform</em> benefits of the Java language. Ideally, this means that our Java application can be run on any device equipped with a Java virtual machine (JVM).</p>
-<p>In the past, the user experience for installing a Java application hasn't always been smooth. If the user didn't have the required Java version on his system, he had to be directed to install it first. This lead to some difficulties, e.g. need for admin rights, compatibility issues between Java versions, etc.</p>
-<p>Fortunately, JavaFX provides a new deployment option called <strong>Native Packaging</strong> (also called Self-Contained Application Package). A native package is a bundle containing both your application code and the (platform-specific) Java Runtime. </p>
-<p>The official JavaFX documentation by Oracle contains an extensive guide for all possible <a href="http://docs.oracle.com/javafx/2/deployment/jfxpub-deployment.htm">JavaFX deployment options</a>. </p>
-<p>In this post I will show how to create a <strong>Native Package</strong> with Eclipse and the <a href="http://www.eclipse.org/efxclipse/"><strong>e(fx)clipse plugin</strong></a>.</p>
+<h2 id="o-que-deploy">O que é Deploy</h2>
+<p>Deploy é o processo de empacotamento (packaging) e entrega do  software ao usuário. Esta é uma parte crucial do desenvolvimento de software, pois é o primeiro contato entre o cliente e nosso software.</p>
+<p>Java enfatiza o slogan <strong>Write Once, Run Anywhere</strong> para ilustrar os beneficios da <em>Multiplataforma</em> da linguagem Java. Conceitualmente, isso significa que sua aplicação Java pode ser executado em qualquer dipositivo que possua uma Java virtual machine (JVM).</p>
+<p>No passado, a experiência do usuário em instalar uma aplicação Java não era tão simplificada . Se o usuário não tinha a versão do Java requirida em seu sistema,  ele primeiramente tinha que instala-la diretamentet. Isso gerava muitas dificuldades, como a necessidade do uso de previlégios de administrador, problemas de compatibilidade entre as versões do java, etc.</p>
+<p>Felizmente o JavaFX fornece uma nova opção de deploy, chamada <strong>Native Packaging</strong> (também chamada de Self-Contained Application Package). Um native package é um pacote que contém o código de sua aplicação juntamente com o Java Runtime (Específico para cada plataforma). </p>
+<p>A documentação oficial do JavaFX mantida pela Oracle contém um guia completo para todas as formas de deploy <a href="http://docs.oracle.com/javafx/2/deployment/jfxpub-deployment.htm">JavaFX deployment options</a>. </p>
+<p>Nesta publicação eu irei mostrar como criar um  <strong>Native Package</strong> com o Eclipse e o plugin e(fx)clipse <a href="http://www.eclipse.org/efxclipse/"><strong>e(fx)clipse plugin</strong></a>.</p>
 <hr>
-<h2 id="create-a-native-package">Create a Native Package</h2>
+<h2 id="criando-um-native-package">Criando um Native Package</h2>
 <p>The goal is to create a self-contained application in a single folder on the user's computer. Here is how it will look like for our AddressApp (on Windows):</p>
 <p><img src="/assets/library/javafx-8-tutorial/part7/native-package.png" alt="AddressApp Native Package"></p>
 <p>The <code>app</code> folder contains our application data and the <code>runtime</code> folder contains the platform-specific Java runtime.</p>
