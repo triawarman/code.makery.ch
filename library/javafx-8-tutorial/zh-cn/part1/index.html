@@ -283,11 +283,14 @@
 
 <p>在<code>PersonOverview.fxml</code> 右键选择 <em>Open with Scene Builder</em>，那么你将会在打开的Scene Builder里面看到一个固定的界面设计区域(在整个界面的左边)。</p>
 <ol>
-<li><p>选中这个界面设计区域，你就可以在右边的属性设置栏中对它的尺寸进行修改:<br><img src="/assets/library/javafx-8-tutorial/part1/anchor-pane-size.png" alt="Anchor Pane Size"></p>
+<li><p>选中这个界面设计区域，你就可以在右边的属性设置栏中对它的尺寸进行修改:
+<img src="/assets/library/javafx-8-tutorial/part1/anchor-pane-size.png" alt="Anchor Pane Size"></p>
 </li>
-<li><p>从Scene Builder的左边控件栏中拖拽一个 <em>Splite Pane(Horizontal Flow)</em> 到界面设计区域，在Builder的右边视图结构中选择刚添加的Pane，在弹出的右键菜单中选择 <em>Fit to Parent</em> 。<br><img src="/assets/library/javafx-8-tutorial/part1/fit-to-parent.png" alt="Fit to Parent"></p>
+<li><p>从Scene Builder的左边控件栏中拖拽一个 <em>Splite Pane(Horizontal Flow)</em> 到界面设计区域，在Builder的右边视图结构中选择刚添加的Pane，在弹出的右键菜单中选择 <em>Fit to Parent</em> 。
+<img src="/assets/library/javafx-8-tutorial/part1/fit-to-parent.png" alt="Fit to Parent"></p>
 </li>
-<li><p>同样从左边的控件栏中拖拽一个 <em>TableView</em> 到 <em>SplitePane</em> 的左边，选择这个TableView(而不是它的列)对它的布局进行设置，你可以在 <em>AnchorPane</em> 中对这个TableView四个边的外边距进行调节。(<a href="http://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm">more information on Layouts</a>).<br><img src="/assets/library/javafx-8-tutorial/part1/table-view-anchors.png" alt="TableView Anchors"></p>
+<li><p>同样从左边的控件栏中拖拽一个 <em>TableView</em> 到 <em>SplitePane</em> 的左边，选择这个TableView(而不是它的列)对它的布局进行设置，你可以在 <em>AnchorPane</em> 中对这个TableView四个边的外边距进行调节。(<a href="http://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm">more information on Layouts</a>).
+<img src="/assets/library/javafx-8-tutorial/part1/table-view-anchors.png" alt="TableView Anchors"></p>
 </li>
 <li><p>点击菜单中的 <em>Preview | Show Preview in Window</em> 可以预览你设计好的界面，试着缩放预览的界面，你会发现TableView会随着窗口的缩放而变化。</p>
 </li>
@@ -300,13 +303,16 @@
 <li><p>添加一个 <em>Label</em> 到 <em>SplitePane</em>的右边部分，并设置它的显示文字为 "Person Details" (提示: 你可以通过搜索来找到 <em>Label</em> 这个控件)。 使用anchors来调节这个控件的布局位置。
 <img src="/assets/library/javafx-8-tutorial/part1/person-details-label.png" alt="Person Details Label"></p>
 </li>
-<li><p>再添加一个 <em>GridPane</em> <em>SplitePane</em>的右边部分, 使用anchors来调节这个控件的布局位置。<br><img src="/assets/library/javafx-8-tutorial/part1/grid-pane-layout.png" alt="GridPane Layout"></p>
+<li><p>再添加一个 <em>GridPane</em> <em>SplitePane</em>的右边部分, 使用anchors来调节这个控件的布局位置。
+<img src="/assets/library/javafx-8-tutorial/part1/grid-pane-layout.png" alt="GridPane Layout"></p>
 </li>
-<li><p>按照下面的图添加多个 <em>Lables</em>到表格中去。
-*注意: 添加一个控件到已经存在的行里面去，你可在这行的行号上右键选择 "Add Row"。
+<li><p>按照下面的图添加多个 <em>Lables</em>到表格中去。</p>
+</li>
+<li><p><em>注意: 添加一个控件到已经存在的行里面去，你可在这行的行号上右键选择 "Add Row"。</em>
 <img src="/assets/library/javafx-8-tutorial/part1/add-labels.png" alt="Add labels"></p>
 </li>
-<li><p>添加3个按钮到这个 <em>GridPane</em> 的下面。 小提示: 选择这3个按钮，右键 <em>Wrap In | HBox</em>，那么它们会被放置到一个HBox里面。 你可能需要对这个HBox指定一个 <em>spacing</em>,同时也需要设置它们的右边和下边的anchors<br><img src="/assets/library/javafx-8-tutorial/part1/button-group.png" alt="Button Group"></p>
+<li><p>添加3个按钮到这个 <em>GridPane</em> 的下面。 小提示: 选择这3个按钮，右键 <em>Wrap In | HBox</em>，那么它们会被放置到一个HBox里面。 你可能需要对这个HBox指定一个 <em>spacing</em>,同时也需要设置它们的右边和下边的anchors。
+<img src="/assets/library/javafx-8-tutorial/part1/button-group.png" alt="Button Group"></p>
 </li>
 <li><p>那么基本已经完成了界面的设计，你可以通过 <em>Preview</em> 来预览一下你设计的界面，同时缩放一下窗口来检验一下各个控件的位置是否正确。
 <img src="/assets/library/javafx-8-tutorial/part1/scene-builder-preview.png" alt="Preview"></p>
