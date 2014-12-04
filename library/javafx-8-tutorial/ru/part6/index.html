@@ -27,7 +27,7 @@
     */
     -->
     <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="canonical" href="http://code.makery.ch/java/javafx-8-tutorial-part6/" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part6/" />
   
     <!-- Alternate Languages -->
     <link rel="alternate" hreflang="en" href="http://code.makery.ch/java/javafx-8-tutorial-part6/" />
@@ -39,7 +39,7 @@
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
 
-    <meta name="description" content="">
+    <meta name="description" content="Учимся создавать столбцовую диаграмму в JavaFX.">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" value="summary">
@@ -47,7 +47,7 @@
     <!-- Open Graph data -->
     <meta property="og:title" content="Учебник по JavaFX 8 - Часть 6: Статистическая диаграмма - code.makery.ch" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="" />
+    <meta property="og:description" content="Учимся создавать столбцовую диаграмму в JavaFX." />
     <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/ru/part6/" />
     <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part6/addressapp-part6.png" />
     
@@ -221,33 +221,33 @@
           
           <section class="article-content">
             <p><img src="/assets/library/javafx-8-tutorial/part6/addressapp-part6.png" alt="Screenshot AddressApp Part 6"></p>
-<h2 id="topics-in-part-6">Topics in Part 6</h2>
+<h2 id="-6-">Часть 6: Содержание</h2>
 <ul>
-<li>Creating a <strong>Statistics Chart</strong> to display birthday distribution.</li>
+<li>Создание cтатистической диагаммы для отображения распределения дней рождений.</li>
 </ul>
 <hr>
-<h2 id="birthday-statistics">Birthday Statistics</h2>
-<p>All our people in the AddressApp have a birthday. Wouldn't it be nice to have some statistics about when our people celebrate their birthday.</p>
-<p>We'll use a <strong>Bar Chart</strong> containing a bar for each month. Each bar shows how many people have their birthday in that particular month.</p>
-<h2 id="the-statistics-fxml-view">The Statistics FXML View</h2>
+<h2 id="-">Статистика дней рождений</h2>
+<p>Все записи в нашем приложении имеют значение дня рождения. Было бы неплохо иметь некоторую статистику о том, когда наши люди празнуют свои дни рождения.</p>
+<p>Мы будем использовать столбцовую диаграмму, содержащую столбец для каждого месяца. Каждый из столбцов будет показывать сколько людей имеют свой день рождения в конкретном месяце.</p>
+<h2 id="fxml-c-">FXML-представление cтатистики</h2>
 <ol>
-<li><p>We start by creating a <code>BirthdayStatistics.fxml</code> file inside our <code>ch.makery.address.view</code> package (<em>Right-click on package | New | other... | New FXML Document</em>).<br><img src="/assets/library/javafx-8-tutorial/part6/birthday-statistics-fxml.png" alt="Birthday Statistics FXML"></p>
+<li><p>Начните с создания файла <code>BirthdayStatistics.fxml</code> внутри нашего пакета <code>ch.makery.address.view</code> <em>(правый клик на пакете | New | other... | New FXML Document)</em>.<br><img src="/assets/library/javafx-8-tutorial/part6/birthday-statistics-fxml.png" alt="Birthday Statistics FXML"></p>
 </li>
-<li><p>Open the <code>BirthdayStatistics.fxml</code> file in Scene Builder.</p>
+<li><p>Откройте файл <code>BirthdayStatistics.fxml</code> в приложении Scene Builder.</p>
 </li>
-<li><p>Select the root <code>AnchorPane</code>. In the <em>Layout</em> group set the <em>Pref Width</em> to 620 and the <em>Pref Height</em> to 450.</p>
+<li><p>Выберите корневой компонент <code>AnchorPane</code>. В вкладке <em>Layout</em> установите значение <em>Pref Width</em> на 620, а <em>Pref Height</em> на 450.</p>
 </li>
-<li><p>Add a <code>BarChart</code> to the <code>AnchorPane</code>.</p>
+<li><p>Добавьте компонент <code>BarChart</code> в наш корневой <code>AnchorPane</code>.</p>
 </li>
-<li><p>Right-click on the <code>BarChart</code> and select <em>Fit to Parent</em>.</p>
+<li><p>Кликните правой кнопкой мышки на добавленном <code>BarChart</code> и выберите <em>Fit to Parent</em>.</p>
 </li>
-<li><p>Save the fxml file, go to Eclipse and refresh the project.</p>
+<li><p>Сохраните fxml-файл, перейдите в Eclipse и обновите проект.</p>
 </li>
 </ol>
-<p>Before we'll come back to Scene Builder we'll first create the controller and wire everything up in our <code>MainApp</code>.</p>
-<h2 id="the-statistics-controller">The Statistics Controller</h2>
-<p>In the view package <code>ch.makery.address.view</code> create a Java class called <code>BirthdayStatisticsController.java</code>.</p>
-<p>Let's first take a look at the entire controller class before I start explaining:</p>
+<p>Перед тем, как вернутся в приложение Scene Builder, давайте создадим контроллер и свяжем все между собой в классе <code>MainApp</code>.</p>
+<h2 id="-">Класс-контроллер статистики</h2>
+<p>В пакете <code>ch.makery.address.view</code> создайте класс <code>BirthdayStatisticsController.java</code>.</p>
+<p>Перед тем, как я начну объяснять что к чему, взгляните на содержимое этого класса:</p>
 <h5 id="birthdaystatisticscontroller-java">BirthdayStatisticsController.java</h5>
 <pre class="prettyprint lang-java">
 package ch.makery.address.view;
@@ -321,37 +321,38 @@ public class BirthdayStatisticsController {
 </pre>
 
 
-<h4 id="how-the-controller-works">How the Controller Works</h4>
+<h4 id="-">Как работает этот контроллер</h4>
 <ol>
-<li><p>The controller will need access to two elements from our FXML file:</p>
+<li><p>Контроллеру необходим доступ к двум элементам из нашего fxml-файла:</p>
 <ul>
-<li>The <code>barChar</code>: It has the type <code>String</code> and <code>Integer</code>. The <code>String</code> is used for the month on the x-axis and the <code>Integer</code> is used for the number of people in a specific month. </li>
-<li>The <code>xAxis</code>: We'll use this to add the month Strings.   </li>
+<li>Поле <code>barChart</code> использует типы данных <code>String</code> и <code>Integer</code>. Тип данных <code>String</code> используется для отображение месяцев на оси X, а тип данных <code>Integer</code> - для отображения количества записей в конкретном месяце.</li>
+<li>Ось <code>xAxis</code> мы используем для добавления названий месяцев.</li>
 </ul>
 </li>
-<li><p>The <code>initialize()</code> method fills the x-axis with a list of all the months.</p>
+<li><p>Метод <code>initialize()</code> заполняет ось X строковыми значениями названий всех месяцев.</p>
 </li>
-<li><p>The <code>setPersonData(...)</code> method will be accessed by the <code>MainApp</code> class to set the person data. It loops through all persons and counts the birthdays per month. Then it adds <code>XYChart.Data</code> for every month to the data series. Each <code>XYChart.Data</code> object will represent one bar in the chart.</p>
+<li><p>Метод <code>setPersonData(...)</code> будет доступен из класса <code>MainApp</code> для передачи данных записей. Он проходится по всем записям и подсчитывает количество дней рождений в каждом месяце. Потом он добавляет <code>XYChart.Data</code> для каждого месяца в серию данных <code>XYChart.Series</code>. Каждый объект <code>XYChart.Data</code> будет представлять один столбец на диаграмме.</p>
 </li>
 </ol>
 <hr>
-<h2 id="connecting-view-and-controller">Connecting View and Controller</h2>
+<h2 id="-">Соединяем Вид и Контроллер</h2>
 <ol>
-<li><p>Open <code>BirthdayStatistics.fxml</code> in Scene Builder.</p>
+<li><p>Откройте файл <code>BirthdayStatistics.fxml</code> в приложении Scene Builder.</p>
 </li>
-<li><p>In the <em>Controller</em> group set <code>BirthdayStatisticsController</code> as controller.</p>
+<li><p>Во вкладке <em>Controller</em> установите в качестве контроллера <code>BirthdayStatisticsController</code>.</p>
 </li>
-<li><p>Select the <code>BarChart</code> and choose <code>barChart</code> as fx:id Property (in the <em>Code</em> group).</p>
+<li><p>Выберите компонент <code>BarChart</code> и установите значение <code>barChart</code> в свойстве <em>fx:id</em>.</p>
 </li>
-<li><p>Select the <code>CategoryAxis</code> and choose <code>xAxis</code> as fx:id Property.<br><img src="/assets/library/javafx-8-tutorial/part6/category-axis.png" alt="Category Axis"></p>
+<li><p>Выберите <code>CategoryAxis</code> и установите значение <code>xAxis</code> в свойстве <em>fx:id</em>.
+<img src="/assets/library/javafx-8-tutorial/part6/category-axis.png" alt="Category Axis"></p>
 </li>
-<li><p>You may add a title to the <code>BarChart</code> (in <em>Properties</em> group) for further styling.</p>
+<li><p>Для будущей стилизации вы можете добавить название вашей диаграмме во вкладке <em>Properties</em>.</p>
 </li>
 </ol>
 <hr>
-<h2 id="connecting-the-view-controller-with-mainapp">Connecting the View/Controller with MainApp</h2>
-<p>We'll use the same mechanism for our <em>birthday statistics</em> that we used for the <em>edit person dialog</em>, a simple popup dialog.</p>
-<p>Add the following method to your <code>MainApp</code> class:</p>
+<h2 id="-mainapp">Соединяем класс-контроллер с основным классом MainApp</h2>
+<p>Для отображения окна диаграммы мы будем использовать тот же механизм, что использовали для отображения окна редактирования записи.</p>
+<p>Добавьте следующий метод в класс <code>MainApp</code>:</p>
 <pre class="prettyprint lang-java">
 /**
  * Opens a dialog to show birthday statistics.
@@ -381,9 +382,9 @@ public void showBirthdayStatistics() {
 }
 </pre>
 
-<p>Everything is set up, but we don't have anything that actually calls the new <code>showBirthdayStatistics()</code> method. Luckily we already have a menu in <code>RootLayout.fxml</code> that can be used for this purpose.</p>
-<h3 id="show-birthday-statistics-menu">Show Birthday Statistics Menu</h3>
-<p>In your <code>RootLayoutController</code> add the following method which will handle user clicks on the <em>show birthday statistics</em> menu item: </p>
+<p>Все готово. Но пока наш метод <code>showBirthdayStatistics()</code> нигде не вызывается. К счастью, в разметке <code>RootLayout.fxml</code> мы имеем меню, которое может быть использовано для этих целей.</p>
+<h3 id="-">Отображаем меню статистики</h3>
+<p>Добавьте следующий метод в класс <code>RootLayoutController</code>, который будет обрабатывать нажатие на пункте меню <em>Show Statistics</em>:</p>
 <pre class="prettyprint lang-java">
 /**
  * Opens the birthday statistics.
@@ -394,17 +395,17 @@ private void handleShowBirthdayStatistics() {
 }
 </pre>
 
-<p>Now, open the <code>RootLayout.fxml</code> file with Scene Builder. Create the <em>Statistics</em> <code>Menu</code> with a <em>Show Statistics</em> <code>MenuItem</code>:</p>
+<p>Теперь откройте файл <code>RootLayout.fxml</code> в приложении <em>Scene Builder</em> и создайте меню <em>Statistics</em> с пунктом меню <em>Show Statistics</em>:</p>
 <p><img src="/assets/library/javafx-8-tutorial/part6/show-statistics-menu.png" alt="Show Statistics Menu"></p>
-<p>Select the <em>Show Statistics</em> <code>MenuItem</code> and choose <code>handleShowBirthdayStatistics</code> for <code>On Action</code> (in <em>Code</em> group)   </p>
+<p>Выберите пункт меню <em>Show Statistics</em> и в качестве значения свойства <code>On Action</code> выберите метод <code>handleShowBirthdayStatistics</code>.</p>
 <p><img src="/assets/library/javafx-8-tutorial/part6/show-statistics-on-action.png" alt="Show Statistics On Action"></p>
-<p>Go to Eclipse, refresh the project and <strong>test it</strong>.</p>
+<p>Перейдите в среду разработки <em>Eclipse</em>, обновите проект и протестируйте ваше приложение.</p>
 <hr>
-<h2 id="more-information-on-javafx-charts">More Information on JavaFX Charts</h2>
-<p>A good place for more information is the official Oracle tutorial on <a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/charts.htm">Working with JavaFX Charts</a>.</p>
-<h3 id="what-s-next-">What's Next?</h3>
-<p>In the last tutorial <a href="/library/javafx-8-tutorial/ru/part7/">Part 7</a> we will finally deploy our application (i.e. package and deliver the app to our users).</p>
-<h5 id="some-other-articles-you-might-find-interesting">Some other articles you might find interesting</h5>
+<h2 id="-javafx">Больше информации о диаграммах в JavaFX</h2>
+<p>Хорошое место для получения дополнительной информации о диаграммах в JavaFX - это оффициальный учебник от Oracle <a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/charts.htm">Работа с диаграммами в JavaFX</a></p>
+<h3 id="-">Что дальше?</h3>
+<p>В последней, <a href="/library/javafx-8-tutorial/ru/part7/">7 части Учебника</a> мы наконец развернем наше приложение (т.е. упакуем и доставим приложение к нашим пользователям).</p>
+<h5 id="-">Вам могут быть интересны также некоторые другие статьи</h5>
 <ul>
 <li><a href="/blog/javafx-8-dialogs/">JavaFX Dialogs</a></li>
 <li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
