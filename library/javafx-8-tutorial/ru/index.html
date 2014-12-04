@@ -1,0 +1,345 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Учебник по JavaFX 8 - code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/ru/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/java/javafx-8-tutorial-intro/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Учебник по JavaFX 8 - code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/ru/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/addressapp.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/code-makery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-ru.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Статьи в этой серии</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/ru/" class="list-group-item active">
+        введение</a>
+      <a href="/library/javafx-8-tutorial/ru/part1/" class="list-group-item">
+        Часть 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/ru/part2/" class="list-group-item">
+        Часть 2: Модель и компонент TableView</a>
+      <a href="/library/javafx-8-tutorial/ru/part3/" class="list-group-item">
+        Часть 3: Взаимодействие с пользователем</a>
+      <a href="/library/javafx-8-tutorial/ru/part4/" class="list-group-item">
+        Часть 4: Стилизация с помощью CSS</a>
+      <a href="/library/javafx-8-tutorial/ru/part5/" class="list-group-item">
+        Часть 5: Хранение данных в XML</a>
+      <a href="/library/javafx-8-tutorial/ru/part6/" class="list-group-item">
+        Часть 6: Статистическая диаграмма</a>
+      <a href="/library/javafx-8-tutorial/ru/part7/" class="list-group-item">
+        Часть 7: Развертывание</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">языки</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/java/javafx-8-tutorial-intro/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        English</a>
+      <a href="/library/javafx-8-tutorial/pt/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        Português</a>
+      <a href="/library/javafx-8-tutorial/es/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        Español</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/" class="list-group-item">
+<i class="fa fa-fw fa-globe"></i>        中文（简体）</a>
+      <a href="/library/javafx-8-tutorial/ru/" class="list-group-item active">
+<i class="fa fa-fw fa-globe"></i>        Русский</a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Учебник по JavaFX 8</h1>
+            <div class="article-date">
+  Apr 19, 2014
+  • Updated Dec 04, 2014
+
+</div>
+          </header>
+          
+          <div class="visible-xs-block visible-sm-block">
+            <aside>
+              <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Статьи в этой серии <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active"><a href="/library/javafx-8-tutorial/ru/">
+        введение</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/ru/part1/">
+        Часть 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/ru/part2/">
+        Часть 2: Модель и компонент TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/ru/part3/">
+        Часть 3: Взаимодействие с пользователем</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/ru/part4/">
+        Часть 4: Стилизация с помощью CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/ru/part5/">
+        Часть 5: Хранение данных в XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/ru/part6/">
+        Часть 6: Статистическая диаграмма</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/ru/part7/">
+        Часть 7: Развертывание</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">языки <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/java/javafx-8-tutorial-intro/">
+<i class="fa fa-fw fa-globe"></i>        English</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/">
+<i class="fa fa-fw fa-globe"></i>        Português</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/es/">
+<i class="fa fa-fw fa-globe"></i>        Español</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/">
+<i class="fa fa-fw fa-globe"></i>        中文（简体）</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/ru/">
+<i class="fa fa-fw fa-globe"></i>        Русский</a></li>
+  </ul>
+</div>
+
+            </aside>
+          </div>
+          
+          <section class="article-content">
+            <p>В 2012 году я написал очень детальный <a href="http://code.makery.ch/java/javafx-2-tutorial-intro/">учебник по JavaFX 2</a> для моих студентов. Многие люди с разных частей мира прочитали его и дали очень позитивные отзывы о данном материале. Поэтому я решил переписать этот учебник для новой версии JavaFX 8 (об изменениях вы можете почитать здесь - <a href="http://code.makery.ch/blog/update-to-javafx-8-whats-new/" title="Update to JavaFX 8 - What's New">Обновление до JavaFX 8 - Что Нового</a>).</p>
+<p>В этом учебнике я расскажу о проектировании, программировании и развертывании приложения с функциональностью адресной книги. Так будет выглядеть наше приложение в конце разработки:</p>
+<p><img src="http://code.makery.ch/assets/library/javafx-8-tutorial/addressapp.png" alt="Screenshot AddressApp" title="AdressApp"></p>
+<h2 id="-">Вам предстоит научиться</h2>
+<ul>
+<li>Создавать и запускать JavaFX-проект;</li>
+<li>Использовать приложение Scene Builder для проектирования пользовательского интерфейса;</li>
+<li>Структурировать приложение с помощью патерна MVC;</li>
+<li>Использовать коллекцию <code>ObservableList</code> для автоматического обновления пользовательского интерфейса;</li>
+<li>Использовать компонент <code>TableView</code> и реагировать на выделение ячеек в таблице;</li>
+<li>Создавать пользовательские всплывающие диалоги для редактирования записей в приложении;</li>
+<li>Выполнять проверку пользовательского ввода;</li>
+<li>Изменять дизайн JavaFX-приложения с помощью каскадных таблиц стилей (CSS);</li>
+<li>Хранить данные приложения в виде XML-файла;</li>
+<li>Сохранять последний открытый путь к файлу в пользовательских настройках;</li>
+<li>Создавать JavaFX-диаграммы для отображения статистики;</li>
+<li>Развертывать JavaFX-приложение с помощью процесса нативной упаковки (native package).</li>
+</ul>
+<p><strong>Это довольно много!</strong> А это значит, что после изучения данного материала вы будете знать, как создавать сложные приложения с помощью JavaFX.</p>
+<h2 id="-">Как пользоваться этим учебником</h2>
+<p>Есть два варианта использования этого материала:</p>
+<ul>
+<li><strong>учите много</strong>: Создавайте свой JavaFX проект с нуля и постепенно наполняйте его классы и методы кодом.</li>
+<li><strong>учите быстро</strong>: Импортируйте исходники кода для каждой части учебника в вашу среду разработки а потом пытайтесь понять данный материал.</li>
+</ul>
+<p>Я надеюсь, что вы получите удовольствие! Начнем с <a href="/library/javafx-8-tutorial/ru/part1/" title="Part 1: Scene Builder.">Часть 1: Приложение Scene Builder</a>.</p>
+<div class="alert alert-success">
+  <strong><i class="fa fa-trophy"></i> Attribution:</strong> Russian translations have been contributed by 
+  <ul>
+    <li><a href="https://github.com/sobolevstp" class="alert-link">Sobolev Stepan</a></li> 
+  </ul>
+  Thank you very much!
+</div>
+
+
+
+          </section>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li class="active">
+      <a href="/library/javafx-8-tutorial/ru/" data-toggle="tooltip" title="введение">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/ru/part1/" data-toggle="tooltip" title="Часть 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/ru/part2/" data-toggle="tooltip" title="Часть 2: Модель и компонент TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/ru/part3/" data-toggle="tooltip" title="Часть 3: Взаимодействие с пользователем">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/ru/part4/" data-toggle="tooltip" title="Часть 4: Стилизация с помощью CSS">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/ru/part5/" data-toggle="tooltip" title="Часть 5: Хранение данных в XML">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/ru/part6/" data-toggle="tooltip" title="Часть 6: Статистическая диаграмма">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/ru/part7/" data-toggle="tooltip" title="Часть 7: Развертывание">7</a>
+      </li>
+            
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+        
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h1>Comments</h1>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        Thanks for reading.<br />
+        Subscribe to the <a href="/rss">RSS feed</a> or receive updates by <a href="https://tinyletter.com/code-makery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/code-makery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/code-makery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/ru/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/ru/';
+    var disqus_title = 'Учебник по JavaFX 8';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
