@@ -392,6 +392,12 @@ private void handleDeletePerson() {
 
 <p>Now, open the <code>PersonOverview.fxml</code> file in <em>SceneBuilder</em>. Select the <em>Delete</em> button, open the <em>Code</em> group and choose <code>handleDeletePerson</code> in the dropdown of <strong>On Action</strong>.</p>
 <p><img src="/assets/library/javafx-8-tutorial/part3/handle-delete.png" alt="On Action"></p>
+<div class="alert alert-info">
+<strong>Remember:</strong> After making changes to an FXML file in Scene Builder you might need to refresh the project in Eclipse for the changes to be applied.
+</div>
+
+
+
 <h3 id="error-handling">Error Handling</h3>
 <p>If you run the application at this point you should be able to delete selected persons from the table. But what happenes if you <strong>click the delete button while no person is selected</strong> in the table? </p>
 <p>There will be an <code>ArrayIndexOutOfBoundsException</code> because it could not remove a person item at index <code>-1</code>. The index <code>-1</code> was returned by <code>getSelectedIndex()</code> - which means that there was no selection.</p>
